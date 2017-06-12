@@ -1,0 +1,29 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>招标附件</label>
+  </div>
+  <div class="bids-content content-border clearfix">
+    {{#if accessoryList}}
+      {{#each accessoryList}}
+        <div class="pull-left margin-right-20 margin-bottom-20">
+          <div class="bids-file">
+            <div class="file-img">
+              <i class="icon-hsh icon-hsh-file"></i>
+            </div>
+            <div class="file-info">
+              <div class="title">{{filename}}</div>
+              <div class="date">
+               <span>{{formatDate createdAt}}</span>
+               <a href="http:{{fileUrl}}" class="pull-right">
+                <i class="icon-hsh icon-hsh-xiazai"></i>
+               </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="margin-bottom-10 center-text">暂无招标附件！</div>
+    {{/if}}
+  </div>
+</div>

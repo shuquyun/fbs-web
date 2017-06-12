@@ -1,0 +1,136 @@
+{{#component "supplier-manage-component component-standard-container js-comp"}}
+<div class="component-body">
+  <form class="form form-aligned supplier-import-form" data-data="{{json _DATA_}}">
+    {{#with _DATA_.company}}
+    <div class="control-group">
+      <label>公司名</label>
+      <span>{{name}}</span>
+    </div>
+    {{#if controlName}}
+      <div class="control-group">
+        <label>实际控制人</label>
+        <span>{{controlName}}</span> 
+        <label>控制人联系方式</label> 
+        <span>{{controlMobile}}</span>
+      </div>
+    {{/if}}
+    <div class="control-group">
+      <label>专业类型</label>
+      <span>{{#each special}}{{name}} {{/each}}</span>
+    </div>
+    <div class="control-group">
+      <label>服务区域城市</label>
+      <span>{{#each serviceCitys}}{{name}} {{/each}}</span>
+    </div>
+    {{/with}}
+    <div class="control-group">
+      <label>最近业绩</label>
+    </div>
+    <div class="control-group">
+      <table class="table grade-table">
+        <thead>
+          <th>项目名称</th>
+          <th>项目地址</th>
+          <th>甲方单位</th>
+          <th>业态类型</th>
+          <th>项目规模m²</th>
+          <th>施工内容</th>
+          <th>进场时间</th>
+          <th>项目经理</th>
+          <th>备注</th>
+        </thead>
+        <tbody>
+          {{#each _DATA_.supplierAchievements}}
+            <tr>
+              <td>{{projectName}}</td>
+              <td>{{projectAddress}}</td>
+              <td>{{partyUnit}}</td>
+              <td>
+                {{#equals type '1'}}住宅{{/equals}}
+                {{#equals type '2'}}商业{{/equals}}
+                {{#equals type '3'}}旅行{{/equals}}
+                {{#equals type '4'}}综合体{{/equals}}
+              </td>
+              <td>{{scale}}</td>
+              <td>{{content}}</td>
+              <td>{{formatDate joinAt "day"}}</td>
+              <td>{{manager}}</td>
+              <td>{{remarks}}</td>
+            </tr>
+          {{/each}}
+          {{#unless _DATA_.supplierAchievements}}
+            <tr>
+              <td class="center-text" colspan="9">暂无业绩！</td>
+            </tr>
+          {{/unless}} 
+        </tbody>
+      </table>
+    </div>
+    <div class="control-group">
+      <label>年产值</label>
+    </div>
+    <div class="control-group">
+      <table class="table grade-table">
+        <thead>
+          <th>年度</th>
+          <th>年度实际产值</th>
+          <th>年度签约金额</th>
+        </thead>
+        <tbody>
+          {{#each _DATA_.supplierAnnualOutputs}}
+            <tr>
+              <td>{{annual}}</td>
+              <td>{{realOutputValue}}</td>
+              <td>{{realOutputValue}}</td>
+            </tr>
+          {{/each}}
+          {{#unless _DATA_.supplierAnnualOutputs}}
+            <tr>
+              <td class="center-text" colspan="9">暂无年产值！</td>
+            </tr>
+          {{/unless}} 
+        </tbody>
+      </table>
+    </div>
+    <div class="control-group">
+      <label><span class="required">*</span>考察时间</label>
+      <input class="datepicker" name="inspectionTime" type="text" placeholder="请输入考察时间" required>
+    </div>
+    <div class="control-group">
+      <label>考察人员</label>
+      <input type="text" value="{{_DATA_.supplierInspection.inspectionName}}" readonly>
+    </div>
+    <div class="control-group">
+      <label><span class="required">*</span>考察内容</label>
+      <textarea type="text" name="inspectionContent" placeholder="请输入考察内容" required></textarea>
+    </div>
+    <div class="control-group">
+      <label><span class="required">*</span>考察结论</label>
+      <input type="text" name="conclusion" placeholder="请输入考察结论" required>
+    </div>
+    <div class="control-group">
+      <label><span class="required">*</span>考察评级</label>
+      <select name="grade">
+        <option value="0">合格</option>
+        <option value="-1">不合格</option>
+        <option value="-2">黑名单</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>考察报告</label>
+      <div class="btn btn-upload btn-info">
+        上传附件<input type="file" name="report">
+      </div>
+    </div>
+    <div class="control-group">
+      <label></label>
+      <ul class="list-file">
+      </ul>
+    </div>
+    <div class="control-group">
+      <label></label>
+      <button class="btn btn-primary" type="submit">提交</button>
+    </div>
+  </form>
+</div>
+{{/component}}

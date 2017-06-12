@@ -1,0 +1,20 @@
+<div class="operation-menu js-operation-menu">
+  {{#if id}}
+    <p><a href="javascript:;" class="js-add-sibling" data-id="{{id}}">添加本级</a></p>
+  {{/if}}
+  <p><a href="javascript:;" class="js-add-child" data-id="{{id}}">添加下级</a></p>
+  {{#if id}}
+    <p><a href="javascript:;" class="js-move-up" data-id="{{id}}">上移</a></p>
+    <p><a href="javascript:;" class="js-move-down" data-id="{{id}}">下移</a></p>
+    <p><a href="javascript:;" class="js-rename-node" data-id="{{id}}">重命名</a></p>
+    <p>
+      <a href="javascript:;" class="js-copy-node" data-id="{{id}}">复制</a>
+      <span class="tip">复制成功</span>
+    </p>
+    <p><a href="javascript:;" class="js-paste-sibling" data-id="{{id}}">粘贴本级</a></p>
+  {{/if}}
+  <p><a href="javascript:;" class="js-paste-child" data-id="{{id}}">粘贴下级</a></p>
+  {{#if id}}
+    <p><a href="javascript:;" class="js-del-node" data-id="{{id}}">删除</a></p>
+  {{/if}}
+</div>

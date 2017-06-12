@@ -1,0 +1,25 @@
+<div class="pull-left margin-right-20 margin-bottom-20">
+  <div class="bids-file">
+    <div class="file-img">
+      <i class="icon-hsh icon-hsh-file"></i>
+    </div>
+    <div class="file-info">
+      <div class="title">{{filename}}</div>
+      <div class="date">
+        <span>{{formatDate createdAt}}</span>
+        <a href="http:{{fileUrl}}" class="pull-right">
+          <i class="icon-hsh icon-hsh-xiazai"></i>
+        </a>
+        {{#equals ../qaOperatorId ../userId}}
+          {{#of bidStatus "11,12,13,14,15,16"}}
+            {{#of fileStatus "-1,0"}}
+              <a href="javascript:;" class="js-file-delete pull-right margin-right-10" data-id="{{id}}">
+                <i class="icon-hsh icon-hsh-delete"></i>
+              </a>
+            {{/of}}
+          {{/of}}
+        {{/equals}}
+      </div>
+    </div>
+  </div>
+</div>

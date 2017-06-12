@@ -1,0 +1,12 @@
+{{#partial "realTitle"}}登录日志{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "公司管理"}, {"url": "#", "crumb": "用户登录日志"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "user/login_log" type='1'}}
+{{/partial}}
+{{#hasRole "DEVELOPER"}}
+  {{> developer/layout}}
+{{else}}
+  {{> supplier/layout}}
+{{/hasRole}}

@@ -1,0 +1,41 @@
+<div class="control-group">
+  <label><span class="required">*</span>法人身份证或证件:</label>
+  <div class="btn btn-upload main-image js-upload-img">
+    <input type="file" name="file">
+    <img src="{{data.idCard}}" style="{{#if data.idCard}}width: 70px; height: 70px{{/if}}">
+    <span>+</span>
+    <input type="hidden" name="idCard" value="{{data.idCard}}">
+  </div>
+</div>
+<div class="control-group">
+  <label class='image-label'><span class="required">*</span>授权委托书:</label>
+  <div class="btn btn-upload main-image js-upload-img">
+    <input type="file" name="file">
+    <img src="{{data.proxy}}" style="{{#if data.proxy}}width: 70px; height: 70px{{/if}}">
+    <span>+</span>
+    <input type="hidden" name="proxy" value="{{data.proxy}}">
+  </div>
+</div>
+<div class="control-group">
+  <label><span class="required">*</span>被授权人委托书:</label>
+  <div class="btn btn-upload main-image js-upload-img">
+    <input type="file" name="file">
+    <img src="{{data.authorizee}}" style="{{#if data.authorizee}}width: 70px; height: 70px{{/if}}">
+    <span>+</span>
+    <input type="hidden" name="authorizee" value="{{data.authorizee}}">
+  </div>
+</div>
+<div class="control-group speciality-group">
+  <label><span class="required">*</span>专业类型:</label>
+  <input type="hidden" class="js-speciality-id" value="{{#each data.special}}{{#equals @index 0}}{{id}}{{else}},{{id}}{{/equals}}{{/each}}">
+  <div class="selected-special-group js-selector-group" data-type="speciality" data-api="/api/base-major/register-tree">
+    <span class="js-empty-placeholder no-data-placeholder {{#if data.special}}hide{{/if}}">请点击选择专业类型</span>
+    {{#each data.special}}
+      <span class='each-speciality' data-id='{{id}}' data-name="{{name}}">
+        {{name}}<i class='icon-hsh icon-hsh-cha js-delete-selected'></i>
+      </span>
+    {{/each}}
+    <i class="icon-hsh icon-hsh-caret pull-right"></i>
+  </div>
+  <div class="js-selector-container hide"><label></label></div>
+</div>

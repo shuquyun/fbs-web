@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}答疑详情{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "招标管理"},{"url": "/developer/bids", "crumb": "招投标管理"},{"url": "/developer/bids-details/publish-answer?bidId={{bidId}}", "crumb": "招标详情"}, {"url": "#", "crumb": "答疑详情"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/bids/publish_answer/answer_details"}}
+{{/partial}}
+{{> developer/layout}}

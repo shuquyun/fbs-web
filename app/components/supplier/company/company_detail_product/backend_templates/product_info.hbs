@@ -1,0 +1,37 @@
+<fieldset>
+  <table class="table product-table">
+    <div class="table-title">
+      <span>产品信息</span>
+      <button class="btn btn-small btn-info pull-right js-add-edit-item" data-type="product" type="button">添加新的产品/服务</button>
+    </div>
+    <thead>
+      <tr>
+        <th width="20%">产品名称</th>
+        <th width="40%">产品图片</th>
+        <th width="20%">产品描述</th>
+        <th width="20%" class="right-text">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+        <tr>
+          <td>{{name}}</td>
+          <td>
+            {{#equals images.length 3}}
+              {{#each images}}
+                {{#if this}}
+                  <a href="javascript:;" class="js-img-show" src="{{this}}">查看</a>
+                {{/if}}
+              {{/each}}
+            {{else}}-{{/equals}}
+          </td>
+          <td>{{desc}}</td>
+          <td class="td-operation">
+            <a class="js-add-edit-item" data-data="{{json this}}" data-type="product">编辑</a>
+            <a class="js-delete-item" data-id="{{id}}" data-toggle="confirm" data-title="删除操作？" data-content="您确定删除该产品吗？" data-event="confirm:delete">删除</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</fieldset>

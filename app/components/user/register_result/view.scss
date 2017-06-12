@@ -1,0 +1,17 @@
+@import "pokeball/theme";
+@import "compass/css3";
+$register-success: aliceblue;
+.register-success {
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  border: 1px solid $color-border;
+  padding:  20px;
+  background-color: $register-success;
+  .alert-icon {
+    @include inline-block(middle);
+  }
+  .alert-message {
+    @include inline-block(middle);
+  }
+}

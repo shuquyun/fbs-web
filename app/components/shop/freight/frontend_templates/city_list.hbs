@@ -1,0 +1,10 @@
+<div class="freight-select-city">
+  <ul class="freight-city-ul clearfix">
+    {{#each data}}
+    <li class="freight-city-li">
+      <label for="city-{{id}}"><input type="checkbox" value="{{id}}" {{#if checked}}checked{{/if}} data-name="{{name}}" class="js-select-city-item" id="city-{{id}}"> {{name}}</label>
+    </li>
+    {{/each}}
+  </ul>
+  <p><button class="btn btn-info btn-small js-close-city" type="button">关闭</button></p>
+</div>

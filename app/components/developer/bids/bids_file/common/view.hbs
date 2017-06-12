@@ -1,0 +1,23 @@
+{{#component "js-comp bids-details-file bids-block"}}
+  {{#with _DATA_}}
+    {{> component:developer/bids/bids_file/common/backend_templates/attachment bidStatus=../_BIDS_.bidStatus userId=../_USER_.id}}
+    {{> component:developer/bids/bids_file/common/backend_templates/list bidStatus=../_BIDS_.bidStatus userId=../_USER_.id costOperatorIds=../_BIDS_.costOperatorIds}}
+    {{#equals bidFileOperatorId ../_USER_.id}}
+      {{#of ../_BIDS_.bidStatus "2,3,6"}}
+        {{inject "developer/bids/bids_file/operator" userid=../_USER_.id}}
+      {{else}}
+        {{> component:developer/bids/bids_file/common/backend_templates/user}}
+      {{/of}}
+    {{/equals}}
+  {{/with}}
+  {{#equals _DATA_.bidFileOperatorId _USER_.id}}
+    {{#of _BIDS_.bidStatus "2,3,6"}}
+      <div class="bids-group no-padding">
+        <div class="bids-content content-border">
+          <button class="btn btn-primary js-bids-file-confirm margin-bottom-20" data-file="{{json _DATA_}}" data-status="{{_BIDS_.bidStatus}}">提交招标文件</button>
+        </div>
+      </div>
+    {{/of}}
+  {{/equals}}
+  {{inject "developer/bids/bids_approval/log" type=1 connectId=bidId}}
+{{/component}}

@@ -1,0 +1,18 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "bodyClass"}}body{{/partial}}
+{{#partial "body"}}
+  <div class="main-top">
+    {{inject "developer/sidebar"}}
+  </div>
+  <div class="body-top">
+    {{{block "topBody"}}}
+  </div>
+  <div class="main-body" style="margin-top: 20px;">
+    {{{block "realBreadcrumb"}}}
+    {{{block "tabNavs"}}}
+    <div class="body-container">
+      {{{block "realBody"}}}
+    </div>
+  </div>
+{{/partial}}
+{{> layout}}

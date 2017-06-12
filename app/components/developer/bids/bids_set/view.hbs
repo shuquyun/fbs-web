@@ -1,0 +1,14 @@
+{{#component "bids-details-set js-comp bids-block"}}
+  {{#with _DATA_}}
+    {{> component:developer/bids/bids_set/backend_templates/info userId=../_USER_.id}}
+    {{> component:developer/bids/bids_set/backend_templates/notice}}
+    {{#equals bidStatus 0}}
+      {{#equals bidOperatorId ../_USER_.id}}
+        <div class="bids-group">
+          <button class="btn btn-primary js-bids-set-submit" data-id="{{id}}">提交立项</button>
+        </div>
+      {{/equals}}
+    {{/equals}}
+  {{/with}}
+  {{inject "developer/bids/bids_approval/log" type=0 connectId=bidId}}
+{{/component}}

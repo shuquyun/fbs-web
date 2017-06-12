@@ -1,0 +1,49 @@
+{{#component "profile component-standard-container js-comp"}}
+  <div class="component-body">
+    <div class="profile-content">
+      <div class="profile-body">
+        <form class="form-aligned form" id="user-profile-form" name="{{json _DATA_}}">
+          <fieldset>
+            <div class="control-group">
+              <label class="control-label name"><span class="required">*</span>{{i18n "Store name" bundle="shop"}}：</label>
+              <input type="hidden" name="id" value="{{_DATA_.id}}">
+              <input type="hidden" name="userId" value="{{_USER_.id}}">
+              <input type="text" name="name" class="input-medium" value="{{_DATA_.name}}" maxLength="30" pattern="^[\d_a-zA-Z\u4E00-\u9FA5\\(\\)]{1,30}$" required>
+              <span class="note"><i>&times;</i> {{i18n "Store name cannot be empty" bundle="shop"}}</span>
+              <span class="note-error"> {{i18n "Numbers, letters, characters, underline, symbols, up 30 characters" bundle="shop"}}</span>
+              <span class="note-error-empty"> {{i18n "Store name cannot be empty" bundle="shop"}}</span>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{i18n "Upload LOGO" bundle="shop"}}：</label>
+                <img id="shop-logo" class="logo {{#if _DATA_.imageUrl}}{{else}}disappear{{/if}}" src="{{#if _DATA_.imageUrl}}{{cdnPath _DATA_.imageUrl "60"}}{{/if}}">
+                <input name="imageUrl" type="hidden" value="{{_DATA_.imageUrl}}">
+                <div class="btn btn-upload">
+                  <input type="file" name="file">
+                  <span class="select-image-text">{{i18n "Select Image" bundle="shop"}}</span>
+                </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class="required">*</span>{{i18n "Address" bundle="shop"}}：</label>
+              <input type="text" name="address" class="input-medium" value="{{_DATA_.address}}" maxLength="80" pattern="^[\d_a-zA-Z\u4E00-\u9FA5]{1,80}$" placeholder="如：浙江省杭州市滨江区六和路海外高层次人才创新创业基地B311" required>
+              <span class="note"><i>&times;</i> {{i18n "Address cannot be empty" bundle="shop"}}</span>
+              <span class="note-error"> {{i18n "Numbers, letters, characters, underscores, up to 50 characters" bundle="shop"}}</span>
+              <span class="note-error-empty"> {{i18n "Address cannot be empty" bundle="shop"}}</span>
+            </div>
+            <div class="control-group">
+              <label for=""><span class="required">*</span>联系电话：</label>
+              <input type="text" name="phone" value="{{_DATA_.phone}}" placeholder="请输入联系电话" pattern="^((\d{3,4}-)?\d{6,8})$|^(1[3|4|5|7|8]\d{9})$" required>
+              <span class="note"><i>&times;</i>电话号码不能为空</span>
+              <span class="note-error">请输入正确固定电话或手机号码</span>
+              <span class="note-error-empty">请输入固定电话或手机号码</span>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button id="js-user-profile-submit" class="btn btn-success btn-medium">{{i18n "Save" bundle="shop"}}</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+{{/component}}

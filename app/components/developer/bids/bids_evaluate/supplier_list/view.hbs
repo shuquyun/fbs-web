@@ -1,0 +1,87 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>入围供应商列表</label>
+    {{#with _BIDS_DETAILS_}}
+      {{#equals issueOperatorId ../_USER_.id}}
+        {{#equals bidStatus 12}}
+          <a href="javascript:;" class="btn btn-primary margin-left-20">商务标评比分析</a>
+        {{/equals}}
+        {{#equals bidStatus 14}}
+          <a href="javascript:;" class="btn btn-info margin-left-20 js-clarify-send">发起澄清</a>
+          <a href="javascript:;" class="btn btn-info margin-left-20 js-list-evaluate-create{{#if needInventory}}{{#of ../_USER_.id costOperatorIds}}{{else}} hide{{/of}}{{else}} hide{{/if}}" data-bid-id="{{id}}">创建澄清清单</a>
+          <a href="javascript:;" class="margin-left-20 js-supplier-invite" data-major="{{specialityNames}}">邀请平台供应商报价</a>
+        {{/equals}}
+      {{/equals}}
+      <a href="javascript:;" class="margin-left-10">
+        <input type="checkbox" name="checkbox" class="input-checkbox js-supplier-reply-show">只显示已回标供应商
+      </a>
+    {{/with}}
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="5%">
+            <input type="checkbox" name="checkbox" class="input-checkbox js-checkbox-main">
+          </th>
+          <th width="2%">序号</th>
+          <th width="15%">供应商名称</th>
+          <th width="10%">联系人</th>
+          <th width="10%">联系方式</th>
+          <th width="10%">回标状态</th>
+          <th width="15%">最后回标时间</th>
+          <th width="10%">回标IP地址</th>
+          <th width="10%">澄清次数</th>
+          <th width="13%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if _DATA_}}
+          {{#each _DATA_}}
+            <tr class="js-tr-item{{#of status "-3,5,6"}} no-reply{{/of}}">
+              <td>
+                {{#of status "7,8,9"}}
+                  <input type="checkbox" name="checkbox" class="input-checkbox" data-id="{{id}}">
+                {{/of}}
+              </td>
+              <td>{{add @index 1}}</td>
+              <td>
+                <a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a>
+              </td>
+              <td>{{contacts}}</td>
+              <td>{{phone}}</td>
+              <td>
+                {{#equals status -3}}已弃标{{/equals}}
+                {{#equals status 5}}已入围{{/equals}}
+                {{#equals status 6}}待回标{{/equals}}
+                {{#equals status 7}}已回标{{/equals}}
+                {{#equals status 8}}待澄清{{/equals}}
+                {{#equals status 9}}澄清完成{{/equals}}
+              </td>
+              <td>{{#if lastBackBidDate}}{{formatDate lastBackBidDate}}{{else}}-{{/if}}</td>
+              <td>{{#if ip}}{{ip}}{{else}}-{{/if}}</td>
+              <td>{{#if clarifyTimes}}{{clarifyTimes}}{{else}}0{{/if}}</td>
+              <td>
+                {{#gt status 6}}
+                  {{#gt ../_BIDS_DETAILS_.bidStatus 12}}
+                    <a href="javascript:;" class="js-list-control" data-list="{{json replyInventories}}" data-type="view">查看投标清单</a><br>
+                  {{/gt}}
+                  {{#gt ../_BIDS_DETAILS_.bidStatus 13}}
+                    <a href="javascript:;" class="js-attachment-download" data-id="{{id}}" data-bid-id="{{bidId}}">下载回标附件</a><br>
+                  {{/gt}}
+                {{/gt}}
+                {{#gt status 8}}
+                  <a href="/developer/bids-details/clarify-details?bidSupplierId={{id}}&bidId={{bidId}}&type=1" target="_blank">澄清记录</a><br>
+                {{/gt}}
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td class="center-text" colspan="10">暂无入围供应商！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

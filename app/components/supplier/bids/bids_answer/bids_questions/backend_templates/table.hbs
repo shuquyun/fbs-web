@@ -1,0 +1,38 @@
+<table class="table table-question">
+  <thead>
+    <tr>
+      <th width="5%">序号</th>
+      <th width="10%">答疑次数</th>
+      <th width="20%">问题标题</th>
+      <th width="45%">问题摘要</th>
+      <th width="20%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if data}}
+      {{#each data}}
+        <tr>
+          <td>{{add @index 1}}</td>
+          <td>{{answerLogId}}</td>
+          <td>
+            <div class="js-content-show question-content" data-id="{{id}}" data-type="{{questionType}}">{{title}}</div>
+          </td>
+          <td>
+            <div class="question-content js-content-show" data-id="{{id}}" data-type="{{questionType}}">{{{content}}}</div>
+          </td>
+          <td>
+            {{#if flag}}
+              <a href="/supplier/bids-details/question-edit?id={{id}}&bidId={{bidId}}&supplierId={{../supplierId}}">编辑</a>
+              <a href="javascript:;" class="js-question-delete" data-id="{{id}}">删除</a>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="center-text" colspan="5">暂无问题！</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>
+

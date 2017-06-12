@@ -1,0 +1,101 @@
+<tr class="js-item-info {{#if pid}}table-row-level-1{{/if}} {{#if weightVal}}table-row-level-1{{/if}}" data-id="{{id}}" data-bill-model-id="{{billModelId}}">
+  <td>
+    {{#if children}}
+      <a href="javascript:;" class="js-pack-event pack-status expanded">
+        <i class="icon-hsh icon-expand expand"></i><i class="icon-hsh icon-pack pack"></i>
+      </a>
+    {{/if}}
+    {{#equals type 1}}
+      {{#if weightVal}}
+        <span>{{name}}</span>
+      {{else}}
+        {{#equals refType 4}}
+          <span>{{name}}</span>
+        {{else}}
+          <a href="javascript:;" class="js-item-type" data-item="{{json this}}">{{name}}</a>
+        {{/equals}}
+      {{/if}}
+    {{else}}
+      <span>{{name}}</span>
+    {{/equals}}
+  </td>
+  <td>
+    {{#if skuValue}}
+      {{#each (parse skuValue)}}
+        <span>{{@key}}: {{this}}</span><br>
+      {{/each}}
+    {{else}}
+      无
+    {{/if}}
+  </td>
+  <td>{{cate}}</td>
+  <td>{{unit}}</td>
+  <td class="input-td">
+    {{#equals type 2}}
+      综合
+    {{else}}
+      {{#equals netAmountIsWeight 1}}
+        综合
+      {{else}}
+        {{#if weightVal}}
+          <input type="text" name="netAmount" class="js-update-item" value="{{netAmount}}" pattern="^(-)?\d*(\.\d{1,6})?$">
+        {{else}}
+          {{#equals type 1}}
+            <input type="text" name="netAmount" class="js-update-item" value="{{netAmount}}" pattern="^(-)?\d*(\.\d{1,6})?$">
+          {{/equals}}
+        {{/if}}
+      {{/equals}}
+    {{/equals}}
+  </td>
+  <td class="input-td">
+    {{#equals type 2}}
+      综合
+    {{else}}
+      {{#equals scrapRateIsWeight 1}}
+        综合
+      {{else}}
+        {{#if weightVal}}
+          <input type="text" name="scrapRate" class="js-update-item" value="{{formatCent scrapRate 0.01 2}}" pattern="^(-)?\d{1,2}(\.\d{1,2})?$">
+        {{else}}
+          {{#equals type 1}}
+            <input type="text" name="scrapRate" class="js-update-item" value="{{formatCent scrapRate 0.01 2}}" pattern="^(-)?\d{1,2}(\.\d{1,2})?$">
+          {{/equals}}
+        {{/if}}
+      {{/equals}}
+    {{/equals}}
+  </td>
+  <td class="input-td">
+    {{#equals type 2}}
+      {{quantities}}
+    {{else}}
+      <input type="number" name="quantities" class="js-update-item" value="{{quantities}}">
+    {{/equals}}
+  </td>
+  <td class="input-td">
+    {{#equals type 2}}
+      {{formatPrice price}}
+    {{else}}
+      <input type="number" name="price" class="js-update-item" value="{{formatPrice price}}">
+    {{/equals}}
+  </td>
+  <td>
+    {{formatPrice unitPrice}}
+  </td>
+  <td class="select-td">
+    {{#equals type 2}}
+
+    {{else}}
+      {{#if couldChangeSupply}}
+        <select class="js-supply-item">
+          <option value="1" {{#equals isSupply 1}}checked{{/equals}}>甲供</option>
+          <option value="0" {{#equals isSupply 0}}checked{{/equals}}>非甲供</option>
+        </select>
+      {{else}}
+        {{#equals isSupply 1}}甲供{{/equals}}
+        {{#equals isSupply 0}}非甲供{{/equals}}
+      {{/if}}
+    {{/equals}}
+  </td>
+  <td class="td-operation">{{#if isCustom}}<a href="javscript:;" class="js-del-item" data-id="{{id}}">删除</a>{{else}}无{{/if}}</td>
+</tr>
+{{> list/division/frontend_templates/_detail_item}}

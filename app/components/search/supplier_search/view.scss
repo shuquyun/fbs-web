@@ -1,0 +1,31 @@
+.search-company-comp {
+  .current-location-dark {
+    padding: 16px 0px;
+    
+    .current-location-span {
+      color: #666;
+      a {
+        line-height: 14px;
+      }
+    }
+  }
+
+  .shop-search-filter {
+    margin-top: 24px;
+
+    .speciality-container {
+      .component-select-tree {
+        position: absolute;
+        width: 160px;
+
+        .tree-view {
+          padding: 0px;
+        }
+      }
+    }
+  }
+
+  .list .shop-search-items-list-type .descAshop {
+    width: 500px;
+  }
+} 

@@ -1,0 +1,47 @@
+<div class="component-filter">
+  <form id="form4" class="form form-standard-filter js-form-bids-filter">
+    <fieldset>
+      <span class="span3 left-text">
+        <label for="bidName">招标名称</label>
+        <input type="hidden" name="type" value="{{type}}">
+        <input type="text" name="bidName" placeholder="输入招标名称" value="{{bidName}}">
+      </span>
+      <span class="span3 left-text select-medium">
+        &nbsp;<label for="bidStatus">投标状态</label>
+        <select class="select" name="status">
+          <option value="">请选择</option>
+          <option value="6" {{#equals status 6}}selected{{/equals}}>待回标</option>
+          <option value="7" {{#equals status 7}}selected{{/equals}}>已回标</option>
+          <option value="8" {{#equals status 8}}selected{{/equals}}>待澄清</option>
+          <option value="9" {{#equals status 9}}selected{{/equals}}>澄清完成</option>
+          <option value="10" {{#equals status 10}}selected{{/equals}}>已回标，中标待确认</option>
+          <option value="11" {{#equals status 11}}selected{{/equals}}>澄清完成，中标待确认</option>
+          <option value="12" {{#equals status 12}}selected{{/equals}}>已回标，中标</option>
+          <option value="13" {{#equals status 13}}selected{{/equals}}>澄清完成，中标</option>
+          <option value="14" {{#equals status 14}}selected{{/equals}}>已回标，未中标</option>
+          <option value="15" {{#equals status 15}}selected{{/equals}}>澄清完成，未中标</option>
+        </select>
+      </span>
+      <span class="span pull-right">
+        <a href="/supplier/bids?type={{type}}" class="btn btn-info">重置</a>
+        <button type="submit" class="btn btn-primary">筛选</button>
+      </span>
+    </fieldset>
+    <fieldset>
+      <span class="span3 left-text select-medium">
+        <label for="projectName">项目名称</label>
+        <input type="text" name="projectName" placeholder="请输入项目名称" value="{{projectName}}">
+      </span>
+      <span class="span3 left-text select-medium">
+        <label for="bidCompany">开发商名称</label>
+        <input type="text" name="bidCompany" placeholder="请输入开发商名称" value="{{bidCompany}}">
+      </span>
+      <span class="span5 left-text">
+        <label>立项时间</label>
+        <input type="text" name="creatDate" class="input-date js-common-start-at datepicker" placeholder="请输入起始时间" value="{{creatDate}}">
+        &nbsp;-&nbsp;
+        <input type="text" name="updatDate" class="input-date js-common-end-at datepicker" placeholder="请输入截止时间" value="{{updatDate}}">
+      </span>
+    </fieldset>
+  </form>
+</div>

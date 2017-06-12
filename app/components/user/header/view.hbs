@@ -1,0 +1,71 @@
+{{#component "header js-comp"}}
+<div class="header-logo">
+  <a href="/">
+    <div class="logo-wraper">
+      <div class="logo">
+        <img src="/assets/images/other-images/white-logo.png" width="150" alt="">
+      </div>
+    </div>
+  </a>
+</div>
+<div class="top-nav-wrapper">
+   {{!-- <ul class="top-nav top-nav-left">
+=======
+{{!--    <ul class="top-nav top-nav-left">
+>>>>>>> 7e469636d00c890a9c6d015fb87569d6d82f55e5
+      <li>
+        <a href="javascript:;" class="nav-toggle-btn">
+          应用中心
+          <i class="icon-feebas icon-feebas-xiangxiazhedie toggle-tool"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="{{_HREF_.mainHref}}">商城首页</a></li>
+        </ul>
+      </li>
+   </ul> --}}
+   <ul class="top-nav top-nav-right">
+{{!--       <li>
+        <a href="/dashboard/todo">
+          <i class="icon-feebas icon-feebas-daibanshixiang"></i>
+          待办事项
+          {{#if _TODO_CNT_}}
+          {{#ifCond _TODO_CNT_ "!=" 0}}
+            <label class="label label-danger pull-right">{{_TODO_CNT_}}</label>
+          {{/ifCond}}
+          {{/if}}
+        </a>
+      </li>
+      <li>
+        <a href="/dashboard/message">
+          <i class="icon-feebas icon-feebas-xiaoxi"></i>
+          消息
+          {{#if _MSG_CNT_}}
+          {{#ifCond _MSG_CNT_ "!=" 0}}
+            <label class="label label-danger pull-right">{{_MSG_CNT_}}</label>
+          {{/ifCond}}
+          {{/if}}
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <i class="icon-feebas icon-feebas-bangzhu"></i>
+          帮助
+        </a>
+      </li> --}}
+      <li class="user-info-nav-item">
+        <a href="javascript:;" class="nav-toggle-btn">
+          <i class="icon-feebas icon-feebas-gerenxinxi pull-left"></i>
+          <div class="user-info pull-left">
+            <div class="user-name">{{_DATA_.name}}</div>
+            <div class="user-position">{{_DATA_.employee.orgName}}{{#if _DATA_.employee.depName}}-{{_DATA_.employee.depName}}{{/if}}</div>
+          </div>
+          {{_USER_.name}}<i class="icon-feebas icon-feebas-xiangxiazhedie toggle-tool"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="/user/profile" id="profile">账号信息</a></li>
+          <li><a href="javascript:;" id="js-user-logout">退出</a></li>
+        </ul>
+      </li>
+   </ul>
+</div>
+{{/component}}

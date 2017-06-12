@@ -1,0 +1,73 @@
+<div class="search-attrs js-search-attrs">
+  <table width="100%">
+    {{#if _DATA_.provinces}}
+      <tr class="">
+        <th>所在地区</th>
+        <td class="brand-container js-filter-container" id="js-address-container" data-length="{{size _DATA_.provinces}}">
+          <ul class="brand-list clearfix">
+          {{#each _DATA_.provinces}}
+            <li class="brand-li js-address-selector noLogo" data-id="{{provinceId}}" data-name="{{province}}">
+              <div class="brand-item cutwords" data-value="{{provinceId}}" title="{{province}}">
+                <span class="brand-name">{{province}}</span>
+              </div>
+              <i class="icon-feebas icon-feebas-xuanzhong check-icon"></i>
+            </li>
+          {{/each}}
+          </ul>
+          <p class="js-selected-address-list selected-brands-list hide">
+            <span class="">选择地区:</span>
+          </p>
+          <div class="brand-buttons hide">
+            <button class="btn js-address-confirm btn-medium btn-primary" type="button">确定</button>
+            <button class="btn js-address-cancel btn-medium btn-secondary" type="button">取消</button>
+          </div>
+        </td>
+        <td class="more-dd">
+          {{#gt (size _DATA_.provinces) 1}}
+            <button class="btn btn-minor btn-small js-address-elects">
+              <i class="icon-feebas icon-feebas-tianjia"></i> <span>多选</span>
+            </button>
+          {{/gt}}
+          {{#gt (size _DATA_.provinces) 17}}
+            <button class="btn btn-minor btn-small js-unfold">
+              <span>展开</span> <i class="icon-feebas icon-feebas-xiangxiazhedie"></i>
+            </button>
+            <button class="btn btn-minor btn-small js-fold hide">
+              <span>收起</span> <i class="icon-feebas icon-feebas-xiangshangzhedie"></i>
+            </button>
+          {{/gt}}
+        </td>
+      </tr>
+    {{/if}}
+    {{#if _DATA_.projectTypes}}
+      <tr>
+        <th><span class="attr-group">业态</span></th>
+        <td class="attr-container js-filter-container" data-length="{{size _DATA_.projectTypes}}">
+          <ul class="attr-list clearfix">
+          {{#each _DATA_.projectTypes}}
+            <li class="attr-dd dd-cancel">
+              <div class="attr hide cutwords" data-value="{{projectType}}" title="{{projectTypeDesc}}">
+                {{projectTypeDesc}}
+                <i class="icon-feebas icon-feebas-guanbi"></i>
+              </div>
+              <a class="js-project-type-selector cutwords" title="{{projectTypeDesc}}" href="javascript:;" data-name="{{projectTypeDesc}}" data-id="{{projectType}}">{{projectTypeDesc}}</a>
+            </li>
+          {{/each}}
+          </ul>
+          <p class="js-selected-types-list selected-brands-list hide">
+            <span class="">业态:</span>
+          </p>
+          <div class="brand-buttons hide">
+            <button class="btn js-project-type-confirm btn-medium btn-primary" type="button">确定</button>
+            <button class="btn js-address-cancel btn-medium btn-secondary" type="button">取消</button>
+          </div>
+        </td>
+        <td class="more-dd">
+          {{#gt (size _DATA_.projectTypes) 1}}
+            <button class="btn btn-minor btn-small js-attr-elects"><i class="icon-feebas icon-feebas-tianjia"></i> <span>多选</span></button>
+          {{/gt}}
+        </td>
+      </tr>
+    {{/if}}
+  </table>
+</div>

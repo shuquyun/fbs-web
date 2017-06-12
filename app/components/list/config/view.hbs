@@ -1,0 +1,134 @@
+{{#component "component-list-config js-comp"}}
+{{#_DATA_}}
+  <form class="form form-aligned">
+    <fieldset>
+      <div class="control-group">
+        <label for="name"><span class="required">*</span>清单名称：</label>
+        <input id="name" type="text" name="name" placeholder="请输入清单名称" value="{{billWithBanAndHouse.name}}" required>
+        <span class="note-error-empty">请输入清单名称</span>
+      </div>
+      <div class="control-group">
+        <label for="creat-way"><span class="required">*</span>创建方式：</label>
+        <span class="span1">
+          <input id="new-list" type="radio" checked value="newList" />
+          新建清单
+        </span>
+        {{!--
+        <span class="span1">
+          <input id="history-way" type="radio" name="creat-way" />
+          从历史清单引用
+        </span>
+        --}}
+      </div>
+      {{!--
+      <div class="control-group hide">
+        <label for="history-list">历史清单：</label>
+        <select class="select" name="history-list">
+          <option value="0" selected>历史清单1</option>
+          <option value="1">历史清单2</option>
+          <option value="2">历史清单3</option>
+        </select>
+      </div>
+      --}}
+      <div class="control-group">
+        <label for="priceMethod"><span class="required">*</span>计价方式：</label>
+        <span class="span1">
+          <input id="full" type="radio" name="priceMethod" value="0" checked />
+          <span>完全综合单价分析法</span>
+        </span>
+        <span class="span1">
+          <input id="nofull" type="radio" name="priceMethod" value="1" {{#equals billWithBanAndHouse.priceMethod "1"}}checked{{/equals}} />
+          <span>不完全综合单价分析法</span>
+        </span>
+      </div>
+      <div class="control-group">
+        <label for="product"><span class="required">*</span>产品：</label>
+        <select class="select js-products-select" name="product" multiple>
+          <option value="0" disabled>请选择</option>
+          {{#each products}}
+          <option value="{{this}}" {{#indexOf this ../billWithBanAndHouse.products}}selected{{/indexOf}}>{{this}}</option>
+          {{/each}}
+        </select>
+        <label for="useParty">使用方：</label>
+        <select class="select" name="useParty">
+          <option value="业主方" {{#equals billWithBanAndHouse.useParty "业主方"}}selected{{/equals}}>业主方</option>
+          <option value="承建方" {{#equals billWithBanAndHouse.useParty "承建方"}}selected{{/equals}}>承建方</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="priceType"><span class="required">*</span>计价类型：</label>
+        <select class="select" name="priceType">
+          <option value="0" {{#equals billWithBanAndHouse.priceType "0"}}selected{{/equals}}>标底/控制价</option>
+          <option value="1" {{#equals billWithBanAndHouse.priceType "1"}}selected{{/equals}}>投标</option>
+          <option value="2" {{#equals billWithBanAndHouse.priceType "2"}}selected{{/equals}}>结算</option>
+          <option value="3" {{#equals billWithBanAndHouse.priceType "3"}}selected{{/equals}}>签证</option>
+        </select>
+        <label for="area" data-city-code="{{cityCode}}" data-city-name="{{cityName}}">地区标准：</label>
+        <span >{{cityName}}</span>
+      </div>
+      <div class="control-group">
+        <label for="constructionUnit"><span class="required">*</span>建设单位：</label>
+        <input id="constructionUnit" type="text" name="constructionUnit" value="{{billWithBanAndHouse.constructionUnit}}" placeholder="请输入建设单位名称" required />
+        <label for="prepareUnit"><span class="required">*</span>编制单位：</label>
+        <input id="prepareUnit" type="text" name="prepareUnit" value="{{billWithBanAndHouse.prepareUnit}}" placeholder="请输入编制单位名称" required />
+      </div>
+      <div class="control-group">
+        <label for="compileTime"><span class="required">*</span>编制时间：</label>
+        <input class="datepicker" data-default="{{billWithBanAndHouse.compileTime}}" type="text" id="compileTime" name="compileTime" required />
+        <label for="projectOverview"><span class="required">*</span>项目概况：</label>
+        <input id="projectOverview" type="text" name="projectOverview" value="{{billWithBanAndHouse.projectOverview}}" placeholder="请输入项目概况" required />
+      </div>
+      <div class="control-group">
+        {{#equals sheetAttr 1}}
+        <label for="totalArea">总建筑面积：</label>
+        {{/equals}}
+        {{#equals sheetAttr 2}}
+        <label for="totalArea">总装修面积：</label>
+        {{/equals}}
+        {{#equals sheetAttr 3}}
+        <label for="totalArea">总建筑面积：</label>
+        {{/equals}}
+        <input id="totalArea" type="text" name="totalArea" value="{{billWithBanAndHouse.totalArea}}" placeholder="请输入总面积，单位㎡" required />
+        <span>&nbsp;㎡</span>
+      </div>
+      {{#lt sheetAttr 3}}
+      <hr>
+      <!-- 楼栋户型部分 -->
+      <div class="control-group js-build-container" data-type="{{sheetAttr}}">
+
+      </div>
+      {{/lt}}
+      <hr>
+      <div class="control-group">
+        <label for="manageFee"><span class="required">*</span>管理费：</label>
+        <input id="manageFee" type="number" name="manageFee" value="{{billWithBanAndHouse.manageFee}}" placeholder="请输入管理费费率" required />
+        <span class="note">单位：%</span>
+      </div>
+      <div class="control-group">
+        <label for="profit"><span class="required">*</span>利润：</label>
+        <input id="profit" type="number" name="profit" value="{{billWithBanAndHouse.profit}}" placeholder="请输入利润率" required />
+        <span class="note">单位：%</span>
+      </div>
+      {{#each extMajorMap}}
+        {{#each this}}
+        <div class="control-group">
+          <label for="pile-{{#equals @../index 0}}1{{/equals}}{{#equals @../index 1}}2{{/equals}}-{{id}}">是否包含{{name}}：</label>
+          <span class="span1">
+            <input type="radio" name="pile-{{#equals @../index 0}}1{{/equals}}{{#equals @../index 1}}2{{/equals}}-{{id}}" value="{{id}}" />
+            <span>包含</span>
+          </span>
+          <span class="span1">
+            <input type="radio" name="pile-{{#equals @../index 0}}1{{/equals}}{{#equals @../index 1}}2{{/equals}}-{{id}}" value="0" checked />
+            <span>不包含</span>
+          </span>
+        </div>
+        {{/each}}
+      {{/each}}
+      <div class="control-group">
+        <label class="v-hide">保存清单：</label>
+        <button class="btn">保存</button>
+      </div>
+    </fieldset>
+  </form>
+{{/_DATA_}}
+{{/component}}

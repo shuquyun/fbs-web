@@ -1,0 +1,30 @@
+{{#component "component-provisional-sum js-comp"}}
+<div class="component-body">
+
+    <div class="body-right js-fee-item-table">
+
+      {{> component:list/fee_sum/all_templates/wrap}}
+      <table class="user-manage-table table table-horizontal center-text">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="20%">项目名称</th>
+            <th width="25%">计量单位</th>
+            <th width="10%">暂定金额</th>
+            <th width="15%">备注</th>
+            <th class="td-operation" width="10%">操作</th>
+          </tr>
+        </thead>
+        <tbody class="js-fee-item-tbody" data-debug="{{json _DATA_}}">
+          {{#each _DATA_}}
+            {{> component:list/provisional_sum/all_templates/tr data=this}}
+          {{/each}}
+
+        </tbody>
+      </table>
+      <button class="btn js-update-fee-item" style="margin-top: 10px;">添加新的清单行</button>
+
+    </div>
+
+  </div>
+{{/component}}

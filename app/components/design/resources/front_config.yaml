@@ -1,0 +1,143 @@
+# "design/accordions":
+#   category: "SHOP"
+#   name: "店铺内类目"
+#   desc: "列出店铺内商品类目,应用于页面侧边栏"
+#   service: "findShopItemCategoriesByShopId"
+
+# "design/floor_items":
+#   category: "SHOP"
+#   name: "分类楼层商品展示"
+#   desc: "按分类以楼层形式展示店铺内商品"
+#   service: "findShopFloorItem"
+
+# "design/item_list":
+#   category: "OFFICIAL"
+#   name: "店铺商品列表(按类目)"
+#   service: "findShopItemByFloorName"
+
+# "design/item_all_list":
+#   category: "OFFICIAL"
+#   name: "店铺商品列表分页(所有商品)"
+#   service: "findShopAllItem"
+
+"design/popup_image":
+  category: "OFFICIAL"
+  name: "弹窗广告"
+  service: ""
+
+"design/channel_nav":
+  category: "OFFICIAL"
+  name: "频道分类"
+  service: ""
+
+# "design/shop_list":
+#   category: "OFFICIAL"
+#   name: "首页店铺层"
+#   service: "findShopSoldQuantity"
+
+# "design/shop_two_items":
+#   category: "SHOP"
+#   name: "店铺商品推荐"
+#   service: "findItemByIdWithCache"
+
+# "design/worth_items":
+#   category: "OFFICIAL"
+#   name: "首页商品推荐列表"
+#   service: "findItemsByIds"
+
+"design/elevator":
+  category: "OFFICIAL"
+  name: "电梯"
+  desc: "楼层"
+  service: ""
+
+# "design/recommend_items":
+#   category: "SHOP"
+#   name: "更多推荐组件"
+#   service: "shopRecommendItems"
+
+"design/nav_category":
+  category: "OFFICIAL"
+  name: "前台类目完全展示"
+  service: "findChildrenOf"
+
+"design/items_search":
+  category: "OFFICIAL"
+  name: "商品主搜"
+  service: "searchWithAggs"
+
+"design/shop_list":
+  category: OFFICIAL
+  name: "搜索店铺结果"
+  service: searchShopWithAggs
+
+"design/help_center":
+  category: "OFFICIAL"
+  name: "帮助中心"
+  service: "listTypeArticle"
+
+"design/tab_floor":
+  category: "OFFICIAL"
+  name: "首页多TAB楼层"
+  service: ""
+
+# 请注意，这里需要缩进
+"eevee/carousel":
+  category: "COMMON"
+  name: "图片轮播"
+  service: ""
+# "eevee/html":
+#   category: "COMMON"
+#   name: "富文本编辑器"
+#   service: ""
+"eevee/iframe":
+  category: "COMMON"
+  name: "嵌入IFRAME"
+  service: ""
+"eevee/image":
+  category: "COMMON"
+  name: "图片"
+  service: ""
+"eevee/placeholder":
+  category: "COMMON"
+  name: "占位符"
+  service: ""
+# "eevee/shtml":
+#   category: "COMMON"
+#   name: "内嵌HTML片段"
+#   service: ""
+"eevee/text":
+  category: "COMMON"
+  name: "文字"
+  service: ""
+"eevee/video":
+  category: "COMMON"
+  name: "视频"
+  service: ""
+
+"design/image_slide":
+  category: "OFFICIAL"
+  name: "店铺内推荐商品"
+  service: ""
+
+"design/articles":
+  category: "OFFICIAL"
+  name: "首页公告组件"
+  service: "findArticlesByCategoryId"
+  services:
+    _CATEGORY_: "findArticleCategoryByCategoryId"
+
+"design/articles_categories":
+  category: "OFFICIAL"
+  name: "资讯分类组件"
+  service: "findArticleCategories"
+
+"design/articles_list":
+  category: "OFFICIAL"
+  name: "资讯列表组件"
+  service: "findArticlesList"
+
+"design/articles_detail":
+  category: "OFFICIAL"
+  name: "资讯详情组件"
+  service: "findArticleDetail"

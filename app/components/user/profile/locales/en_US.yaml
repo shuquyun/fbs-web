@@ -1,0 +1,62 @@
+My Profile Management: true
+Username: true
+Please enter username: true
+character: true
+Fill in email: true
+Phone number: true
+character: true
+Fill in email: true
+Phone number: true
+character: true
+Fill in email: true
+Phone number: true
+Username cannot be mobile phone number: true
+Username cannot be email address: true
+Username contain invalid characters: true
+Username first and last character cannot be an underscore: true
+Username have been taken: true
+Checking: true
+Real name: true
+Please enter your real name: true
+Email: true
+Change email: true
+Verify email: true
+Phone number: true
+Please enter phone number: true
+Change phone number: true
+Sex: true
+Male: true
+Female: true
+Birthday: true
+Please select a date: true
+Location: true
+Please select: true
+Please select: true
+Please select: true
+Street Address: true
+Upload profile picture: true
+Your profile picture: true
+Select Image: true
+Save: true
+New phone number: true
+Enter phone number: true
+Mobile number: true
+Please enter the correct phone number: true
+Please enter a new phone number: true
+Get phone verification code: true
+Verification Code: true
+Enter the verification code: true
+Confirm: true
+Cancel: true
+updateError: true
+"confirmCaptcha": true
+"clickToReacquire": true
+"error": true
+"emailAvailable": true
+"emailAlreayRegistered": true
+"reacquireCaptcha": true
+"secondsAfter": true
+"updateSuccessfully": true
+"cellphoneUpdateSuccessfully": true
+"All Number": true
+"Username cannot be number":  true

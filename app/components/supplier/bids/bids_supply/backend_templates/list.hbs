@@ -1,0 +1,41 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>补充清单列表</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="15%">清单名称</th>
+          <th width="15%">创建时间</th>
+          <th width="15%">生效时间</th>
+          <th width="15%">生效状态</th>
+          <th width="20%">备注</th>
+          <th width="15%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if supplementLists}}
+          {{#each supplementLists}}
+            <tr>
+              <td class="td-active">{{filename}}</td>
+              <td>{{formatDate createdAt}}</td>
+              <td>{{formatDate effectiveDate}}</td>
+              <td class="status-success">
+                {{#equals effectiveStatus 1}}已生效{{/equals}}
+              </td>
+              <td>{{#if remark}}{{remark}}{{else}}-{{/if}}</td>
+              <td>
+                <a href="javascript:;" class="js-list-edit" data-bill-id="{{fileUrl}}" data-bid-id="{{bidId}}" data-type="13">编辑</a>
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="6" class="center-text">暂未补充清单！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

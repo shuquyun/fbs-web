@@ -1,0 +1,26 @@
+{{#component "component-shop-items-looked-more js-comp"}}
+  <div class="component-header">
+    <span class="line"></span>
+    <span class="title">看了又看</span>
+  </div>
+  <div class="item-window">
+    <ul class="item-list js-item-list">
+      {{#each _DATA_}}
+      <li class="product">
+        <div class="product-image">
+          <a href="/items/{{id}}" target="_blank">
+            <img data-original="{{cdnPath mainImage "160"}}" alt="{{name}}" src="{{cdnPath mainImage "160"}}">
+          </a>
+        </div>
+        <p class="product-price"><span class="currency">￥ {{formatPrice lowPrice}}</span></p>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{#gt (size _DATA_) 3}}
+    <p class="component-footer">
+      <a href="javascript:;" class="arrow-item js-list-up hide"><i class="icon-feebas icon-feebas-xiangshangzhedie"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="javascript:;" class="arrow-item js-list-down"><i class="icon-feebas icon-feebas-xiangxiazhedie"></i></a>
+    </p>
+  {{/gt}}
+{{/component}}

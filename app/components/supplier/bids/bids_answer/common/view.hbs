@@ -1,0 +1,8 @@
+{{#component "supplier-bids-answer"}}
+  {{inject "supplier/bids/bids_answer/bids_questions" questionStatus=_DATA_.questionStatus}}
+  {{#with _DATA_}}
+    {{> component:supplier/bids/bids_answer/common/backend_templates/reply}}
+    {{> component:supplier/bids/bids_answer/common/backend_templates/attachment}}
+    {{> component:supplier/bids/bids_answer/common/backend_templates/list}}
+  {{/with}}
+{{/component}}

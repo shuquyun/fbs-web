@@ -1,0 +1,20 @@
+<div id="js-select-sku-info" data-name="{{json attr}}">
+  <form class="weight-attr-form js-weight-attr-form form-aligned form block">
+    <input type="hidden" name="id" value="{{default item.refId item.id}}">
+    {{#each attr}}
+      <span class="attr-span">
+        <label>{{@key}}</label>
+        <select name="params[{{@key}}]" {{#if this.[0].isModelAttr}}class="readonly"{{/if}}>
+          <option value="">请选择</option>
+          {{#each this}}
+            <option value="{{value}}" {{#if isSelect}}selected{{/if}}>{{value}}</option>
+          {{/each}}
+        </select>
+      </span>
+    {{/each}}
+      <span class="span"><button class="btn btn-primary" type="submit">确定</button></span>
+  </form>
+  <div id="js-select-sku-table">
+    {{> list/division/frontend_templates/_sku_list}}
+  </div>
+</div>

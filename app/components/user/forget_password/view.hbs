@@ -1,0 +1,44 @@
+{{#component "component-forget-password js-comp"}}
+  <div class="forget-password-div-form">
+    <form class="form form-aligned user-register-form forget-password-form">
+      <fieldset>
+        <div class="control-group">
+          <label for="mobile"><span class="required">*</span>{{i18n "Phone number" bundle="user"}}:</label>
+          <input id="mobile-phone" type="mobile" class="control" placeholder="{{i18n "Phone number" bundle="user"}}" name="mobile" required>
+          <span class="note"><i>&times;</i> {{i18n "Mobile number" bundle="user"}}</span>
+          <span class="note-error">{{i18n "Please enter the correct phone number" bundle="user"}}</span>
+          <span class="note-error-empty">{{i18n "Please enter your mobile phone number" bundle="user"}}</span>
+        </div>
+        <div class="control-group picture-code">
+          <label for="verify-code"><span class="required">*</span>图片验证码:</label>
+          <input id="verify-code" type="text" placeholder="请输入图片验证码" maxlength="4" autocomplete="off" required>
+          <img src="/api/user/captcha" class="verify-code js-verify-code" alt="看不清楚？点击重新获取验证码" title="看不清楚？点击重新获取验证码">
+        </div>
+        <div class="control-group picture-code">
+          <label for="verification-code"><span class="required">*</span>{{i18n "Enter the verification code" bundle="user"}}:</label>
+          <input id="verification-code" type="text" placeholder="{{i18n "Enter the verification code" bundle="user"}}" name="code" autocomplete="off" required>
+          <button type="button" class="btn get-code" data-delay="60" disabled="disabled">{{i18n "Get phone verification code" bundle="user"}}</button>
+        </div>
+        <div class="control-group">
+          <label for="password"><span class="required">*</span>{{i18n "Set new password" bundle="user"}}:</label>
+          <input id="password" type="password" name="password" min="6" maxLength="16" pattern=".{6,16}" placeholder="{{i18n "Password" bundle="user"}}" autocomplete="off" required>
+          <span class="note"><i>&times;</i> {{i18n "User password" bundle="user"}}</span>
+          <span class="note-error">{{i18n "Please enter the correct password (6-16 characters)" bundle="user"}}</span>
+          <span class="note-error-empty">{{i18n "Please enter your password" bundle="user"}}</span>
+        </div>
+        <div class="control-group">
+          <label for="password"><span class="required">*</span>{{i18n "Confirm the new password" bundle="user"}}:</label>
+          <input id="confirm-password" type="password" min="6"  maxLength="16" pattern=".{6,16}" placeholder="{{i18n "Confirm Password" bundle="user"}}" autocomplete="off" required>
+          <span class="note"><i>&times;</i> {{i18n "Enter password again" bundle="user"}}</span>
+          <span class="note-error">{{i18n "Please enter the correct verification code" bundle="user"}}</span>
+          <span class="note-error-empty">{{i18n "Please enter the correct password" bundle="user"}}</span>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <input type="submit" class="btn btn-primary btn-medium" value="{{i18n "Confirm info" bundle="user"}}，{{i18n "Next step" bundle="user"}}">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{{/component}}

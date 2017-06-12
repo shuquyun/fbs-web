@@ -1,0 +1,21 @@
+{{#partial "realTitle"}}站点管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+  {
+    "_DATA_": {
+      "breadcrumb":
+      [{
+        "crumb": "站点管理",
+        "url": "#"
+      },
+      {
+        "crumb": "站点管理",
+        "url": "#"
+      }]
+    }
+  }
+
+  {{/inject}}
+  {{inject "system/site_manage" true}}
+{{/partial}}
+{{> system/layout}}

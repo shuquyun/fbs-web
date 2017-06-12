@@ -1,0 +1,48 @@
+<div class="list list-squared list-condensed clearfix">
+  {{#if _DATA_.entities.total}}
+    {{!-- 列表展示 --}}
+    <table class="shop-search-items-list-type" width="100%">
+      <tbody>
+        {{#each _DATA_.entities.data}}
+        <tr {{#if @last}}class="last"{{/if}}>
+          <td width="400">
+            <div class="product-image">
+              <a href="/developer/search-material-details?documentId={{id}}" target="_blank">
+                <img data-original="{{cdnPath mainImage "78"}}" alt="{{name}}" style="width:78px; height:78px;">
+              </a>
+            </div>
+            <div class="descAshop">
+              <p class="product-desc">
+                <a href="/developer/search-material-details?documentId={{id}}" target="_blank">{{{name}}}</a>
+              </p>
+              <p class="shop-name cutwords"><i class="icon-hsh icon-hsh-r"></i> <a href="javascript:;">{{brandName}}/{{regionName}}</a></p>
+            </div>
+          </td>
+          <td width="640" class="left-text">
+            {{#each attributes}}
+              <span class="margin-right-20">{{this}}</span>
+            {{/each}}
+          </td>
+          <td width="290" class="left-text">
+            <div>参考价（不含税/含税）</div>
+            <div class="price-content">
+              <span class="product-price">￥ {{#if price}}{{formatPrice price}}{{else}}- -{{/if}} /</span>
+              <span class="product-price-tax">￥ {{#if taxedPrice}}{{formatPrice taxedPrice}}{{else}}- -{{/if}}</span>
+            </div>
+            <div class="update-date">
+              {{#if calculatedAt}}
+                <span>价格更新日期：{{formatDate calculatedAt "day"}}</span>
+              {{/if}}
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="no-results center-text">
+      <span class="img"><i class="icon-feebas icon-feebas-goods good-icon"></i></span>
+      <p class="desc">暂无商品</p>
+    </div>
+  {{/if}}
+</div>

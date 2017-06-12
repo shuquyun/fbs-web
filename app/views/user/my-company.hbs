@@ -1,0 +1,12 @@
+{{#partial "realTitle"}}已加入公司{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "账户信息"},{"url": "#", "crumb": "已加入公司"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "user/my_company"}}
+{{/partial}}
+{{#hasRole "DEVELOPER"}}
+  {{> developer/layout}}
+{{else}}
+  {{> supplier/layout}}
+{{/hasRole}}

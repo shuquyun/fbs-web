@@ -1,0 +1,10 @@
+{{#component "js-comp bids-confirm bids-block"}}
+  {{inject "developer/bids/bids_confirm/supplier_list" status="evaluate"}}
+  {{> component:developer/bids/bids_confirm/common/backend_templates/evaluate}}
+  {{#equals _BIDS_DETAILS_.bidStatus 18}}
+    {{inject "developer/bids/bids_confirm/confirm_info" status="got_bid" type=9}}
+  {{else}}
+    {{inject "developer/bids/bids_confirm/confirm_info" status="bid_wait_confirm" type=9}}
+  {{/equals}}
+  {{inject "developer/bids/bids_approval/log" type=6 connectId=bidId}}
+{{/component}}

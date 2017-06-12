@@ -1,0 +1,52 @@
+<div class="component-body">
+  <form class="form form-common form-aligned js-form-flow" data-users="{{json users}}" data-projects="{{json projects}}">
+    <div class="clearfix">
+      <div class="form-left">
+        <div class="control-group">
+          <label class="group-title"><b class="required">*</b>流程类型</label>
+          <div class="group-content">
+            <input type="hidden" name="id" value="{{id}}">
+            <select class="selectric" name="type" required>
+              <option value="0" {{#equals type 0}}selected{{/equals}}>招标立项</option>
+              <option value="1" {{#equals type 1}}selected{{/equals}}>招标文件编制</option>
+              <option value="2" {{#equals type 2}}selected{{/equals}}>供应商入围</option>
+              <option value="3" {{#equals type 3}}selected{{/equals}}>补充文件</option>
+              <option value="4" {{#equals type 4}}selected{{/equals}}>答疑文件</option>
+              <option value="5" {{#equals type 5}}selected{{/equals}}>评标</option>
+              <option value="6" {{#equals type 6}}selected{{/equals}}>定标</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-right">
+        <div class="control-group">
+          <label class="group-title"><b class="required">*</b>流程名称</label>
+          <div class="group-content">
+            <input type="text" name="name" value="{{name}}" placeholder="请输入流程名称" pattern="^.{2,15}$" required>
+            <span class="note-error">x 请输入2-15位字符</span>
+            <span class="note-error-empty">x 不能为空</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="group-title"><b class="required">*</b>流程配置</label>
+      <div class="group-content">
+        <a href="javascript:;" class="btn btn-primary btn-medium js-flow-add" data-type="up">向上添加一行</a>
+        <a href="javascript:;" class="btn btn-primary btn-medium js-flow-add" data-type="down">向下添加一行</a>
+        <a href="javascript:;" class="btn btn-info btn-medium js-flow-copy" data-approvals="{{json approvals}}">引用其他节点配置</a>
+      </div>
+    </div>
+    <div class="control-group" style="margin-left: 115px; margin-right: 115px;">
+      <label class="group-title"></label>
+      <div class="js-table-flow">
+        {{> component:developer/company/approval_manage/common/all_templates/_flow}}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="group-title"></label>
+      <button class="btn btn-primary" type="submit">提交</button>
+      <a href="javascript:;" class="btn btn-info" data-toggle="confirm" data-event="confirm:cancelApproval" data-title="你确认取消吗？" data-content="取消后，修改的配置不保存">取消</a>
+    </div>
+  </form>
+</div>

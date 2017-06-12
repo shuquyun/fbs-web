@@ -1,0 +1,30 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.component-ceiling {
+  background-color: $color-background;
+
+  .span-left{
+    margin-left: 15px;
+  }
+
+  .navbar{
+    .navbar-collapse{
+      overflow: visible;
+      width: 1200px;
+      padding: 5px 0;
+
+      .navbar-header .log-in {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .nav-item {
+    float: left;
+  }
+
+  .nav-icon {
+    color: $color-primary;
+  }
+}

@@ -1,0 +1,19 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "bodyClass"}}body{{/partial}}
+{{#partial "body"}}
+  <div class="main-top">
+    {{inject "supplier/sidebar"}}
+  </div>
+  <div class="body-top">
+    {{{block "topBody"}}}
+  </div>
+  <div class="main-body" style="margin-top: 20px;">
+    {{{block "tabNavs"}}}
+    <div class="body-container">
+      {{{block "realBody"}}}
+    </div>
+  </div>
+  {{inject "common/enlarge_picture"}}
+  <div class="notify-container"></div>
+{{/partial}}
+{{> layout}}

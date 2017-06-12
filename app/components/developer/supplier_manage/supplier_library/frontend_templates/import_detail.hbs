@@ -1,0 +1,145 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>{{title}}</h2>
+  </div>
+  <form class="form form-aligned import-detail-form" data-info="{{json data}}">
+    <div class="modal-dialog">
+      {{#with data.company}}
+        <div class="control-group">
+          <label>公司名:</label>
+          <span>{{name}}</span>
+        </div>
+        {{#if controlName}}
+          <div class="control-group">
+            <label>实际控制人:</label>
+            <span>{{controlName}}</span>
+          </div>
+          <div class="control-group">
+            <label>控制人联系方式:</label>
+            <span>{{controlMobile}}</span>
+          </div>
+        {{/if}}
+        <div class="control-group">
+          <label>专业类型:</label>
+          <span>{{#each special}}{{name}} {{/each}}</span>
+        </div>
+        <div class="control-group">
+          <label>服务区域城市:</label>
+          <span>{{#each serviceCitys}}{{name}} {{/each}}</span>
+        </div>
+      {{/with}}
+      <div class="control-group">
+        <label>最近业绩:</label>
+      </div>
+      <div class="control-group">
+        <table class="table grade-table">
+          <thead>
+            <th>项目名称</th>
+            <th>项目地址</th>
+            <th>甲方单位</th>
+            <th>业态类型</th>
+            <th>项目规模(㎡)</th>
+            <th>施工内容</th>
+            <th>进场时间</th>
+            <th>项目经理</th>
+            <th>备注</th>
+          </thead>
+          <tbody>
+            {{#each data.supplierAchievements}}
+            <tr>
+              <td>{{projectName}}</td>
+              <td>{{projectAddress}}</td>
+              <td>{{partyUnit}}</td>
+              <td>
+                {{#equals type '1'}}住宅{{/equals}}
+                {{#equals type '2'}}商业{{/equals}}
+                {{#equals type '3'}}旅行{{/equals}}
+                {{#equals type '4'}}综合体{{/equals}}
+              </td>
+              <td>{{scale}}</td>
+              <td>{{content}}</td>
+              <td>{{formatDate joinAt "day"}}</td>
+              <td>{{manager}}</td>
+              <td>{{remarks}}</td>
+            </tr>
+          {{/each}}
+          {{#unless data.supplierAchievements}}
+            <tr>
+              <td class="center-text" colspan="9">暂无业绩！</td>
+            </tr>
+          {{/unless}}
+          </tbody>
+        </table>
+      </div>
+      <div class="control-group">
+        <label>年产值:</label>
+      </div>
+      <div class="control-group">
+        <table class="table grade-table">
+          <thead>
+            <th>年度</th>
+            <th>年度实际产值</th>
+            <th>年度签约金额</th>
+          </thead>
+          <tbody>
+            {{#each data.supplierAnnualOutputs}}
+              <tr>
+                <td>{{annual}}</td>
+                <td>{{realOutputValue}}</td>
+                <td>{{realOutputValue}}</td>
+              </tr>
+            {{/each}}
+            {{#unless data.supplierAnnualOutputs}}
+              <tr>
+                <td class="center-text" colspan="9">暂无年产值！</td>
+              </tr>
+            {{/unless}} 
+          </tbody>
+        </table>
+      </div>
+      {{#if data.supplierInspection.grade}}
+        {{#with data.supplierInspection}}
+          <div class="control-group">
+            <label>考察时间:</label>
+            <span>{{inspectionTime}}</span>
+          </div>
+          <div class="control-group">
+            <label>考察人员:</label>
+            <span>
+              {{#if inspectionName}}{{inspectionName}}
+              {{else}}-
+              {{/if}}
+            </span>
+          </div>
+          <div class="control-group">
+            <label>考察内容:</label>
+            <span>{{inspectionContent}}</span>
+          </div>
+          <div class="control-group">
+            <label>考察结论:</label>
+            <span>{{conclusion}}</span>
+          </div>
+          <div class="control-group">
+            <label>考察评级:</label>
+            <span>
+              {{#equals grade 0}}合格{{/equals}}
+              {{#equals grade -1}}不合格{{/equals}}
+              {{#equals grade -2}}黑名单{{/equals}}
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="import-report">考察报告:</label>
+            <ul class="list-file">
+              {{#each report}}
+                <li>{{name}}<a class="download-report" href="{{path}}">下载</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/with}}
+      {{/if}}
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button class="btn btn-primary close" type="button">关闭</button>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+{{#component "component-analysis-unit-project component-standard-tab-container js-comp"}}
+  <div class="component-body" >
+    {{inject "list/analysis_type"}}
+    <div class="body-right js-fee-item-table">
+      <div class="top-analysis-type">
+        <label for="type">汇总方式：</label>
+        <input name="type" type="radio" value="new" {{#unless data.baseFeeId}}checked{{/unless}} />
+        <span style="margin-right: 20px;">按楼栋</span>
+        <input name="type" type="radio" value="cofig" {{#if data.baseFeeId}}checked{{/if}}/>
+        <span>按专业</span>
+      </div>
+      <table class="user-manage-table table table-horizontal center-text">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="50%">项目名称</th>
+            <th width="40%">金额（元）</th>
+          </tr>
+        </thead>
+        <tbody class="js-fee-item-tbody">
+          {{#each _ITEMATTR_}}
+            {{> component:list/unit_project/backend_templates/tr data=this}}
+            {{#each this.children}}
+              {{> component:list/unit_project/backend_templates/tr data=this children=true}}
+            {{/each}}
+          {{/each}}
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+{{/component}}

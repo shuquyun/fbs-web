@@ -1,0 +1,242 @@
+@import "compass/css3";
+@import "pokeball/theme";
+
+.company-detail-component {
+  background-color: #F2F2F2;
+
+  .left-company-info {
+    display: inline-block;
+    width: 282px;
+    vertical-align: top;
+    margin-right: 24px;
+    min-height: 400px;
+    padding-top: 24px;
+    background-color: $white;
+
+    .img-code {
+      width: 160px;
+      height: 160px;
+      margin: 0px 61px;
+      padding: 23px 0px;
+      text-align: center;
+      box-shadow: 0 0 10px 0 #DFDFDF;
+
+      .img-title {
+        margin-bottom: 8px;
+      }
+    }
+
+    .base-info {
+      padding-top: 24px;
+
+      .company-name {
+        font-size: 14px;
+        color: $color-text;
+        line-height: 20px;
+        margin-bottom: 8px;
+      }
+
+      .company-address {
+        font-size: 12px;
+        color: $color-text-note;
+      }
+
+      .company-base-info {
+        margin: 24px 0px 24px 24px;
+
+        .control-group {
+          color: $color-secondary;
+          line-height: 17px;
+          margin-bottom: 16px;
+
+          i {
+            background-color: #C0CCDA;
+            border-radius: 100%;
+            color: white;
+          }
+          span {
+            display: inline-block;
+            margin-left: 16px;
+            max-width: 225px;
+            vertical-align: top;
+          }
+
+          .honour-img {
+            margin-left: 40px;
+            margin-top: 8px;
+          }
+        }
+      }
+
+      .company-contact {
+        width: 234px;
+        margin-left: 24px;
+        margin-bottom: 16px;
+        padding: 16px;
+        border: 1px solid $color-border;
+
+        .person-info {
+          padding-bottom: 12px;
+          margin-bottom: 16px;
+          border-bottom: 1px solid $color-border;
+        }
+
+        .person-name {
+          width: 80%;
+          height: 40px;
+          line-height: 40px;
+          padding-left: 16px;
+          float: right;
+          color: $color-secondary;
+
+          .real-name {
+            color: $color-text;
+          }
+
+          .person-position {
+            max-width: 100px;
+            overflow: hidden;
+            max-height: 40px;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .control-group {
+          color: $color-secondary;
+          margin-bottom: 8px;
+
+          span {
+            vertical-align: middle;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 24px;
+        }
+      }
+
+      .btn-group {
+        width: 234px;
+        margin: 0px 24px 24px 24px;
+      }
+    }
+  }
+
+  .right-company-info {
+    width: 74%;
+    display: inline-block;
+    min-height: 800px;
+    background-color: $white;
+    padding: 24px;
+
+    .company-introduction {
+      padding-bottom: 9px;
+      border-bottom: 1px solid $color-border;
+
+      .company-info {
+        color: $color-secondary;
+        margin: 16px 0px 21px 0px;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+
+      .control-group {
+        width: 240px;
+        display: inline-block;
+        margin-right: 30px;
+        margin-bottom: 15px;
+        label {
+          color: $color-text-note;
+        }
+        span {
+          width: 150px;
+          color: $color-secondary;
+          display: inline-block;
+          vertical-align: text-top;
+          word-wrap: break-word;
+          word-break: break-all;
+        }
+      }
+    }
+
+    .company-tax {
+      padding: 24px 0px 0px 0px;
+      
+      .tax-title {
+        display: block;
+        margin-bottom: 16px;
+      }
+    }
+
+    .library-supplier-count {
+      padding: 24px 0px 16px 0px;
+      border-bottom: 1px solid $color-border;
+
+      .total {
+        color: $color-secondary;
+        padding: 16px 0px;
+
+        span {
+          color: $color-primary;
+        }
+      }
+
+      .library-company-list {
+        height: 144px;
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        .company-brief {
+          width: 141px;
+          height: 100%;
+          padding-top: 16px;
+          display: inline-block;
+          text-align: center;
+
+          img {
+            width: 80px;
+            height: 80px;
+          }
+          div {
+            margin-top: 16px;
+            color: $color-secondary;
+          }
+        }
+      }
+    }
+
+    .company-achievement {
+      padding: 24px 0px 16px 0px;
+      border-bottom: 1px solid $color-border;
+
+      .achievement-table {
+        margin-top: 16px;
+        td {
+          border-top: 1px solid #dfdfdf;
+        }
+      }
+    }
+
+    .company-certificates-card {
+      padding-top: 24px;
+
+      .card-title {
+        margin-bottom: 16px;
+      }
+    }
+
+  }
+}
+
+.no-company-data {
+  background: $white;
+  text-align: center;
+  padding: 20px 0px;
+
+  span {
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+}

@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}清单配置{{/partial}}
+{{#partial "listHeader"}}{{inject "list/header" type="config"}}{{/partial}}
+{{#partial "realBody"}}
+<div class="list-body" style="padding-top: 30px;">
+  {{inject "list/config"}}
+</div>
+{{/partial}}
+{{> list/layout noSidebar=true}}

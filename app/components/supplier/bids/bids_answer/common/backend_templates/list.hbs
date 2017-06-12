@@ -1,0 +1,39 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>答疑清单列表</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">清单名称</th>
+          <th width="20%">答疑次数</th>
+          <th width="20%">创建时间</th>
+          <th width="20%">生效时间</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          {{#if answerInventory}}
+            {{#each answerInventory}}
+              <tr>
+                <td class="td-active">{{filename}}</td>
+                <td>{{answerTimes}}</td>
+                <td>{{formatDate createdAt}}</td>
+                <td>{{#if effectiveDate}}{{formatDate effectiveDate}}{{else}}-{{/if}}</td>
+                <td>
+                  <a href="/list/config-details?billId={{id}}">查看详情</a>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td class="center-text" colspan="5">暂无答疑清单！</td>
+            </tr>
+          {{/if}}
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>

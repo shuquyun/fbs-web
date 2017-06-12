@@ -1,0 +1,42 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>{{#if filetype}}招标附件{{else}}补充附件{{/if}}</label>
+  </div>
+  <div class="bids-content content-border clearfix">
+    {{#equals issueOperatorId userId}}
+      {{#of bidStatus "11,12,13"}}
+        {{#of supplyFileStatus "-1,0"}}
+          <div class="pull-left margin-right-20 margin-bottom-20">
+            <div class="bids-file btn-upload js-upload-file" data-type="5" data-bid-id="{{bidId}}" data-connect-id="{{id}}">
+              <div class="file-img">
+                <i class="icon-hsh icon-hsh-upload"></i>
+              </div>
+              <div class="file-upload">
+                <input type="file" name="file">
+                <span>上传补充附件</span>
+              </div>
+            </div>
+          </div>
+        {{/of}}
+      {{/of}}
+    {{/equals}}
+    {{#if supplementFiles}}
+      {{#each supplementFiles}}
+        {{> component:developer/bids/publish_answer/supply_details/all_templates/_attach_item fileStatus=../supplyFileStatus bidStatus=../bidStatus}}
+      {{/each}}
+    {{else}}
+      {{#equals issueOperatorId userId}}
+        {{#of bidStatus "11,12,13"}}
+          {{#of supplyFileStatus "-1,0"}}
+          {{else}}
+            <div class="center-text margin-bottom-10">暂未补充附件！</div>
+          {{/of}}
+        {{else}}
+          <div class="center-text margin-bottom-10">暂未补充附件！</div>
+        {{/of}}
+      {{else}}
+        <div class="center-text margin-bottom-10">暂未补充附件！</div>
+      {{/equals}}
+    {{/if}}
+  </div>
+</div>

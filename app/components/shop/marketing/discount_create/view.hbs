@@ -1,0 +1,33 @@
+{{#component "component-standard-container discount-create js-comp"}}
+  <div class="component-header">
+    <a href="/seller/marketing/activity-management?type=3&promotionDefId={{promotionDefId}}">< 返回商品折扣列表</a>
+  </div>
+  <div class="component-body">
+    <form class="form form-aligned discount-form" id="discount-form" data-type="{{type}}" data-promotiondefid="{{promotionDefId}}" data-promotionid="{{promotionId}}">
+      <fieldset>
+        <div class="discount-common">
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>活动名称：</label>
+            <input type="text" name="name" class="input-medium" value="{{_DATA_.name}}" pattern="^[\da-zA-Z\u4E00-\u9FA5]{1,15}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="名称支持英文，数字和汉字，长度不超过15个字符">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>有效期：</label>
+            <input class="order-input input-date js-common-start-at datepickerIpt" type="text" name="startAt" value="{{formatDate _DATA_.startAt}}" placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            &nbsp;-&nbsp;
+            <input class="order-input input-date js-common-end-at datepickerIpt" type="text" name="endAt" value="{{formatDate _DATA_.endAt}}" placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required {{#equals method "detail"}}disabled{{/equals}}>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>适用商品：</label>
+            <span class="sp">
+              {{inject "common/choose_item" type=type isDiscount=true skuIds=_DATA_.skuScopeParams.skuIds itemIds=_DATA_.skuScopeParams.itemIds skusWithDiscount=_DATA_.behaviorParams.skusWithDiscount method=method}}
+            </span>
+          </div>
+        </div>
+        {{#unless method}}<button class="btn btn-success btn-primary btn-medium" type="submit">确认</button>{{/unless}}
+      </div>
+    </form>
+  </div>
+{{/component}}

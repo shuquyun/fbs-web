@@ -1,0 +1,52 @@
+@import "compass/css3";
+@import "pokeball/theme";
+
+.hsh-register {
+  margin-top: 50px;
+
+  .progress {
+    text-align: center;
+  }
+
+  .register-user {
+    padding-left: 100px;
+
+    .email-group {
+      position: relative;
+
+      .get-code {
+        width: 90px;
+        position: absolute;
+        left: 255px;
+        top: 1px;
+        padding: 9px 8px;
+        border-width: 0px;
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.password-level {
+  @include inline-block(middle);
+  li {
+    @include inline-block(middle);
+    list-style: none;
+    width: 74.5px;
+    text-align: center;
+
+    div {
+      width: 100%;
+      height: 16px;
+      padding: 2px 0;
+      font-size: 12px;
+      line-height: 12px;
+      color: white;
+      background-color: $color-border;
+    }
+    .active {
+      background-color: $color-success;
+    }
+  }
+}
+

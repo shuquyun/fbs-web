@@ -1,0 +1,39 @@
+{{#component "component-analysis-project-sum component-standard-tab-container js-comp"}}
+  <div class="component-body" >
+    {{inject "list/analysis_type"}}
+    <div class="body-right js-fee-item-table">
+      <table class="user-manage-table table table-horizontal center-text">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="25%">单项工程名称</th>
+            <th width="15%">金额（元）</th>
+            <th width="15%">其中暂估价（元）</th>
+            <th width="20%">其中安全文明施工费（元）</th>
+            <th width="15%">其中规费（元）</th>
+          </tr>
+        </thead>
+        <tbody class="js-fee-item-tbody">
+          {{#each _ITEMATTR_}}
+            <tr data-id="{{data.id}}">
+              <td>
+                {{data.id}}
+              </td>
+              <td>
+                {{data.name}}
+              </td>
+              <td>{{data.fee}}</td>
+              <td>{{data.remark}}</td>
+              <td>{{data.remark}}</td>
+              <td>{{data.fee}}</td>
+            </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+{{/component}}

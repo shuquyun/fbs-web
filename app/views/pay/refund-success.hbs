@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}退款成功{{/partial}}
+{{#partial "progress"}}
+{{#inject "common/header_title_progress"}}{"title":"退款成功"}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "pay/seller/refund_success" true}}
+{{/partial}}
+{{> buyer/layout}}

@@ -1,0 +1,41 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>定标信息</label>
+  </div>
+  <div class="bids-content">
+    <table class="table js-table-bids-confirm">
+      <thead>
+        <tr>
+          <th width="10%">供应商ID</th>
+          <th width="15%">供应商名称</th>
+          <th width="15%">联系人</th>
+          <th width="15%">联系方式</th>
+          <th width="15%">最后回标时间</th>
+          <th width="10%">定标金额</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if _DATA_}}
+          {{#each _DATA_}}
+            <tr class="js-tr-item">
+              <td>{{supplierId}}</td>
+              <td><a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a></td>
+              <td>{{contacts}}</td>
+              <td>{{phone}}</td>
+              <td>{{formatDate lastBackBidDate}}</td>
+              <td>{{finalFee}}</td>
+              <td>
+                <a href="javascript:;" class="js-list-control" data-list="{{json finalInventories}}" data-type="view">查看投标清单</a>
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="7" class="center-text">暂无定标信息！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

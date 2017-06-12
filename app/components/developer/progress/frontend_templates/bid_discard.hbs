@@ -1,0 +1,25 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>废标确认</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <form class="form form-common form-aligned form-bids-discard  js-form-bid-discard">
+    <div class="modal-body manager-body">
+      <div class="control-group">
+        废标后，该招标的将作废且不可恢复，是否确定需要申请废标？
+      </div>
+      <div class="control-group">
+        <label class="group-title label-small"><b class="required">*</b>废标原因</label>
+        <div class="group-content">
+          <input type="hidden" name="bidId" value="{{bidId}}">
+          <textarea name="discardReason" placeholder="请输入废标原因" value="{{discardReason}}" required>{{discardReason}}</textarea>
+          <span class="note-error-empty note-error-absolute">x 请输入废标原因</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-primary btn-medium" type="submit">确认</button>
+      <button class="btn btn-info btn-medium close">取消</button>
+    </div>
+  </form>
+</div>

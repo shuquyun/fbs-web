@@ -1,0 +1,19 @@
+{{#component "account common-tab-manage component-standard-container js-comp"}}
+  {{> component:developer/accounts/backend_templates/tab selectTab='1'}}
+  <div class="tab-contents clearfix">
+    <div data-role="content" class="tab-content">
+      {{!--<div class="component-header">
+        <button class="btn btn-primary js-create-account" data-name="{{_USER_.name}}">创建用户</button>
+      </div>--}}
+      <div class="component-header">
+        <button class="btn btn-primary js-join-account">绑定新用户</button>
+      </div>
+      <div class="component-header">
+        {{> component:developer/accounts/backend_templates/search}}
+      </div>
+      <div class="component-body">
+        {{> component:developer/accounts/backend_templates/tab_content}}
+      </div>
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,32 @@
+@import "pokeball/theme";
+
+.breadcrumbs {
+  height:50px;
+
+  .breadcrumb {
+    padding: 19px 16px;
+    padding-left: 0px;
+    list-style: none;
+    line-height:12px;
+
+    > li {
+      display: inline-block;
+      font-size: 12px;
+
+      span {
+        color : $color-text-disabled;
+        text-align:left;
+      }
+      + li:before {
+        content: "/";
+        padding: 0 5px;
+        color: #ccc;
+      }
+    }
+    li:last-child {
+      span{
+        color : $color-secondary;
+      }
+    }
+  }
+}

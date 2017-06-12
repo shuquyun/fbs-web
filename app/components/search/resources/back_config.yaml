@@ -1,0 +1,81 @@
+pagingMaterialSearch:
+  type: http
+  url: /api/material/search
+  query:
+    - key: pageNo
+    - key: pageSize
+    - key: bNames
+    - key: bcid
+    - key: bcids
+    - key: attrs
+    - key: q
+    - key: type
+    - key: regionId
+    - key: regionName
+    - key: p_f
+    - key: p_t
+
+getRecentlyBids:
+  type: http
+  url: /api/bids/supplier/home/recently
+  query:
+    - key: pageNo
+    - key: pageSize
+
+pagingBidsSearch:
+  type: http
+  url: /api/bids/index/search
+  query:
+    - key: pageNo
+    - key: pageSize
+    - key: q
+    - key: bidName
+    - key: speciality1
+    - key: speciality2
+    - key: provinceId
+    - key: projectType
+
+getBidsDetailsAndPorjects:
+  type: http
+  url: /api/bids/{bidId}/project/details
+
+getDeveloperInfoById:
+  type: http
+  url: /api/company/developer/info
+  query:
+    - key: companyId
+
+searchSupplierList:
+  type: http
+  url: /api/company/index/supplier/search
+  query:
+    - key: pageNo
+    - key: pageSize
+    - key: sProvinceId
+    - key: speciality
+    - key: partUnits
+    - key: capital_range
+    - key: q
+
+searchDeveloperList:
+  type: http
+  url: /api/company/index/developer/search
+  query:
+    - key: pageNo
+    - key: pageSize
+    - key: capital_range
+    - key: scope
+    - key: q
+
+getMaterialDetailsById:
+  type: http
+  url: /api/material/search/detail
+  query:
+    - key: documentId
+
+searchCompanyList:
+  type: http
+  url: /api/company/index/{companyType}/list
+  query:
+    - key: pageNo
+    - key: pageSize

@@ -1,0 +1,46 @@
+<div class="list list-squared list-condensed clearfix">
+  {{#if _DATA_.total}}
+    {{!-- 列表展示 --}}
+    <table class="shop-search-items-list-type" width="100%">
+      <tbody>
+        {{#each _DATA_.data}}
+        <tr {{#if @last}}class="last"{{/if}}>
+          <td width="650">
+            <div class="product-image">
+              <a href="/supplier/bids-details?bidId={{id}}" target="_blank">
+                <img data-original="{{cdnPath logo "80"}}" alt="{{projectName}}" style="width:100%; height:100%;">
+              </a>
+            </div>
+            <div class="descAshop width-630">
+              <p class="desc-name">
+                <a href="/supplier/search-bids-details?bidId={{id}}&companyId={{bidCompanyId}}" target="_blank">{{{bidName}}}</a>
+              </p>
+              <p class="developer-name cutwords"><i class="icon-hsh icon-hsh-developer"></i> <a href="javascript:;" target="_blank">{{bidCompany}}</a></p>
+              <p class="desc-info">
+                <span>{{city}}&nbsp;|&nbsp;</span>
+                <span>{{speciality}}&nbsp;|&nbsp;</span>
+                <span>{{formatNumber buildingArea}}㎡&nbsp;|&nbsp;</span>
+                <span>发布于 {{bidStatusBar.createBidDate}}</span>
+              </p>
+            </div>
+          </td>
+          <td width="350" class="left-text">
+            <div class="date-content">
+              剩余{{formatDateLast registrationDeadline}}
+            </div>
+            <div class="deadline-date">
+              <span>报名截止日期</span>
+              <span>{{formatDate registrationDeadline}}</span>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="no-results center-text">
+      <span class="img"><i class="icon-feebas icon-feebas-goods good-icon"></i></span>
+      <p class="desc">暂无招标项目</p>
+    </div>
+  {{/if}}
+</div>

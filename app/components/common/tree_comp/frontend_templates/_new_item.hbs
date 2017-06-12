@@ -1,0 +1,18 @@
+<li class="new-child js-new-child">
+  <form class="{{#if name}}js-rename-child-form{{else}}js-add-child-form{{/if}}" data-id="{{pid}}">
+    {{#if (size selectChildren)}}
+      <select name="id" class="js-child-select">
+        <option value="">请选择</option>
+        {{#each selectChildren}}
+          <option value="{{id}}" data-name="{{name}}">{{name}}</option>
+        {{/each}}
+      </select>
+      <input type="hidden" name="name">
+      <input type="hidden" name="level" value="{{level}}">
+    {{else}}
+      <input type="text" name="name" class="child-input" placeholder="请输入名称" value="{{name}}">
+    {{/if}}
+    <input class="btn btn-primary" type="submit" value="确定">
+    <a href="javascript:;" class="js-cancel-add">取消</a>
+  </form>
+</li>

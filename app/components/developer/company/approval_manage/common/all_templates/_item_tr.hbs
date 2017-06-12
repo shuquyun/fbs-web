@@ -1,0 +1,23 @@
+<tr class="js-flow-item-tr" index="{{#if index}}{{index}}{{else}}{{add @index 1}}{{/if}}">
+  <td class="index-td">{{#if index}}{{index}}{{else}}{{add @index 1}}{{/if}}</td>
+  <td>{{name}}</td>
+  <td>{{defaultApproverName}}</td>
+  <td>
+    {{#if conditionApproverList}}
+      {{#each conditionApproverList}}
+        <div>
+          <span>{{userName}}：</span>
+          {{#each taskApproverList}}
+            <span>{{projectName}},</span>
+          {{/each}}
+        </div>
+      {{/each}}
+    {{else}}
+      无
+    {{/if}}
+  </td>
+  <td>
+    <a href="javascript:;" class="js-flow-delete" data-flow-id="{{flowId}}">删除</a>
+    <a href="javascript:;" class="js-flow-edit" data-flows="{{json this}}" index="{{#if index}}{{index}}{{else}}{{add @index 1}}{{/if}}">编辑</a>
+  </td>
+</tr>

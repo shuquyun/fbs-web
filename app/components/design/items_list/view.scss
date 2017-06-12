@@ -1,0 +1,133 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.channel-items-list{
+
+
+  .popularize{
+    width: 770px;
+    height: 282px;
+    .one-item{
+      float: left;
+      border: 1px solid $color-border;
+      border-left: 0px;
+      width: 460px;
+      img{
+        width: 460px;
+        height: 280px;
+      }
+    }
+    .one-to-one{
+      float: left;
+      border-bottom: 1px solid $color-border;
+      border-top: 1px solid $color-border;
+      img{
+        width: 308px;
+        height: 280px;
+      }
+    }
+    .one-to-two{
+      width: 308px;
+      overflow: hidden;
+      float: left;
+      border-bottom: 1px solid $color-border;
+      border-top: 1px solid $color-border;
+      img{
+        width: 308px;
+        height: 140px;
+        overflow: hidden;
+      }
+      .two-row-bottom{
+        img{
+          border-top: 1px solid $color-border;
+          height: 139px;
+        }
+      }
+    }
+  }
+  .wider-module{
+    width: 980px;
+    .one-item{
+      width: 459px;
+      padding: 15px;
+      img{
+        width: 459px;
+        height: 250px;
+      }
+    }
+    .one-to-one{
+      width: 460px;
+      padding: 15px;
+      img{
+        width: 460px;
+        height: 250px;
+      }
+    }
+    .one-to-two{
+      width: 490px;
+      img{
+        width: 490px;
+      }
+    }
+  }
+  .items{
+    width: 760px;
+    height: 237px;
+    border-bottom: 1px solid $color-border;
+    padding: 0 5px;
+    .item{
+      float: left;
+      width: 189px;
+      border-right: 1px solid $color-border;
+      .item-img{
+        padding: 20px 25px  10px 25px;
+        img{
+          width: 140px;
+          height: 140px;
+        }
+      }
+      .item-content{
+        padding: 5px 10px;
+        .item-desc{
+          @include inline-block(middle);
+          width: 178px;
+          height: 32px;
+          line-height: 16px;
+          overflow: hidden;
+          color: $color-text;
+        }
+        .item-price{
+          margin-top: 9px;
+          line-height: 16px;
+          @include inline-block(middle);
+        }
+      }
+    }
+    .item.last{
+      border-right: 1px solid white;
+    }
+  }
+  .wider-items{
+    width: 980px;
+    height: 296px;
+    padding: 0;
+    .item{
+      width: 244px;
+      .item-img{
+        padding: 25px 17px 15px 17px;
+        img{
+          width: 210px;
+          height: 210px;
+        }
+      }
+      .item-content{
+        padding-bottom: 5px;
+        .item-desc{
+          width: 232px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+<div class="company-info">
+  <div class="info-img">
+    <div class="img-content">
+      {{#if company.logo}}
+        <img src="{{company.logo}}" width="160" height="160">
+      {{else}}
+        <i class="icon-hsh icon-hsh-developer"></i>
+      {{/if}}
+    </div>
+  </div>
+  <p class="company-name">{{company.name}}</p>
+  <p class="company-address">{{company.province}}&nbsp;&nbsp;{{company.city}}</p>
+  <div class="company-item">
+    <i class="icon-feebas icon-feebas-dibiao"></i>
+    <span>{{company.registerAddress}}</span>
+  </div>
+  {{#if developerProfile.companySite}}
+    <div class="company-item">
+      <i class="icon-hsh icon-hsh-wangzhan"></i>
+      <a href="{{developerProfile.companySite}}">{{developerProfile.companySite}}</a>
+    </div>
+  {{/if}}
+</div>

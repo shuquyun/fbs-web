@@ -1,0 +1,66 @@
+@import "pokeball/theme";
+
+.developer-count {
+  height: 215px;
+  width: 100%;
+  background: $white;
+
+  .count-container {
+    width: 1200px;
+    text-align: center;
+    margin: 0 auto;
+
+    li {
+      @include inline-block(middle);
+      font-size: 12px;
+      width: 25%;
+    }
+
+    &.supplier-count li {
+      width: 33.33%;
+    }
+  }
+
+  .title {
+    width: 1200px;
+    margin: auto;
+    border-bottom: 1px solid $color-border;
+    font-size: 14px;
+    color: $color-text;
+    line-height: 70px;
+  }
+
+  .count-show {
+    width: 100%;
+    margin-top: 40px;
+    font-size: 0;
+  }
+
+  .img-content {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    @include inline-block(middle);
+
+    i {
+      font-size: 50px;
+      color: $color-text-note;
+    }
+  }
+
+  .info-content {
+    @include inline-block(top);
+    margin-left: 20px;
+
+    .name {
+      color: $color-text-note;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .count {
+      color: $lightblue;
+      font-size: 20px;
+    }
+  }
+}

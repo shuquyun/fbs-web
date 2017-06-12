@@ -1,0 +1,265 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.nav-header {
+  border-bottom: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  .big-size {
+    width: 1200px !important;
+  }
+  .small-size {
+    width: 1000px !important;
+  }
+  .navbar-collapse{
+
+    ul li {
+      &:hover, &.active {
+        background-color: $color-danger;
+        .navbar-item {
+          a {
+            color: white;
+          }
+        }
+      }
+      .navbar-item{
+        height: 40px;
+        a {
+          @include inline-block(middle);
+          color: $color-text;
+          line-height: 15px;
+          height: 16px;
+          padding: 11px 25px;
+          font-weight: bold;
+          vertical-align: text-bottom;
+          span{
+            @include inline-block(middle);
+
+            margin-top: 1px;
+          }
+        }
+      }
+    }
+  }
+  .navbar-icon {
+    float: right;
+    padding: 2px 0;
+  }
+  .home-catgeory-show:hover {
+    background-color: $color-danger !important;
+  }
+
+  .all-category-show {
+    i {
+      float: right;
+    }
+  }
+  .navbar-desc {
+    @include inline-block(middle);
+    width: 210px;
+    text-align: left;
+    line-height: 16px;
+    font-size: 14px;
+    a {
+      color: white;
+    }
+  }
+
+
+  ul {
+    li {
+      .home-channel {
+        border: 2px solid $color-danger;
+        border-top: 0;
+        background-color: #fff;
+        min-height: 40px;
+        position: absolute;
+        width: 206px;
+        text-align: left !important;
+        line-height: 12px;
+        z-index: 998;
+        .category-li{
+          position: relative;
+          height: 94px;
+          border-color: $color-border;
+          border-style: solid;
+          border-width: 0 0 1px 0;
+          min-height: 20px;
+          background-color: #fff;
+          &.twice-category{
+            background-color: lighten($color-background, 2%);
+          }
+          &:hover{
+            background-color: #fff;
+            box-shadow: 0 0 3px 0 $color-border;
+          }
+        }
+        a{
+          display: inline;
+          padding: 0;
+          color: $color-text;
+          &:hover {
+            color: $color-danger;
+            text-decoration: underline;
+          }
+        }
+        .parent-category{
+          font-size: 14px;
+          line-height: 16px;
+          height: 16px;
+          padding: 16px 16px 10px 16px;
+          .category-icon{
+            width: 16px;
+            height: 16px;
+            vertical-align: bottom;
+            float: left;
+          }
+          a {
+            line-height: 16px;
+            font-size: 14px;
+          }
+          i{
+            float: right;
+            margin-top: 3px;
+          }
+        }
+        .children-category{
+          line-height: 12px;
+          height: 40px;
+          padding: 0 16px;
+          overflow: hidden;
+          .child-category{
+            padding: 5px 10px 5px 0;
+            @include inline-block(middle);
+            a {
+              line-height: 12px;
+              font-size: 12px;
+            }
+          }
+        }
+        .expand-panel{
+          .attach{
+            z-index: 1000;
+            position: absolute;
+            top: 0px;
+            left: 191px;
+            width: 15px;
+            background-color: #fff;
+            border-width: 0 0 1px 0;
+            border-color: $color-border;
+            border-style: solid;
+          }
+          .expand-category{
+            z-index: 999;
+            position: absolute;
+            left: 205px;
+            top: 0px;
+            width: 655px;
+            min-height: 220px;
+            background-color: #fff;
+            border-width: 0 1px 1px 1px;
+            border-color: $color-border;
+            border-style: solid;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+            font-size: 0;
+            .category-info{
+              @include inline-block(top);
+              width: 430px;
+              font-size: 12px;
+            }
+            .second-category {
+              margin: 17px 0 10px 0;
+
+            }
+            .parent-name {
+              color: $color-danger;
+              @include inline-block(top);
+              width: 7em;
+              text-align: right;
+              a {
+                color: $color-danger;
+                line-height: 14px;
+                font-size: 13px;
+              }
+            }
+            .children-name{
+              @include inline-block(top);
+              width: 310px;
+              width: calc(100% - 40px - 7em);
+              padding-left: 10px;
+              .child-name{
+                @include inline-block(middle);
+                padding: 0 8px;
+                margin-bottom: 12px;
+                border-left: 1px solid $color-secondary;
+                a {
+                  line-height: 12px;
+                  font-size: 12px;
+                }
+              }
+            }
+            .image-recommend {
+              @include inline-block(top);
+              width: 205px;
+              padding: 17px 10px 10px 10px;
+              background-color: $color-background;
+              height: 100%;
+              min-height: 340px;
+              font-size: 12px;
+            }
+            .brand-recommend {
+              margin: 0 0 12px 0;
+              color: $color-text;
+            }
+            .images{
+              font-size: 0;
+              width: 205px;
+              height: 139px;
+              .right-image {
+                width: 101px;
+                height: 45px;
+                @include inline-block(middle);
+                font-size: 12px;
+                border-width: 1px 1px 0 0;
+                border-style: solid;
+                border-color: $color-border;
+              }
+              .left-image {
+                @include inline-block(middle);
+                font-size: 12px;
+                width: 101px;
+                height: 45px;
+                border-width: 1px 1px 0 1px;
+                border-style: solid;
+                border-color: $color-border;
+              }
+              .last-image {
+                border-bottom: 1px solid $color-border;
+              }
+              img{
+                width: 101px;
+                height: 45px;
+              }
+            }
+            .main-image{
+              margin-top: 10px;
+              img{
+                width: 205px;
+                height: 170px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .disappear{
+    display: none;
+  }
+  .active{
+    display: block;
+  }
+}

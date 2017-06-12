@@ -1,0 +1,128 @@
+{{#inject "user/header_sidebar"}}
+  {
+    "_DATA_": {
+      "name": "User Dashboard",
+      "navs": [
+        {
+          "name": "综合查询",
+          "icon": "icon-feebas icon-feebas-fapiaoguanli",
+          "auth": "",
+          "children": [
+            {
+              "name": "材料查询",
+              "href": "/developer/search-material",
+              "auth": ""
+            },
+            {
+              "name": "我要套价",
+              "href": "/developer/set-price",
+              "auth": ""
+            },
+            {
+              "name": "我要寻源",
+              "href": "/developer/search-supplier",
+              "auth": ""
+            }
+          ]
+        },
+        {
+          "name": "招标管理",
+          "auth": "",
+          "children": [
+            {
+              "name": "项目管理",
+              "href": "/developer/project",
+              "auth": ""
+            },
+            {
+              "name": "招投标管理",
+              "href": "/developer/bids",
+              "auth": ""
+            }
+          ]
+        },
+        {
+          "name": "公司管理",
+          "auth": "",
+          "children": [
+            {
+              "name": "公司信息管理",
+              "href": "/developer/company-info"
+            },
+            {
+              "name": "公司信息完善",
+              "href": "/developer/company-detail"
+            },
+            {
+              "name": "公司用户管理",
+              "href": "/developer/company-user"
+            },
+            {
+              "name": "日志管理",
+              "href": "/user/log"
+            },
+            {
+              "name": "审批流程管理",
+              "href": "/developer/approval"
+            }
+          ]
+        },
+        {
+          "name": "供应商管理",
+          "auth": "",
+          "children": [
+            {
+              "name": "库内供应商",
+              "href": "/developer/supplier-library"
+            },
+            {
+              "name": "待考察供应商",
+              "href": "/developer/supplier-collect"
+            },
+            {
+              "name": "导入供应商列表",
+              "href": "/developer/supplier-list"
+            }
+          ]
+        },
+        {
+          "name": "账户管理",
+          "auth": "",
+          "children": [
+            {
+              "name": "个人资料",
+              "href": "/user/profile",
+              "auth": ""
+            },
+            {
+              "name": "修改密码",
+              "href": "/user/update-password",
+              "auth": ""
+            },
+            {
+              "name": "已加入公司",
+              "href": "/user/my-company",
+              "auth": ""
+            }
+          ]
+        }
+        {{!-- {
+          "name": "价格库管理",
+          "auth": "",
+          "children": [
+            {
+              "name": "中标价分析",
+              "href": "t",
+              "auth": ""
+            },
+            {
+              "name": "价格库管理",
+              "href": "",
+              "auth": ""
+            }
+          ]
+        } --}}
+      ]
+    }
+  }
+{{/inject}}

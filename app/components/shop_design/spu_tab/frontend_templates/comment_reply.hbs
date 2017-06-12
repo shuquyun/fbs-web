@@ -1,0 +1,20 @@
+{{#each data}}
+  {{#unless @first}}
+    <div class="comment-reply">
+      <div class="comment-text">
+        {{#equals belongUserType 1}}[{{i18n "add comment" bundle="shop_design"}}]{{else}}[{{i18n "seller reply comment" bundle="shop_design"}}]{{/equals}}
+        {{context}}
+      </div>
+      {{#if images}}
+        <div class="comment-extra">
+          {{#each images}}
+            <img class="comment-img" src="{{url}}">
+          {{/each}}
+        </div>
+      {{/if}}
+      <div class="comment-date">
+        <span class="comment-time">{{formatDate createdAt}}</span>
+      </div>
+    </div>
+  {{/unless}}
+{{/each}}

@@ -1,0 +1,65 @@
+<div class="modal sub-user-modal">
+  <div class="modal-header">
+    <h2>创建新用户</h2>
+  </div>
+  <form class="form form-aligned account-form">
+    <div class="modal-dialog">
+      {{#unless data.userId}}
+        <div class="control-group">
+          <label><span class="required">*</span>手机号:</label>
+          <input type="text" id="mobile" class="input-medium" name="mobile" placeholder="请输入手机号" pattern="^1[34578]\d{9}$" required>
+          <span class="note-error"></span>
+          <span class="note-error-empty"><i>&times;</i> 手机号不可为空</span>
+          <span class="note-success"></span>
+        </div>
+        <div class="control-group">
+          <label><span class="required">*</span>真实姓名:</label>
+          <input type="text" name="realName" class="input-medium" value="{{data.realName}}" placeholder="请输入真实姓名" maxLength="25" pattern="[\s\S]{1,25}" required autocomplete="off">
+          <span class="note">不超过25个字符</span>
+          <span class="note-error-empty"><i>&times;</i> 真实姓名不可为空</span>
+        </div>
+        <div class="control-group">
+          <label><span class="required">*</span>邮箱:</label>
+          <input type="text" id="email" class="input-medium" name="email" placeholder="请输入您的邮箱" pattern="^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$" required>
+          <span class="note-error"></span>
+          <span class="note-error-empty"><i>&times;</i> 邮箱不可为空</span>
+        </div>
+        <input type="password" style="position: absolute;top: -999px">
+        <div class="control-group create-user">
+          <label><span class="required">*</span>密码:</label>
+          <input class="input-medium" id="password" name="password" type="password" placeholder="请输入密码" value="" pattern="^[\s\S]{6,16}$" required autocomplete="off">
+          <span class="note-error-empty"><i>&times;</i> 密码不可为空</span>
+          <span class="note-error"><i>&times;</i> 密码为6-16位</span>
+        </div>
+        <div class="control-group">
+          <label for="password"></label>
+          <ul class="password-level">
+            <li class="level-weak">
+              <div class="weak-bar"><span>弱</span></div>
+            </li>
+            <li class="level-middle">
+              <div class="middle-bar"><span>中</span></div>
+            </li>
+            <li class="level-strong">
+              <div class="strong-bar"><span>高</span></div>
+            </li>
+          </ul>
+        </div>
+      {{else}}
+        <input type="hidden" name="userId" value="{{data.userId}}"></input>
+      {{/unless}}
+      <div class="control-group">
+        <label><span class="required">*</span>角色名称:</label>
+        <select class="js-select-role" name="roleId" required>
+          {{#each auth}}
+            <option value="{{id}}" title="{{desc}}" {{#equals ../data.roleId id}}selected="selected"{{/equals}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input class="btn btn-medium btn-success" type="submit" value="{{i18n "Confirm" bundle="shop"}}">
+      <button class="btn btn-info btn-medium close" type="button">{{i18n "Cancel" bundle="shop"}}</button>
+    </div>
+  </form>
+</div>

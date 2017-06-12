@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{title}}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/fonts/iconfont.css" />
+    <link rel="stylesheet" href="/assets/styles/eevee.css" />
+     <script>
+      !function(e,t,n,s,a,c,i){e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)},c=t.createElement(n),i=t.getElementsByTagName(n)[0],c.async=1,c.src=s,i.parentNode.insertBefore(c,i)}(window,document,"script","//static.terminus.io/ta.js","$ta");
+      $ta('start',{ udata: { uid: {{#if _USER_}}{{_USER_.id}}{{else}}0{{/if}} }{{#if _TERMINUS_KEY_}}, ak: '{{_TERMINUS_KEY_}}'{{/if}} })
+    </script>
+  </head>
+  <body data-store="{{data}}" data-site-id="{{siteId}}" data-csrf="{{csrf}}" data-site-type="{{type}}">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    {{{block "body"}}}
+    <script src="/assets/scripts/eevee.js"></script>
+    <script src="/assets/scripts/config.js"></script>
+    <script>require('app');</script>
+  </body>
+</html>

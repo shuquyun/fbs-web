@@ -1,0 +1,58 @@
+<table class="table center-text" data-data="{{json _DATA_}}">
+  <thead>
+    <th>用户信息</th>
+    <th>公司</th>
+    <th>手机</th>
+    <th width="20%">注册时间</th>
+    <th width="15%">角色</th>
+    <th>状态</th>
+    <th>备注</th>                       
+    <th class="td-operation">操作</th>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data}}
+      <tr>
+        <td>{{extra.realName}}<br/>ID:{{userId}}</td>
+        <td>{{#if companyName}}{{companyName}}{{else}}-{{/if}}</td>
+        <td>{{#if extra.mobile}}{{extra.mobile}}{{else}}-{{/if}}</td>
+        <td>{{formatDate createdAt "withT"}}</td>
+        <td class="js-role-tr">
+          {{#equals status '0'}}
+            <select class="select-role">
+            </select>
+          {{else}}
+            {{#equals status '1'}}{{extra.roleName}}{{else}}-{{/equals}}
+          {{/equals}}
+        </td>
+        <td>
+          {{#mapping status}}
+          {
+            "0":"待审核",
+            "1":"审核通过",
+            "-1":"审核不通过"
+          }
+          {{/mapping}}
+        </td>
+        <td>{{#if dataJson}}{{dataJson}}{{else}}-{{/if}}</td>
+        <td class="td-operation">
+          {{#equals status '0'}}
+            <a href="javascript:;" class="js-apply-success" data-id="{{id}}">审核通过</a><br/>
+            <a href="javascript:;" class="js-apply-fail" data-id="{{id}}">审核不通过</a>
+          {{/equals}}
+        </td>
+      </tr>
+    {{/each}}
+    {{#if _DATA_.empty}}
+      <tr>
+        <td class="empty-data-title" colspan="9">暂无用户审核数据！</td>
+      </tr>
+    {{/if}}
+  </tbody>
+  {{#unless _DATA_.empty}}
+    <tfoot>
+      <tr>
+        <td colspan="9">{{inject "common/pagination" total=_DATA_.total}}</td>
+      </tr>
+    </tfoot>
+  {{/unless}}
+</table>

@@ -1,0 +1,67 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>{{#if filetype}}清单列表{{else}}补充清单列表{{/if}}</label>
+    {{#of bidStatus "11,12,13"}}
+      {{#of supplyFileStatus "-1,0"}}
+        {{#of userId costOperatorIds}}
+          <a href="/list/config?bidId={{bidId}}&type=6&connectId={{id}}" target="_blank" class="btn btn-info margin-left-20 js-list-supply-create {{#unless needInventory}}hide{{/unless}}">创建补充清单</a>
+        {{/of}}
+        {{#equals issueOperatorId userId}}
+          <a href="javascript:;" class="btn btn-info margin-left-20 js-list-supply-need" data-id="{{id}}">需创建补充清单</a>
+        {{/equals}}
+      {{/of}}
+    {{/of}}
+  </div>
+  <div class="bids-content no-border">
+    <table class="table js-table-list">
+      <thead>
+        <tr>
+          <th width="15%">清单名称</th>
+          <th width="15%">创建时间</th>
+          <th width="15%">生效时间</th>
+          <th width="15%">生效状态</th>
+          <th width="20%">备注</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if supplementLists}}
+          {{#each supplementLists}}
+            <tr {{#if effectiveStatus}}class="item-tr"{{/if}}>
+              <td class="td-active">{{filename}}</td>
+              <td>{{formatDate createdAt}}</td>
+              <td>{{#if effectiveDate}}{{formatDate effectiveDate}}{{else}}-{{/if}}</td>
+              <td>
+                {{#equals effectiveStatus 0}}<span class="status-danger">未生效</span>{{/equals}}
+                {{#equals effectiveStatus 1}}<span class="status-success">已生效</span>{{/equals}}
+              </td>
+              <td>{{#if remark}}{{remark}}{{else}}-{{/if}}</td>
+              <td>
+                {{#if effectiveStatus}}
+                  <a href="javascript:;">查看历史版本</a><br>
+                {{/if}}
+                {{#of ../userId ../costOperatorIds}}
+                  {{#of ../bidStatus "11,12,13"}}
+                    {{#of ../supplyFileStatus "-1,0"}}
+                      {{#equals effectiveStatus 0}}
+                        <a href="javascript:;">查看历史版本</a><br>
+                        <a href="/list/config?bidId={{../bidId}}&billId={{fileUrl}}" target="_blank">编辑</a><br>
+                        <a href="javascript:;" class="js-list-publish" data-id="{{id}}" data-action="1">发布</a><br>
+                      {{else}}
+                        <a href="javascirpt:;" class="js-list-publish" data-id="{{id}}" data-action="0">撤回</a>
+                      {{/equals}}
+                    {{/of}}
+                  {{/of}}
+                {{/of}}
+              </td>
+            </tr>
+          {{/each}}
+      {{else}}
+        <tr>
+          <td class="center-text" colspan="6">{{#if filetype}}暂无清单列表！{{else}}暂无补充清单列表！{{/if}}</td>
+        </tr>
+      {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

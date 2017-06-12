@@ -1,0 +1,11 @@
+{{#partial "meta"}}
+  <title>{{_PAGE_.title}}</title>
+  <meta name="keywords" content="{{_PAGE_.keywords}}">
+  <meta name="description" content="{{_PAGE_.description}}">
+{{/partial}}
+{{#partial "body"}}
+  {{designPart "header" scope="site"}}
+  {{designPart "body" }}
+  {{designPart "footer" scope="site"}}
+{{/partial}}
+{{> eevee/layouts/layout}}

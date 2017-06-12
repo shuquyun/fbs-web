@@ -1,0 +1,186 @@
+{{#component "items-list shop-search-items component-item-search js-comp"}}
+  <div class="current-location-dark clearfix" style="padding-left:5px;">
+    <span class="items-total pull-right" data-total="{{_DATA_.entities.total}}">
+        {{#equals showHotKeywords "1"}}店铺热搜：测试{{/equals}}
+    </span>
+    <span class="current-location-span">
+      {{#each _DATA_.breadCrumbs}}
+        <a class="font-14 js-bread-category-selector" data-id="{{id}}">{{name}}</a>&nbsp;&nbsp;<i class="font-14 icon-feebas icon-feebas-next"></i>&nbsp;
+      {{/each}}
+      {{#each _DATA_.chosen}}
+      <a class="bread-selector font-12 {{#equals type 1}}js-bread-brand-selector{{else}}{{#equals type 2}}js-bread-property-selector{{else}}js-bread-front-selector{{/equals}}{{/equals}}" data-id="{{key}}" data-selector="{{key}}:{{name}}">{{#equals type 2}}{{key}}:{{name}}{{else}}{{#equals type 1}}品牌:{{name}}{{else}}{{name}}{{/equals}}{{/equals}}
+        <i class="font-12 icon-feebas icon-feebas-close"></i>
+      </a>
+      {{/each}}
+    </span>
+  </div>
+  <div class="search-attrs js-search-attrs">
+    <table width="100%">
+     {{#if _DATA_.shopCategories}}
+        <tr class="{{#gt @index 4}}hide{{/gt}}">
+          <th>分类</th>
+          <td class="list-more attr-container js-filter-container">
+            <ul class="attr-list clearfix">
+            {{#each _DATA_.shopCategories}}
+              <li class="attr-dd dd-cancel">
+                <a class="js-category-selector cutwords" title="{{name}}" href="javascript:;" data-key="{{key}}" data-attr="{{name}}">{{name}}</a>
+              </li>
+            {{/each}}
+            </ul>
+          </td>
+          <td class="more-dd">
+            {{#gt (size _DATA_.shopCategories) 5}}
+              <button class="btn btn-minor btn-small js-unfold">
+                <span>{{i18n "unfold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangxiazhedie"></i>
+              </button>
+              <button class="btn btn-minor btn-small js-fold hide">
+                <span>{{i18n "fold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangshangzhedie"></i>
+              </button>
+            {{/gt}}
+          </td>
+        </tr>
+      {{/if}}
+      {{#each _DATA_.attributes}}
+      <tr class="{{#gt @index 4}}hide{{/gt}}">
+        <th><span class="attr-group">{{group}}</span></th>
+        <td class="attr-container js-filter-container" data-length="{{size nameAndCounts}}">
+          <ul class="attr-list clearfix">
+          {{#each nameAndCounts}}
+            <li class="attr-dd dd-cancel">
+              <div class="attr hide cutwords" data-value="{{name}}" title="{{name}}">
+                {{name}}
+                <i class="icon-feebas icon-feebas-guanbi"></i>
+              </div>
+              <a class="js-property-selector cutwords" title="{{name}}" href="javascript:;" data-attr="{{name}}">{{name}}</a>
+              {{!-- <span>({{count}})</span> --}}
+            </li>
+          {{/each}}
+          </ul>
+          <div class="brand-buttons hide">
+            <button class="btn js-attrs-confirm btn-medium btn-primary" type="button">{{i18n "Confirm" bundle="shop_design"}}</button>
+            <button class="btn js-brand-cancel btn-medium btn-secondary" type="button">{{i18n "Cancel" bundle="shop_design"}}</button>
+          </div>
+        </td>
+
+        <td class="more-dd">
+          {{#gt (size nameAndCounts) 1}}
+            <button class="btn btn-minor btn-small js-attr-elects"><i class="icon-feebas icon-feebas-tianjia"></i> <span>{{i18n "Options" bundle="shop_design"}}</span></button>
+          {{/gt}}
+          {{#gt (size nameAndCounts) 5}}
+            <button class="btn btn-minor btn-small js-unfold">
+              <span>{{i18n "unfold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangxiazhedie"></i>
+            </button>
+            <button class="btn btn-minor btn-small js-fold hide">
+              <span>{{i18n "fold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangshangzhedie"></i>
+            </button>
+          {{/gt}}
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    <div class="show-more">
+      {{#gt (size _DATA_.attributes) 5}}
+        <span class="toggle-more js-toggle-more" data-length="{{size _DATA_.attributes}}">
+          <span>
+            {{i18n "More options" bundle="shop_design"}}
+            <i class="icon-feebas icon-feebas-xiangxiazhedie"></i>
+          </span>
+          <span class="hide">
+            {{i18n "fold" bundle="shop_design"}}
+            <i class="icon-feebas icon-feebas-xiangshangzhedie"></i>
+          </span>
+        </span>
+      {{/gt}}
+    </div>
+  </div>
+
+  <div class="filter shop-search-filter">
+    <div class="filter-banner">
+      <span class="js-item-sort">销量 <i class="icon-feebas icon-feebas-sort-down"></i></span>
+      <span class="js-item-sort">新品 <i class="icon-feebas icon-feebas-sort-down"></i></span>
+      <span class="js-item-sort">价格 <i class="icon-feebas icon-feebas-sort-down"></i></span>
+    </div>
+    <form class="form filter-form js-filter-form">
+      <fieldset>
+        <div class="input-group input-group-prepend">
+          <span class="input-group-addon btn-smaller">￥</span>
+          <input class="input-small" type="number" name="p_f" data-value="{{formatPrice p_f}}" value="{{formatPrice p_f}}" placeholder="请输入">
+        </div>
+        <span class="line">-</span>
+        <div class="input-group input-group-prepend">
+          <span class="input-group-addon btn-smaller">￥</span>
+          <input class="input-small" type="number" name="p_t" data-value="{{formatPrice p_t}}" value="{{formatPrice p_t}}" placeholder="请输入">
+        </div>
+        <span class="operations">
+          <button type="submit" class="btn btn-primary" id="js-price-range">{{i18n "Filter" bundle="shop_design"}}</button>
+          &nbsp;
+          <a href="javascript:void(0)" id="js-cancel-price-filter">{{i18n "Cancel" bundle="shop_design"}}</a>
+        </span>
+      </fieldset>
+    </form>
+    <div class="displayChange">
+      <span class="js-list-display {{#if display}}{{#equals display "0"}}active{{/equals}}{{else}}active{{/if}}" data-value="0"><i class="icon-feebas icon-feebas-bigtufuzhi"></i> 大图</span>
+      <span class="js-list-display {{#equals display "1"}}active{{/equals}}" data-value="1"><i class="icon-feebas icon-feebas-liebiao-80"></i> 小图</span>
+    </div>
+  </div>
+  <div class="list list-squared list-condensed clearfix">
+    {{#if _DATA_.entities.total}}
+      {{#equals display "1"}}
+        {{!-- 列表展示 --}}
+        <table class="shop-search-items-list-type" width="100%">
+          <tbody>
+            {{#each _DATA_.entities.data}}
+            <tr>
+              <td width="520">
+                <div class="product-image">
+                  <a href="/items/{{id}}" target="_blank">
+                    <img data-original="{{cdnPath mainImage "78"}}" alt="{{{name}}}" style="width:78px; height:78px;">
+                  </a>
+                </div>
+                <div class="descAshop">
+                  <p class="product-desc">
+                    <a href="/items/{{id}}" target="_blank">{{{name}}}</a>
+                  </p>
+                </div>
+              </td>
+              <td width="175" class="left-text"><span class="product-price">￥ {{formatPrice price}}</span></td>
+              <td width="170" class="left-text"><span class="saleQuantity">销量：{{#if saleQuantity}}{{saleQuantity}}{{else}}0{{/if}}</span></td>
+              <td class="right-text">
+                {{#each promotionTypes}}
+                  <span class="promotion-type promotion-type-{{this}}">{{#equals this 3}}折扣{{/equals}}</span>
+                {{/each}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        {{!-- 大图展示 --}}
+        <ul class="shop-search-items-img-type">
+          {{#each _DATA_.entities.data}}
+          <li class="product {{#mod @index 5}}no-mr{{/mod}}">
+            <div class="product-image">
+              <a href="/items/{{id}}" target="_blank">
+                <img data-original="{{cdnPath mainImage "212"}}" alt="{{{name}}}" style="width:212px; height:212px;">
+              </a>
+            </div>
+            <p class="product-price">
+              ￥ {{formatPrice price}}
+              <span class="saleQuantity">销量：{{#if saleQuantity}}{{saleQuantity}}{{else}}0{{/if}}</span>
+            </p>
+            <p class="product-desc">
+              <a href="/items/{{id}}" target="_blank">{{{name}}}</a>
+            </p>
+          </li>
+          {{/each}}
+        </ul>
+      {{/equals}}
+    {{else}}
+      <div class="no-results center-text">
+        <span class="img"><i class="icon-feebas icon-feebas-goods good-icon"></i></span>
+        <p class="desc">暂无商品</p>
+      </div>
+    {{/if}}
+  </div>
+  <div class="list-pagination"></div>
+{{/component}}

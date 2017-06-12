@@ -1,0 +1,17 @@
+{{#component "list list-squared shop-item-list list-condensed"}}
+  <ul class="clearfix">
+    {{#each _DATA_}}
+    <li class="product" style="border: 1px solid {{#equals hasBorder "1"}}#dfdfdf{{else}}transparent{{/equals}};">
+      <div class="product-image">
+        <a href="/items/{{id}}" target="_blank">
+          <img data-original="{{cdnPath mainImage "260"}}" alt="{{name}}" src="{{cdnPath mainImage "260"}}" width="220" height="220">
+        </a>
+      </div>
+      <p class="product-price"><span class="currency">￥ {{formatPrice lowPrice}}</span></p>
+      <p class="product-desc">
+        <a href="/items/{{id}}" target="_blank">{{name}}</a>
+      </p>
+    </li>
+    {{/each}}
+  </ul>
+{{/component}}

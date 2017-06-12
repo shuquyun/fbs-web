@@ -1,0 +1,11 @@
+{{#component "component-measurement js-comp"}}
+  {{#equals type "safe"}}
+    {{inject "list/measurement/safe"}}
+  {{/equals}}
+  {{#equals type "taxes"}}
+    {{inject "list/measurement/taxes"}}
+  {{/equals}}
+  {{#equals type "complex"}}
+    {{inject "list/measurement/complex"}}
+  {{/equals}}
+{{/component}}

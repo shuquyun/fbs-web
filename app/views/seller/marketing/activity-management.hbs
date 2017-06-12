@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}{{#of type "1,2,3"}}{{#equals type 1}}商品优惠券{{/equals}}{{#equals type 2}}店铺优惠券{{/equals}}{{#equals type 3}}商品折扣{{/equals}}{{else}}商品优惠券{{/of}}{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "营销管理"},{"url": "/seller/marketing/activity-index", "crumb": "营销活动管理"},{"url": "#", "crumb": "{{#of type "1,2,3"}}{{#equals type 1}}商品优惠券{{/equals}}{{#equals type 2}}店铺优惠券{{/equals}}{{#equals type 3}}商品折扣{{/equals}}{{else}}商品优惠券{{/of}}管理"}]}}
+  {{/inject}}
+  {{inject "shop/marketing/activity_management" true}}
+{{/partial}}
+{{> seller/layout}}

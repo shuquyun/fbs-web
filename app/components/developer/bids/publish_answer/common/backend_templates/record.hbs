@@ -1,0 +1,51 @@
+<div class="bids-group">
+    <div class="bids-title">
+      <label>发标记录</label>
+    </div>
+    <div class="bids-content no-border">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="10%">发标次数</th>
+            <th width="30%">发标时间</th>
+            <th width="30%">文件状态</th>
+            <th width="30%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <div>
+            {{#if issuedBids}}
+              {{#each issuedBids}}
+                <tr>
+                  <td>{{add @index 1}}</td>
+                  <td>{{formatDate createdAt 'day'}}</td>
+                  <td>
+                    {{#equals supplyFileStatus 0}}待提交{{/equals}}
+                    {{#equals supplyFileStatus 1}}已提交{{/equals}}
+                    {{#equals supplyFileStatus 2}}审核中{{/equals}}
+                    {{#equals supplyFileStatus 3}}审核成功{{/equals}}
+                    {{#equals supplyFileStatus -1}}审核失败{{/equals}}
+                  </td>
+                  <td>
+                    {{#gt ../bidStatus 13}}
+                      {{#of supplyFileStatus "-1,0"}}
+                        <a href="javascript:;" data-toggle="confirm" data-event="confirm:link" data-title="是否确认跳转？" data-content="已开标，不能提交补充文件，是否确认跳转?" data-id="{{id}}">查看详情</a>
+                      {{else}}
+                        <a href="/developer/bids-details/supply-details?issuedId={{id}}&bidId={{bidId}}{{#unless @index}}&type=1{{/unless}}" target="_blank">查看详情</a>
+                      {{/of}}
+                    {{else}}
+                      <a href="/developer/bids-details/supply-details?issuedId={{id}}&bidId={{bidId}}{{#unless @index}}&type=1{{/unless}}" target="_blank">查看详情</a>
+                    {{/gt}}
+                  </td>
+                </tr>
+              {{/each}}
+            {{else}}
+              <tr>
+                <td class="center-text" colspan="8">暂无发标记录！</td>
+              </tr>
+            {{/if}}
+          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>

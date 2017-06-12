@@ -1,0 +1,19 @@
+<li class="tree-node js-tree-node">
+  <div class="tree-item js-tree-item {{#unless children}}no-children{{/unless}}" {{#unless children}}data-id="{{id}}"{{/unless}} data-name="{{name}}">
+    {{#if children}}
+      <i class="icon-hsh icon-hsh-rightarrow pack-status js-expand-node"></i>
+      <i class="icon-hsh icon-hsh-xiangxiazhedie expand-status js-pack-node"></i>
+    {{else}}
+      {{#if @root.selectMore}}
+        {{#unless linkStatus}}
+          <input type="checkbox" name="" class="input-checkbox js-checked-item" data-id="{{id}}" style="vertical-align: middle; z-index:100;">
+        {{/unless}}
+      {{/if}}
+    {{/if}}
+    <span class="item-name" title="{{name}}">{{name}}</span>
+    {{#if linkStatus}}
+      <a href="/developer/supplier-import?supplierId={{id}}" target="_blank">去入库</a>
+    {{/if}}
+  </div>
+  {{> common/select_tree/frontend_templates/_tree_list}}
+</li>

@@ -1,0 +1,57 @@
+<div class="bids-group js-bids-inventory">
+  <div class="bids-title">
+    <label>回标清单列表</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="5%">
+            <input type="checkbox" class="input-checkbox js-checkbox-main" name="checkbox">
+          </th>
+          <th width="15%">清单类型</th>
+          <th width="20%">清单名称</th>
+          <th width="20%">创建时间</th>
+          <th width="20%">生效时间</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if _DATA_}}
+          {{#each _DATA_}}
+            <tr class="js-tr-item">
+              <td>
+                {{#if effectiveStatus}}
+                  <input type="checkbox" class="input-checkbox" name="checkbox" data-id="{{id}}" data-item="{{json this}}">
+                {{/if}}
+              </td>
+              <td>
+                {{#equals type 11}}招标清单{{/equals}}
+                {{#equals type 12}}答疑清单{{/equals}}
+                {{#equals type 13}}补充清单{{/equals}}
+              </td>
+              <td class="td-active">{{filename}}</td>
+              <td>{{formatDate createdAt}}</td>
+              <td>{{#if effectiveDate}}{{formatDate effectiveDate}}{{else}}-{{/if}}</td>
+              <td>
+                <a href="javascript:;">查看历史版本</a><br>
+                {{#equals ../status 6}}
+                  {{#equals effectiveStatus 1}}
+                    <a href="javascirpt:;" class="js-list-publish" data-id="{{id}}" data-action="0">撤回</a>
+                  {{else}}
+                    <a href="/list/config?bidId={{bidId}}&billId={{fileUrl}}" target="_blank">编辑</a><br>
+                    <a href="javascript:;" class="js-list-publish" data-id="{{id}}" data-action="1">发布</a>
+                  {{/equals}}
+                {{/equals}}
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td class="center-text" colspan="6">暂无回标清单！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

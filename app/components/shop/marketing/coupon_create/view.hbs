@@ -1,0 +1,71 @@
+{{#component "component-standard-container coupon-create js-comp"}}
+  <div class="component-header">
+    <a href="/seller/marketing/activity-management?type={{#equals type 2}}2{{else}}1{{/equals}}&promotionDefId={{promotionDefId}}">< 返回{{#equals type 2}}店铺{{else}}商品{{/equals}}优惠券列表</a>
+  </div>
+  <div class="component-body">
+    <form class="form form-aligned coupon-form" id="coupon-form" data-type="{{type}}" data-promotiondefid="{{promotionDefId}}" data-promotionid="{{promotionId}}">
+      <fieldset>
+        <div class="coupon-common">
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>优惠券名称：</label>
+            <input type="text" name="name" class="input-medium" value="{{_DATA_.name}}" pattern="^[\da-zA-Z\u4E00-\u9FA5]{1,15}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="名称支持英文，数字和汉字，长度不超过15个字符">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>发放总数：</label>
+            <input type="text" name="sendLimit"  class="" value="{{_DATA_.extra.sendLimit}}" maxLength="10" autocomplete="off" pattern="^\d{1,10}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="请输入数字">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+            张
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>面值：</label>
+            <input type="text" name="reduceFee" class="" value="{{formatPriceExt _DATA_.behaviorParams.reduceFee}}" pattern="^\d{1,7}(\.\d{0,2})?$" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="请输入数字">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+            元
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>每人限领：</label>
+            <input type="text" name="receiveLimit" class="" value="{{_DATA_.extra.receiveLimit}}" maxLength="10" autocomplete="off" pattern="^\d{1,10}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="请输入数字">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+            张
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>有效期：</label>
+            <input class="order-input input-date js-common-start-at datepickerIpt" type="text" name="startAt" value="{{formatDate _DATA_.startAt}}" placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required {{#equals method "detail"}}disabled{{/equals}}>
+            &nbsp;-&nbsp;
+            <input class="order-input input-date js-common-end-at datepickerIpt" type="text" name="endAt" value="{{formatDate _DATA_.endAt}}" placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required {{#equals method "detail"}}disabled{{/equals}}>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>使用条件：</label>
+            <span class="w40">订单满</span>
+            &nbsp;&nbsp;
+            <input type="text" name="conditionFee" pattern="^\d{1,7}(\.\d{0,2})?$" value="{{formatPriceExt _DATA_.conditionParams.conditionFee}}" required {{#equals method "detail"}}disabled{{/equals}}>
+            <span class="note-error note-icon hint--top" aria-label="请输入数字">
+              <i class="icon-pokeball icon-pokeball-error "></i>
+            </span>
+            元 可用&nbsp;&nbsp;&nbsp;&nbsp;<span class="cgray">每单限用 1 张</span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>适用商品：</label>
+            <span class="sp">
+            {{#equals type 2}}
+              全平台通用
+            {{else}}
+              {{inject "common/choose_item" type=type skuIds=_DATA_.skuScopeParams.skuIds itemIds=_DATA_.skuScopeParams.itemIds method=method}}
+            {{/equals}}
+            </span>
+          </div>
+        </div>
+        {{#unless method}}<button class="btn btn-success btn-primary btn-medium" type="submit">确认</button>{{/unless}}
+      </div>
+    </form>
+  </div>
+{{/component}}

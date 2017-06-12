@@ -1,0 +1,36 @@
+Your current location: true
+Electronic business platform: true
+Retrieve password: true
+Retrieve password: true
+Fill in basic informations: true
+Retrieve success: true
+Phone number: true
+Phone number: true
+Mobile number: true
+Please enter the correct phone number: true
+Please enter your mobile phone number: true
+Get phone verification code: true
+Enter the verification code: true
+Enter the verification code: true
+Set new password: true
+Password: true
+User password: true
+Please enter the correct password (6-16 characters): true
+Please enter your password: true
+Confirm the new password: true
+Confirm Password: true
+Enter password again: true
+Please enter the correct verification code: true
+Please enter the correct password: true
+Confirm info: true
+Next step: true
+"reacquireCaptcha": "reacquireCaptcha"
+"secondsAfter": "secondsAfter"
+"sendingCaptcha": "sendingCaptcha"
+"confirmCaptcha": "confirmCaptcha"
+"clickToReacquire": "clickToReacquire"
+"error": "error"
+"passwordDiff": "passwordDiff"
+"error": "error"
+"confirmCaptchaFp": true
+"clickToReacquireFp": true

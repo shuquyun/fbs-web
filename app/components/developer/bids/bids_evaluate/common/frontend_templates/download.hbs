@@ -1,0 +1,28 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>下载回标附件</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <div class="modal-body" style="width: 600px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="50%">附件名称</th>
+          <th width="30%">文件大小</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+          <tr>
+            <td>{{filename}}</td>
+            <td>{{fileSize}}</td>
+            <td>
+              <a href="http:{{fileUrl}}">下载</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

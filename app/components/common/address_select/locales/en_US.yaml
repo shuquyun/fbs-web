@@ -1,0 +1,22 @@
+Recipient Address: true
+Recipient: true
+Please enter recipient name: true
+Name must be in between 2-25 characters: true
+Phone no: true
+Please enter phone number: true
+Required, cannot be empty: true
+Please enter only numeric values: true
+Mobile number cannot be empty: true
+Address Type: true
+Home: true
+Office: true
+Street Address: true
+Please enter street address: true
+Address must be in 5-120 characters: true
+Required, cannot be empty: true
+Recipient Address: true
+Postcode: true
+Enter postcode: true
+Postcode must be in 5 numbers: true
+Confirm: true
+Cancel: true

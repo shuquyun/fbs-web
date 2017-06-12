@@ -1,0 +1,47 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.component-shop-inner-search {
+  border: 1px solid $color-border;
+
+  .search-title {
+    text-align: center;
+    background-color: $color-background;
+    padding: 11px 0;
+    color: #1b2b45;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .search-body {
+    padding-top: 15px;
+
+    fieldset {
+      padding: 0;
+    }
+
+    .control-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      width: 4.5em;
+      margin-right: 0;
+    }
+
+    .input-word {
+      width: 118px;
+    }
+
+    .input-price {
+      width: 53px;
+    }
+
+    .controls {
+      margin-left: 58px;
+    }
+
+    .btn {
+      padding: 6px 18px;
+    }
+  }
+}

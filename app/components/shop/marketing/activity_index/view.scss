@@ -1,0 +1,93 @@
+@import "compass/css3";
+@import "pokeball/theme";
+
+.activity-create{
+  color: $color-text-assist;
+  h3 {
+    font-size: 12px;
+    color: #24344e;
+    margin: 10px 0;
+  }
+  hr {
+    border: none;
+    border-bottom: 1px dashed #dfdfdf;
+    margin: 20px 0;
+    width: 100%;
+  }
+  .activitya {
+    display: inline-block;
+  }
+  .activity {
+    position: relative;
+    padding: 15px;
+    padding-right: 10px;
+    display: inline-block;
+    width: 275px;
+    height: 100px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-right: 20px;
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .activity-logo {
+      width: 75px;
+      height: auto;
+      line-height: 75px;
+      margin-right: 10px;
+      display: inline-block;
+      margin-top: 25px;
+    }
+    .info {
+      position: relative;
+      padding-left: 70px;
+      padding-top: 14px;
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      &.coupon {
+        .bg-image {
+          top: 20px;
+          left: 10px;
+          width: 24px;
+          height: 32px;
+        }
+      }
+      &.discount {
+        .bg-image {
+          top: 18px;
+          left: 6px;
+          width: 34px;
+          height: 34px;
+        }
+      }
+      span {
+        display: inline-block;
+      }
+      .title {
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: $color-text-assist;
+        span {
+          color: #bbbbbb;
+          font-size: 12px;
+        }
+      }
+      .desc {
+        height: 36px;
+        color: $color-text-assist;
+        overflow-y: hidden;
+      }
+      .create {
+        float: right;
+        margin-top: 15px;
+      }
+    }
+  }
+}

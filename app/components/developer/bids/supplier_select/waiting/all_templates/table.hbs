@@ -1,0 +1,47 @@
+<table class="table js-table-supplier-waiting">
+  <thead>
+    <tr>
+      <th width="5%">序号</th>
+      <th width="15%">供应商公司名称</th>
+      <th width="20%">专业</th>
+      <th width="15%">联系人</th>
+      <th width="15%">联系电话</th>
+      <th width="15%">状态</th>
+      <th width="15%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if _DATA_}}
+      {{#each _DATA_}}
+        <tr class="js-tr-item">
+          <td>{{id}}</td>
+          <td>
+            <a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a>
+          </td>
+          <td>{{speciality}}</td>
+          <td>{{contacts}}</td>
+          <td>{{phone}}</td>
+          <td>
+            {{#equals status 1}}报名入围{{/equals}}
+            {{#equals status 2}}邀请待确认{{/equals}}
+            {{#equals status 3}}拒绝邀请{{/equals}}
+            {{#equals status 4}}邀请入围{{/equals}}
+            {{#equals status -3}}已弃标{{/equals}}
+            {{#gt status 4}}已入围{{/gt}}
+          </td>
+          <td>
+            {{#equals ../userId ../bidData.tenderFinalistsOperatorId}}
+              {{#of ../bidData.bidStatus "2,4,8"}}
+                <a href="javascript:;" class="js-supplier-waiting-delete" data-id="{{id}}" data-status="{{status}}">删除</a>
+              {{/of}}
+            {{/equals}}
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="center-text" colspan="7">暂无供应商入围！</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

@@ -1,0 +1,54 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th width="5%">
+        <input type="checkbox" name="checkbox" class="input-checkbox js-checkbox-main">
+      </th>
+      <th width="5%">序号</th>
+      <th width="20%">供应商公司名称</th>
+      <th width="10%">联系人</th>
+      <th width="15%">联系方式</th>
+      <th width="10%">最终确定价格</th>
+      <th width="10%">澄清次数</th>
+      <th width="15%">清单确认状态</th>
+      <th width="10%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if _DATA_}}
+      {{#each _DATA_}}
+        <tr class="js-tr-item">
+          <td><input type="checkbox" name="checkbox" class="input-checkbox" data-supplier-id="{{supplierId}}" data-final-fee="{{finalFee}}" data-supplier-name="{{supplierName}}" data-id="{{id}}"></td>
+          <td>{{add @index 1}}</td>
+          <td><a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a></td>
+          <td>{{contacts}}</td>
+          <td>{{phone}}</td>
+          <td>{{#if finalFee}}{{finalFee}}{{else}}-{{/if}}</td>
+          <td>{{#if clarifyTimes}}{{clarifyTimes}}{{else}}0{{/if}}</td>
+          <td>
+            {{#equals finalListConfirmStatus 1}}未发起{{/equals}}
+            {{#equals finalListConfirmStatus 2}}清单待发布{{/equals}}
+            {{#equals finalListConfirmStatus 3}}待确认{{/equals}}
+            {{#equals finalListConfirmStatus 4}}已确认{{/equals}}
+          </td>
+          <td>
+            <a href="javascript:;" class="js-list-control" data-list="{{json replyInventories}}" data-type="view">查看投标清单</a><br>
+            {{#of status "9,11,12,13,14,15"}}
+              <a href="/developer/bids-details/clarify-details?bidSupplierId={{id}}&bidId={{bidId}}" target="_blank">澄清记录</a><br>
+            {{/of}}
+            {{#of ../userId ../costOperatorIds}}
+              {{#equals finalListConfirmStatus 2}}
+                <a href="javascript:;" class="js-list-publish" data-action="1" data-id="{{id}}">发布</a><br>
+                <a href="javascirpt:;" class="js-list-control" data-list="{{json finalInventories}}" data-type="edit" data-bid-id="{{bidId}}">编辑清单</a><br>
+              {{/equals}}
+            {{/of}}
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="center-text" colspan="9">暂无回标供应商！</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

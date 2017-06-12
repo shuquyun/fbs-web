@@ -1,0 +1,30 @@
+<div class="filter shop-search-filter">
+  <div class="filter-banner">
+    <!-- js-item-sort的index 需要从0开始 -->
+    <span class="js-item-sort" data-index="2">销量 <i class="icon-feebas icon-feebas-sort-down"></i></span>
+    {{!-- <span class="js-item-sort">新品 <i class="icon-feebas icon-feebas-sort-down"></i></span> --}}
+    <span class="js-item-sort" data-index="0">价格 <i class="icon-feebas icon-feebas-sort-down"></i></span>
+  </div>
+  <form class="form filter-form js-filter-form">
+    <fieldset>
+      <div class="input-group input-group-prepend">
+        <span class="input-group-addon btn-smaller">￥</span>
+        <input class="input-small" type="number" name="p_f" data-value="{{formatPrice p_f}}" value="{{formatPrice p_f}}" placeholder="请输入">
+      </div>
+      <span class="line">-</span>
+      <div class="input-group input-group-prepend">
+        <span class="input-group-addon btn-smaller">￥</span>
+        <input class="input-small" type="number" name="p_t" data-value="{{formatPrice p_t}}" value="{{formatPrice p_t}}" placeholder="请输入">
+      </div>
+      <span class="operations">
+        <button type="submit" class="btn btn-primary" id="js-price-range">{{i18n "Filter" bundle="design"}}</button>
+        &nbsp;
+        <a href="javascript:void(0)" id="js-cancel-price-filter">{{i18n "Cancel" bundle="design"}}</a>
+      </span>
+    </fieldset>
+  </form>
+  <div class="displayChange">
+    <span class="js-list-display {{#if display}}{{#equals display "0"}}active{{/equals}}{{else}}active{{/if}}" data-value="0"><i class="icon-feebas icon-feebas-bigtufuzhi"></i> 大图</span>
+    <span class="js-list-display {{#equals display "1"}}active{{/equals}}" data-value="1"><i class="icon-feebas icon-feebas-liebiao-80"></i> 小图</span>
+  </div>
+</div>

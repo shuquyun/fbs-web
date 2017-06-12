@@ -1,0 +1,23 @@
+{{#partial "realTitle"}}供应商详情{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "_DATA_": {
+        "breadcrumb": [{
+          "url": "#",
+          "crumb": "综合查询"
+        }, {
+          "url": "/developer/search-supplier",
+          "crumb": "我要寻源"
+        }, {
+          "url": "#",
+          "crumb": "供应商详情"
+        }
+      ]}
+    }
+  {{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/supplier_manage/supplier_detail" companyType='supplier'}}
+{{/partial}}
+{{> developer/layout_detail}}

@@ -1,0 +1,9 @@
+{{#partial "realTitle"}}未上架的商品{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "商品管理"},{"url": "#", "crumb": "未上架的商品"}]}}{{/inject}}
+  {{#inject "items/seller/shelf_item" true}}
+  {
+    "statuses": "-1,-2"
+  }{{/inject}}
+{{/partial}}
+{{> seller/layout}}

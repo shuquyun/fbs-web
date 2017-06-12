@@ -1,0 +1,41 @@
+@import "compass/css3/inline-block";
+
+.component-shop-list {
+  td {
+    font-size: 12px;
+    padding: 10px;
+    vertical-align: top;
+  }
+
+  .shop-logo {
+    float: left;
+  }
+
+  .shop-description {
+    float: left;
+    margin-left: 10px;
+    width: 300px;
+  }
+
+  .shop-info {
+    text-align: left;
+  }
+
+  .shop-name  {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    @include inline-block(middle);
+    width: 250px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .shop-pagination  {
+    margin: 10px 0;
+    text-align: center;
+  }
+}

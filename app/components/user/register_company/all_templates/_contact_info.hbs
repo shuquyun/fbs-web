@@ -1,0 +1,36 @@
+<fieldset>
+  <legend class="form-title"><strong>联系人信息</strong></legend>
+  <div class="control-group">
+    <label class="single-label">公司架构:</label>
+    <div class="btn btn-upload main-image js-upload-img">
+      <input type="file" name="file">
+      <img src="{{data.structure}}" style="{{#if data.structure}}width: 70px; height: 70px{{/if}}">
+      <span>+</span>
+      <input type="hidden" name="structure" value="{{data.structure}}">
+    </div>
+    <span class="pictrue-remark">支持*.jpg、*.png、*.gif、*.jpeg格式</span>
+  </div>
+  <div class="table-title"><span class="required">*</span>联系人</div>
+  <table class="table contact-table">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>职位</th>
+        <th>办公电话</th>
+        <th>手机</th>
+        <th>电子邮箱</th>
+        <th class="right-text">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{> user/register_company/all_templates/_option_tr type='contact' contact=data.contacts}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="9">
+          <i></i><a href="javascript:;" class="js-add-edit-item" data-type="contact">添加新的联系人</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</fieldset>

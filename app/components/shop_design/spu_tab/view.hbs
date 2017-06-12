@@ -1,0 +1,84 @@
+{{#component "tab component-spu-tab js-comp"}}
+<ul class="tab-navs clearfix"  data-item="{{itemId}}">
+  <li class="active" data-role="nav"><a href="javascript:;">{{i18n "Product details" bundle="shop_design"}}</a></li>
+  <li data-role="nav"><a href="javascript:;">{{i18n "Product attributes" bundle="shop_design"}}</a></li>
+  <li data-role="nav"><a href="javascript:;">{{i18n "Total comments" bundle="shop_design"}}<span class="comment-total">（0）</span></a></li>
+</ul>
+<div class="tab-contents clearfix">
+  <div data-role="content" class="tab-content">
+    <ul class="spu-info clearfix">
+      <li class="attribute-li optitle">{{i18n "Product attributes" bundle="shop_design"}}：</li>
+      {{#each _DATA_.groupedOtherAttributes}}
+        {{#equals group "DEFAULT"}}
+          {{#each otherAttributes}}
+            <li class="attribute-li pull-left">{{attrKey}}: &nbsp;&nbsp;{{attrVal}}{{unit}}</li>
+          {{/each}}
+        {{/equals}}
+      {{/each}}
+    </ul>
+    <div class="spu-tab-item-detail">
+      {{{_DATA_.itemDetail.detail}}}
+    </div>
+  </div>
+  <div data-role="content" class="tab-content hide">
+    <div class="attribute-list">
+      {{#each _DATA_.groupedOtherAttributes}}
+        {{#equals group "SKU"}}
+        {{else}}
+          <table class="attribute-tab">
+            {{#of group "SPU,USER_DEFINED"}}
+            {{else}}
+              <thead>
+                <th colspan="2" class="attribute-title">
+                  {{#equals group "DEFAULT"}}普通信息{{/equals}}
+                  {{#equals group "SERVICE"}}服务信息{{/equals}}
+                  {{#equals group "BASIC"}}基础信息{{/equals}}
+                </th>
+              </thead>
+            {{/of}}
+            <tbody>
+              {{#each otherAttributes}}
+              <tr>
+                <td class="main-parameter">
+                  {{#of attrKey "birthday,weight,origin"}}
+                    {{#equals attrKey "birthday"}}上市时间{{/equals}}
+                    {{#equals attrKey "weight"}}重量{{/equals}}
+                    {{#equals attrKey "origin"}}产地{{/equals}}
+                  {{else}}
+                    {{attrKey}}
+                  {{/of}}
+                </td>
+                <td class="parameter-espercial">{{attrVal}}{{unit}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/equals}}
+      {{/each}}
+    </div>
+  </div>
+  <div data-role="content" class="tab-content comments-content clearfix hide">
+    <!--<div>
+      <div class="comments-ranking clearfix">
+        <span>客户满意度</span>
+        <span class="ranking-counts">4.9</span>
+        <span class="comment-ranking-all">
+          <span class="comment-ranking comment-ranking1 active"></span>
+          <span class="comment-ranking comment-ranking2 active"></span>
+          <span class="comment-ranking comment-ranking3 active"></span>
+          <span class="comment-ranking comment-ranking4 active"></span>
+          <span class="comment-ranking comment-ranking5 active"></span>
+        </span>
+      </div>
+      <div class="comments-filter">
+        <input type="radio" name="star" value="1" checked/><span>全部</span>
+        <input type="radio" name="star" value="2"/><span>四星五星</span>
+        <input type="radio" name="star" value="3"/><span>三星</span>
+        <input type="radio" name="star" value="4"/><span>一星二星</span>
+      </div>
+    </div>-->
+    <ul class="comments-ul">
+    </ul>
+  </div>
+</div>
+{{/component}}

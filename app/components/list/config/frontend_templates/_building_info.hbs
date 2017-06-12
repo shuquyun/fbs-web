@@ -1,0 +1,19 @@
+<div class="control-group">
+  <label for="build">楼栋：</label>
+  <input data-building="name" id="build" type="text" placeholder="请输入楼栋名称" />
+  <input data-building="area" type="number" placeholder="请输入装修面积" />
+  {{#unless hasHouse}}
+  <select class="select" >
+    {{#each products}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+  {{/unless}}
+  <a class="btn js-add-building" href="javascript:;">添加</a>
+</div>
+<div class="control-group">
+  <label></label>
+  <div class="config-list js-house-link-container" data-build="true">
+    {{> list/config/frontend_templates/_building_house_link}}
+  </div>
+</div>

@@ -1,0 +1,80 @@
+@import "pokeball/theme";
+
+.project-details {
+  margin: 20px;
+
+  .details-header {
+    text-align: center;
+    padding-top: 20px;
+    border-bottom: 1px solid $color-border;
+    margin-bottom: 24px;
+
+    .title {
+      font-size: 16px;
+      color: $color-text;
+      margin-bottom: 15px;
+    }
+
+    .project-type {
+      @include inline-block(middle);
+      font-size: 14px;
+      color: $white;
+      background: #c0ccda;
+      line-height: 14px;
+      padding: 5px 16px;
+      margin-bottom: 15px;
+    }
+
+    .project-address {
+      color: $color-text-note;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .label-title {
+    color: $color-text;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .table-info {
+    margin-bottom: 24px;
+
+    .first-tr {
+      border-top: 1px solid $color-border;
+    }
+
+    th {
+      background: #f3f3f3;
+      border-left: 1px solid $color-border;
+      border-right: 1px solid $color-border;
+    }
+  }
+
+  .img-content {
+    width: 100%;
+    font-size: 0;
+
+    .no-img {
+      font-size: 12px;
+      color: $color-text-assist;
+      border-bottom: 1px solid $color-border;
+      padding-bottom: 10px;
+    }
+
+    .item-img {
+      width: 33.33%;
+      @include inline-block(middle);
+      padding: 0 20px 20px 0;
+      height: 280px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

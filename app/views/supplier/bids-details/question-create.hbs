@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}创建提问{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "投标管理"}, {"url": "/supplier/bids", "crumb": "投标列表"},{"url": "#", "crumb": "投标详情"},{"url": "#", "crumb": "提问"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "supplier/bids/bids_answer/question_create"}}
+{{/partial}}
+{{> supplier/layout}}

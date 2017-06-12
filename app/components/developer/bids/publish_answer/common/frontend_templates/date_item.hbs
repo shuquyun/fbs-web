@@ -1,0 +1,22 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>{{title}}</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <form class="form form-common form-aligned js-form-date">
+    <div class="modal-body" style="min-height: 100px;">
+      <div class="control-group">
+        <label class="group-title" style="width: auto;">设置日期</label>
+        <div class="group-content">
+          <input type="hidden" name="bidId" value="{{bidId}}">
+          <input type="hidden" name="id" value="{{id}}">
+          <input type="text" class="datepicker-hour" name="{{name}}" value="{{date}}" data-val="{{date}}">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-primary btn-medium js-date-submit">确认</button>
+      <button class="btn btn-info btn-medium close">取消</button>
+    </div>
+  </form>
+</div>

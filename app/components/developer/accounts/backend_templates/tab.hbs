@@ -1,0 +1,13 @@
+<div class="tab component-tab component-header" data-type="switchable">
+  <ul class="tab-navs clearfix">
+    <li class="{{#equals selectTab '1'}}active{{/equals}}">
+      <a href="/{{companyType}}/company-user">用户管理</a>
+    </li>      
+    <li class="{{#equals selectTab '2'}}active{{/equals}}">
+      <a href="/{{companyType}}/company-user-role">角色管理</a>
+    </li>
+    <li class="{{#equals selectTab '3'}}active{{/equals}}">
+      <a href="/{{companyType}}/company-user-apply">用户审核({{_WTOTAL_}})</a>
+    </li>
+  </ul>
+</div>

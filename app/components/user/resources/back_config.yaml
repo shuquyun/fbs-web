@@ -1,0 +1,70 @@
+findSellerByLoginUser:
+  type: http
+  method: GET
+  url: /api/seller/myself
+
+findValidTradeInfoByBaseUser:
+  method: GET
+  type: http
+  url: /api/buyer/receiver-infos
+  query:
+    - key: userId:_USER_ID_
+      desc: 登录用户ID
+
+findProfileByUser:
+  type: http
+  method: GET
+  url: /api/user/my-profile
+
+pagingCoupon:
+  type: http
+  method: GET
+  url: /api/buyer/promotion/paging
+  query:
+    - key: type
+    - key: status
+    - key: pageNo
+    - key: pageSize
+
+findInvoiceByLoginUser:
+  method: GET
+  type: http
+  url: /api/buyer/invoice/list
+
+getUnReadMessage:
+  method: GET
+  type: http
+  url: /api/message/unRead
+
+getCompanyLists:
+  method: GET
+  type: http
+  url: /api/company/sub/my
+
+getCompanyInvites:
+  method: GET
+  type: http
+  url: /api/company/sub/my-with-invites
+
+getApplyCompany:
+  method: GET
+  type: http
+  url: /api/company/apply/my
+
+getLoginLogPaging:
+  method: GET
+  type: http
+  url: /api/logs/paging
+  query:
+    - key: type
+    - key: realName
+    - key: startAt
+    - key: endAt
+    - key: result
+    - key: pageNo
+    - key: pageSize
+
+getCompanyNotAgree:
+  type: http
+  url: /api/company/apply/last
+

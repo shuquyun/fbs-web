@@ -1,0 +1,33 @@
+{{#component "invoice-manage component-standard-container js-comp"}}
+  <div class="component-header">
+    <button class="btn btn-primary js-add-invoice">{{i18n "Add a Invoice info" bundle="user"}}</button>
+  </div>
+  <div class="component-body">
+    <table class="table item-manage-table">
+      <thead>
+        <tr>
+          <th width="30%">{{i18n "Invoice type" bundle="user"}}</th>
+          <th width="58%">{{i18n "Invoice title" bundle="user"}}</th>
+          <th class="right-text td-operation" width="12%">{{i18n "Action" bundle="user"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_}}
+        <tr data-invoice="{{json this}}" id="invoice-{{id}}">
+          <td class="invoice-type">{{#equals detail.type 1}}普通发票{{else}}增值税发票{{/equals}}</td>
+          <td class="invoice-title">{{title}}</td>
+          <td class="right-text td-operation">
+            <a id="{{id}}" class="" data-toggle="confirm" data-title="{{i18n "Are you sure to delete it?" bundle="user"}}" data-content="{{i18n "After you delete it cannot be restored, please be careful" bundle="user"}}" data-event="confirm:delete">{{i18n "Delete" bundle="user"}}</a>
+            &nbsp;
+            {{#if isDefault}}
+              <span>{{i18n "Default invoice" bundle="user"}}</span>
+            {{else}}
+              <a class="js-set-default" data-user="{{_USER_.id}}">{{i18n "Set as Default" bundle="user"}}</a>
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{/component}}

@@ -1,0 +1,18 @@
+{{#component "company-manage-info component-standard-tab-container  js-comp"}}
+<div class="tab-contents clearfix">
+  <div data-role="content" class="tab-content">
+    <form class="form form-aligned contact-info-form js-supplier-form-submit" data-company-info="{{json _DATA_.supplierProfile}}">
+      <div class="component-header">
+        <div class="header-status">
+          <span class="form-btn pull-right">
+            {{> component:developer/company/company_info/all_templates/button title='修改/完善信息'}}
+          </span>
+        </div>
+      </div>
+      <div class="component-body info-content">
+        {{> component:supplier/company/company_detail/backend_templates/contact_info data=_DATA_.supplierProfile}}
+      </div>
+    </form>
+  </div>
+</div>
+{{/component}}

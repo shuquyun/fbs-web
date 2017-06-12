@@ -1,0 +1,15 @@
+<tr data-id="{{data.id}}" class="js-tmpl-fee-item-tr" data-fee={{json data}}>
+  <td>
+    {{data.id}}
+  </td>
+  <td>
+    {{data.name}}
+  </td>
+  <td>{{data.projectFeature}}</td>
+  <td>{{data.fee}}</td>
+  <td>{{data.remark}}</td>
+  <td class="td-operation">
+    <a href="javascript:void(0)" class="js-update-fee-item" data-id="{{data.id}}">编辑</a>
+    <a href="javascript: void(0)" data-id="{{data.id}}" data-toggle="confirm" data-title="您确定要删除？" data-content="此操作将不可恢复，您确定要继续？" data-event="confirm:js_fee_item_delete">删除</a>
+  </td>
+</tr>

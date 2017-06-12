@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}我的优惠券{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "账户信息"},{"url": "#", "crumb": "我的优惠券"}]}}
+  {{/inject}}
+  {{inject "user/coupons" true}}
+{{/partial}}
+{{> user/layout}}

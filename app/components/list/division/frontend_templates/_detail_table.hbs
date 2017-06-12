@@ -1,0 +1,40 @@
+{{#each data}}
+  <div class="cate-table js-item-cate">
+    <p>{{name}}</p>
+    <table class="table detail-table js-detail-table table-form" data-item-cate="{{json this}}">
+      <thead>
+        <tr>
+          <th width="15%">材料</th>
+          <th width="25%">属性</th>
+          <th width="10%">类别</th>
+          <th width="5%">单位</th>
+          <th width="5%">单位净用量</th>
+          <th width="5%">损耗率(%)</th>
+          <th width="5%">工程量</th>
+          <th width="10%">单价</th>
+          <th width="10%">综合单价</th>
+          <th width="5%">是否甲供</th>
+          <th width="5%" class="td-operation">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if (size billItems)}}
+          {{#each billItems}}
+            {{> list/division/frontend_templates/_detail_child_item children=(default children billItemDtoList)}}
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="11">
+              暂无材料
+            </td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+    <div class="operation-container">
+      <a href="javascript:;" class="js-add-item">
+        <i class="icon-hsh icon-tianjia"></i> 添加新的材料
+      </a>
+    </div>
+  </div>
+{{/each}}

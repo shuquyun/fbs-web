@@ -1,0 +1,31 @@
+<div class="control-group image-group">
+  <label><span class="required">*</span>法人身份证或证件:</label>
+  <div class="btn btn-upload main-image js-upload-img">
+    <input type="file" name="file">
+    <img src="{{data.idCard}}" style="{{#if data.idCard}}width: 70px; height: 70px{{/if}}">
+    <span>+</span>
+    <input type="hidden" name="idCard" value="{{data.idCard}}">
+  </div>
+</div>
+<div class="control-group speciality-group">
+  <label><span class="required">*</span>专业类型:</label>
+  <input type="hidden" class="js-speciality-id" value="{{#each data.special}}{{#equals @index 0}}{{id}}{{else}},{{id}}{{/equals}}{{/each}}">
+  <div class="selected-special-group js-selector-group" data-type="speciality" data-api="/api/base-major/register-tree">
+    <span class="js-empty-placeholder no-data-placeholder {{#if data.special}}hide{{/if}}">请点击选择专业类型</span>
+    {{#each data.special}}
+      <span class='each-speciality' data-id='{{id}}' data-name="{{name}}">
+        {{name}}<i class='icon-hsh icon-hsh-cha js-delete-selected'></i>
+      </span>
+    {{/each}}
+    <i class="icon-hsh icon-hsh-caret pull-right"></i>
+  </div>
+  <div class="js-selector-container hide"><label></label></div>
+</div>
+<div class="control-group">
+  <label><span class="required">*</span>实际控制人:</label>
+  <input type="text" class="input-medium" name="controlName" placeholder="请输入实际控制人姓名" value="{{data.controlName}}" required>
+</div>
+<div class="control-group">
+  <label><span class="required">*</span>控制人联系方式:</label>
+  <input type="number" class="input-medium" name="controlMobile" placeholder="请输入实际控制人手机号" value="{{data.controlMobile}}" pattern="^1[34578]\d{9}$" required>
+</div>

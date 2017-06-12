@@ -1,0 +1,53 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>回复附件</label>
+  </div>
+  <div class="bids-content content-border clearfix">
+    {{#unless reply}}
+      {{#of bidSupplierStatus "8,9,10,11"}}
+        <div class="pull-left margin-right-20 margin-bottom-20">
+          <div class="bids-file btn-upload js-upload-file" data-type="16" data-connect-id="{{id}}">
+            <div class="file-img">
+              <i class="icon-hsh icon-hsh-upload"></i>
+            </div>
+            <div class="file-upload">
+              <input type="file" name="file">
+              <span>上传回复附件</span>
+            </div>
+          </div>
+        </div>
+      {{/of}}
+    {{/unless}}
+    {{#if clarifyReplyAccessory}}
+      {{#each clarifyReplyAccessory}}
+        <div class="pull-left margin-right-20 margin-bottom-20">
+          <div class="bids-file">
+            <div class="file-img">
+              <i class="icon-hsh icon-hsh-file"></i>
+            </div>
+            <div class="file-info">
+              <div class="title">{{filename}}</div>
+              <div class="date">
+                <span>{{formatDate createdAt}}</span>
+                <a href="http:{{fileUrl}}" class="pull-right">
+                 <i class="icon-hsh icon-hsh-xiazai"></i>
+                </a>
+                {{#unless replyStatus}}
+                  {{#of ../bidSupplierStatus "8,9,10,11"}}
+                    <a href="javascript:;" class="js-file-delete pull-right margin-right-10" data-id="{{id}}">
+                     <i class="icon-hsh icon-hsh-delete"></i>
+                    </a>
+                 {{/of}}
+                {{/unless}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#if replyStatus}}
+        <div class="center-text margin-bottom-10">暂未上传回复附件！</div>
+      {{/if}}
+    {{/if}}
+  </div>
+</div>

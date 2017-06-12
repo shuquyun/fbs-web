@@ -1,0 +1,29 @@
+<div class="pull-left margin-right-20 margin-bottom-20 file-content js-clarify-file">
+  <div class="bids-file">
+    <div class="file-img">
+      <i class="icon-hsh icon-hsh-file"></i>
+    </div>
+    <div class="file-info">
+      <div class="title">{{filename}}</div>
+      <div class="date">
+        <span>{{formatDate createdAt}}</span>
+        <a href="http:{{fileUrl}}" class="pull-right">
+          <i class="icon-hsh icon-hsh-xiazai"></i>
+        </a>
+        {{#equals issueOperatorId userId}}
+          {{#equals bidStatus 14}}
+            <a href="javascript:;" class="js-clarify-attch-delete pull-right margin-right-10" data-id="{{id}}">
+             <i class="icon-hsh icon-hsh-delete"></i>
+            </a>
+          {{/equals}}
+        {{/equals}}
+        {{#if fileType}}
+          <a href="javascript:;" class="js-clarify-attch-delete pull-right margin-right-10" data-id="{{id}}">
+           <i class="icon-hsh icon-hsh-delete"></i>
+          </a>
+          <input type="hidden" name="clarifyAccessoryIds[]" value="{{id}}">
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

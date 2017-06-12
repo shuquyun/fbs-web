@@ -1,0 +1,30 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.menu{
+  border-radius: 5px;
+
+  li{
+    cursor: crosshair;
+  }
+
+  .no-action-li {
+    cursor: default;
+
+    &:hover {
+      cursor: default;
+      background-color: #fff;
+    }
+
+    a {
+      cursor: default;
+    }
+  }
+
+  &.menu-dropdown {
+    ul {
+      height: auto;
+      max-height: 198px;
+    }
+  }
+}

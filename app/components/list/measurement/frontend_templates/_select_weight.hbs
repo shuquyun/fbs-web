@@ -1,0 +1,20 @@
+<div class="js-select-sku-info">
+  <p>sku 属性列表：</p>
+  {{#if (size attrVals)}}
+    <form class="weight-attr-form js-weight-attr-form">
+      <ul class="clearfix">
+        {{#each attrVals}}
+          <li class="pull-left">
+            <label class="input-label">
+              <input type="checkbox" name="attrs" class="input-checkbox" value="{{this}}">
+              <span class="attr-value">{{this}}</span>
+            </label>
+          </li>
+        {{/each}}
+      </ul>
+      <button class="btn btn-primary" type="submit">确定</button>
+    </form>
+  {{else}}
+    无可加权属性值
+  {{/if}}
+</div>

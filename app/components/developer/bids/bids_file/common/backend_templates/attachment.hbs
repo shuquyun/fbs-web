@@ -1,0 +1,36 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>招标附件</label>
+  </div>
+  <div class="bids-content content-border clearfix">
+    {{#equals bidFileOperatorId userId}}
+      {{#of bidStatus "2,3,6"}}
+        <div class="pull-left margin-right-20 margin-bottom-20">
+          <div class="bids-file btn-upload js-upload-file" data-type="0">
+            <div class="file-img">
+              <i class="icon-hsh icon-hsh-upload"></i>
+            </div>
+            <div class="file-upload">
+              <input type="file" name="file">
+              <span>上传招标附件</span>
+            </div>
+          </div>
+        </div>
+      {{/of}}
+    {{/equals}}
+    {{#if accessoryList}}
+      {{#each accessoryList}}
+        {{> component:developer/bids/bids_file/common/all_templates/_attach_item bidStatus=../bidStatus bidFileOperatorId=../bidFileOperatorId userId=../userId}}
+      {{/each}}
+    {{else}}
+      {{#equals bidFileOperatorId userId}}
+        {{#of bidStatus "2,3,6"}}
+        {{else}}
+          <div class="margin-bottom-10 center-text">暂无招标附件！</div>
+        {{/of}}
+      {{else}}
+        <div class="margin-bottom-10 center-text">暂无招标附件！</div>
+      {{/equals}}
+    {{/if}}
+  </div>
+</div>

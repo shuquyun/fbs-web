@@ -1,0 +1,70 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.profile{
+  min-height: 590px;
+
+  .form .success span.select-image-text {
+    display: inline-block;
+  }
+
+  .form .success .required {
+    display: inline-block;
+  }
+
+  .business-license{
+    vertical-align: middle;
+  }
+  .disappear{
+    display: none;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+  .author-table{
+    width: 580px;
+    @include inline-block(top);
+    th{
+      height: auto;
+      line-height: 14px;
+    }
+    td{
+      vertical-align: top;
+    }
+    span{
+      @include inline-block(middle);
+      &.author-brand-name,&.author-category-name{
+        width: 170px;
+
+      }
+      &.author-area-name{
+        width: 240px;
+      }
+    }
+  }
+  .author-label{
+    @include inline-block(top);
+  }
+  .delivery-infomation{
+    width: 500px;
+    border: 1px solid $color-border;
+    margin: 10px 0 0 100px;
+    min-height: 50px;
+    _height: 50px;
+    span{
+      @include inline-block(middle);
+      padding: 3px;
+      margin-right: 5px;
+    }
+  }
+  .address-select{
+    @include inline-block(middle);
+  }
+
+}
+
+.select-detail {
+  margin-top: 10px;
+  margin-left: 90px;
+}

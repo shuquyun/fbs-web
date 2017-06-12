@@ -1,0 +1,73 @@
+{{#component "design-tab-floor js-comp"}}
+  <div class="tab tab-reversed" data-type="switchable">
+    <div class="tab-header">
+      <div class="tab-title">
+        <span class="title-attach"><strong style="background-color: {{#if navHeadTheme}}{{navHeadTheme}}{{else}}#197aff{{/if}};"></strong></span>
+        <span class="bold font-16">{{#if navHead}}{{navHead}}{{else}}楼层名称{{/if}}</span>
+      </div>
+      <ul class="tab-navs clearfix">
+        {{#equals showFirst "-1"}}
+        {{else}}
+          <li data-role="nav" class="tab-nav first active" >
+            <a href="javascript:;" class="bold">{{#if firstTabTitle}}{{firstTabTitle}}{{else}}热门{{/if}}</a>
+          </li>
+        {{/equals}}
+        {{#equals navs ""}}
+        {{else}}
+          {{#each navs}}
+            <li data-role="nav" class="tab-nav {{#equals ../showFirst "-1"}}{{#equals @index 0}}first active{{else}}{{/equals}}{{/equals}}">
+              <a href="javascript:;" class="bold">{{this}}</a>
+            </li>
+          {{/each}}
+        {{/equals}}
+      </ul>
+    </div>
+    <div class="tab-contents clearfix">
+      {{#equals showFirst "-1"}}
+      {{else}}
+        <div class="tab-content tab-content-0 first-content" data-role="content" data-is-load="1">
+          <div class="other">
+            <div class="unite">
+              <img src="/assets/images/other-images/loading.png" data-original="{{cdnPath mainAdImage "600" "239"}}" width="100%" height="600">
+            </div>
+          </div>
+          <div class="product-images">
+            <a href="{{firstImageHref1}}" class="first-image"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage1 "299" "479"}}" width="100%" height="299" alt=""></a>
+            <a href="{{firstImageHref2}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage2 "299" "239"}}" width="100%" height="299" alt=""></a>
+            <a href="{{firstImageHref3}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage3 "299" "239"}}" width="100%" height="299" alt=""></a>
+            <br>
+            <a href="{{firstImageHref4}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage4 "299" "239"}}" width="100%" height="299" alt=""></a>
+            <a href="{{firstImageHref5}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage5 "299" "239"}}" width="100%" height="299" alt=""></a>
+            <a href="{{firstImageHref6}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage6 "299" "239"}}" width="100%" height="299" alt=""></a>
+            <a href="{{firstImageHref7}}"><img src="/assets/images/other-images/loading.png" data-original="{{cdnPath firstImage7 "299" "239"}}" width="100%" height="299" alt=""></a>
+          </div>
+        </div>
+      {{/equals}}
+      {{#each tabData}}
+        <div class="tab-content tab-item-content tab-content-{{#equals ../showFirst "-1"}}{{@index}} {{#equals @index 0}}first-content{{else}}hide{{/equals}}{{else}}{{add @index 1}} hide{{/equals}}" data-role="content" data-is-load="0">
+          <div class="other">
+            <div class="unite">
+              <img src="/assets/images/other-images/loading.png" {{#equals ../showFirst "-1"}}{{#equals @index 0}}data-original="{{cdnPath ../mainAdImage "600" "239"}}"{{else}}data-url="{{cdnPath ../mainAdImage "600" "239"}}"{{/equals}}{{/equals}} width="239" height="600">
+            </div>
+          </div>
+          <div class="product" data-ids="{{itemIds}}">
+            {{#each (splitter itemIds ',' '-1')}}
+              <div class="item">
+                <div class="pic">
+                  <a href="javascript: void(0);">
+                    <img src="/assets/images/other-images/loading.png" width="185" height="185">
+                  </a>
+                </div>
+                <div class="name"><a class="item-name" href="javascript: void(0);">加载中</a></div>
+                <div class="price">
+                  <span class="font-16">&yen; 加载中</span>
+                </div>
+              </div>
+              {{#equals @index 3}} <br>{{/equals}}
+            {{/each}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+{{/component}}

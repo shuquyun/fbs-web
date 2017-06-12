@@ -1,0 +1,12 @@
+{{#partial "realTitle"}}商家入驻{{/partial}}
+{{#partial "progress"}}
+  {{#inject "common/header_title_progress"}}{"title":"商家入驻"}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  <div class="user-center-contailer">
+    <div class="user-center-content" style="width: 650px;">
+      {{inject "user/merchant_settled"}}
+    </div>
+  </div>
+{{/partial}}
+{{> buyer/layout}}

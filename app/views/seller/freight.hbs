@@ -1,0 +1,6 @@
+{{#partial "realTitle"}}运费模板{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "运费管理"},{"url": "#", "crumb": "运费管理"}]}}{{/inject}}
+  {{inject "shop/freight" true}}
+{{/partial}}
+{{> seller/layout}}

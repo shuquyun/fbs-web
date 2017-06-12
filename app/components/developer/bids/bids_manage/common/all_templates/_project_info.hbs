@@ -1,0 +1,17 @@
+<div class="control-group">
+  <label class="group-title"><b class="required">*</b>项目名称</label>
+  {{#if status}}
+    <select class="project-select js-project-select" name="projectId">
+      {{#each _DATA_}}
+        <option value="{{id}}" {{#equals ../projectId id}}selected{{/equals}}>{{name}}</option>
+      {{/each}}
+    </select>
+  {{else}}
+    <input type="hidden" name="projectId" value="{{projectId}}">
+    <span>{{projectName}}</span>
+  {{/if}}
+  <a href="/developer/project-create" class="margin-left-20">去创建项目</a>
+</div>
+<div class="js-project-base">
+  {{> component:developer/bids/bids_manage/common/all_templates/_base_info}}
+</div>

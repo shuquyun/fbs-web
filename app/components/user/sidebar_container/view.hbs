@@ -1,0 +1,36 @@
+{{#component "component-sidebar-container js-comp"}}
+<nav class="sidebar">
+{{!--   <ul class="sidebar-portal">
+    <li class="portal-item current-portal">
+      <div class="portal-icon"><em class="icon-feebas icon-feebas-location"></em></div>
+      <label class="portal-title">{{i18n _DATA_.name bundle="user"}}</label>
+    </li>
+  </ul> --}}
+  <ul class="nav">
+    {{#each _DATA_.navs}}
+      {{#withPerm auth}}
+        <li class="nav-list {{#each children}}{{#indexOf href ../../_PATH_ }}nav-open{{/indexOf}}{{/each}}" data-auth="{{auth}}">
+          <a class="nav-list-header" href="{{#if children}}javascript:;{{else}}{{href}}{{/if}}">
+            <span class="nav-icon"><em class="icon-feebas {{icon}}"></em></span>
+            <span class="nav-header">
+              <label>&nbsp;{{i18n name bundle="user"}}</label>
+              {{#if children}}<span><i class="icon-feebas icon-feebas-xiangxiazhedie"></i></span>{{/if}}
+            </span>
+          </a>
+          {{#if children}}
+            <ul class="nav-list-body">
+              {{#each children}}
+                {{#withPerm auth}}
+                  <li class="subnav-list {{#indexOf href ../../_PATH_}}active{{/indexOf}}" data-auth="{{auth}}">
+                    <a href="{{href}}"{{#if blank}} target="_blank"{{/if}} class="subnav-list-header">{{i18n name bundle="user"}}</a>
+                  </li>
+                {{/withPerm}}
+              {{/each}}
+            </ul>
+          {{/if}}
+        </li>
+      {{/withPerm}}
+    {{/each}}
+  </ul>
+</nav>
+{{/component}}

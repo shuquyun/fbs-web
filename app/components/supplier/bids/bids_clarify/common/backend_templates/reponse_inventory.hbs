@@ -1,0 +1,52 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>回复清单</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">清单名称</th>
+          <th width="15%">创建时间</th>
+          <th width="15%">生效时间</th>
+          <th width="15%">生效状态</th>
+          <th width="15%">备注</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          {{#if clarifyReplyInventory}}
+            {{#each clarifyReplyInventory}}
+              <tr class="js-tr-item">
+                <td class="td-active">{{filename}}</td>
+                <td>{{formatDate createdAt}}</td>
+                <td>{{#if effectiveDate}}{{formatDate effectiveDate}}{{else}}-{{/if}}</td>
+                <td>
+                  {{#equals effectiveStatus 0}}<span class="status-invalid">未生效</span>{{/equals}}
+                  {{#equals effectiveStatus 1}}<span class="status-success">已生效</span>{{/equals}}
+                </td>
+                <td>{{#if remark}}{{remark}}{{else}}-{{/if}}</td>
+                <td>
+                  <a href="javascript:;">查看历史版本</a><br>
+                  {{#unless replyStatus}}
+                    {{#if effectiveStatus}}
+                      <a href="javascirpt:;" class="js-list-publish" data-id="{{id}}" data-action="0">撤回</a>
+                    {{else}}
+                      <a href="/list/config?bidId={{bidId}}&billId={{fileUrl}}" target="_blank">编辑</a><br>
+                      <a href="javascript:;" class="js-list-publish" data-id="{{id}}" data-action="1">发布</a>
+                    {{/if}}
+                  {{/unless}}
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td class="center-text" colspan="6">暂无澄清回复清单！</td>
+            </tr>
+          {{/if}}
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>

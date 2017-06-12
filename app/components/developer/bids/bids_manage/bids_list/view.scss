@@ -1,0 +1,58 @@
+@import "pokeball/theme";
+.bids-manage {
+
+  .speciality-container {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .marjor-content {
+    @include inline-block(middle);
+    position: relative;
+  }
+
+  .body-table {
+    width: 100%;
+  }
+
+  .table-left {
+    float: left;
+    width: 15%;
+  }
+
+  .table-right {
+    float: left;
+    width: 85%;
+  }
+
+  .navs-content {
+    border: 1px solid $color-border;
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  .table-navs {
+    padding-right: 20px;
+    color: $color-text-assist;
+
+    label {
+      margin: 5px;
+    }
+
+    .navs-li {
+      cursor: pointer;
+      padding: 5px 10px;
+
+      &.navs-li:hover {
+        background: $lightnavy;
+      }
+
+      &.selected {
+        color: $color-primary;
+        background: $lightnavy;
+      }
+    }
+  }
+}

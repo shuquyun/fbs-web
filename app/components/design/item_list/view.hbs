@@ -1,0 +1,17 @@
+{{#component "shop-item-list floor-items"}}
+  <div class="item-list" id="floor{{floorId}}" data-id="{{floorId}}" data-rendered="1">
+    <div class="panel">{{#if floorName}}{{floorName}}{{else}}商品列表{{/if}}</div>
+    {{#each _DATA_.items}}
+      <div class="item {{#mod @index 4}}last{{/mod}}">
+        <div class="item-img">
+          <a href="{{_HREF_.main}}/items/{{id}}" target="_blank"><img src="{{mainImage}}" width="185" height="185" alt=""></a>
+        </div>
+        <div class="item-info">
+          <a class="item-name" href="{{_HREF_.main}}/items/{{id}}" target="_blank"><span title="{{name}}">{{name}}</span></a><br>
+          <span class="price currency">{{_CURRENCY_}}{{#if _DATA_.isInClubActivity}}{{#if extra.specialPrice}}{{formatPrice extra.specialPrice}}{{else}}{{formatPrice price}}{{/if}}{{else}}{{formatPrice price}}{{/if}}</span>
+          <br><span class="origin-price">{{_CURRENCY_}}{{formatPrice originPrice}}</span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/component}}

@@ -1,0 +1,14 @@
+{{#each data}}
+  <tr class="js-item-tr" data-item="{{json this}}">
+    <td>{{name}}</td>
+    <td>
+      {{#if (size units)}}
+        <select name="unit">
+          {{#each units}}
+            <option value="{{name}}" data-unit="{{json this}}">{{name}}</option>
+          {{/each}}
+        </select>
+      {{/if}}
+    </td>
+  </tr>
+{{/each}}

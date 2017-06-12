@@ -1,0 +1,13 @@
+{{#partial "realTitle"}}招标搜索{{/partial}}
+{{#partial "realBody"}}
+  {{#equals type "more"}}
+    {{inject "search/bids_search/condition_search"}}
+  {{else}}
+    {{#if q}}
+      {{inject "search/bids_search/condition_search"}}
+    {{else}}
+      {{inject "search/bids_search/common"}}
+    {{/if}}
+  {{/equals}}
+{{/partial}}
+{{> supplier/layout_search}}

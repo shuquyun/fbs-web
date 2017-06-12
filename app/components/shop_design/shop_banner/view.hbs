@@ -1,0 +1,9 @@
+{{#component "shop-banner-outer"}}
+  <div class="shop-banner" style="background:url('{{backImage}}') no-repeat center;">
+    <div class="shop-avatar-info">
+      <div class="shop-avatar">
+        <img src="{{#if _DATA_.imageUrl}}{{_DATA_.imageUrl}}{{else}}/assets/images/other-images/shop-no-avatar.png{{/if}}" width="140" height="60" alt="">
+      </div>
+    </div>
+  </div>
+{{/component}}

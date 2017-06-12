@@ -1,0 +1,18 @@
+{{#partial "title"}}登录{{/partial}}
+{{#partial "body"}}
+  <div class="main-login">
+    <div class="login-container" style="padding:42px 0;width:1200px;height:120px;margin: 0 auto;">
+      <a href="/"><img src="/assets/images/other-images/logo.png" alt="" width="150" height="36"></a>
+      <h2 style="display:inline-block;vertical-align:15px;font-size:16px;line-height:18px;margin:0 30px;color: #666666;"><b>登录</b></h2>
+    </div>
+    <div class="main-login-back" style="width: 100%;overflow: hidden;height:560px;background: url(/assets/images/other-images/login.png) center center no-repeat; background-color: #5795FF">
+      <div class="outer-login" style="max-width: 1200px;margin: 0 auto;padding:70px 40px;text-align:right;">
+        <div class="login-container" style="display:inline-block;">
+          {{inject "common/login"}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!-- {{> footer}} --}}
+{{/partial}}
+{{> layout}}

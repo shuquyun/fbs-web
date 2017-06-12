@@ -1,0 +1,7 @@
+billGeneralPageInfo:
+  type: http
+  url: /api/bill/{id}
+
+billSheetItem:
+  type: http
+  url: /api/bill-fees/{billSheetId}

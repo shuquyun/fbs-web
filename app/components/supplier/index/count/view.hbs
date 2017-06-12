@@ -1,0 +1,38 @@
+{{#component "developer-count"}}
+  <div class="title">本月统计</div>
+  <div class="count-container supplier-count">
+    {{#with _DATA_}}
+      <div class="count-show">
+        <ol>
+          <li>
+            <div class="img-content">
+              <i class="icon-hsh icon-hsh-file"></i>
+            </div>
+            <div class="info-content">
+              <div class="name">正在公开招标项</div>
+              <div class="count">{{bidingCount}}</div>
+            </div>
+          </li>
+          <li>
+            <div class="img-content">
+              <i class="icon-hsh icon-hsh-file"></i>
+            </div>
+            <div class="info-content">
+              <div class="name">待考察供应商</div>
+              <div class="count">{{waitingConfirmCount}}</div>
+            </div>
+          </li>
+          <li>
+            <div class="img-content">
+              <i class="icon-hsh icon-hsh-file"></i>
+            </div>
+            <div class="info-content">
+              <div class="name">待定标数量</div>
+              <div class="count">{{supplierCheckingCount}}</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    {{/with}}
+  </div>
+{{/component}}

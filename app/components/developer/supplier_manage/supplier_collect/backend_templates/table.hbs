@@ -1,0 +1,48 @@
+<div class="tab supplier-tab" data-data="{{json _DATA_}}">
+  <div class="tab-contents">
+    <table class="table">
+      <thead>
+        <th width="8%">供应商ID</th>
+        <th width="9%">供应商名称</th>
+        <th width="8%">服务区域</th>
+        <th width="8%">专业</th>
+        <th width="10%">注册资金(万)</th>
+        <th width="7%">联系人</th>
+        <th width="11%">联系电话</th>
+        <th width="10%">成立时间</th>
+        <th width="8%">纳税人资格</th>
+        <th width="9%">注册地址</th>
+        <th width="9%">操作</th>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr>
+            <td>{{supplierId}}</td>
+            <td><a href="/developer/supplier-detail?companyId={{supplierId}}">{{supplierName}}</a></td>
+            <td>{{#each (parse serviceArea)}}{{name}}<br/>{{/each}}</td>
+            <td>{{#each special}}{{name}}<br/>{{/each}}</td>
+            <td>{{registCapital}}</td>
+            <td>{{contactName}}</td>
+            <td>{{contactPhone}}</td>
+            <td>{{formatDate establishTime 'day'}}</td>
+            <td>
+              {{#equals capital 1}}一般纳税人{{/equals}}
+              {{#equals capital 2}}小额纳税人{{/equals}}
+            </td>
+            <td>{{registerAddress}}</td>
+            <td>
+              <a href="/developer/supplier-import?supplierId={{supplierId}}">去入库</a><br/>
+              <a data-id="{{supplierId}}" class="js-delete-collect" href="javascript:;">取消待考察</a>
+            </td>
+          </tr>
+        {{/each}}
+        {{#if _DATA_.empty}}
+          <tr>
+            <td class="empty-data-title" colspan="12">暂无待考察供应商！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+    {{inject "common/pagination" total=_DATA_.total}}
+  </div>
+</div>

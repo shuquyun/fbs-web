@@ -1,0 +1,21 @@
+<div class="modal bill-sku-select-modal js-select-sku-modal" data-item-cate="{{json itemCate}}" data-item="{{json item}}">
+  <div class="modal-header">
+    <h2>选择材料</h2>
+  </div>
+  <div class="modal-body">
+    {{#if item.id}}
+      <div class="table-container" id="js-bill-item-container">
+        <p>当前材料映射的分类：{{#each @root.categories}}{{name}}{{#unless @last}} > {{/unless}}{{/each}}</p>
+        <p>当前材料映射的条目：{{item.name}}</p>
+      </div>
+      {{> list/division/frontend_templates/_sku_type}}
+    {{else}}
+      <div class="table-container" id="js-bill-cate-container"></div>
+      <div class="table-container" id="js-bill-item-container"></div>
+      <div class="sku-container" id="js-bill-sku-container"></div>
+    {{/if}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-medium btn-success close" type="button">关闭</button>
+  </div>
+</div>

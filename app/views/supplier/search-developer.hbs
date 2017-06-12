@@ -1,0 +1,13 @@
+{{#partial "realTitle"}}开发商搜索{{/partial}}
+{{#partial "realBody"}}
+  {{#equals type "more"}}
+    {{inject "search/developer_search"}}
+  {{else}}
+    {{#if q}}
+      {{inject "search/developer_search"}}
+    {{else}}
+      {{inject "search/company_search_index" companyType="developer" pageSize=(default pageSize 5)}}
+    {{/if}}
+  {{/equals}}
+{{/partial}}
+{{> supplier/layout_search_company}}

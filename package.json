@@ -1,0 +1,45 @@
+{
+  "name": "@terminus/feebas",
+  "version": "1.0.0",
+  "description": "terminus parana feebas",
+  "scripts": {
+    "dev": "herd",
+    "watch": "shepherd",
+    "build": "shepherd build",
+    "prod": "herd Pampasfile-prod.js",
+    "hotreload": "nodemon  --exec 'herd Pampasfile.js' --watch lib/server --watch 'Pampasfile*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.terminus.io:production/feebas.git"
+  },
+  "author": "Vico",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.1.2",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "@terminus/designer": "^0.5.1",
+    "@terminus/eevee": "^0.2.47",
+    "@terminus/site-manager": "^0.4.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
+    "babel-plugin-transform-es3-property-literals": "^6.8.0",
+    "babel-preset-es2015": "^6.11.1",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "compass-mixins": "0.12.10",
+    "fs-extra": "^0.30.0",
+    "js-yaml": "^3.6.1",
+    "moment": "^2.17.1",
+    "crypto-js": "^3.1.8"
+  }
+}

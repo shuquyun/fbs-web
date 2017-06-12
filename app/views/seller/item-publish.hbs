@@ -1,0 +1,5 @@
+{{#partial "realTitle"}}{{#unless itemId}}商品发布{{else}}编辑商品信息{{/unless}}{{/partial}}
+{{#partial "realBody"}}
+  {{inject "items/seller/item_publish/common" true}}
+{{/partial}}
+{{> seller/layout}}

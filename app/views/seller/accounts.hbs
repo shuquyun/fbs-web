@@ -1,0 +1,6 @@
+{{#partial "realTitle"}}子账号管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "权限管理"},{"url": "#", "crumb": "子帐号管理"}]}}{{/inject}}
+  {{inject "shop/accounts" true}}
+{{/partial}}
+{{> seller/layout}}

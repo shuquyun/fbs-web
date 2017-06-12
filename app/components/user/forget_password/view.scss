@@ -1,0 +1,46 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.component-forget-password{
+  min-height: 500px;
+  .current-location{
+    width: 100%;
+    border-bottom: 1px solid $color-border;
+    padding-top: 8px;
+    height: 22px;
+  }
+  .forget-password-progress{
+    margin-top: 10px;
+    padding: 0;
+    .progress-title{
+      float: left;
+      line-height: 20px;
+      margin: 18px 0 0 20px;
+    }
+    .progress-div{
+      width: 330px;
+      margin: 0 auto;
+    }
+  }
+  .forget-password-div-form{
+    padding-top: 20px;
+    width: 600px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  .forget-password-success{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: auto;
+  }
+  .required-error{
+    vertical-align: middle;
+  }
+  .verify-code {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+}

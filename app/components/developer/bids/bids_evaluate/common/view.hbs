@@ -1,0 +1,17 @@
+{{#component "js-comp bids-judge bids-block"}}
+  {{inject "developer/bids/bids_evaluate/supplier_list" status="evaluate"}}
+  {{inject "developer/bids/bids_evaluate/clarify_list" type=14}}
+  {{> component:developer/bids/bids_evaluate/common/backend_templates/attachment_evaluate}}
+  {{#with _BIDS_DETAILS_}}
+    {{#equals issueOperatorId ../_USER_.id}}
+      {{#equals bidStatus 14}}
+        <div class="bids-group no-padding">
+          <div class="bids-content">
+            <button class="btn btn-primary js-bids-evaluate" data-tech="{{#if techEvaluation}}1{{else}}0{{/if}}" data-credit="{{#if creditEvaluation}}1{{else}}0{{/if}}" data-business="{{#if businessEvaluation}}1{{else}}0{{/if}}">提交评标</button>
+          </div>
+        </div>
+      {{/equals}}
+    {{/equals}}
+  {{/with}}
+  {{inject "developer/bids/bids_approval/log" type=5 connectId=bidId}}
+{{/component}}

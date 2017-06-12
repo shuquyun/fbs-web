@@ -1,0 +1,34 @@
+{{#component "address-manage js-comp"}}
+  <p class="components-title"><strong>{{i18n "Return Address" bundle="shop"}}</strong></p>
+  <hr class="title-hr">
+  <div class="edit-button">
+    <button class="btn btn-primary js-add-address">{{i18n "Add an Address" bundle="shop"}}</button>
+  </div>
+  <div class="address-table">
+    <table class="table table-horizontal center-tex item-manage-table">
+      <thead>
+        <tr>
+          <th width="13%">{{i18n "Recipient" bundle="shop"}}</th>
+          <th width="15%">{{i18n "Regional" bundle="shop"}}</th>
+          <th width="30%">{{i18n "Street address" bundle="shop"}}</th>
+          <th width="10%">{{i18n "Phone No" bundle="shop"}}</th>
+          <th width="12%">{{i18n "Operation" bundle="shop"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_}}
+        <tr data-address="{{json this}}" id="address-{{id}}">
+          <td class="name">{{name}}</td>
+          <td class="region">{{province}} {{city}} {{region}}</td>
+          <td class="street">{{street}}</td>
+          <td class="mobile">{{mobile}}</td>
+          <td>
+            <button class="btn btn-small btn-info js-edit-address-label" data-user="{{_USER_.id}}">{{i18n "Edit" bundle="shop"}}</button>
+            <button id="{{id}}" class="btn btn-small btn-info" data-toggle="confirm" data-title="{{i18n "Are you sure to delete it?" bundle="shop"}}" data-content="{{i18n "After you delete it cannot be restored, please be careful" bundle="shop"}}" data-event="confirm:delete">{{i18n "Delete" bundle="shop"}}</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{/component}}

@@ -1,0 +1,111 @@
+# pagingSupplierList:
+#   type: 'http'
+#   url: "/api/supplier/manage/views"
+#   query:
+#     - key: supplierName
+#     - key: registCapital
+#     - key: state
+#     - key: pageNo
+#     - key: pageSize
+
+# getImportSupplier:
+#   type: 'http'
+#   url: "/api/supplier/import/views"
+#   query:
+#     - key: supplierName
+#     - key: contactName
+#     - key: state
+#     - key: pageNo
+#     - key: pageSize
+
+# getSupplierDetail:
+#   type: 'http'
+#   url: "/api/supplier/manage/import/details"
+#   query:
+#     - key: supplierId
+
+# getSupplierCollect:
+#   type: 'http'
+#   url: "/api/supplier/manage/collection/views"
+#   query:
+#     - key: supplierName
+#     - key: registCapital
+#     - key: pageNo
+#     - key: pageSize
+
+getCompanyInfo:
+  type: 'http'
+  url: "/api/company/supplier/info"
+
+getCompanyApply:
+  type: http
+  url: /api/company/apply/recent/supplier-info
+
+pagingSupplierBids:
+  type: http
+  url: /api/bids/supplier/tab/{type}/paging
+  query:
+    - key: projectName
+    - key: status
+    - key: bidName
+    - key: speciality
+    - key: bidCompany
+
+getSupplierBidsSupplyFiles:
+  type: http
+  url: /api/issued/bids/{bidId}/supplements
+
+pagingSupplierAnswerQuestions:
+  type: http
+  url: /api/questions/paging/supplier
+  query:
+    - key: bidId
+    - key: pageSize
+    - key: pageNo
+
+getSupplierBidsQuestionsDetails:
+  type: http
+  url: /api/bids/{bidId}/questions/detail/supplier
+
+getBIdsFilesByTypes:
+  type: http
+  url: /api/bids/{bidId}/files/types
+  query:
+    - key: types
+    - key: connectId
+
+getBidSupplierDetailsById:
+  type: http
+  url: /api/bids/{bidId}/suppliers
+
+getSupplierClarifyReply:
+  type: http
+  url: /api/bid/{bidId}/suppliers/clarify/reply
+
+getFinalConfirmFileList:
+  type: http
+  url: /api/bids/{bidId}/final/inventories
+
+getSupplierQuestionById:
+  type: http
+  url: /api/questions/{id}
+
+getSupplierCounts:
+  type: http
+  url: /api/bids/supplier/home/counts
+
+getDeveloperDetail:
+  type: http
+  url: /api/company/developer/info
+  query:
+    - key: companyId
+
+getDeveloperLibrarySupplier:
+  type: http
+  url: /api/supplier/manage/views
+  query:
+    - key: pageNo
+    - key: pageSize
+    - key: developerId:companyId
+
+

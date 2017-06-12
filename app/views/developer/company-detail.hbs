@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}公司信息完善{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "公司管理"}, {"url": "#", "crumb": "公司信息完善"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/company/company_detail"}}
+{{/partial}}
+{{> developer/layout}}

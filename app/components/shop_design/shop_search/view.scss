@@ -1,0 +1,178 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+.shop-search-items{
+  .cutwords {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .current-location-dark{
+    padding: 0 0 12px 0;
+    font-size: 12px;
+    a {
+      color: #24344e;
+    }
+  }
+
+  .current-location-span{
+    i {
+      @include inline-block(baseline);
+
+      &.chosen-close{
+        @include inline-block(bottom);
+      }
+    }
+
+    .bread-selector {
+      @include inline-block();
+      border: 1px solid $color-border;
+      padding: 4px;
+      margin-right: 6px;
+    }
+  }
+
+  i {
+    font-size: 10px;
+  }
+  .list{
+    ul li{
+      margin: 0 1px 8px 0;
+    }
+  }
+
+  .list {
+    .shop-search-items-img-type {
+      li.product {
+        width: 232px;
+        height: 340px;
+        padding: 10px;
+        margin: 0 10px 10px 0;
+        border: 1px solid $color-border;
+        &.no-mr {
+          margin-right: 0;
+        }
+        &:hover {
+          border: 1px solid $color-primary;
+        }
+        .product-image {
+          width: 212px;
+          height: 212px;
+        }
+        .product-price {
+          font-size: 16px;
+          line-height: 16px;
+          color: #ff7900;
+          font-weight: bold;
+          .saleQuantity {
+            font-size: 12px;
+            color: #999999;
+            font-weight: normal;
+            float: right;
+            line-height: 16px;
+          }
+        }
+        .product-desc {
+          color: $color-text-assist;
+          line-height: 18px;
+          margin: 7px 0 8px;
+        }
+        .shop-name {
+          margin: 8px 0;
+          line-height: 16px;
+          color: #999999;
+          i {
+            font-size: 16px;
+          }
+          a {
+            color: #999999;
+            &:hover {
+              color: $color-primary;
+            }
+          }
+        }
+      }
+    }
+    .shop-search-items-list-type {
+      margin-top: 20px;
+      tr {
+        &:last-child {
+          td {
+            border-bottom: 1px solid #dfdfdf;
+          }
+        }
+        &:hover {
+          td {
+            background-color: #f5f5f5;
+          }
+        }
+      }
+      td {
+        padding: 20px 0;
+        vertical-align: top;
+        border-top: 1px solid #dfdfdf;
+      }
+      .promotion-type {
+        display: inline-block;
+        width: 50px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 10px;
+        color: $color-text-white;
+        text-align: center;
+      }
+      .promotion-type-3 {
+        background-color: #fbc543;
+      }
+      .product-image {
+        width: 80px;
+        height: 80px;
+        border: 1px solid rgba(216,216,216,0.4);
+        margin-right: 20px;
+        display: inline-block;
+      }
+      .descAshop {
+        display: inline-block;
+        width: 330px;
+        vertical-align: top;
+        p {
+          margin: 0;
+          line-height: 18px;
+          a {
+            color: $color-text-assist;
+            &:hover {
+              color: #197aff;
+            }
+          }
+        }
+        .product-desc {
+          color: $color-text-assist;
+          line-height: 18px;
+        }
+        .shop-name {
+          margin: 10px 0;
+          line-height: 16px;
+          color: #999999;
+          a {
+            color: #999999;
+          }
+          i {
+            font-size: 16px;
+            color: #999999;
+          }
+        }
+      }
+      .product-price {
+        font-size: 16px;
+        line-height: 20px;
+        color: #ff7900;
+        font-weight: bold;
+      }
+      .saleQuantity {
+        font-size: 12px;
+        color: #999999;
+        line-height: 16px;
+      }
+    }
+  }
+
+}

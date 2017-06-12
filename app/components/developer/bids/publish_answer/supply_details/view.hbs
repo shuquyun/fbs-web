@@ -1,0 +1,22 @@
+{{#component "js-comp bids-supply-files"}}
+  <div class="bids-block">
+    {{#with _DATA_}}
+      {{> component:developer/bids/publish_answer/supply_details/backend_templates/attachment filetype=../type
+      userId=../_USER_.id}}
+      {{> component:developer/bids/publish_answer/supply_details/backend_templates/list filetype=../type userId=../_USER_.id}}
+      {{#equals issueOperatorId ../_USER_.id}}
+        {{#of bidStatus "11,12,13"}}
+          {{#of supplyFileStatus "-1,0"}}
+            <div class="bids-group">
+              <div class="bids-content content-border content-padding">
+                <button class="btn btn-primary js-bids-file-confirm" data-file="{{json ../_DATA_}}">提交补充文件</button>
+              </div>
+            </div>
+          {{/of}}
+        {{/of}}
+      {{/equals}}
+    {{/with}}
+    {{inject "developer/bids/bids_approval/log" type=3 connectId=issuedId}}
+  </div>
+{{/component}}
+

@@ -1,0 +1,28 @@
+@import "compass/css3";
+@import "pokeball/theme";
+
+.activities-manage{
+  .set-default{
+    display: none;
+  }
+  .address-table{
+    margin-top: 20px;
+    .item-manage-table{
+      thead{
+        background-color: $color-background;
+      }
+      tbody{
+        tr{
+          &:hover{
+            & .set-default{
+              @include inline-block(middle);
+            }
+          }
+        }
+        td {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}

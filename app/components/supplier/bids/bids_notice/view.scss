@@ -1,0 +1,25 @@
+@import "pokeball/theme";
+
+.bids-notice {
+  width: 100%;
+
+  .notice-item {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 15px;
+    color: $color-text-assist;
+    font-size: 12px;
+    line-height: 16px;
+
+    .title {
+      width: 100px;
+      text-align: right;
+      color: $color-text-note;
+      @include inline-block(middle);
+    }
+
+    .name {
+      @include inline-block(middle);
+    }
+  }
+}

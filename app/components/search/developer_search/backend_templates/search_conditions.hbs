@@ -1,0 +1,43 @@
+<div class="search-attrs js-search-attrs">
+  <table width="100%">
+    {{#if _DATA_.scopes}}
+      <tr>
+        <th><span class="attr-group">业务领域</span></th>
+        <td class="attr-container js-filter-container" data-length="{{size _DATA_.scopes}}">
+          <ul class="attr-list clearfix">
+          {{#each _DATA_.scopes}}
+            <li class="attr-dd dd-cancel">
+              <div class="attr hide cutwords" data-value="{{value}}">
+                {{value}}<i class="icon-feebas icon-feebas-guanbi"></i>
+              </div>
+              <a href="javascript:;" class="js-property-selector cutwords" data-key="scope" data-value="{{value}}">{{value}}</a>
+            </li>
+          {{/each}}
+          </ul>
+          <div class="brand-buttons hide">
+            <button class="btn js-attrs-confirm btn-medium btn-primary" data-key="scope" type="button">{{i18n "Confirm" bundle="design"}}</button>
+            <button class="btn js-brand-cancel btn-medium btn-secondary" type="button">{{i18n "Cancel" bundle="design"}}</button>
+          </div>
+        </td>
+        <td class="more-dd">
+          {{#gt (size _DATA_.scopes) 1}}
+            <button class="btn btn-minor btn-small js-attr-elects">
+              <i class="icon-feebas icon-feebas-tianjia"></i> <span>{{i18n "Options" bundle="design"}}</span>
+            </button>
+          {{/gt}}
+          {{#gt (size _DATA_.scopes) 5}}
+            <button class="btn btn-minor btn-small js-unfold">
+              <span>{{i18n "unfold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangxiazhedie"></i>
+            </button>
+            <button class="btn btn-minor btn-small js-fold hide">
+              <span>{{i18n "fold" bundle="shop_design"}}</span> <i class="icon-feebas icon-feebas-xiangshangzhedie"></i>
+            </button>
+          {{/gt}}
+        </td>
+      </tr>
+    {{/if}}
+    {{#unless _DATA_.capitalChosen}}
+      {{> component:search/supplier_search/backend_templates/search_capital}}
+    {{/unless}}
+  </table>
+</div>

@@ -1,0 +1,65 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>清单列表</label>
+    {{#of bidStatus "2,3,6"}}
+      {{#equals userId bidFileOperatorId}}
+        <a href="javascript:;" class="btn btn-info margin-left-20 js-manager-assign" data-costoperator="{{costOperatorIds}}">指定成本经办人</a>
+      {{/equals}}
+      {{#of userId costOperatorIds}}
+        <a href="/list/config?bidId={{bidId}}&type=1" target="_blank" class="btn btn-info margin-left-20{{#of userId costOperatorIds}}{{else}} hide{{/of}}">创建招标清单</a>
+      {{/of}}
+    {{/of}}
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">清单名称</th>
+          <th width="15%">创建时间</th>
+          <th width="15%">生效时间</th>
+          <th width="15%">生效状态</th>
+          <th width="15%">备注</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if inventoryList}}
+          {{#each inventoryList}}
+            <tr {{#if effectiveStatus}}class="js-inventory-effect-item"{{/if}}>
+              <td class="td-active">{{filename}}</td>
+              <td>{{formatDate createdAt}}</td>
+              <td>{{#if effectiveDate}}{{formatDate effectiveDate}}{{else}}-{{/if}}</td>
+              <td>
+                {{#equals effectiveStatus 0}}<span class="status-invalid">未生效</span>{{/equals}}
+                {{#equals effectiveStatus 1}}<span class="status-success">已生效</span>{{/equals}}
+              </td>
+              <td>{{#if remark}}{{remark}}{{else}}-{{/if}}</td>
+              <td>
+                {{#equals effectiveStatus 1}}
+                  <a href="javascript:;">查看历史版本</a><br>
+                {{/equals}}
+                {{#of ../userId ../costOperatorIds}}
+                  {{#equals effectiveStatus 0}}
+                    <a href="javascript:;">查看历史版本</a><br>
+                  {{/equals}}
+                  {{#of ../bidStatus "2,3,6"}}
+                    {{#equals effectiveStatus 1}}
+                      <a href="javascirpt:;" class="js-list-publish" data-id="{{id}}" data-action="0">撤回</a>
+                    {{else}}
+                      <a href="/list/config?bidId={{bidId}}&billId={{fileUrl}}" target="_blank">编辑</a><br>
+                      <a href="javascript:;" class="js-list-publish" data-id="{{id}}" data-action="1">发布</a>
+                    {{/equals}}
+                  {{/of}}
+                {{/of}}
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td class="center-text" colspan="6">暂无清单！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

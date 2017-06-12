@@ -1,0 +1,46 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>回复清单</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">清单名称</th>
+          <th width="15%">创建时间</th>
+          <th width="15%">生效时间</th>
+          <th width="15%">回复状态</th>
+          <th width="15%">备注</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          {{#if clarifyReplyInventory}}
+            {{#each clarifyReplyInventory}}
+              <tr class="js-tr-item">
+                <td class="td-active">{{filename}}</td>
+                <td>{{formatDate createdAt}}</td>
+                <td>{{formatDate effectiveDate}}</td>
+                <td>
+                  {{#equals effectiveStatus 0}}<span class="status-invalid">未生效</span>{{/equals}}
+                  {{#equals effectiveStatus 1}}<span class="status-success">已生效</span>{{/equals}}
+                </td>
+                <td>无</td>
+                <td>
+                  {{#equals effectiveStatus 1}}
+                    <a href="javascript:;">查看历史版本</a>
+                  {{/equals}}
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td class="center-text" colspan="6">暂无澄清回复清单！</td>
+            </tr>
+          {{/if}}
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>

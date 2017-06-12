@@ -1,0 +1,88 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/transform";
+@import "pokeball/theme";
+
+.common-query-header {
+  height: 120px;
+  padding: 40px 130px;
+
+  form.form-search {
+    width: auto;
+    margin: 0;
+    position: relative;
+
+    fieldset {
+      display: inline-block;
+      padding: 0px;
+    }
+
+    .search-type-group {
+      width: 96px;
+      height: 40px;
+
+      .search-type {
+        z-index: 99;
+        .search-type-li {
+          width: 96px;
+          height: 38px;
+          padding-left: 15px;
+        }
+      }
+
+      .search-tab-icon {
+        left: inherit;
+        right: 12px;
+        z-index: 100;
+      } 
+    }
+
+    .search-input {
+      padding-left: 110px;
+    }
+
+    .input-search {
+      input {
+        width: 580px;
+        height: 40px;
+      }
+      .input-group-btn .btn {
+        width: 60px;
+        padding: 9px 9px;
+      }
+    }
+
+    .city-list {
+      position: absolute;
+      right: -99px;
+
+      .selectric {
+        width: 120px;
+      }
+    }
+  }
+
+  .select-city {
+    display: inline-block;
+    line-height: 38px;
+
+    i {
+      margin-bottom: 3px;
+    }
+
+    .current-selected-city {
+      margin: 0px 20px 0px 10px;
+    }
+  }
+}
+
+.component-site-header .search-input {
+  border-color: $color-primary-btn;
+}
+
+.common-query-header.search-company-header {
+  padding: 40px 280px;
+
+  form.form-search .search-type-group .search-type .search-type-li {
+    padding-left: 27px;
+  }
+}

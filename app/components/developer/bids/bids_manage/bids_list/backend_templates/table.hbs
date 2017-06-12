@@ -1,0 +1,105 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th width="8%">招标编码</th>
+      <th width="10%">招标名称</th>
+      <th width="10%">项目名称</th>
+      <th width="10%">专业</th>
+      <th width="7%">招标类别</th>
+      <th width="7%">招标方式</th>
+      <th width="7%">概算金额（元）</th>
+      <th width="7%">投标保证金（元）</th>
+      <th width="7%">计划工期（天）</th>
+      <th width="7%">清单编制状态</th>
+      <th width="10%">招标状态</th>
+      <th width="10%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if data}}
+      {{#each data}}
+        <tr>
+          <td>{{projectId}}-{{id}}</td>
+          <td>{{bidName}}</td>
+          <td>{{projectName}}</td>
+          <td>
+            {{specialityNameList}}
+          </td>
+          <td>
+            {{#equals bidType 1}}总包{{/equals}}
+            {{#equals bidType 2}}专业分包{{/equals}}
+            {{#equals bidType 3}}设备{{/equals}}
+            {{#equals bidType 4}}专业服务{{/equals}}
+          </td>
+          <td>
+            {{#equals bidWay 1}}公开招标{{/equals}}
+            {{#equals bidWay 2}}邀请招标{{/equals}}
+          </td>
+          <td>{{#if estimatedAmount}}{{formatNumber estimatedAmount}}{{else}}-{{/if}}</td>
+          <td>{{formatNumber bidBonds}}</td>
+          <td>{{#if timePlan}}{{timePlan}}{{else}}-{{/if}}</td>
+          <td>
+            {{#equals inventoryStatus 1}}待编制{{/equals}}
+            {{#equals inventoryStatus 2}}编制完成{{/equals}}
+          </td>
+          <td>
+            {{#equals bidStatus -2}}废标{{/equals}}
+            {{#equals bidStatus 0}}等待提交立项{{/equals}}
+            {{#equals bidStatus 1}}提交立项审批{{/equals}}
+            {{#equals bidStatus 2}}已提交立项{{/equals}}
+            {{#equals bidStatus 3}}未提交招标文件，提交入围审批{{/equals}}
+            {{#equals bidStatus 4}}未提交入围，提交招标文件审批{{/equals}}
+            {{#equals bidStatus 5}}提交入围和提交招标文件同时审批{{/equals}}
+            {{#equals bidStatus 6}}已提交入围，未提交招标文件{{/equals}}
+            {{#equals bidStatus 7}}已提交入围，招标文件审批{{/equals}}
+            {{#equals bidStatus 8}}已提交招标文件，未提交入围{{/equals}}
+            {{#equals bidStatus 9}}已提交招标文件，入围审批{{/equals}}
+            {{#equals bidStatus 10}}招标准备完成{{/equals}}
+            {{#equals bidStatus 11}}发标完成{{/equals}}
+            {{#equals bidStatus 12}}技术标开标完成{{/equals}}
+            {{#equals bidStatus 13}}商务标开标完成{{/equals}}
+            {{#equals bidStatus 14}}开标完成{{/equals}}
+            {{#equals bidStatus 15}}评标审批{{/equals}}
+            {{#equals bidStatus 16}}评标完成{{/equals}}
+            {{#equals bidStatus 17}}定标审批{{/equals}}
+            {{#equals bidStatus 18}}定标完成{{/equals}}
+          </td>
+          <td>
+            {{#of bidStatus "-2,18"}}
+              <a href="/developer/bids-details/confirm?bidId={{id}}">查看详情</a>
+            {{else}}
+              {{#if hasAccess}}
+                <a href="{{#of bidStatus "0,1"}}/developer/bids-details/set?bidId={{id}}{{/of}}{{#of bidStatus "2,3,5,8,9"}}/developer/bids-details/supplier-select?bidId={{id}}{{/of}}{{#of bidStatus "4,6,7"}}/developer/bids-details/file?bidId={{id}}{{/of}}{{#equals bidStatus 10}}/developer/bids-details/publish-answer?bidId={{id}}{{/equals}}{{#of bidStatus "11,12"}}/developer/bids-details/open?bidId={{id}}{{/of}}{{#of bidStatus "13,14,15"}}/developer/bids-details/evaluate?bidId={{id}}{{/of}}{{#of bidStatus "16,17"}}/developer/bids-details/confirm?bidId={{id}}{{/of}}">查看详情</a><br>
+                {{#equals bidStatus 0}}
+                  {{#equals ../userId bidOperatorId}}
+                    <a href="/developer/bids-edit?bidId={{id}}">编辑</a>
+                    <br>
+                    <a href="javascript:;" class="js-bids-delete" data-toggle="confirm" data-event="confirm:deleteBid" data-title="删除招标立项确认" data-content="该招标立项删除之后无法恢复，是否删除？" data-id="{{id}}">删除</a>
+                    <br>
+                  {{/equals}}
+                {{/equals}}
+              {{/if}}
+              <a href="javascript:;" class="js-operator-change" data-bid-id="{{id}}">变更经办人</a><br>
+              {{#of ../userId costOperatorIds}}
+                {{#of bidStatus "2,3,6"}}
+                  <a href="/developer/bids-details/file?bidId={{id}}">编制清单</a><br>
+                {{/of}}
+                {{#of bidStatus "11,12,13"}}
+                  <a href="/developer/bids-details/publish-answer?bidId={{id}}">编制补充清单</a><br>
+                  <a href="/developer/bids-details/publish-answer?bidId={{id}}">编制答疑清单</a><br>
+                {{/of}}
+                {{#equals bidStatus 14}}
+                  <a href="/developer/bids-details/evaluate?bidId={{id}}">编制澄清清单</a><br>
+                {{/equals}}
+              {{/of}}
+            {{/of}}
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="center-text" colspan="12">暂无招投标!</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

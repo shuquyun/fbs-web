@@ -1,0 +1,57 @@
+{{#partial "realTitle"}}清单编制-
+  {{#equals type 3}}规费{{/equals}}
+  {{#equals type 4}}税金{{/equals}}
+  {{#equals type 5}}暂列金{{/equals}}
+  {{#equals type 6}}材料暂估价{{/equals}}
+  {{#equals type 7}}专业暂估价{{/equals}}
+  {{#equals type 8}}总承包{{/equals}}
+  {{#equals type 9}}计日工{{/equals}}
+  {{#equals type 10}}其他费用{{/equals}}
+  {{#equals type 11}}增补清单{{/equals}}
+  {{#equals type 12}}总说明页{{/equals}}
+{{/partial}}
+{{#partial "listHeader"}}{{inject "list/header" id=1 type="edit"}}{{/partial}}
+{{#partial "realBody"}}
+<div class="list-body">
+  {{#equals type 3}}
+    {{inject "list/fees"}}
+  {{/equals}}
+  {{#equals type 4}}
+    {{inject "list/fees"}}
+  {{/equals}}
+  {{#equals type 5}}
+    {{inject "list/provisional_sum"}}
+  {{/equals}}
+  {{#equals type 6}}
+    {{inject "list/provisional_material"}}
+  {{/equals}}
+  {{#equals type 7}}
+    {{inject "list/provisional_major"}}
+  {{/equals}}
+  {{#equals type 8}}
+    {{inject "list/total_fee"}}
+  {{/equals}}
+  {{#equals type 9}}
+    {{inject "list/day_work"}}
+  {{/equals}}
+  {{#equals type 10}}
+    {{inject "list/other_fee"}}
+  {{/equals}}
+  {{#equals type 11}}
+    {{inject "list/supplementary"}}
+  {{/equals}}
+  {{#equals type 12}}
+    {{inject "list/instructions" id=billId}}
+  {{/equals}}
+
+</div>
+{{/partial}}
+{{#lt type 5}}
+  {{> list/layout treeNav=true}}
+{{else}}
+  {{#equals type 11}}
+    {{> list/layout treeNav=true}}
+  {{else}}
+    {{> list/layout treeNav=false}}
+  {{/equals}}
+{{/lt}}

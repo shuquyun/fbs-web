@@ -1,0 +1,13 @@
+{{#component "js-comp supplier-bids-confirm"}}
+  {{#with _DATA_}}
+    {{> component:supplier/bids/bids_confirm/backend_templates/attachment}}
+    {{> component:supplier/bids/bids_confirm/backend_templates/inventory}}
+    {{#equals finalListConfirmStatus 3}}
+      <div class="bids-group">
+        <div class="bis-content">
+          <button class="btn btn-primary js-bids-confirm-pass">同意</button>
+        </div>
+      </div>
+    {{/equals}}
+  {{/with}}
+{{/component}}

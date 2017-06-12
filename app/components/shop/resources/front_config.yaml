@@ -1,0 +1,57 @@
+"shop/accounts":
+  category: "ADMIN"
+  name: "商家子账号管理"
+  service: pagingSubCompanyUser
+
+"shop/auth":
+  category: "ADMIN"
+  name: "角色管理"
+  service: "sellerRolePaging"
+
+"shop/auth_create":
+  category: "ADMIN"
+  name: "创建角色"
+  service: "findByIdForUpdate"
+
+"shop/shop_design":
+  category: "ADMIN"
+  name: "店铺装修"
+  service: "listShopSites"
+
+"shop/shop_inner_search":
+  category: ADMIN
+  name: "店铺内搜索导航"
+
+"shop/shop_navbar":
+  category: ADMIN
+  name: "店铺内导航"
+
+"shop/shop_profile":
+  category: SHOP
+  name: "店铺详情"
+  service: findShopByLoginUser
+
+"shop/freight":
+  category: "ADMIN"
+  name: "商家运费模板管理"
+  service: "findDeliveryFee"
+
+"shop/marketing/activity_index":
+  category: "ADMIN"
+  name: "商家营销活动管理首页"
+  service: "findActivityTool"
+
+"shop/marketing/activity_management":
+  category: "ADMIN"
+  name: "商家营销活动"
+  service: "findActivities"
+
+"shop/marketing/coupon_create":
+  category: "ADMIN"
+  name: "商家优惠券详情信息"
+  service: "findPromotionById"
+
+"shop/marketing/discount_create":
+  category: "ADMIN"
+  name: "商家折扣详情信息"
+  service: "findPromotionById"

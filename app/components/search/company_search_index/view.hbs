@@ -1,0 +1,18 @@
+{{#component "supplier-search-bids component-item-search js-comp"}}
+  <div class="search-item">
+    <div class="item-header">
+      <label>最新公司</label>
+      <a href="/{{#equals companyType 'developer'}}supplier{{else}}developer{{/equals}}/search-{{companyType}}?type=more" class="pull-right">
+        <span>更多</span>
+        <i class="icon-hsh icon-hsh-xiangxiazhedie"></i>
+      </a>
+    </div>
+    <div class="item-content">
+      {{#equals companyType 'supplier'}}
+        {{> component:search/company_search_index/backend_templates/supplier_item_list}}
+      {{else}}
+        {{> component:search/company_search_index/backend_templates/developer_item_list}}
+      {{/equals}}
+    </div>
+  </div>
+{{/component}}

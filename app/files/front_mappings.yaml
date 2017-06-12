@@ -1,0 +1,54 @@
+mappings:
+  - pattern: "/api/address/provinces"
+    methods:
+      - GET
+    service: "provinces"
+    desc: "获取省列表"
+
+  - pattern: "/api/shop/create"
+    methods:
+      - POST
+    service: "createShop"
+    desc: "创建店铺"
+
+  - pattern: "/api/spus/{spuId}"
+    methods:
+      - GET
+    service: "findFullDetaiISpuBySpuId"
+    desc: "查询后台类目SPU下的商品及SKU信息"
+
+  - pattern: "/api/user/tradeInfo/{id}"
+    methods:
+      - PUT
+    service: "makeDefault"
+    desc: "设置默认收货地址"
+
+  - pattern: "/api/cache/i18n"
+    methods:
+      - GET
+    service: "clearI18nCache"
+    desc: "设置默认收货地址"
+
+  - pattern: "/api/user/receiveAddress/getReceiveAddress"
+    methods:
+      - GET
+    service: "findValidTradeInfoByBaseUser"
+    desc: "获取收货地址信息"
+
+  - pattern: "/api/shop/shopInfo"
+    methods:
+      - GET
+    service: "getShopById"
+    desc: "获取店铺信息"
+
+  - pattern: "/api/express/buyer"
+    methods:
+      - GET
+    service: "getExpressTrackByBuyer"
+    desc: "买家获取订单物流信息"
+
+  - pattern: "/api/express/seller"
+    methods:
+      - GET
+    service: "getExpressTrackBySeller"
+    desc: "卖家获取订单物流信息"

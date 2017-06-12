@@ -1,0 +1,62 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>供应商问题汇总</label>
+    {{#if data}}
+      {{#equals qaOperatorId userId}}
+        <a href="/api/questions/export?bidId={{bidId}}" target="_blank" class="margin-left-20 btn btn-primary" style="display: inline;">导出提问</a>
+      {{/equals}}
+    {{/if}}
+  </div>
+  <div class="bids-content">
+    <table class="table table-question">
+      <thead>
+        <tr>
+          <th width="5%">序号</th>
+          <th width="15%">提问供应商</th>
+          <th width="15%">问题标题</th>
+          <th width="42%">问题摘要</th>
+          <th width="23%">问题类型</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          {{#if data}}
+            {{#each data}}
+              <tr>
+                <td>{{add @index 1}}</td>
+                <td><a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a></td>
+                <td>
+                  <div class="question-content js-content-show" data-id="{{id}}" data-type="{{questionType}}">  {{title}}
+                  </div>
+                </td>
+                <td>
+                  <div class="question-content js-content-show" data-id="{{id}}" data-type="{{questionType}}">{{{content}}}</div>
+                </td>
+                <td>
+                  <div class="js-question-type">
+                    <select class="select" {{#equals questionType 0}}{{else}}disabled{{/equals}}>
+                      <option value="0" {{#equals questionType 0}}selected{{/equals}}>默认</option>
+                      <option value="1" {{#equals questionType 1}}selected{{/equals}}>技术</option>
+                      <option value="2" {{#equals questionType 2}}selected{{/equals}}>商务</option>
+                      <option value="3" {{#equals questionType 3}}selected{{/equals}}>图纸</option>
+                    </select>
+                    <a href="javascript:;" class="js-question-type-change" data-type="{{#equals questionType 0}}0{{else}}1{{/equals}}" data-id="{{id}}">{{#equals questionType 0}}确定{{else}}修改{{/equals}}</a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td class="center-text" colspan="6">暂无问题！</td>
+            </tr>
+          {{/if}}
+        </div>
+      </tbody>
+    </table>
+    {{#if total}}
+      <div>
+        {{inject "common/pagination" total=total}}
+      </div>
+    {{/if}}
+  </div>
+</div>

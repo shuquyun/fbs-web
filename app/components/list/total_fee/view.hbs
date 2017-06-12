@@ -1,0 +1,32 @@
+{{#component "component-provisional-sum js-comp"}}
+<div class="component-body">
+
+    <div class="body-right js-fee-item-table">
+
+      {{> component:list/fee_sum/all_templates/wrap}}
+      <table class="user-manage-table table table-horizontal center-text">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="20%">项目名称</th>
+            <th width="25%">计算基础</th>
+            <th width="10%">计算基数</th>
+            <th width="10%">费率（%）</th>
+            <th width="10%">金额（元）</th>
+            <th width="10%">备注</th>
+            <th class="td-operation" width="5%">操作</th>
+          </tr>
+        </thead>
+        <tbody class="js-fee-item-tbody">
+          {{#each _DATA_}}
+            {{> component:list/total_fee/all_templates/tr data=this}}
+          {{/each}}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+{{/component}}

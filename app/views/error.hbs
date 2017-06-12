@@ -1,0 +1,21 @@
+{{#partial "realTitle"}}error-{{error.status}}{{/partial}}
+{{#partial "realBody"}}
+<div class="error-site">
+  <div class="error-content clearfix">
+    <div class="error-img">
+      <img src="/assets/images/other-images/404&500_05.png" alt="error">
+    </div>
+    <div class="error-text">
+      <p>{{error.status}} !&nbsp;&nbsp;SORRY</p>
+      <ul class="error-prompt">
+        <li class="possible-error">{{error.msg}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="link-index">
+    <a href="/"><img src="/assets/images/other-images/link_index.png" alt="返回首页"></a>
+  </div>
+</div>
+
+{{/partial}}
+{{> front_layout}}

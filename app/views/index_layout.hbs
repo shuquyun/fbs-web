@@ -1,0 +1,11 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "body"}}
+  {{> header}}
+  {{!--   {{inject "common/nav_bar"}} --}}
+  <div class="main-container">
+    {{{block "realBody"}}}
+  </div>
+  <div style="clear:both;"></div>
+  {{> footer}}
+{{/partial}}
+{{> layout}}

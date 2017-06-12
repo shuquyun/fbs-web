@@ -1,0 +1,19 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "body"}}
+  {{#if todo}}
+    <div class="main-right" style="margin:0; padding:0;">
+  {{else}}
+    <div class="main-top">
+      {{inject "user/header"}}
+    </div>
+    <div class="main-left">
+      {{!-- 买家的内容合并进用户中心 --}}
+      {{inject "user/sidebar"}}
+    </div>
+    <div class="main-right" style="margin-top:0; padding-top:60px;">
+  {{/if}}
+  {{{block "realBody"}}}
+  </div>
+  <div class="notify-container"></div>
+{{/partial}}
+{{> layout}}

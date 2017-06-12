@@ -1,0 +1,214 @@
+@import "compass/css3";
+@import "pokeball/theme";
+
+.hsh-register .register-company {
+  .register-company-info {
+    padding-left: 210px;
+
+    .company-note {
+      color: #999;
+    }
+
+    .control-group textarea {
+      min-height: 100px;
+      margin: 0px;
+    }
+
+    .control-group #company-name {
+      vertical-align: top;
+    }
+
+    .js-check-company {
+      color: $white;
+      margin-left: 9px;
+    }
+  }
+
+  .tab .tab-navs li {
+    margin-right: 0px;
+    background-color: $white;
+    border: 1px solid $color-border;
+    border-right-width: 0px; 
+
+    &:last-child {
+      border-right: 1px solid $color-border;
+    }
+
+    a {
+      color: #666;
+      padding: 2px 16px;
+    }
+
+    &.active {
+      border: 1px solid $color-primary;
+    }
+
+    &.active a {
+      color: $color-primary;
+      border-top-width: 0px;
+    }
+  }
+
+  .tab .tab-contents {
+    padding-bottom: 20px;
+
+    .tab-content {
+      border: 1px solid $color-border;
+    }
+  }
+}
+
+.hsh-register .register-company {
+  .supplier-form-info {
+    .form-title {
+      font-size: 14px;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      height: 40px;
+      line-height: 40px;
+      background: aliceblue;
+    }
+
+    .control-group {
+      display: inline-block;
+
+      label {
+        width: 12em;
+      }
+
+      .single-label {
+        width: 7.3em;
+      }
+
+      .main-image {
+        width: 70px;
+        height: 70px;
+        line-height: 66px;
+        padding: 0px;
+
+        span {
+          zoom: 2;
+          height: 9px;
+        }
+      }
+    }
+
+    .speciality-group {
+      display: block;
+
+      .selected-special-group {
+        max-width: 700px;
+      }
+    }
+
+    .select-group .selectric {
+      width: 232px;
+    }
+
+    .biz-group input {
+      width: 114px;
+    }
+
+    .address-group .selectric {
+      width: 208px;
+    }
+
+    .image-group {
+      display: block;
+    }
+
+    .scope-group {
+      display: block;
+      .checkbox-item {
+        vertical-align: middle;
+        margin: 0px 10px 0px 5px;
+        width: auto;
+      }
+    }
+
+    .table-title {
+      font-size: 12px;
+      margin-left: 37px;
+      margin-bottom: 5px;
+    }
+
+    .table {
+      margin-left: 35px;
+      margin-bottom: 20px;
+
+      tfoot {
+        background-color: $white;
+      }
+
+      td {
+        word-break: break-all;
+      }
+    }
+
+    .equipment-table, .manager-table {
+      width: 60%;
+    }
+
+    .partners-table {
+      width: 90%;
+    }
+
+    .achievements-table, .contact-table {
+      width: 94%;
+    }
+
+    .output-table, .products-table, .machines-table, .manager-table {
+      width: 70%;
+    }
+
+    .marital-table, .cooperate-table, .brand-table{
+      width: 50%;
+    }
+
+  }
+}
+
+.set-new-tr-form .modal-dialog {
+  .selectric {
+    width: 232px;
+  }
+
+  .inline-group {
+    display: inline-block;
+  }
+
+  .control-group .main-image {
+    width: 70px;
+    height: 70px;
+    line-height: 66px;
+    padding: 0px;
+
+    span {
+      zoom: 2;
+      height: 9px;
+    }
+  }
+
+  .selectric-address-select .selectric {
+    width: 150px;
+  }
+}
+
+.set-new-tr-form .achievement-modal {
+  max-height: 300px;
+  overflow: auto;
+  max-width: 760px;
+  min-width: 760px;
+
+  .control-group {
+    display: inline-block;
+  }
+}
+
+.auditing {
+  padding: 30px 0px 50px 0px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666;
+}

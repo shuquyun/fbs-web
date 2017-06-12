@@ -1,0 +1,15 @@
+{{#component "js-comp supplier-bids-reply"}}
+  {{inject "supplier/bids/bids_reply/attachment" type=10 connectId=id status=_DATA_.status}}
+  {{inject "supplier/bids/bids_reply/inventory" types="11,12,13,17,18,19" connectId=id status=_DATA_.status}}
+  {{#with _DATA_}}
+    <div class="bids-group">
+      {{#equals status 6}}
+        <button class="btn btn-primary js-bids-confirm">确认回标</button>
+      {{/equals}}
+      {{#equals status 7}}
+        <button class="btn btn-primary btn-medium" disabled>已回标</button>
+        <button class="btn btn-info btn-medium js-bids-abandon" data-id="{{id}}">撤回投标</button>
+      {{/equals}}
+    </div>
+  {{/with}}
+{{/component}}

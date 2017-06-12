@@ -1,0 +1,199 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+
+.component-nav-category {
+  border-bottom: 0;
+  width: 100%;
+  position: relative;
+
+  .navbar-collapse {
+    width: 100%;
+  }
+
+  .navbar-title {
+    background-color: #24344e;
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+
+    .all-category-show {
+      padding: 10px 20px;
+      @include inline-block(middle);
+      color: $color-text-white;
+    }
+
+    .nav-icon {
+      margin-right: 20px;
+    }
+  }
+
+  .category-list {
+    background-color: transparent;
+    min-height: 40px;
+    width: 100%;
+    text-align: left !important;
+    line-height: 18px;
+    position: absolute;
+    z-index: 9;
+  }
+
+  .category-item {
+    position: relative;
+    height: 40px;
+    border-width: 0;
+    background-color: #fff;
+    opacity: 0.89;
+    border: 1px solid $color-border-white;
+
+    &:hover {
+      background-color: #fff;
+      opacity: 1;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  .category-logo {
+    width: 16px;
+    height: 16px;
+    vertical-align: bottom;
+    margin-right: 20px;
+  }
+
+  .parent-category{
+    width: 100%;
+
+    i {
+      float: right;
+      color: $color-text-note;
+    }
+  }
+
+  .child-category {
+    padding: 11px 10px;
+    @include inline-block(middle);
+    font-size: 14px;
+    width: 100%;
+    color: $color-text;
+  }
+
+  .children-category{
+    float: left;
+    line-height: 12px;
+    height: 16px;
+    padding: 0px;
+    overflow: hidden;
+    width: 130px;
+  }
+
+  .expand-panel{
+    .attach{
+      z-index: 1000;
+      position: absolute;
+      top: 0;
+      left: 99%;
+      width: 15px;
+      height: 38px;
+      background-color: #fff;
+      border-width: 0;
+    }
+
+    .expand-category{
+      z-index: 999;
+      position: absolute;
+      left: 100%;
+      top: -1px;
+      width: 960px;
+      min-height: 220px;
+      background-color: #fff;
+      border: 1px solid $color-primary;
+      font-size: 0;
+
+      .category-info{
+        width: 720px;
+        font-size: 12px;
+        @include inline-block(top);
+      }
+
+      .second-category {
+        padding: 20px 20px 10px;
+        width: 240px;
+        float: left;
+
+        &.last {
+          .children-name {
+            border-bottom-width: 0 !important;
+          }
+        }
+      }
+
+      .parent-name{
+        text-align: left;
+        font-size: 14px;
+        line-height: 18px;
+        color: $navy;
+        width: 175px;
+        @include inline-block(top);
+
+        .second-name {
+          color: $color-text-assist;
+          margin-right: 10px;
+          font-size: 12px;
+          max-width: 100%;
+          @include inline-block(middle);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+
+      .children-name{
+        width: 100%;
+        margin-top: 10px;
+        height: 38px;
+        overflow: hidden;
+
+        .child-name{
+          color: $color-text-note;
+          @include inline-block(middle);
+          border-right: 1px solid #ddd;
+          line-height: 12px;
+          font-size: 12px;
+          margin: 0 10px 10px 0;
+          padding: 0 10px 0 0;
+          float: left;
+
+          &.last {
+            border-right-width: 0;
+          }
+
+          &:hover  {
+            color: $color-primary;
+          }
+        }
+      }
+
+      .category-images {
+        @include inline-block(top);
+        width: 238px;
+        padding: 15px 0;
+
+        .image-item {
+          float: left;
+          width: 100px;
+          height: 120px;
+          margin: 5px;
+        }
+
+        .category-image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

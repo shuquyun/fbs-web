@@ -1,0 +1,28 @@
+{{#component "help-center js-comp"}}
+  <div class="current-location clearfix">
+    <span class="current-location-span">
+      <a class="js-bread-category-selector" href="{{_HREF_.main}}">{{i18n "index"  bundle="design"}}</a><i class="icon-feebas icon-feebas-right"></i>
+      <a class="js-bread-front-selector">{{i18n "help center"  bundle="design"}}</a>
+    </span>
+  </div>
+  <ul class="help-types">
+    {{#each _DATA_}}
+      {{#equals type 6}}
+      {{else}}
+        <li class="each-type">
+          <h3 class="type-name">{{desc}}</h3>
+          {{#each articles}}
+            <ul class="document-titles">
+              <li class="title" data-id="{{id}}"><h4>{{title}}</h4></li>
+            </ul>
+            <div class="document-content">
+              <h2>{{title}}</h2>
+              <div class="separator"></div>
+              {{{content}}}
+            </div>
+          {{/each}}
+        </li>
+      {{/equals}}
+    {{/each}}
+  </ul>
+{{/component}}

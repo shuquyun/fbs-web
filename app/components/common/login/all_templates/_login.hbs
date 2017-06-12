@@ -1,0 +1,28 @@
+<form class="form form-aligned user-login-form" method="post" action="/api/user/login" data-site-type="{{#if copartnerId}}{{copartnerId}}{{else}}7{{/if}}">
+  <fieldset>
+    <legend>{{i18n "Sign in" bundle="common"}}</legend>
+    <div class="control-group input-wrap" id="login-name">
+      <input type="hidden" name="target" value="{{target}}">
+      <input id="login-type" type="hidden" name="type" value="1">
+      <input id="loginId" type="text" class="form-control" name="loginBy" placeholder="{{i18n "Please enter nickname" bundle="common"}}、{{i18n "Mobile number or email address" bundle="common"}}">
+      <i class="icon-feebas input-icon icon-feebas-people"></i>
+    </div>
+    <div class="control-group input-wrap" id="login-password">
+      <input id="password" type="password" class="form-control" name="password" placeholder="{{i18n "Please enter your password" bundle="common"}}">
+      <i class="icon-feebas input-icon icon-feebas-lock"></i>
+    </div>
+    <div class="error-wall"><ul></ul></div>
+    <div class="control-group keep-group">
+      <a class="keep" href="/forget-password">{{i18n "Forgot password" bundle="common"}}?</a>
+      {{!-- <a class="keep" href="/user/bind-card">{{i18n "Binding vip card" bundle="common"}}</a> --}}
+      <a class="keep pull-right register-a" href="/register">{{i18n "Register now" bundle="common"}}</a>
+      <span class="keeped hide">╭(╯3╰)╮{{i18n "Your account has not been registered" bundle="common"}}</span>
+      <a class="keeped pull-right toreg hide" href="/register">{{i18n "Go to registration" bundle="common"}}！</a>
+      <span class="email-active hide">╭(╯3╰)╮{{i18n "Dear,your email has not been activated" bundle="common"}}</span>
+      <a class="email-active pull-right toreg emailActive hide" href="javascript:void(0);">{{i18n "Immediately to activate" bundle="common"}}！</a>
+    </div>
+    <div class="control-group" id="login-submit">
+      <input type="submit" class="form-control btn btn-primary" disabled value="立即登录">
+    </div>
+  </fieldset>
+</form>

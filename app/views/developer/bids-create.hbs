@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}创建招标立项{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "招标管理"},{"url": "/developer/bids{{#if projectId}}?projectId={{projectId}}{{/if}}", "crumb": "招投标管理"},{"url": "#", "crumb": "创建招标立项"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/bids/bids_manage/bids_create"}}
+{{/partial}}
+{{> developer/layout}}

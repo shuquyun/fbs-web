@@ -1,0 +1,14 @@
+{{#component "shop-two-items"}}
+  <div class="item">
+    <a href="/items/{{_DATA_.id}}" target="_blank"><img class="recommend-image" src="{{image}}" alt="" width="560" height="390"></a>
+    <div class="item-info clearfix">
+      <div class="item-left">
+        <p class="item-name"><a href="/items/{{_DATA_.id}}" target="_blank"><strong>{{_DATA_.name}}</strong></a></p>
+        <span class="item-price currency">{{_CURRENCY_}}{{#if _DATA_.price}}{{roundOrDecimal _DATA_.price}}{{else}}0{{/if}}</span><del>{{_CURRENCY_}}{{#if _DATA_.originPrice}}{{formatPrice _DATA_.originPrice}}{{else}}0{{/if}}</del>
+      </div>
+      <div class="item-right">
+        <a class="btn btn-danger btn-large" href="/items/{{_DATA_.id}}" target="_blank">立即购买</a>
+      </div>
+    </div>
+  </div>
+{{/component}}

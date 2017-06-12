@@ -1,0 +1,58 @@
+"shop_design/shop_banner":
+  category: "SHOP"
+  name: "店铺内评分店招"
+  service: "findShopByshopId"
+
+"shop_design/shop_navbar":
+  category: "SHOP"
+  name: "店铺导航栏"
+  service: "findShopCategoriesFullTree"
+
+"shop_design/shop_item_list":
+  category: "SHOP"
+  name: "店铺内商品列表"
+  service: "findItemsByIds"
+
+"shop_design/shop_cards":
+  category: "SHOP"
+  name: "店铺评分招牌"
+  service: "findShopByshopId"
+
+"shop_design/logo_name":
+  category: "SHOP"
+  name: "LOGO和店铺名"
+  service: "findShopByshopId"
+
+"shop_design/shop_inner_search":
+  category: "SHOP"
+  name: "店铺侧边搜索导航栏"
+
+"shop_design/shop_categories":
+  category: "SHOP"
+  name: "店铺侧边商品分类"
+  service: "findCategoriesByshopId"
+
+"shop_design/shop_items_looked_more":
+  category: "SHOP"
+  name: "店铺内商品看了又看"
+  service: "findItemsByIds"
+
+"shop_design/coupon":
+  category: "SHOP"
+  name: "优惠券"
+  service: ""
+
+"shop_design/item_detail": # component path
+  category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+  name: "商品详情主信息"
+  service: "findForView"
+
+"shop_design/spu_tab":
+  category: "SHOP"
+  name: "商品详情（详情页、评价等）"
+  service: findItemDetailInfoByItemId
+
+"shop_design/shop_search":
+  category: "SHOP"
+  name: "店铺内搜索"
+  service: "searchInShop"

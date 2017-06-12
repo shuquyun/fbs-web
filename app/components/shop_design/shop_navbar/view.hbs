@@ -1,0 +1,54 @@
+{{#component "navbar navbar-condensed nav-header shop-navbar js-comp"}}
+<div class="navbar-collapse">
+  <ul>
+    <li class="home-channel-container">
+        <div class="navbar-item">
+          <a class="all-category-show" href="javascript:void(0);"><strong>{{i18n "All items category" bundle="shop_design"}}</strong></a>
+        </div>
+        <div class="home-channel {{!-- disappear --}}">
+          <div class="categorys">
+            <div class="category-li" data-id="{{@key}}">
+              <div class="parent-category">
+                <a href="/shops/{{shopId}}/list" target="_blank" class="parent-name"><strong>{{i18n "All Products" bundle="shop_design"}}</strong></a>
+              </div>
+            </div>
+            {{#each _DATA_}}
+              <div class="category-li" data-id="{{@key}}">
+                <div class="parent-category">
+                  <a href="/shops/{{shopId}}/list?shopCatId={{id}}" target="_blank" class="parent-name cutwords" title="{{name}}"><strong>{{name}}</strong></a>
+                </div>
+                <div class="children-category">
+                  {{#each left.childFrontCategory}}
+                  <div class="child-category"><a href="{{_HREF_.main}}/list?shopCatId={{secondLevel.id}}" target="_blank">{{secondLevel.name}}</a></div>
+                  {{/each}}
+                </div>
+                {{#if hasChildren}}
+                  <div class="expand-panel">
+                    <div class="expand-category">
+                      <div class="category-info">
+                        {{#each children}}
+                        <div class="second-category">
+                          <div class="parent-name"><strong><a href="/shops/{{shopId}}/list?shopCatId={{id}}" target="_blank" class="cutwords" title="{{name}}">{{name}}</a></strong></div>
+                        </div>
+                        {{/each}}
+                      </div>
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+    <li><div class="navbar-item"><a href="/shops/{{shopId}}">{{i18n "Home page" bundle="shop_design"}}</a></div></li>
+    {{#each navs}}
+      {{#if title}}
+        <li><div class="navbar-item"><a href="{{href}}"{{#if href}} class="title {{#indexOf href @root._LOCATION_.host}}active{{else}} {{#indexOf href @root._LOCATION_.url}}active{{/indexOf}}{{/indexOf}}"{{/if}} target="_blank">{{title}}</a></div></li>
+      {{/if}}
+    {{/each}}
+    {{#each tags}}
+      <li><div class="navbar-item"><a href="/shops/{{shopId}}?tag={{this}}">{{this}}</a></div></li>
+    {{/each}}
+  </ul>
+</div>
+{{/component}}

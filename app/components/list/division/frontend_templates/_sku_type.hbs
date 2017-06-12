@@ -1,0 +1,12 @@
+<div class="sku-container" id="js-bill-sku-container">
+  {{#if item.weightAttr}}
+    <p>
+      <label>{{item.weightAttr}}:</label>
+      <select class="js-select-weight" data-weight="{{item.weightAttr}}" name="">
+        <option value="-1" {{#unless item.weightVals}}selected{{/unless}}>非综合</option>
+        <option value="1" {{#if item.weightVals}}selected{{/if}}>综合考虑</option>
+      </select>
+    </p>
+  {{/if}}
+  {{> list/division/frontend_templates/_select_sku_filter}}
+</div>

@@ -1,0 +1,55 @@
+<legend class="form-title"><strong>联系信息</strong></legend>
+<fieldset class="each-box-not-table extra-detail-information">
+  <div class="control-group detail-address-group inline-group">
+    <label><span class="required">*</span>所在省市区:</label>
+    <select name="provinceId" class="select address-select" data-level="1" type="hide" disabled>
+      <option value="{{data.provinceId}}" data-value="0" selected>请选择</option>
+    </select>
+    <select name="cityId" class="select address-select" data-level="2" type="hide" disabled>
+      <option value="{{data.cityId}}">请选择</option>
+    </select>
+    <select name="regionId" class="select address-select" data-level="3" type="hide" disabled>
+      <option value="{{data.regionId}}">请选择</option>
+    </select>
+  </div>
+  <div class="control-group inline-group">
+    <label style="width: 16.2em"><span class="required">*</span>详细地址:</label>
+    <input type="text" class="input-medium" name="detail" placeholder="请输入详细地址" value="{{data.detail}}" required disabled>
+    <span class="note-error-empty"><i>&times;</i> 地址不得为空</span>
+  </div>
+  <div class="control-group inline-group">
+    <label>公司传真:</label>
+    <input type="text" class="input-medium" name="companyFax" placeholder="请输入公司传真" value="{{data.companyFax}}" disabled>
+  </div>
+  <div class="control-group inline-group">
+    <label style="width: 26em"><span class="required">*</span>公司电话:</label>
+    <input type="text" class="input-medium" name="companyMobile" placeholder="请输入公司电话" value="{{data.companyMobile}}" pattern="^((0\d{2,3}-\d{7,8})|(1[35847]\d{9}))$" required disabled>
+    <span class="note-error"><i>&times;</i> 手机号格式输入不正确</span>
+    <span class="note-error-empty"><i>&times;</i> 手机号不得为空</span>
+  </div>
+  <div class="control-group inline-group">
+    <label>廉洁举报电话:</label>
+    <input type="text" class="input-medium" name="honestMobile" placeholder="请输入廉洁举报电话" value="{{data.honestMobile}}" pattern="^((0\d{2,3}-\d{7,8})|(1[35847]\d{9}))$" disabled>
+    <span class="note-error"><i>&times;</i> 举报电话格式输入不正确</span>
+  </div>
+  <div class="control-group inline-group">
+    <label style="width: 26em"><span class="required">*</span>廉洁举报信邮寄地址:</label>
+    <input type="text" class="input-medium" name="honestAddress" placeholder="请输入廉洁举报信邮寄地址" value="{{data.honestAddress}}" required disabled>
+    <span class="note-error-empty"><i>&times;</i> 邮寄地址不得为空</span>
+  </div>
+  <div class="control-group inline-group">
+    <label>邮政编码:</label>
+    <input type="text" class="input-medium" name="zipCode" placeholder="请输入邮编" value="{{data.zipCode}}" pattern="^[1-9][0-9]{5}$" disabled>
+    <span class="note-error"><i>&times;</i> 邮编格式输入不正确</span>
+  </div>
+  <div class="control-group inline-group">
+    <label style="width: 26em">业务投诉电话:</label>
+    <input type="text" class="input-medium" name="complaintMobile" placeholder="请输入业务投诉电话" value="{{data.complaintMobile}}" pattern="^((0\d{2,3}-\d{7,8})|(1[35847]\d{9}))$" disabled>
+    <span class="note-error"><i>&times;</i> 投诉电话格式输入不正确</span>
+  </div>
+  <div class="control-group inline-group">
+    <label>业务投诉邮箱:</label>
+    <input type="text" class="input-medium" name="complaintEmail" placeholder="请输入业务投诉邮箱" value="{{data.complaintEmail}}" pattern="^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$" disabled>
+    <span class="note-error"><i>&times;</i> 投诉邮箱格式输入不正确</span>
+  </div>
+</fieldset>

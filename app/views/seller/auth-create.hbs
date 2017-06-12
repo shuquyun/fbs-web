@@ -1,0 +1,6 @@
+{{#partial "realTitle"}}{{#unless id}}添加角色{{else}}编辑角色{{/unless}}{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "权限管理"},{"url": "#", "crumb": "{{#unless id}}添加角色{{else}}编辑角色{{/unless}}"}]}}{{/inject}}
+  {{inject "shop/auth_create" true}}
+{{/partial}}
+{{> seller/layout}}

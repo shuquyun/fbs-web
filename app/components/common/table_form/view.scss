@@ -1,0 +1,119 @@
+@import "pokeball/theme";
+
+.table-form {
+  tbody {
+    td {
+      vertical-align: top;
+    }
+  }
+
+  .modal-td {
+    &:hover {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '🗒️';
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+
+  .input-td {
+    &:hover {
+      input {
+        border-color: $color-border;
+        background-color: #fff;
+      }
+    }
+
+    input {
+      border: 1px solid transparent;
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+
+  .textarea-td {
+    &:hover {
+      textarea {
+        border-color: $color-border;
+        background-color: #fff;
+      }
+    }
+
+    textarea {
+      border: 1px solid transparent;
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      resize: none;
+    }
+  }
+
+  .select-td {
+    &:hover {
+      .selectric {
+        border-color: $color-border;
+        background-color: #fff;
+      }
+    }
+
+    .selectric {
+      border: 1px solid transparent;
+      background-color: transparent;
+    }
+  }
+
+  .combine-th {
+    [data-combine=true] {
+      display: none;
+    }
+
+    [data-combine=false] {
+      @include inline-block(middle);
+    }
+
+    &.expand {
+      [data-combine=true] {
+        @include inline-block(middle);
+      }
+
+      [data-combine=false] {
+        display: none;
+      }
+    }
+  }
+
+  [data-subtotal] {
+    display: none;
+  }
+
+  th[data-subtotal] {
+    background-color: #F3FAFD;
+  }
+
+  .pack-status {
+    .expand {
+      display: none;
+    }
+
+    .pack {
+      @include inline-block(top);
+    }
+
+    &.expanded {
+      .expand {
+        @include inline-block(top);
+      }
+
+      .pack {
+        display: none;
+      }
+    }
+  }
+
+
+
+}

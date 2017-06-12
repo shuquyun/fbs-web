@@ -1,0 +1,12 @@
+{{#partial "realTitle"}}个人信息{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "账户信息"},{"url": "#", "crumb": "个人资料"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "user/profile" true}}
+{{/partial}}
+{{#hasRole "DEVELOPER"}}
+  {{> developer/layout}}
+{{else}}
+  {{> supplier/layout}}
+{{/hasRole}}

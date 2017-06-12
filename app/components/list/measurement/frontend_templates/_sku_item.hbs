@@ -1,0 +1,10 @@
+{{#each data}}
+  <tr class="js-sku-tr" data-sku="{{json this}}">
+    <td>{{name}}</td>
+    <td>
+      {{#each attrs}}
+        <p>{{attrKey}}:{{attrVal}}</p>
+      {{/each}}
+    </td>
+  </tr>
+{{/each}}

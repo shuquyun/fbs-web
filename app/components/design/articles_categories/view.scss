@@ -1,0 +1,88 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.component-articles-categories {
+  width: 200px;
+  border: 1px solid $color-border;
+  float: left;
+  font-size: 12px;
+  .cutwords {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .shop-item-category {
+    float: left;
+  }
+  .category-title {
+    text-align: center;
+    background-color: $color-background;
+    padding: 11px 0;
+    color: #1b2b45;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .firstU {
+    a {
+      display: block;
+      float: left;
+      width: 153px;
+      padding-right: 15px;
+      &.active,
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+  }
+
+  .firstI {
+    margin-left: 15px;
+    margin-right: 14px;
+    float: left;
+    cursor: pointer;
+  }
+
+  .firstC {
+    border-top: 1px solid $color-border;
+    margin-top: -1px;
+    line-height: 38px;
+    clear: both;
+    &.noC {
+      padding-left: 18px;
+    }
+  }
+
+  .secondC {
+    line-height: 30px;
+    padding-left: 22px;
+  }
+
+  .secondU {
+    border-top: 1px solid $color-border;
+    list-style-type: disc !important;
+    list-style-position: inside;
+    clear: both;
+    a {
+      float: right;
+    }
+  }
+
+  .firstA {
+    color: #24344e;
+    .icon-feebas {
+      margin-right: 10px;
+    }
+  }
+
+  .secondA {
+    color: $color-text-assist;
+    span {
+      font-size: 70px;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      float: left;
+      overflow: hidden;
+    }
+  }
+}

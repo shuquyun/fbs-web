@@ -1,0 +1,56 @@
+.import-detail-form {
+  max-height: 500px;
+  overflow: scroll;
+
+  .import-report {
+    vertical-align: top !important;
+  }
+
+  .list-file {
+    display: inline-block;
+
+    li {
+      line-height: 25px;
+    }
+
+    .download-report {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+}
+
+.supplier-list-component .table-left .speciality-container {
+  position: relative;
+  width: auto;
+
+  .component-select-tree {
+    border-width: 0px;
+
+    .tree-view {
+      white-space: nowrap;
+      border-width: 0px;
+      min-width: auto;
+      background-color: white;
+      padding: 0px;
+
+      .tree-node {
+        cursor: pointer;
+
+        .item-name {
+          width: 80%;
+        }
+      }
+    }
+  } 
+}
+
+.supplier-list-component .table-right .supplier-tab {
+  .table-state .selectric {
+    width: 80px;
+  }
+
+  table tbody tr td {
+    word-break: break-all;
+  }
+}

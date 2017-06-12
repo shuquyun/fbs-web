@@ -1,0 +1,42 @@
+{{#component "component-nav-category js-comp"}}
+  <div class="nav-category-header js-nav-category-header" data-href="{{_HREF_.main}}">
+    <div class="navbar-title">
+      <a class="all-category-show" href="javascript:;">
+        <i class="icon-feebas icon-feebas-list nav-icon"></i> 全部商品分类
+      </a>
+    </div>
+  </div>
+  <ul class="category-list js-category-list guide {{#unless _PAGE_.isIndex}}hide{{/unless}}" data-index="{{_PAGE_.isIndex}}" id="guide">
+    {{#each _DATA_}}
+      <li class="category-item js-category-item" data-id="{{current.id}}" data-guide="guide{{@index}}">
+        <div class="parent-category guide-active" title="{{current.name}}">
+          <a href="{{_HREF_.main}}/search?fcid={{current.id}}" target="_blank" class="child-category">
+            <img src="{{cdnPath current.logo "16"}}" alt="" class="category-logo">
+            <span class="">{{current.name}}</span>
+            <i class="icon-feebas icon-feebas-right"></i>
+          </a>
+        </div>
+        <div class="expand-panel hide" id="guide{{@index}}" data-guide-pop="">
+          <div class="attach"></div>
+          <div class="expand-category">
+            <div class="category-info clearfix">
+              {{#each children}}
+              <div class="second-category {{#if @last}}last{{/if}}">
+                <div class="parent-name" title="{{current.name}}">
+                  <a href="{{_HREF_.main}}/search?fcid={{current.id}}" target="_blank" class="second-name">{{current.name}}</a>
+                </div>
+                <div class="children-name clearfix">
+                  {{#each children}}
+                    <a class="child-name {{#if @last}}last{{/if}}" title="{{current.name}}" href="{{_HREF_.main}}/search?fcid={{current.id}}" target="_blank">{{current.name}}</a>
+                  {{/each}}
+                </div>
+              </div>
+              {{/each}}
+            </div>
+            {{> component:design/nav_category/backend_templates/category_images index=@index}}
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{/component}}

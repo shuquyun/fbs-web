@@ -1,0 +1,39 @@
+<div class="clearfix">
+  <div class="form-left">
+    <input type="hidden" name="projectName" class="js-project-name" value="{{projectName}}">
+    <input type="hidden" name="id" value="{{id}}">
+    <div class="control-group">
+      <label><b class="required">*</b>所在城市</label>
+      <input type="hidden" name="city" value="{{city}}">
+      <span>{{city}}</span>
+    </div>
+  </div>
+  <div class="form-right">
+    <div class="control-group">
+      <label><b class="required">*</b>详细地址</label>
+      <input type="hidden" name="addressDetail" value="{{addressDetail}}">
+      <span>{{addressDetail}}</span>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="form-left">
+    <div class="control-group">
+      <label><b class="required">*</b>业态类型</label>
+      <input type="hidden" name="projectType" value="{{projectType}}">
+      <span>
+        {{#equals projectType 1}}住宅{{/equals}}
+        {{#equals projectType 2}}商业{{/equals}}
+        {{#equals projectType 3}}旅游{{/equals}}
+        {{#equals projectType 4}}综合体{{/equals}}
+      </span>
+    </div>
+  </div>
+  <div class="form-right">
+    <div class="control-group">
+      <label><b class="required">*</b>建筑面积</label>
+      <input type="hidden" name="buildingArea" value="{{buildingArea}}">
+      <span>{{formatNumber buildingArea}}平方米</span>
+    </div>
+  </div>
+</div>

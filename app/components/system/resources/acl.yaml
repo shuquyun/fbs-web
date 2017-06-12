@@ -1,0 +1,10 @@
+  # 请务必保留1个缩进
+  ## 系统模块 - ADMIN 可配置资源
+  manage_sites:
+    name: 管理站点
+    requests:
+      - get: /system/sites
+  manage_shop_template:
+    name: 管理店铺模版
+    requests:
+      - get: /system/templates

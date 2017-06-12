@@ -1,0 +1,27 @@
+{{#component "js-comp bids-publish-answer bids-block"}}
+  {{#with _DATA_}}
+    {{#equals lastIssued.bidOperatorId ../_USER_.id}}
+      <div class="bids-group">
+        <div class="bids-title">
+          <label>发标设置</label>
+          {{#gt issuedBids.length 1}}
+            {{#of bidStatus "11,12,13"}}
+              {{#with lastIssued}}
+                <div class="pull-right group-btn">
+                  {{#equals openType 1}}
+                    <a href="javascript:;" class="js-dateline-change" data-title="调整自动开标时间" data-name="autoOpenDate" data-date="{{autoOpenDate}}">调整自动开标时间</a>
+                  {{/equals}}
+                  <a href="javascript:;" class="js-dateline-change" data-title="调整回标截止时间" data-name="backBidDeadline" data-date="{{backBidDeadline}}">调整回标截止时间</a>
+                  <a href="javascript:;" class="js-dateline-change" data-title="调整答疑截止时间" data-name="qaDeadline" data-date="{{qaDeadline}}">调整答疑截止时间</a>
+                </div>
+              {{/with}}
+            {{/of}}
+          {{/gt}}
+        </div>
+        {{> component:developer/bids/publish_answer/common/backend_templates/config companyUsers=../_COMPANY_USER_ bidId=../bidId}}
+      </div>
+    {{/equals}}
+    {{> component:developer/bids/publish_answer/common/backend_templates/record}}
+  {{/with}}
+  {{> component:developer/bids/publish_answer/common/backend_templates/answer bidStatus=_DATA_.bidStatus}}
+{{/component}}

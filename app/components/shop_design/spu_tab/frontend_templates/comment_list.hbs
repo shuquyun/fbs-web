@@ -1,0 +1,39 @@
+{{#each data}}
+<li class="comments-li {{#if @last}}last{{/if}}" data-id="{{id}}">
+  <ul>
+    <li class="comment-user"><span>{{#if userName}}{{userName}}{{/if}}</span></li>
+    <li class="comment-item-attribute">
+      {{#each skuAttrs}}
+        <span>{{attrKey}}：{{attrVal}}</span>
+      {{/each}}
+    </li>
+    <li class="comment-star-count show-only">
+      <p class="first">
+        <span class="comment-quality">
+          <i name="quality" class="i-star icon-feebas icon-feebas-star {{#gt quality 0}}active{{/gt}}" data-value="1"></i>
+          <i name="quality" class="i-star icon-feebas icon-feebas-star {{#gt quality 1}}active{{/gt}}" data-value="2"></i>
+          <i name="quality" class="i-star icon-feebas icon-feebas-star {{#gt quality 2}}active{{/gt}}" data-value="3"></i>
+          <i name="quality" class="i-star icon-feebas icon-feebas-star {{#gt quality 3}}active{{/gt}}" data-value="4"></i>
+          <i name="quality" class="i-star icon-feebas icon-feebas-star {{#gt quality 4}}active{{/gt}}" data-value="5"></i>
+        </span>
+      </p>
+    </li>
+    <li class="comment-content">
+      <div class="comment-text">
+        {{context}}
+      </div>
+      {{#if images}}
+        <div class="comment-extra">
+          {{#each images}}
+            <img class="comment-img" src="{{url}}">
+          {{/each}}
+        </div>
+      {{/if}}
+      <div class="comment-date">
+        <span class="comment-time">{{formatDate createdAt}}</span>
+      </div>
+    </li>
+  </ul>
+</li>
+{{/each}}
+<div class="pagination comments-pagination"></div>

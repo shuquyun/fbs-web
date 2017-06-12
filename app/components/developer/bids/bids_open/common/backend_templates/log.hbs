@@ -1,0 +1,44 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>开标日志</label>
+  </div>
+  <div class="bids-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">开标类型</th>
+          <th width="20%">开标方式</th>
+          <th width="20%">是否同意</th>
+          <th width="20%">开标人</th>
+          <th width="20%">开标时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if logs}}
+          {{#each logs}}
+            <tr>
+              <td>
+                {{#equals type 1}}商务标{{/equals}}
+                {{#equals type 2}}技术标{{/equals}}
+              </td>
+              <td>
+                {{#equals openType 0}}手动开标{{/equals}}
+                {{#equals openType 1}}自动开标{{/equals}}
+              </td>
+              <td>
+                {{#equals status -1}}不同意{{/equals}}
+                {{#equals status 1}}同意{{/equals}}
+              </td>
+              <td class="td-active">{{openOperator}}</td>
+              <td>{{formatDate updatedAt}}</td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td class="center-text" colspan="5">暂无开标日志！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

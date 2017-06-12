@@ -1,0 +1,147 @@
+{{#component "user-merchant-settled js-comp"}}
+  <div class="component-body">
+    <form class="form form-aligned js-merchant-settled-form">
+      <div class="settled-body">
+        {{#if _DATA_.extra}}
+          <div class="control-group">
+            <label for="">{{i18n "audit schedule" bundle="user"}}：</label>
+            <span class="required">
+              {{#equals _DATA_.status "0"}}{{i18n "audit， please wait patiently" bundle="user"}}！{{/equals}}
+              {{#equals _DATA_.status "-1"}}{{i18n "audit does not pass" bundle="user"}}！{{/equals}}
+              {{#equals _DATA_.status "1"}}{{i18n "congratulations, review and approval" bundle="user"}}！{{/equals}}
+            </span>
+          </div>
+          {{#equals _DATA_.status "-1"}}
+            <div class="control-group">
+              <label for="">{{i18n "reason" bundle="user"}}：</label>
+              <div class="reason">{{_DATA_.extra.reason}}</div>
+            </div>
+          {{/equals}}
+        {{/if}}
+        <div class="control-group">
+          <label for=""><span class="required">*</span>{{i18n "shop name" bundle="user"}}：</label>
+          <input type="text" name="shopName" value="{{_DATA_.extra.shopName}}" required>
+          <span class="note-error-empty">{{i18n "please enter the shop name" bundle="user"}}</span>
+        </div>
+        <div class="control-group">
+          <label for=""><span class="required">*</span>{{i18n "shop phone" bundle="user"}}：</label>
+          <input type="text" name="phone" value="{{_DATA_.extra.phone}}" pattern="^((\d{3,4}-)?\d{6,8})$|^(1[3|4|5|7|8]\d{9})$" required>
+          <span class="note-error-empty">{{i18n "please enter the shop phone" bundle="user"}}</span>
+          <span class="note-error">{{i18n "please enter the mobile phone number or phone number" bundle="user"}}</span>
+        </div>
+        <div class="control-group js-pic" data-name="logo">
+          <label for="">{{i18n "shop pictures" bundle="user"}}：</label>
+          <div class="btn btn-upload">
+            <input type="file" name="file">
+            <span><i class="icon-pokeball icon-pokeball-upload"></i>{{i18n "upload picture" bundle="user"}}</span>
+          </div>
+          <div class="pic-list">
+            {{#if _DATA_.extra.logo}}
+              <div class="item">
+                <img src="{{_DATA_.extra.logo}}">
+                <div class="close"><a href="javascript:;" class="js-pic-close">x</a></div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="control-group js-need-picture js-pic" data-message="{{i18n "please upload a business license" bundle="user"}}" data-name="businessLicense">
+          <label for=""><span class="required">*</span>{{i18n "business license" bundle="user"}}：</label>
+          <div class="btn btn-upload">
+            <input type="file" name="file">
+            <span><i class="icon-pokeball icon-pokeball-upload"></i>{{i18n "upload picture" bundle="user"}}</span>
+          </div>
+          <div class="pic-list">
+            {{#if _DATA_.extra.businessLicense}}
+              <div class="item">
+                <img src="{{_DATA_.extra.businessLicense}}">
+                <div class="close"><a href="javascript:;" class="js-pic-close">x</a></div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="control-group js-need-picture js-pic" data-message="{{i18n "please upload the organization code certificate" bundle="user"}}" data-name="orgLicense">
+          <label for=""><span class="required">*</span>{{i18n "organization code certificate" bundle="user"}}：</label>
+          <div class="btn btn-upload">
+            <input type="file" name="file">
+            <span><i class="icon-pokeball icon-pokeball-upload"></i>{{i18n "upload picture" bundle="user"}}</span>
+          </div>
+          <div class="pic-list">
+            {{#if _DATA_.extra.orgLicense}}
+              <div class="item">
+                <img src="{{_DATA_.extra.orgLicense}}">
+                <div class="close"><a href="javascript:;" class="js-pic-close">x</a></div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="control-group js-need-picture js-pic" data-message="{{i18n "please upload the tax registration certificate" bundle="user"}}" data-name="taxLicense">
+          <label for=""><span class="required">*</span>{{i18n "tax registration certificate" bundle="user"}}：</label>
+          <div class="btn btn-upload">
+            <input type="file" name="file">
+            <span><i class="icon-pokeball icon-pokeball-upload"></i>{{i18n "upload picture" bundle="user"}}</span>
+          </div>
+          <div class="pic-list">
+            {{#if _DATA_.extra.taxLicense}}
+              <div class="item">
+                <img src="{{_DATA_.extra.taxLicense}}">
+                <div class="close"><a href="javascript:;" class="js-pic-close">x</a></div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="control-group">
+          <label for=""><span class="required">*</span>{{i18n "region" bundle="user"}}：</label>
+          <div class="address-select-group">
+            <select name="provinceId" class="address-select" data-level="1">
+              {{#if _DATA_.extra.provinceId}}
+              <option value="{{_DATA_.extra.provinceId}}" selected></option>
+              {{else}}
+              <option value="">{{i18n "Please select province" bundle="user"}}..</option>
+              {{/if}}
+            </select>
+            &nbsp;
+            <select name="cityId" class="address-select" data-level="2">
+              {{#if _DATA_.extra.cityId}}
+              <option value="{{_DATA_.extra.cityId}}" selected></option>
+              {{else}}
+              <option value="">{{i18n "Select City" bundle="user"}}..</option>
+              {{/if}}
+            </select>
+            &nbsp;
+            <select name="regionId" class="address-select" data-level="3">
+              {{#if _DATA_.extra.regionId}}
+              <option value="{{_DATA_.extra.regionId}}" selected></option>
+              {{else}}
+              <option value="">{{i18n "Select City" bundle="user"}}..</option>
+              {{/if}}
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label for=""><span class="required">*</span>{{i18n "street" bundle="user"}}：</label>
+          <input type="text" name="street" value="{{_DATA_.extra.street}}" required>
+          <span class="note-error-empty">{{i18n "please enter the street" bundle="user"}}</span>
+        </div>
+        <div class="control-group">
+          <label for="">{{i18n "description" bundle="user"}}：</label>
+          <textarea name="desc">{{_DATA_.extra.desc}}</textarea>
+        </div>
+        {{#if _DATA_.status}}
+          {{#equals _DATA_.status "-1"}}
+            <div class="control-group">
+              <div class="controls">
+                <input type="submit" class="btn btn-priamry btn-large" value="确认">
+              </div>
+            </div>
+          {{/equals}}
+        {{else}}
+          <div class="control-group">
+            <div class="controls">
+              <input type="submit" class="btn btn-priamry btn-large" value="确认">
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+{{/component}}

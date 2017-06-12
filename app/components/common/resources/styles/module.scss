@@ -1,0 +1,117 @@
+@import "pokeball/theme";
+@import "compass/css3";
+@import "common/resources/styles/components";
+@import "common/resources/styles/error";
+@import "common/resources/styles/static";
+@import "common/resources/styles/layout";
+@import "common/resources/styles/common";
+@import "common/resources/styles/form";
+
+$header-height    :   60px;
+$foot-height      :   41px;
+$sidebar-width    :   180px;
+$sidebar-width-mini : 36px;
+
+.body {
+  background-color: $color-background;
+}
+
+.main-top {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  z-index: 3;
+  display:block;
+}
+
+.main-left {
+  position: fixed;
+  left: 0;
+  width: $sidebar-width;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display:block;
+  background-color: $color-sidebar-bg;
+}
+
+.main-search {
+  background: $white;
+  margin: 20px 0;
+}
+
+.main-body {
+  margin: auto;
+  width: 1200px;
+  margin-top: 60px;
+}
+
+.body-container {
+  background-color: $white;
+  padding-bottom: 50px;
+  min-height: 450px;
+
+  &.no-background {
+    background: none;
+  }
+}
+
+.main-left-mini {
+  width: $sidebar-width-mini;
+}
+
+.white-space-normal {
+  white-space: normal !important;
+}
+
+.main-right {
+  margin-top:$header-height;
+  margin-bottom:$foot-height;
+  margin-left:$sidebar-width;
+  position: relative;
+  z-index: 1;
+  right: 0;
+  padding: 16px;
+  padding-top: 0px;
+  height: 100%;
+  overflow-y: auto;
+  display:block;
+  background-color: #edeeef;
+}
+
+// .main-container {
+//   background-color: $white;
+//   margin: auto;
+//   padding: 0 20px;
+// }
+
+.main-right-mini {
+  margin-left: $sidebar-width-mini;
+}
+
+.main-foot {
+  position: fixed;
+  margin-left:$sidebar-width;
+  display:block;
+  z-index: 2;
+  height: $foot-height;
+  background-color: #fff;
+  border-top: 1px solid #e4eaec;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+

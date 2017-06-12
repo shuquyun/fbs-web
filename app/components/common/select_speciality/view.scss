@@ -1,0 +1,88 @@
+@import "pokeball/theme";
+
+.component-multi-options-container {
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+  font-size: 0;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 4px;
+
+  .category-container {
+    background-color: transparent;
+    width: 150px;
+    height: 140px;
+    overflow-y: auto;
+    border-left: 1px solid $color-border;
+    font-size: 12px;
+    @include inline-block(top);
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+
+  .category-item {
+    padding: 7px 10px;
+    cursor: pointer;
+
+    i {
+      color: $color-primary-light;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:hover {
+      background-color: $color-background;
+    }
+
+    &.selected {
+      background-color: #E6F8FF;
+    }
+  }
+}
+
+.speciality-group .selected-special-group {
+  padding: 3px 6px 3px 3px;
+  min-height: 32px;
+  line-height: 25px;
+  border: 1px solid #dfdfdf;
+  display: inline-block;
+  min-width: 232px;
+  max-width: 940px;
+  vertical-align: middle;
+  cursor: pointer;
+
+  span {
+    color: $color-text-note;
+  }
+  .no-data-placeholder {
+    margin-left: 6px;
+  }
+  .each-speciality, .each-city {
+    background-color: #f5f5f5;
+    padding: 5px 5px 5px 8px;
+    border-radius: 3px;
+    margin-right: 3px;
+    display: inline-block;
+    height: 23px;
+    line-height: 12px;
+
+    i {
+      color: #999;
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+  }
+
+  i {
+    color: #666;
+  }
+
+  .icon-hsh-caret {
+    margin-left: 5px;
+  }
+}

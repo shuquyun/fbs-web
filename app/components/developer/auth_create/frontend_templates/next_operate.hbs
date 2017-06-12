@@ -1,0 +1,14 @@
+<div class="modal modal-dialog">
+  <div class="modal-dialog-icon">
+    <i class="icon-success"></i>
+  </div>
+  <div class="modal-dialog-message">
+    <h3>提示</h3>
+    <p>{{#if data.id}}编辑{{else}}添加{{/if}}角色成功！接下来：</p>
+    <div class="modal-controls">
+      <a href="/{{companyType}}/company-user-role" class="btn btn-success btn-medium" style="color:#fff;">查看角色列表</a>
+      &nbsp;
+      <a href="/{{companyType}}/company-user-role-create" class="btn btn-info btn-medium" style="color: #717171;">添加新的角色</a>
+    </div>
+  </div>
+</div>

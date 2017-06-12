@@ -1,0 +1,79 @@
+.component-supplementary{
+
+
+  .min-table{
+    width: 860px;
+  }
+  .max-table{
+    width: 1160px;
+  }
+
+  table.supplementary-manage-table{
+    .id{
+      width: 50px;
+    }
+    .name{
+      width: 100px;
+    }
+    .attrs{
+      width: 100px;
+    }
+    .project-feature{
+      width: 100px;
+    }
+    .work-desc{
+      width: 100px;
+    }
+    .unit{
+      width: 80px;
+    }
+    .quantities{
+      width: 50px;
+    }
+    .item-price-1{
+      width: 50px;
+    }
+    .item-price-2{
+      width: 50px;
+    }
+    .item-price-3{
+      width: 50px;
+    }
+    .item-price-4{
+      width: 50px;
+    }
+    .profit{
+      width: 50px;
+    }
+    .manage-fee{
+      width: 50px;
+    }
+    .unit-price{
+      width: 50px;
+    }
+    .total{
+      width: 50px;
+    }
+    .is-supply{
+      width: 50px;
+    }
+    .supply-list{
+      width: 50px;
+    }
+    .td-operation{
+      width: 80px;
+    }
+
+
+  }
+}
+.modal-template-fee-manage{
+  .fees-valuation-base{
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    input{
+      padding-top: 2px;
+    }
+  }
+}

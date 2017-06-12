@@ -1,0 +1,6 @@
+{{#partial "realTitle"}}店铺信息{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "店铺管理"},{"url": "#", "crumb": "店铺详情"}]}}{{/inject}}
+  {{inject "shop/shop_profile"}}
+{{/partial}}
+{{> seller/layout}}

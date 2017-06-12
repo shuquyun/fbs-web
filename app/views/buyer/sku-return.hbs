@@ -1,0 +1,20 @@
+{{#partial "realTitle"}}退货款中心{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+  {
+    "_DATA_": {
+      "breadcrumb":
+      [{
+        "crumb": "订单管理",
+        "url": "#"
+      },
+      {
+        "crumb": "退货款中心",
+        "url": "#"
+      }]
+    }
+  }
+  {{/inject}}
+  {{inject "trade/buyer/sku_return"}}
+{{/partial}}
+{{> user/layout}}

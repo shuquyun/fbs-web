@@ -1,0 +1,47 @@
+<div class="list list-squared list-condensed clearfix" data-data="{{json _DATA_}}">
+  {{#if _DATA_.total}}
+    {{!-- 列表展示 --}}
+    <table class="shop-search-items-list-type" width="100%">
+      <tbody>
+        {{#each _DATA_.data}}
+        <tr {{#if @last}}class="last"{{/if}}>
+          <td width="640">
+            <div class="product-image">
+              <a href="/developer/supplier-detail?companyId={{companyId}}" target="_blank">
+                <img data-original="{{cdnPath logo "78"}}" alt="{{name}}" style="width:78px; height:78px;">
+              </a>
+            </div>
+            <div class="descAshop">
+              <p class="product-desc">
+                <a href="/developer/supplier-detail?companyId={{companyId}}" target="_blank">{{{name}}}</a>
+              </p>
+              <p class="shop-name cutwords">
+                {{!--<span href="javascript:;">{{#each (parse specialityAttr)}}{{name}}&nbsp;{{/each}}&nbsp;</span>|&nbsp;--}}
+                <span href="javascript:;">{{capital}}&nbsp;</span>|&nbsp;
+                {{!--<span href="javascript:;">{{#each scity}}{{this}}&nbsp;{{/each}}&nbsp;</span>|&nbsp;--}}
+                <span href="javascript:;">{{formatDate registerTime 'day'}}</span>
+              </p>
+              <p class="shop-name cutwords">
+                <i class="icon-hsh icon-hsh-dw"></i>
+                <span href="javascript:;">{{province}}</span>
+                <span href="javascript:;">{{city}}</span>
+              </p>
+            </div>
+          </td>
+          <td width="290" class="left-text">
+            <div>入库次数（次）</div>
+            <div class="price-content">
+              <span class="product-price">{{#if storageTimes}}{{storageTimes}}{{else}}0{{/if}}</span>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="no-results center-text">
+      <span class="img"><i class="icon-feebas icon-feebas-goods good-icon"></i></span>
+      <p class="desc">暂无供应商公司</p>
+    </div>
+  {{/if}}
+</div>

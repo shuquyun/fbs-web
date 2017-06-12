@@ -1,0 +1,41 @@
+{{#component "js-comp bids-open bids-block"}}
+  {{inject "developer/bids/bids_open/supplier_list" status='selected'}}
+  {{#with _BIDS_}}
+    {{#equals openType 0}}
+      {{#if isOpenOperator}}
+        <div class="bids-group">
+          {{#of bidStatus "11,13"}}
+            {{#unless businessStatus}}
+              <button class="btn btn-primary btn-medium js-bids-open" data-type="1" data-last-tech="{{subtract ../_DATA_.allOpenOperatorNum ../_DATA_.techOperatorNum}}" data-last-commer="{{subtract ../_DATA_.allOpenOperatorNum ../_DATA_.commercialOperatorNum}}">开商务标</button>
+            {{/unless}}
+          {{/of}}
+          {{#of bidStatus "11,12"}}
+            {{#unless techStatus}}
+              <button class="btn btn-primary btn-medium js-bids-open" data-type="2" data-last-commer="{{subtract ../_DATA_.allOpenOperatorNum ../_DATA_.commercialOperatorNum}}" data-last-tech="{{subtract ../_DATA_.allOpenOperatorNum ../_DATA_.techOperatorNum}}">开技术标</button>
+            {{/unless}}
+          {{/of}}
+        </div>
+      {{/if}}
+    {{/equals}}
+  {{/with}}
+  {{#with _DATA_}}
+    <div class="bids-group">
+      {{#if openType}}
+        <div class="js-time-content" data-autodate="{{autoOpenDate}}">
+          {{#equals bidStatus 11}}
+            <div class="bids-content-bg">
+              距离自动开标还剩
+              <span class="time-show">
+              </span>
+            </div>
+          {{/equals}}
+        </div>
+      {{else}}
+        <div class="bids-content-bg">
+          <span>共有{{allOpenOperatorNum}}位开标人，目前{{commercialOperatorNum}}位同意开商务标，{{techOperatorNum}}位同意开技术标</span>
+        </div>
+      {{/if}}
+    </div>
+    {{> component:developer/bids/bids_open/common/backend_templates/log}}
+  {{/with}}
+{{/component}}

@@ -1,0 +1,9 @@
+<div class="new-item js-new-item">
+  {{#equals type select}}
+    <select name="name">
+      <option value="{{id}}">{{name}}</option>
+    </select>
+  {{else}}
+    <input type="text" name="name" placeholder="请输入名称">
+  {{/equals}}
+</div>

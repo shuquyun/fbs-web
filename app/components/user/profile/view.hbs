@@ -1,0 +1,95 @@
+{{#component "profile component-standard-container js-comp"}}
+  <div class="profile-content component-body">
+    <div class="profile-body">
+      <form class="form-aligned form" id="user-profile-form" data-data="{{json _DATA_}}">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label name"><span class="note-required">*</span>{{i18n "Username" bundle="user"}}：</label>
+            <input type="text" name="username" class="input-medium" value="{{_DATA_.username}}" placeholder="{{i18n "Please enter username" bundle="user"}}" data-nick="{{_DATA_.username}}" maxLength="25" pattern="[\s\S]{5,25}" required>
+            <span class="note">5-25个{{i18n "character" bundle="user"}}符，勿{{i18n "Fill in email" bundle="user"}}、{{i18n "All Number" bundle="user"}}</span>
+            <span class="note-error">&times; 5-25{{i18n "character" bundle="user"}}符，勿{{i18n "Fill in email" bundle="user"}}、{{i18n "All Number" bundle="user"}}</span>
+            <span class="note-error-empty">&times; 5-25{{i18n "character" bundle="user"}}符，勿{{i18n "Fill in email" bundle="user"}}、{{i18n "All Number" bundle="user"}}</span>
+            <span class="note-error-number">&times; {{i18n "Username cannot be number" bundle="user"}}</span>
+            <span class="note-error-email">&times; {{i18n "Username cannot be email address" bundle="user"}}</span>
+            <span class="note-error-notchar">&times; {{i18n "Username contain invalid characters" bundle="user"}}</span>
+            <span class="note-error-forline">&times; {{i18n "Username first and last character cannot be an underscore" bundle="user"}}“_”</span>
+            <span class="note-error-exists">&times; {{i18n "Username have been taken" bundle="user"}}</span>
+            <span class="note-loading"> {{i18n "Checking" bundle="user"}}...</span>
+            <span class="note-successed"><i class="icon-success16"></i></span>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{i18n "Real name" bundle="user"}}：</label>
+            <input type="text" name="realName" class="input-medium" value="{{_DATA_.realName}}" placeholder="{{i18n "Please enter your real name" bundle="user"}}" maxLength="25" pattern="[\s\S]{1,25}">
+            <span class="note">不超过25个{{i18n "character" bundle="user"}}符
+          </div>
+          <!-- 去掉此功能-->
+          {{!-- <div class="control-group">
+            <label class="control-label">{{i18n "Email" bundle="user"}}：</label>
+            {{#if _DATA_.user.email}}
+              {{_DATA_.user.email}}&nbsp;&nbsp;<a href="/user/email?mail={{_DATA_.user.email}}">{{i18n "Change email" bundle="user"}}</a>
+            {{else}}
+              <a href="/user/email">{{i18n "Verify email" bundle="user"}}</a>
+            {{/if}}
+          </div> --}}
+          <div class="control-group">
+            <label class="control-label"><span class="note-required">*</span>{{i18n "Email" bundle="user"}}：</label>
+            <input type="text" id="email" class="input-medium" name="email" placeholder="请输入您的邮箱" pattern="^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$" value="{{_DATA_.email}}" required>
+            <span class="note-error"> 请输入正确的邮箱格式</span>
+            <span class="note-error-empty"> 邮箱不可为空</span>
+          </div>
+          <div class="control-group control-phone">
+            <label class="control-label">{{i18n "Phone number" bundle="user"}}：</label>
+            <input type="text" id="inputMobile" name="mobile" class="input-medium" value="{{_DATA_.mobile}}" readonly="readonly" placeholder="{{i18n "Please enter phone number" bundle="user"}}">
+            <span class="help-inline"><a href="javascript:void(0);" id="js-change-mobile">{{i18n "Change phone number" bundle="user"}}</a></span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="note-required">*</span>{{i18n "Sex" bundle="user"}}：</label>
+            <label class="inline">
+              <input type="radio" name="gender" value="1" {{#equals _DATA_.gender 1}} checked {{/equals}}>&nbsp;{{i18n "Male" bundle="user"}}
+            </label>
+            &nbsp;&nbsp;
+            <label class="inline">
+              <input type="radio" name="gender" value="2" {{#equals _DATA_.gender 2}} checked {{/equals}}>&nbsp;{{i18n "Female" bundle="user"}}
+            </label>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{i18n "Birthday" bundle="user"}}：</label>
+            <input type="text" name="birthday" class="birthday-input datepicker" placeholder="{{i18n "Please select a date" bundle="user"}}" value="{{_DATA_.birthday}}">
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{i18n "Location" bundle="user"}}：</label>
+            <div class="address-select-group">
+              <select name="provinceId" class="address-select" data-level="1">
+                <option value="{{_DATA_.provinceId}}" data-value="0" selected>{{i18n "Please select" bundle="user"}}</option>
+              </select>
+              <select name="cityId" class="address-select" data-level="2">
+                <option value="{{_DATA_.cityId}}" selected>{{i18n "Please select" bundle="user"}}</option>
+              </select>
+              <select name="regionId" class="address-select" data-level="3">
+                <option value="{{_DATA_.regionId}}" selected>{{i18n "Please select" bundle="user"}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{i18n "Street Address" bundle="user"}}：</label>
+            <input type="text" name="street" value="{{_DATA_.street}}" class="input-medium" placeholder="请输入街道地址">
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{i18n "Upload profile picture" bundle="user"}}：</label>
+              <img id="user-avatar" alt="{{i18n "Your profile picture" bundle="user"}}" class="avatar {{#if _DATA_.avatar}}{{else}}disappear{{/if}}" src="{{#if _DATA_.avatar}}{{_DATA_.avatar}}{{/if}}">
+              <input name="avatar" type="hidden" value="{{_DATA_.avatar}}">
+              <div class="btn btn-upload">
+                <input type="file" name="file">
+                <span>{{i18n "Select Image" bundle="user"}}</span>
+              </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <input id="js-user-profile-submit" type="submit" class="btn btn-success btn-medium" value="{{i18n "Save" bundle="user"}}">
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+{{/component}}

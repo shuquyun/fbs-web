@@ -1,0 +1,70 @@
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "pokeball/theme";
+@import "icons";
+@import "btn";
+@import "designable";
+
+ul.suggestion {
+  z-index: 999;
+}
+
+.cutwords {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal; // for IE8, 9
+}
+
+.left-text {
+  text-align: left !important;
+}
+
+.right-text {
+  text-align: right !important;
+}
+
+.center-text {
+  text-align: center !important;
+}
+
+.parent-position {
+  position: relative;
+}
+
+.pagination {
+  float: right;
+  margin-top: 10px;
+}
+
+label, html, button, input, select, textarea {
+  vertical-align: middle;
+}
+
+.span4 {
+  padding: 0;
+  @include inline-block(middle);
+  zoom: 1;
+  text-align: right;
+  width: 300px;
+}
+
+/* IE10,日期placeholder字体颜色 */
+#component-filter {
+  .span3 {
+    .input-pair {
+      input.datepicker::-webkit-input-placeholder {
+        color: #999 !important;
+      }
+      input.datepicker:-moz-input-placeholder {
+        color: #999 !important;
+      }
+      input.datepicker::-moz-input-placeholder {
+        color: #999 !important;
+      }
+      input.datepicker:-ms-input-placeholder {
+        color: #999 !important;
+      }
+    }
+  }
+}

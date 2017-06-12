@@ -1,0 +1,102 @@
+findChildrenOf:
+  method: GET
+  type: http
+  url: /api/frontCategories/childrenTree
+  query:
+    - key: ids
+listTypeArticle:
+  type: http
+  method: GET
+  url: /api/articles/by-type
+
+findShopCategoriesFullTree:
+  method: GET
+  type: http
+  url: /api/seller/shopCategories/fullTree
+  query:
+    - key: shopId
+      desc: 店铺ID
+
+searchShopWithAggs:
+  type: http
+  url: /api/search/shop
+  query:
+    - key: q
+    - key: pageNo
+    - key: pageSize
+
+searchWithAggs:
+  method: GET
+  type: http
+  url: /api/search
+  query:
+    - key: q
+      desc: 关键词
+    - key: bid
+      desc: 品牌id
+    - key: shopId
+      desc: 店铺内搜索
+    - key: shopCatId
+      desc: 店铺类目搜索
+    - key: attrs
+      desc: 属性
+    - key: fcid
+      desc: 分类ID
+    - key: bids
+      desc: 品牌
+    - key: regionIds
+      desc: 区域id
+    - key: ids
+      desc: id列表
+    - key: bcids
+      desc: 后台类目id列表
+    - key: p_f
+      desc: 构建范围查询
+    - key: p_t
+      desc: 构建范围查询
+    - key: aggs
+      desc: 构建聚合查询
+    - key: sort
+      desc: 构建排序
+    - key: highlight
+      desc: 需要高亮的字段列表
+    - key: pageNo
+    - key: pageSize
+
+findArticlesByCategoryId:
+  method: GET
+  type: http
+  url: /api/design/article/list
+  query:
+    - key: categoryId
+    - key: pageNo
+    - key: pageSize
+
+findArticleCategoryByCategoryId:
+  method: GET
+  type: http
+  url: /api/design/article/category
+  query:
+    - key: id:categoryId
+
+findArticleDetail:
+  method: GET
+  type: http
+  url: /api/design/article/{id}
+  query:
+    - key: categoryId
+    - key: limit
+
+findArticlesList:
+  method: GET
+  type: http
+  url: /api/design/article/list
+  query:
+    - key: categoryId
+    - key: pageNo
+    - key: pageSize
+
+findArticleCategories:
+  method: GET
+  type: http
+  url: /api/design/article/listCategory

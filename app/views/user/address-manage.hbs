@@ -1,0 +1,6 @@
+{{#partial "realTitle"}}收货地址{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "账户信息"},{"url": "#", "crumb": "收货地址"}]}}{{/inject}}
+  {{inject "user/address_manage" true}}
+{{/partial}}
+{{> user/layout}}

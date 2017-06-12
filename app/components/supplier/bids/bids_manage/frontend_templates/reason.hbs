@@ -1,0 +1,22 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>弃标</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <form class="form form-common  form-aligned js-form-bids-reason">
+    <div class="modal-body manager-body">
+      <div class="control-group">
+        <label class="group-title">弃标原因：</label>
+        <div class="group-content">
+          <input type="hidden" name="id" value="{{id}}">
+          <input type="text" name="reason" required>
+          <span class="note-error-empty">不能为空</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-primary btn-medium">确认</button>
+      <button class="btn btn-info btn-medium close">取消</button>
+    </div>
+  </form>
+</div>

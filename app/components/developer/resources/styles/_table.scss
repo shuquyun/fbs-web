@@ -1,0 +1,14 @@
+.table-question {
+  .question-content {
+    cursor: pointer;
+  }
+
+  .question-content:hover {
+    color: $color-primary;
+    cursor: pointer;
+  }
+}
+
+.table .td-active {
+  color: $color-primary !important;
+}

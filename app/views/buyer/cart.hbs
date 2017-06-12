@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}我的购物车{{/partial}}
+{{#partial "progress"}}
+{{#inject "common/header_title_progress"}}{"title":"购物车","progress":[{"name":"My Cart","active":"true"},{"name":"Checking the Order"},{"name":"Submit Order Success"},{"name":"Pay Success"}]}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "trade/buyer/shop_cart"}}
+{{/partial}}
+{{> buyer/layout}}

@@ -1,0 +1,35 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>{{i18n "Template Configuration" bundle="system"}}</h2>
+  </div>
+  <form class="form form-aligned template-form" sites-id="{{data.key}}">
+    <div class="modal-dialog">
+      <div class="sites-new">
+        <div class="control-group">
+          <label for="sites-name"><span class="required">*</span>{{i18n "Template Type" bundle="system"}}:</label>
+          <select name="app" {{#if data.key}}disabled{{/if}}>
+            {{#each apps}}
+              <option value="{{app}}" {{#equals ../data.app app}}selected{{/equals}}>{{name}}</option>
+            {{/each}}
+          </select>
+          <span class="note"><i>&times;</i> {{i18n "Required, cannot be empty" bundle="system"}}</span>
+          <span class="note-error-empty"><i>&times;</i> {{i18n "Required, cannot be empty" bundle="system"}}</span>
+        </div>
+        <div class="control-group">
+          <label for="sites-name"><span class="required">*</span>{{i18n "Template name" bundle="system"}}:</label>
+          {{#if data.key}}
+            <input type="hidden" name="key" value="{{data.key}}">
+            <input type="hidden" name="app" value="{{data.app}}">
+          {{/if}}
+          <input id="sites-id" name="name" type="text" placeholder="{{i18n "Please enter the template name" bundle="system"}}" value="{{data.name}}" required>
+          <span class="note"><i>&times;</i> {{i18n "Required, cannot be empty" bundle="system"}}</span>
+          <span class="note-error-empty"><i>&times;</i> {{i18n "Required, cannot be empty" bundle="system"}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-medium btn-success" type="submit">{{i18n "Confirm" bundle="system"}}</button>
+      <button class="btn btn-medium close" type="button">{{i18n "Cancel" bundle="system"}}</button>
+    </div>
+  </form>
+</div>

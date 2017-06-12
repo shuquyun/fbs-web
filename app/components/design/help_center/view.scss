@@ -1,0 +1,122 @@
+@import "pokeball/theme";
+@import "compass/css3";
+
+.help-center {
+  position: relative;
+  min-height: 500px;
+
+  .current-location {
+    margin-bottom: 20px;
+    border-bottom: none;
+
+    .current-location-span {
+      margin-left: 0;
+    }
+
+    .js-bread-category-selector {
+      color: $color-text-note;
+      font-size: 14px;
+    }
+
+    .js-bread-front-selector {
+      color: $color-primary;
+      font-size: 14px;
+    }
+
+    i {
+      margin: 0 10px;
+      color: $color-text-note;
+      font-size: 14px;
+    }
+  }
+
+  .help-types {
+    position: relative;
+    width: 238px;
+    border: 1px solid $color-border;
+    border-bottom: none;
+    border-top: 2px solid $color-primary;
+    list-style: none;
+  }
+
+  .each-type {
+    padding: 18px 30px;
+    border-bottom: 1px solid $color-border;
+
+    .type-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+      color: $color-text-note;
+      @include transition(color 0.3s);
+
+      &.active {
+        color: $color-primary;
+      }
+    }
+
+    .document-titles {
+      list-style: none;
+      cursor: pointer;
+
+      .title {
+        margin: 26px 20px 0;
+
+        &.active {
+          h4 {
+            color: $color-primary;
+          }
+        }
+      }
+
+      h4 {
+        margin: 0;
+        height: 14px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: normal;
+        color: $color-text-note;
+        @include transition(color 0.3s);
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  .document-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 270px;
+    padding: 30px;
+    width: 928px;
+    height: 438px;
+    border: 1px solid $color-border;
+    color: $color-body;
+    font-size: 14px;
+    overflow: auto;
+    line-height: 20px;
+
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 1;
+    }
+
+    .separator {
+      margin: 20px 0 30px 0;
+      height: 8px;
+      width: 870px;
+      background-image: url("/marshtomp/assets/images/other-images/separator.png");
+      background-repeat: repeat-x;
+      background-position: top left;
+      overflow: hidden;
+    }
+  }
+}

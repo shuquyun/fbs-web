@@ -1,0 +1,32 @@
+{{#partial "realTitle"}}开发商中心{{/partial}}
+{{#partial "topBody"}}
+  {{inject "developer/index/count"}}
+{{/partial}}
+{{#partial "tabNavs"}}
+  <div class="tab" data-type="switchable">
+    <ul class="tab-navs clearfix">
+      <li class="{{#unless qfType}}active{{/unless}}">
+        <a href="/developer/index">系统消息</a>
+      </li>
+      <li class="{{#equals qfType 2}}active{{/equals}}">
+        <a href="/developer/index?qfType=2">待我审批</a>
+      </li>
+      <li class="{{#equals qfType 3}}active{{/equals}}">
+        <a href="/developer/index?qfType=3">我发起的审批</a>
+      </li>
+    </ul>
+  </div>
+{{/partial}}
+{{#partial "realBody"}}
+  {{#if qfType}}
+    {{#equals qfType 2}}
+      {{inject "developer/index/approval"}}
+    {{/equals}}
+    {{#equals qfType 3}}
+      {{inject "developer/index/owner"}}
+    {{/equals}}
+  {{else}}
+    {{inject "developer/index/message" qfType=1}}
+  {{/if}}
+{{/partial}}
+{{> developer/layout_index}}

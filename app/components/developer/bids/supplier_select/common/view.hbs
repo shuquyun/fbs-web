@@ -1,0 +1,16 @@
+{{#component "js-comp supplier-select bids-block"}}
+  {{inject "developer/bids/supplier_select/register" bidData=_DATA_ userId=_USER_.id}}
+  {{inject "developer/bids/supplier_select/waiting" status='wait_select' bidData=_DATA_}}
+  {{#with _DATA_}}
+    {{#equals tenderFinalistsOperatorId ../_USER_.id}}
+      {{#of bidStatus "2,4,8"}}
+        <div class="bids-group margin-bottom-20">
+          <div class="bids-content content-border">
+            <button class="btn btn-medium btn-primary margin-bottom-20 js-supplier-submit" data-status="{{bidStatus}}">提交入围</button>
+          </div>
+        </div>
+      {{/of}}
+    {{/equals}}
+  {{/with}}
+  {{inject "developer/bids/bids_approval/log" type=2 connectId=bidId}}
+{{/component}}

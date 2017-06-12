@@ -1,0 +1,29 @@
+<div class="project-info">
+  <label class="label-title">详细信息</label>
+  <table class="table table-info" width="100%">
+    <tr class="first-tr">
+      <th width="15%" class="left-text">项目状态</th>
+      <td width="85%">
+        {{#if status}}正常{{else}}关闭{{/if}}
+      </td>
+    </tr>
+    <tr>
+      <th width="15%" class="left-text">占地面积</th>
+      <td width="85%">
+        {{formatNumber floorArea}}平方米
+      </td>
+    </tr>
+    <tr>
+      <th width="15%" class="left-text">建筑面积</th>
+      <td width="85%">
+        {{formatNumber buildingArea}}平方米
+      </td>
+    </tr>
+    <tr>
+      <th width="15%" class="left-text">项目描述</th>
+      <td width="85%">
+        {{#if description}}{{description}}{{else}}-{{/if}}
+      </td>
+    </tr>
+  </table>
+</div>

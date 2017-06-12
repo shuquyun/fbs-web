@@ -1,0 +1,22 @@
+<div class="progress">
+  <ol>
+    <li class="progress-step {{#equals step '1'}}active{{else}}past{{/equals}}">
+      <span class="progress-step-number">
+        {{#equals step '1'}}1{{else}}<i class="icon-pokeball icon-pokeball-gou"></i>{{/equals}}
+      </span>
+      <span class="progress-step-into">用户信息完善</span>
+    </li>
+    <li class="progress-bar active"></li>
+    <li class="progress-step {{#equals step '2'}}active{{else}}{{#equals step '3'}}past{{/equals}}{{/equals}}">
+      <span class="progress-step-number">
+        {{#equals step '3'}}<i class="icon-pokeball icon-pokeball-gou"></i>{{else}}2{{/equals}}
+      </span>
+      <span class="progress-step-into">公司信息完善</span>
+    </li>
+    <li class="progress-bar {{#equals step '1'}}{{else}}active{{/equals}}"></li>
+    <li class="progress-step {{#equals step '3'}}active{{/equals}}">
+      <span class="progress-step-number">3</span>
+      <span class="progress-step-into">等待审核</span>
+    </li>
+  </ol>
+</div>

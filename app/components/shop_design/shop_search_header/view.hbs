@@ -1,0 +1,15 @@
+{{#component "component-shop-inner-header js-comp"}}
+  <form class="form form-search" type="get" id="js-shop-search-form" data-id="{{shopId}}" action="{{_HREF_.main}}/search" data-href="{{_HREF_.main}}">
+    <fieldset>
+      <div class="input-group input-group-append input-search">
+        <input type="text" name="q" class="search-input" value="{{q}}" placeholder="{{placeholder}}" autocomplete="off">
+        <span class="input-group-btn">
+          <button class="btn btn-primary btn-medium" id="js-search-site" type="button">搜全站</button>
+        </span>
+        <span class="input-group-btn">
+          <button class="btn btn-medium inner-shop" id="js-search-shop" type="button">搜本店</button>
+        </span>
+      </div>
+    </fieldset>
+  </form>
+{{/component}}

@@ -1,0 +1,9 @@
+{{#partial "realTitle"}}定标{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "招标管理"},{"url": "/developer/bids", "crumb": "招投标管理"},{"url": "#", "crumb": "招标详情"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/progress"}}
+  {{inject "developer/bids/bids_confirm/common" type=8}}
+{{/partial}}
+{{> developer/layout}}

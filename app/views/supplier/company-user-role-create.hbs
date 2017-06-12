@@ -1,0 +1,13 @@
+{{#partial "realTitle"}}{{#unless id}}添加角色{{else}}编辑角色{{/unless}}{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "用户管理"},{"url": "#", "crumb": "{{#unless id}}添加角色{{else}}编辑角色{{/unless}}"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "developer/auth_create"}}
+  {
+    "companyType": "supplier",
+    "roleType": "SUPPLIER"
+  }
+  {{/inject}}
+{{/partial}}
+{{> supplier/layout}}

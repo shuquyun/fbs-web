@@ -1,0 +1,35 @@
+{{#component "company-manage-info component-standard-tab-container  js-comp"}}
+<div class="tab-contents clearfix">
+  <div data-role="content" class="tab-content">
+    <form class="form form-aligned tax-info-form js-supplier-form-submit" data-company-info="{{json _DATA_.company}}">
+      <div class="component-header">
+        {{> component:developer/company/company_info/backend_templates/header_status data=_DATA_.company}}
+      </div>
+      <div class="component-body info-content">
+        {{#equals _DATA_.company.status '0'}}
+          {{#equals _APPLY_.extra.applyType '2'}}
+            <div class="single-box js-left-box">
+              <div class="apply-title">变更前信息</div>
+              {{> component:supplier/company/company_info_tax/all_templates/tax_info data=_DATA_.supplierProfile}}      
+            </div>
+            <div class="single-box js-right-box has-different-info">
+              <div class="apply-title">待审核信息</div>
+              {{> component:supplier/company/company_info_tax/all_templates/tax_info data=_APPLY_.supplierProfile before=_DATA_.supplierProfile}}     
+            </div>
+            <div class="apply-title">变更前信息</div>
+            {{> component:supplier/company/company_info_tax/backend_templates/business_info data=_DATA_}}
+            <div class="apply-title">待审核信息</div>
+            {{> component:supplier/company/company_info_tax/backend_templates/business_info data=_APPLY_}}
+          {{else}}
+            {{> component:supplier/company/company_info_tax/all_templates/tax_info data=_DATA_.supplierProfile}}
+            {{> component:supplier/company/company_info_tax/backend_templates/business_info data=_DATA_}}
+          {{/equals}}
+        {{else}}
+          {{> component:supplier/company/company_info_tax/all_templates/tax_info data=_DATA_.supplierProfile}} 
+          {{> component:supplier/company/company_info_tax/backend_templates/business_info data=_DATA_}}
+        {{/equals}}
+      </div>
+    </form>
+  </div>
+</div>
+{{/component}}

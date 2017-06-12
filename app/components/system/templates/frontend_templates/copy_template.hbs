@@ -1,0 +1,30 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>{{i18n "Copy Template" bundle="system"}}</h2>
+  </div>
+  <form class="form form-aligned copy-template-form">
+    <div class="modal-dialog">
+      <div class="control-group">
+        <label><span class="required">*</span>{{i18n "Type" bundle="system"}}:</label>
+        <select name="app">
+          <option value="PC">{{i18n "PC-site" bundle="system"}}</option>
+          <option value="MOBILE">{{i18n "Mobile-site" bundle="system"}}</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label><span class="required">*</span>{{i18n "Source template" bundle="system"}}:</label>
+        <select name="srcKey">
+        </select>
+      </div>
+      <div class="control-group">
+        <label><span class="required">*</span>{{i18n "Target template" bundle="system"}}:</label>
+        <select name="destKey">
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-medium btn-success" type="submit">{{i18n "Confirm" bundle="system"}}</button>
+      <button class="btn btn-medium close" type="button">{{i18n "Cancel" bundle="system"}}</button>
+    </div>
+  </form>
+</div>

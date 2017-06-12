@@ -1,0 +1,61 @@
+<div class="list list-squared list-condensed clearfix">
+  {{#if _DATA_.entities.total}}
+    {{#equals display "1"}}
+      {{!-- 列表展示 --}}
+      <table class="shop-search-items-list-type" width="100%">
+        <tbody>
+          {{#each _DATA_.entities.data}}
+          <tr {{#if @last}}class="last"{{/if}}>
+            <td width="520">
+              <div class="product-image">
+                <a href="/items/{{id}}" target="_blank">
+                  <img data-original="{{cdnPath mainImage "78"}}" alt="{{name}}" style="width:78px; height:78px;">
+                </a>
+              </div>
+              <div class="descAshop">
+                <p class="product-desc">
+                  <a href="/items/{{id}}" target="_blank">{{{name}}}</a>
+                </p>
+                <p class="shop-name cutwords"><i class="icon-feebas icon-feebas-shop"></i> <a href="/shops/{{shopId}}" target="_blank">{{shopName}}</a></p>
+              </div>
+            </td>
+            <td width="175" class="left-text"><span class="product-price">￥ {{formatPrice price}}</span></td>
+            <td width="170" class="left-text"><span class="saleQuantity">销量：{{#if saleQuantity}}{{saleQuantity}}{{else}}0{{/if}}</span></td>
+            <td class="right-text">
+              {{#each promotionTypes}}
+                <span class="promotion-type promotion-type-{{this}}">{{#equals this 3}}折扣{{/equals}}</span>
+              {{/each}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      {{!-- 大图展示 --}}
+      <ul class="shop-search-items-img-type">
+        {{#each _DATA_.entities.data}}
+        <li class="product {{#mod @index 5}}no-mr{{/mod}}">
+          <div class="product-image">
+            <a href="/items/{{id}}" target="_blank">
+              <img data-original="{{cdnPath mainImage "212"}}" alt="{{name}}" style="width:212px; height:212px;">
+            </a>
+          </div>
+          <p class="product-price">
+            ￥ {{formatPrice price}}
+            <span class="saleQuantity">销量：{{#if saleQuantity}}{{saleQuantity}}{{else}}0{{/if}}</span>
+          </p>
+          <p class="product-desc">
+            <a href="/items/{{id}}" target="_blank">{{{name}}}</a>
+          </p>
+          <p class="shop-name cutwords"><i class="icon-feebas icon-feebas-shop"></i> <a href="/shops/{{shopId}}" target="_blank">{{shopName}}</a></p>
+        </li>
+        {{/each}}
+      </ul>
+    {{/equals}}
+  {{else}}
+    <div class="no-results center-text">
+      <span class="img"><i class="icon-feebas icon-feebas-goods good-icon"></i></span>
+      <p class="desc">暂无商品</p>
+    </div>
+  {{/if}}
+</div>

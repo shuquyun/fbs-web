@@ -1,0 +1,131 @@
+<form class="js-base-info">  
+  <legend class="form-title"><strong>基本信息</strong></legend>
+  <input type="hidden" name="subType" value="{{subType}}">
+  <input type="hidden" name="name" value="{{name}}">
+  <div class="control-group">
+    <label><span class="required">*</span>营业执照号:</label>
+    <input type="text" class="input-medium" id="license-number" name="licenceNo" placeholder="请输入营业执照号" value="{{data.licenceNo}}" pattern="^[0-9a-zA-Z]{16}$" required>
+    <span class="note-error"><i>&times;</i> 营业执照号只能是16位的字母与数字的组合</span>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>注册资本:</label>
+    <input type="number" class="input-medium" name="capital" placeholder="请输入注册资本" value="{{data.capital}}" required>
+    <span>单位：万元</span>
+  </div>
+  <div class="control-group image-group">
+    <label><span class="required">*</span>营业执照照片:</label>
+    <div class="btn btn-upload main-image js-upload-img">
+      <input type="file" name="file">
+      <img src="{{data.licenceImg}}" style="{{#if data.licenceImg}}width: 70px; height: 70px{{/if}}">
+      <span>+</span>
+      <input type="hidden" name="licenceImg" value="{{data.licenceImg}}">
+    </div>
+    <span class="pictrue-remark">支持*.jpg、*.png、*.gif、*.jpeg格式</span>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>成立日期:</label>
+    <input type="text" class="register-time datepicker input-medium" name="registerTime" placeholder="请输入成立日期" value="{{formatDate data.registerTime "day"}}" required>
+  </div>
+  <div class="control-group biz-group">
+    <label><span class="required">*</span>营业期限:</label>
+    <input type="text" class="js-common-start-at datepicker" name="bizStart" placeholder="请输入开始时间" value="{{formatDate data.bizStart 'day'}}" required>
+    <input type="text" class="js-common-end-at datepicker" name="bizEnd" placeholder="请输入结束时间" value="{{formatDate data.bizEnd 'day'}}" required>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>注册地址:</label>
+    <input type="text" class="input-medium" name="registerAddress" placeholder="请输入注册地址" value="{{data.registerAddress}}" required>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>法人姓名:</label>
+    <input type="text" class="input-medium" name="legalName" placeholder="请输入法人姓名" value="{{data.legalName}}" required>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>法人联系方式:</label>
+    <input type="number" class="input-medium" name="legalPhone" placeholder="请输入法人手机号" value="{{data.legalPhone}}" pattern="^1[34578]\d{9}$" required>
+  </div>
+  {{#equals subType 1}}
+  {{else}}
+    <div class="control-group select-group">
+      <label>银行信用等级:</label>
+      <select class="select" name="credit">
+        <option value="">请选择</option>
+        <option value='1' {{#equals data.credit '1'}}selected{{/equals}}>A++</option>
+        <option value='2' {{#equals data.credit '2'}}selected{{/equals}}>A+</option>
+        <option value='3' {{#equals data.credit '3'}}selected{{/equals}}>B+</option>
+      </select>
+    </div>
+  {{/equals}}
+  <div class="control-group address-group image-group">
+    <label><span class="required">*</span>所在区域:</label>
+    <select name="provinceId" class="select address-select" data-level="1" data-name="">
+      <option value="{{data.provinceId}}" selected>请选择</option>
+    </select>
+    <select name="cityId" class="select address-select" data-level="2" data-name="">
+      <option value="{{data.cityId}}" selected>请选择</option>
+    </select>
+    {{#equals subType 1}}
+      <select name="regionId" class="select address-select" data-level="3" data-name="">
+        <option value="{{data.regionId}}" selected>请选择</option>
+      </select>
+    {{/equals}}
+  </div>
+  {{#equals subType '1'}}
+    <div class="control-group scope-group">
+      <label><span class="required">*</span>业务领域:</label>
+      <input type="checkbox" id="scope1" name="scope" value="住宅" {{#of "住宅" scope}}checked{{/of}} required>
+        <label for="scope1" class="checkbox-item">住宅</label>
+      <input type="checkbox" id="scope2" name="scope" value="商业" {{#of "商业" scope}}checked{{/of}} required>
+        <label for="scope2" class="checkbox-item">商业</label>
+      <input type="checkbox" id="scope3" name="scope" value="旅游" {{#of "旅游" scope}}checked{{/of}} required>
+        <label for="scope3" class="checkbox-item">旅游</label>
+      <input type="checkbox" id="scope4" name="scope" value="综合体" {{#of "综合体" scope}}checked{{/of}} required>
+        <label for="scope4" class="checkbox-item">综合体</label>
+    </div>
+  {{else}}
+    <div class="control-group speciality-group">
+      <label><span class="required">*</span>服务区域城市:</label>
+      <input type="hidden" class="js-city-id" value="{{#each data.serviceCitys}}{{#equals @index 0}}{{id}}{{else}},{{id}}{{/equals}}{{/each}}">
+      <div class="selected-special-group js-selector-group" data-type="city" data-api="/api/address/0/children">
+        <span class="js-empty-placeholder no-data-placeholder {{#if data.serviceCitys}}hide{{/if}}">请点击选择服务城市</span>
+        {{#each data.serviceCitys}}
+          <span class='each-city' data-id='{{id}}' data-name="{{name}}" data-parent-id="{{parentId}}" data-parent-name="{{parentName}}">
+            {{name}}<i class='icon-hsh icon-hsh-cha js-delete-selected'></i>
+          </span>
+        {{/each}}
+        <i class="icon-hsh icon-hsh-caret pull-right"></i>
+      </div>
+      <div class="js-selector-container hide"><label></label></div>
+    </div>
+  {{/equals}}
+  {{#equals subType '2'}}
+    {{> user/register_company/all_templates/_supplier_person_info data=data}}
+  {{/equals}}
+  {{#equals subType '3'}}
+    {{> user/register_company/all_templates/_supplier_group_info data=data}}
+  {{/equals}}
+  {{#equals subType '4'}}
+    {{> user/register_company/all_templates/_supplier_group_info data=data}}
+  {{/equals}}
+  <div class="control-group image-group">
+    <label>公司logo:</label>
+    <div class="btn btn-upload main-image js-upload-img">
+      <input type="file" name="file">
+      <img src="{{data.logo}}" style="{{#if data.logo}}width: 70px; height: 70px{{/if}}">
+      <span>+</span>
+      <input type="hidden" name="logo" value="{{data.logo}}">
+    </div>
+  </div>
+  {{#equals subType '1'}}
+  {{else}}
+    <div class="control-group">
+      <label></label>
+      <button class="btn btn-primary" type="submit">下一步</button>
+    </div>
+  {{/equals}}
+</form>
+{{#equals subType '1'}}
+  <div class="control-group">
+    <label></label>
+    <button class="btn btn-primary js-developer-btn" type="submit">注册公司</button>
+  </div>
+{{/equals}}

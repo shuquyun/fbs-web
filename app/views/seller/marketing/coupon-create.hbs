@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}{{#if promotionId}}{{#equals method "detail"}}查看{{else}}编辑{{/equals}}{{else}}新建{{/if}}{{#equals type 2}}店铺优惠券{{else}}商品优惠券{{/equals}}{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+    {"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "营销管理"},{"url": "/seller/marketing/activity-index", "crumb": "营销活动管理"},{"url": "/seller/marketing/activity-management?type={{type}}&promotionDefId={{promotionDefId}}", "crumb": "{{#equals type 2}}店铺{{else}}商品{{/equals}}优惠券管理"},{"url": "#", "crumb": "{{#if promotionId}}{{#equals method "detail"}}查看{{else}}编辑{{/equals}}{{else}}新建{{/if}}{{#equals type 2}}店铺优惠券{{else}}商品优惠券{{/equals}}"}]}}
+  {{/inject}}
+  {{inject "shop/marketing/coupon_create" true}}
+{{/partial}}
+{{> seller/layout}}

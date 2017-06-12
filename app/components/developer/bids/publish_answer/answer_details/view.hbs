@@ -1,0 +1,24 @@
+{{#component "js-comp bids-answer-details"}}
+  <div class="bids-block">
+    {{#with _QUESTIONS_}}
+      {{> component:developer/bids/publish_answer/answer_details/backend_templates/questions bidId=../bidId userId=../_USER_.id qaOperatorId=../_DATA_.qaOperatorId}}
+    {{/with}}
+    {{#with _DATA_}}
+      {{> component:developer/bids/publish_answer/answer_details/backend_templates/response userId=../_USER_.id}}
+      {{> component:developer/bids/publish_answer/answer_details/backend_templates/attachment userId=../_USER_.id}}
+      {{> component:developer/bids/publish_answer/answer_details/backend_templates/list userId=../_USER_.id}}
+      {{#equals qaOperatorId ../_USER_.id}}
+        {{#of bidStatus "11,12,13,14,15,16"}}
+          {{#of answerFileStatus "-1,0"}}
+            <div class="bids-group">
+              <div class="bids-content content-border content-padding">
+                <button class="btn btn-primary js-bids-file-confirm" data-file="{{json ../_DATA_}}">提交答疑文件</button>
+              </div>
+            </div>
+          {{/of}}
+        {{/of}}
+      {{/equals}}
+    {{/with}}
+    {{inject "developer/bids/bids_approval/log" type=4 connectId=answerId}}
+  </div>
+{{/component}}

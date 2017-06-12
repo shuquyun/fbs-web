@@ -1,0 +1,14 @@
+{{#each data}}
+<div class="accordion-heading">
+  <span class="accordion-control"><i class="{{#equals parent.isExpand -1}}{{#equals parent.hasChild "0"}}icon-minus{{else}}icon-plus{{/equals}}{{else}}icon-minus{{/equals}}"></i></span><a href="javascript:void(0);" class="category-tag parent-category-tag" data-tag="{{parent.name}}">{{parent.name}}</a>
+</div>
+{{#if children}}
+<div class="accordion-content {{#equals parent.isExpand -1}}hide{{/equals}}">
+  {{#each children}}
+  <div class="accordion-heading" >
+    <a href="javascript:void(0);" class="category-tag child-category-tag" data-parent="{{parentName}}" data-tag="{{parentName}}/{{name}}">{{name}}</a>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+{{/each}}

@@ -1,0 +1,20 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>退出公司成功，请选择另一家公司</h2>
+  </div>
+  <form id="select-company-form" class="form form-aligned select-company-form">
+    <div class="modal-dialog">
+      <div class="control-group">
+        <label style="width: auto;"><span class="required">*</span>公司:</label>
+        <select name="companyId">
+          {{#each data}}
+            <option value="{{companyId}}">{{companyName}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-primary btn-medium js-select-exist-company" type="submit">确认</button>
+    </div>
+  </form>
+</div>

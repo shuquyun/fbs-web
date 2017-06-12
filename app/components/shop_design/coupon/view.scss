@@ -1,0 +1,9 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.coupon-a{
+  min-height: 20px;
+  a {
+    display: block;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="block block-primary fee-tree js-fee-tree">
+  {{#each nav}}
+  <div class="fee-tree-item">
+    {{name}}：总价&nbsp;{{#if price}}{{formatPrice price}}{{else}}0{{/if}}
+  </div>
+  {{/each}}
+</div>

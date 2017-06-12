@@ -1,0 +1,21 @@
+@import "compass/css3/inline-block";
+@import "pokeball/theme";
+
+.accordion {
+  background-color: white;
+
+  .panel {
+    font-size: 16px;
+    padding: 12px;
+    background-color: $color-danger;
+    color: white;
+  }
+
+  i {
+    margin-top: 11px;
+  }
+}
+
+.accordion.heading .panel {
+  border: 1px solid $color-danger;
+}

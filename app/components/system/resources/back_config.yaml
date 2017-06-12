@@ -1,0 +1,7 @@
+# 请注意，这里需要缩进
+listSitesWithLayouts:
+  type: SPRING
+  uri: io.terminus.galaxy.web.design.service.EcpSiteService:listSitesWithLayouts
+listTemplates:
+  type: SPRING
+  uri: io.terminus.galaxy.web.design.service.EcpTemplateService:listTemplates

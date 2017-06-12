@@ -1,0 +1,17 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "bodyClass"}}body{{/partial}}
+{{#partial "body"}}
+  <div class="main-top">
+    {{inject "developer/sidebar"}}
+  </div>
+  <div class="main-body">
+      {{{block "realBreadcrumb"}}}
+    <div class="body-container">
+      {{{block "realBody"}}}
+    </div>
+  </div>
+{{/partial}}
+{{!-- {{#partial "tool"}}
+  <script type="text/javascript" src="http://registry.terminus.io/packages/v4/master/cos-js-sdk-v4.js"></script>
+{{/partial}} --}}
+{{> layout}}

@@ -1,0 +1,91 @@
+<legend class="form-title"><strong>描述信息</strong></legend>
+<fieldset class="each-box-not-table extra-detail-information">
+  {{#equals companyType 'supplier'}}
+    <input type="hidden" name="id" value="{{data.id}}">
+  {{/equals}}
+  <div class="control-group">
+    <label>企业荣誉:</label>
+    {{#if companyHonour.honourImg}}
+      {{#each companyHonour.honourImg}}
+        <div class="btn btn-upload main-image js-upload-img">
+          <input class="hide" type="file" name="file">
+          <img src="{{this}}" class="js-img-show" style="{{#if this}}width: 70px; height: 70px{{/if}}">
+          <span>+</span>
+          <input type="hidden" name="honourImg" value="{{this}}">
+        </div>
+      {{/each}}
+      <span class="pictrue-remark">支持*.jpg、*.png、*.gif、*.jpeg格式</span>
+    {{else}}
+      <div class="btn btn-upload main-image js-upload-img">
+        <input class="hide" type="file" name="file">
+        <img src="" class="js-img-show">
+        <span>+</span>
+        <input type="hidden" name="honourImg" value="">
+      </div>
+      <div class="btn btn-upload main-image js-upload-img">
+        <input class="hide" type="file" name="file">
+        <img src="" class="js-img-show">
+        <span>+</span>
+        <input type="hidden" name="honourImg" value="">
+      </div>
+      <div class="btn btn-upload main-image js-upload-img">
+        <input class="hide" type="file" name="file">
+        <img src="" class="js-img-show">
+        <span>+</span>
+        <input type="hidden" name="honourImg" value="">
+      </div>
+      <span class="pictrue-remark">支持*.jpg、*.png、*.gif、*.jpeg格式</span>
+    {{/if}}
+  </div>
+  <div class="control-group textarea-group">
+    <label>企业备注:</label>
+    <textarea type="text" name="honourRemark" class="honour-remark" placeholder="请输入企业荣誉备注" disabled>{{companyHonour.honourRemark}}</textarea>
+  </div>
+  <div class="control-group textarea-group">
+    <label><span class="required">*</span>企业简介:</label>
+    <textarea type="text" name="companyInfo" placeholder="请输入企业的简介" maxLength="120" required disabled>{{data.companyInfo}}</textarea>
+  </div>
+  <div class="control-group">
+    <label>企业网站:</label>
+    <input type="text" class="input-medium" name="companySite" value="{{data.companySite}}" placeholder="如:http://www.baidu.com" disabled>
+  </div>
+  <div class="control-group">
+    <label>企业微博:</label>
+    <input type="text" class="input-medium" name="weibo" value="{{data.weibo}}" placeholder="请输入企业微博" disabled>
+  </div>
+  {{#equals companyType "supplier"}}
+  <div class="control-group">
+    <label><span class="required">*</span>所在省市区:</label>
+    <select name="provinceId" class="select address-select" data-level="1" type="hide" disabled>
+      <option value="{{data.provinceId}}" data-value="0" selected>请选择</option>
+    </select>
+    <select name="cityId" class="select address-select" data-level="2" type="hide" disabled>
+      <option value="{{data.cityId}}">请选择</option>
+    </select>
+    <select name="regionId" class="select address-select" data-level="3" type="hide" disabled>
+      <option value="{{data.regionId}}">请选择</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>公司电话:</label>
+    <input type="text" class="input-medium" name="companyMobile" placeholder="请输入公司电话" value="{{data.companyMobile}}" pattern="^((0\d{2,3}-\d{7,8})|(1[35847]\d{9}))$" required disabled>
+    <span class="note-error"><i>&times;</i> 手机号格式输入不正确</span>
+    <span class="note-error-empty"><i>&times;</i> 手机号不得为空</span>
+  </div>
+  <div class="control-group">
+    <label><span class="required">*</span>公司地址:</label>
+    <input type="text" class="input-medium" name="detail" placeholder="请输入公司地址" value="{{data.detail}}" required disabled>
+    <span class="note-error-empty"><i>&times;</i> 公司地址不得为空</span>
+  </div>
+  {{/equals}}
+  <div class="control-group">
+    <label>公众号二维码:</label>
+    <div class="btn btn-upload main-image js-upload-img">
+      <input class="hide" type="file" name="file">
+      <img src="{{data.weixin}}" class="js-img-show" style="{{#if data.weixin}}width: 70px; height: 70px{{/if}}">
+      <span>+</span>
+      <input type="hidden" name="weixin" value="{{data.weixin}}">
+    </div>
+    <span class="pictrue-remark">支持*.jpg、*.png、*.gif、*.jpeg格式</span>
+  </div>
+</fieldset>

@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}商品交易快照{{/partial}}
+{{#partial "progress"}}
+{{#inject "common/header_title_progress"}}{"title":"商品交易快照"}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "trade/buyer/item_snapshot"}}
+{{/partial}}
+{{> buyer/layout}}

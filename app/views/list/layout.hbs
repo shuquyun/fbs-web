@@ -1,0 +1,24 @@
+{{#partial "title"}}{{block "realTitle"}}{{/partial}}
+{{#partial "body"}}
+  <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_fu7v5mtukx58w7b9.css">
+  <div class="main-top" style="position: fixed;height: 60px;">
+    {{#block "listHeader"}}{{/block}}
+  </div>
+  {{#if noSidebar}}
+  <div class="main-right" style="margin-top:0; padding-top:60px; margin-left:0; background-color: #fff;">
+  {{else}}
+    <div class="main-left pull-sidebar">
+    {{#inject "list/sidebar"}}
+    {{/inject}}
+    </div>
+    {{#if treeNav}}
+      <div class="main-right" style="margin-top:0; padding-top:60px; background-color: #fff;margin-left: 280px;">
+      {{inject "list/treeNav"}}
+    {{else}}
+      <div class="main-right" style="margin-top:0; padding-top:60px; background-color: #fff;margin-left: 80px;">
+    {{/if}}
+  {{/if}}
+  {{#block "realBody"}}{{/block}}
+  </div>
+{{/partial}}
+{{> layout}}

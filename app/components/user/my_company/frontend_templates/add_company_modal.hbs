@@ -1,0 +1,25 @@
+<div class="modal join-company-modal">
+  <div class="modal-header">
+    <h2>加入新公司</h2>
+  </div>
+  <form id="add-company-form" class="form form-aligned add-company-form">
+    <div class="modal-dialog">
+      <div class="control-group">
+        <label><span class="required">*</span>公司名称:</label>
+        <input type="text" id="company-name" class="input-medium" name="name" placeholder="请输入准确的公司全称" required>
+      </div>
+      <div class="control-group">
+        <span class="company-note has-register hide">该公司已存在，将由该公司管理员审核你的加入申请</span>
+        <span class="company-note not-register hide">该公司不存在，是否创建为新公司</span>
+        {{!--<a href="/register-company?companyName=" class="btn btn-primary btn-small not-register hide">创建公司</a>--}}
+      </div>
+      <div class="control-group has-register company-note hide">
+        <textarea type="text" name="remark" placeholder="请输入你加入本公司的备注信息,非必填" maxLength="120"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-primary btn-medium js-add-company-submit" type="submit">确认</button>
+      <button class="btn btn-info btn-medium close">取消</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,107 @@
+<div class="modal">
+  <div class="modal-header">
+    <h2>优惠券</h2>
+  </div>
+  <form class="form form-aligned coupon-form" id="coupon-form" data-id="{{data.id}}" data-promotiondefid="{{promotionDefId}}">
+    <fieldset>
+      <div class="coupon-edit-form modal-dialog" data-address="{{json this}}">
+        <div class="coupon-common">
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>优惠券名称：</label>
+            <input type="text" name="name" class="input-medium" value="{{data.name}}" required>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>有效期：</label>
+            <input class="order-input input-date js-common-start-at datepicker" type="text" name="startAt" value="{{formatDate data.startAt "YYYY-MM-DD HH:mm"}}" placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required>
+            &nbsp;-&nbsp;
+            <input class="order-input input-date js-common-end-at datepicker" type="text" name="endAt" value="{{formatDate data.endAt "YYYY-MM-DD HH:mm"}}"placeholder="{{i18n "Please select a date" bundle="shop"}}" pattern="^\d{4}-\d{2}-\d{2}$" required>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>活动商品：</label>
+            <span class="sp types">
+              <label>
+                <input type="radio" value="1" class="js-radio-skuScropeParams-type" name="type" {{#equals data.skuScopeParams.type 1}}checked{{/equals}}{{#unless data.skuScopeParams.type}}checked{{/unless}}>
+                &nbsp;
+                所有商品
+              </label>
+              <br>
+              <label class="sp">
+                <input type="radio" value="2" class="js-radio-skuScropeParams-type" name="type" {{#equals data.skuScopeParams.type 2}}checked{{/equals}}>
+                &nbsp;
+                <span class="w80">部分商品</span>
+                &nbsp;&nbsp;
+                <input type="text" name="skuIds" class="skuIds-input" placeholder="指定此活动包括哪些商品" value="{{#equals data.skuScopeParams.type 2}}{{data.skuScopeParams.skuIds}}{{/equals}}">
+              </label>
+              <br>
+              <label class="sp">
+                <input type="radio" value="3" class="js-radio-skuScropeParams-type" name="type" {{#equals data.skuScopeParams.type 3}}checked{{/equals}}>
+                &nbsp;
+                <span class="w80">排除部分商品</span>
+                &nbsp;&nbsp;
+                <input type="text" name="skuIds" class="skuIds-input" placeholder="指定此活动排除哪些商品" value="{{#equals data.skuScopeParams.type 3}}{{data.skuScopeParams.skuIds}}{{/equals}}">
+              </label>
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>使用条件：</label>
+            <span class="sp isPerFee">
+              <label class="sp">
+                <input type="radio" value="0" class="js-radio-conditionParams-isPerFee" name="isPerFee" {{#equals data.conditionParams.isPerFee 0}}checked{{/equals}}{{#unless data.conditionParams.isPerFee}}checked{{/unless}}>
+                &nbsp;
+                <span class="w26">满</span>
+                &nbsp;&nbsp;
+                <input type="text" name="conditionFee" class="conditionFee-input sp-input w80" pattern="^\d{1,7}(\.\d{0,2})?$" value="{{#equals data.conditionParams.isPerFee 0}}{{formatPriceExt data.conditionParams.conditionFee}}{{/equals}}">
+                元
+              </label>
+              <br>
+              <label class="sp">
+                <input type="radio" value="1" class="js-radio-conditionParams-isPerFee" name="isPerFee" {{#equals data.conditionParams.isPerFee 1}}checked{{/equals}}>
+                &nbsp;
+                <span class="w26">每满</span>
+                &nbsp;&nbsp;
+                <input type="text" name="conditionFee" class="conditionFee-input sp-input w80" pattern="^\d{1,7}(\.\d{0,2})?$" value="{{#equals data.conditionParams.isPerFee 1}}{{formatPriceExt data.conditionParams.conditionFee}}{{/equals}}">
+                元
+              </label>
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>面值：</label>
+            <input type="text" class="w80" name="reduceFee" class="input-medium" value="{{formatPriceExt data.behaviorParams.reduceFee}}" pattern="^\d{1,7}(\.\d{0,2})?$" required>
+            元
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>发放限制：</label>
+            <span class="sp sendLimit">
+              <label class="sp">
+                <input type="radio" value="0" class="js-radio-behaviorParams-sendLimit" name="sendLimit" {{#equals data.extra.sendLimit 0}}checked{{/equals}}{{#unless data.extra.sendLimit}}checked{{/unless}}>
+                &nbsp;
+                不限数量
+              </label>
+              <br>
+              <label class="sp">
+                <input type="radio" value="1" class="js-radio-behaviorParams-sendLimit" name="sendLimit" {{#equals data.extra.sendLimit 1}}checked{{/equals}}>
+                &nbsp;
+                总共发放
+                &nbsp;&nbsp;
+                <input type="text" class="sp-input w80" name="total" class="input-medium" value="{{data.extra.total}}">
+                张
+              </label>
+            </span>
+          </div>
+          <div class="control-group">
+            <label class="control-label"><span class="required">*</span>领取限制：</label>
+            每账户可领取
+            <input type="text" class="w80" name="receiveLimit" class="input-medium" value="{{data.extra.receiveLimit}}" required>
+            张
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        {{#unless data.id}}
+        <button class="btn btn-success btn-primary btn-medium" type="submit">确认</button>
+        {{/unless}}
+        <button class="btn btn-info btn-medium close">取消</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

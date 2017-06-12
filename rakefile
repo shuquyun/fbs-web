@@ -1,0 +1,19 @@
+require 'rake/contrib/ftptools'
+
+COMPONENTS = %w[components.tar.gz components-vendor.tar.gz]
+
+desc "Build package"
+task :build do
+    Rake::Task['clean'].execute
+    system "linner build"
+end
+
+desc "shepherd and herd"
+task :deploy do
+    system 'npm install && ./node_modules/@terminus/shepherd/bin/shepherd.js build production && ./node_modules/@terminus/herd/bin/herd.js'
+end
+
+desc "quick setup"
+task :setup do
+    system 'npm install && ./node_modules/@terminus/shepherd/bin/shepherd.js && ./node_modules/@terminus/herd/bin/herd.js'
+end

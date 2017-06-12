@@ -1,0 +1,32 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>{{#equals type "view"}}查看投标清单{{else}}编辑投标清单{{/equals}}</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <div class="modal-body" style="width: 600px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="50%">清单ID</th>
+          <th width="30%">清单名称</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each list}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{filename}}</td>
+            <td>
+              {{#equals ../type "view"}}
+                <a href="/list/details?bidId={{bidId}}&billId={{fileUrl}}" target="_blank">查看详情</a>
+              {{else}}
+                <a href="javascript:;" class="js-list-edit" data-list="{{json this}}">编辑清单</a>
+              {{/equals}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

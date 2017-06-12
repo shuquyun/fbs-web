@@ -1,0 +1,23 @@
+@import "pokeball/theme";
+@import "compass/css3";
+
+div.shop-item-list {
+  ul {
+    li.product {
+      width: 240px;
+      height: 310px;
+      margin: 0;
+      padding: 10px;
+      .product-image {
+        width: 220px;
+        height: 220px;
+      }
+      .product-price {
+        margin: 5px 0;
+      }
+      .product-desc {
+        font-size: 12px;
+      }
+    }
+  }
+}

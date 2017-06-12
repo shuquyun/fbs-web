@@ -1,0 +1,65 @@
+<div class="tab supplier-tab">
+  <div class="tab-contents">
+    <table class="table">
+      <thead>
+        <th>序号</th>
+        <th>公司名称</th>
+        <th>专业</th>        
+        <th>联系人</th>
+        <th>手机</th>
+        <th>座机</th>
+        <th>邮箱</th>
+        <th>公司所在地</th>
+        <th>来源</th>
+        <th>状态</th>
+        <th>操作</th>
+        <th>入库记录</th>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+        <tr data-data="{{json this}}">
+          <td>{{add @index 1}}</td>
+          <td>{{#of state "2,3,4"}}<a href="/developer/supplier-detail?companyId={{supplierId}}">{{companyName}}</a>{{else}}{{companyName}}{{/of}}</td>
+          <td>{{#if speciality}}{{speciality}}{{else}}-{{/if}}</td>
+          <td>{{name}}</td>
+          <td>{{phone}}</td>
+          <td>{{#if mobile}}{{mobile}}{{else}}-{{/if}}</td>
+          <td>{{email}}</td>
+          <td>{{#if address}}{{address}}{{else}}-{{/if}}</td>
+          <td>
+            {{#equals source 1}}报名{{/equals}}
+            {{#equals source 2}}手工添加{{/equals}}
+          </td>
+          <td>
+            {{#mapping state}}
+            {
+              "1": "未注册",
+              "2": "已注册",
+              "3": "已加入待考察",
+              "4": "已入库"
+            }
+            {{/mapping}}
+          </td>
+          <td>
+            {{#of state "2,3"}}
+              <a href="/developer/supplier-import?supplierId={{supplierId}}">去入库</a>
+            {{/of}}
+            {{#equals state 2}}
+              <a class="js-add-collect" data-id="{{id}}">加入待考察</a>
+            {{/equals}}
+          </td>
+          <td>
+            {{#equals state 1}}{{else}}<a class="js-import-detail" data-supplier="{{supplierId}}">入库详情</a>{{/equals}}
+          </td>
+        </tr>
+        {{/each}}
+        {{#if _DATA_.empty}}
+          <tr>
+            <td class="empty-data-title" colspan="12">暂无供应商列表数据！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+    {{inject "common/pagination" total=_DATA_.total}}
+  </div>
+</div>

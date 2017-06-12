@@ -1,0 +1,13 @@
+{{#component "supplier-list-component bids-manage component-standard-container js-comp"}}
+<div class="component-body">
+  {{> component:developer/supplier_manage/supplier_collect/backend_templates/block}}
+  <div class="body-table clearfix">
+    <div class="table-left js-left-special" data-special="{{json _TREE_}}">
+      {{> component:developer/supplier_manage/supplier_library/backend_templates/navs}}
+    </div>
+    <div class="table-right">
+      {{> component:developer/supplier_manage/supplier_collect/backend_templates/table}}
+    </div>
+  </div>
+</div>
+{{/component}}

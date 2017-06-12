@@ -1,0 +1,56 @@
+{{#component "component-ceiling js-comp"}}
+<div class="navbar navbar-top" data-user="{{json _USER_}}">
+  <div class="navbar-collapse clearfix" style="width: {{#equals size "small"}}1000{{else}}1200{{/equals}}px;">
+    <div class="navbar-header">
+      <span id="js-time"></span>
+      <span class="user-info">
+        {{#if _USER_}}
+          {{#if _USER_.name}}
+            {{_USER_.name}}
+          {{else}}
+            {{_USER_.mobile}}
+          {{/if}}
+        {{else}}
+          {{i18n "Welcome to" bundle="common"}}{{#if webName}}{{webName}}{{else}}{{i18n "Electronic business platform" bundle="common"}}{{/if}}
+        {{/if}}，
+      </span>
+      <span id="js-user-action" data-hrefmain="{{_HREF_.main}}">
+        {{#if _USER_}}
+          <a href="javascript:;" id="js-ceiling-user-logout">{{i18n "logout" bundle="common"}}</a>
+        {{else}}
+          <a href="javascript:;" class="log-in" id="js-login-in">{{i18n "logIn" bundle="common"}}</a>
+          <a href="javascript:;" id="js-user-register">{{i18n "Sign up" bundle="common"}}</a>
+        {{/if}}
+      </span>
+    </div>
+    <ul>
+
+      {{#if _USER_}}
+        {{#hasRole "SUPPLIER"}}
+          {{> component:common/ceiling/backend_templates/supplier_list}}
+
+          {{#hasRole "DEVELOPER"}}
+            {{> component:common/ceiling/backend_templates/developer_list}}
+          {{/hasRole}}
+        {{else}}
+          {{#hasRole "DEVELOPER"}}
+            {{> component:common/ceiling/backend_templates/developer_list}}
+          {{/hasRole}}
+        {{/hasRole}}
+
+        {{#hasNodeSelection "site_design,site_shop_templet,site_article" _USER_AUTH_}}
+          <li class="nav-item">
+            <a rel="nofollow" href="/system/sites">站点管理</a>
+          </li>
+        {{else}}
+          {{#hasRole "ADMIN"}}
+          <li class="nav-item">
+            <a rel="nofollow" href="/system/sites">站点管理</a>
+          </li>
+          {{/hasRole}}
+        {{/hasNodeSelection}}
+      {{/if}}
+    </ul>
+  </div>
+</div>
+{{/component}}

@@ -1,0 +1,13 @@
+<ul class="category-images clearfix">
+  {{#each (lookup @root.nav index)}}
+    {{#each this}}
+      {{#if src}}
+        <li class="image-item">
+          <a href="{{#if href}}{{href}}{{else}}javascript:;{{/if}}">
+            <img data-original="{{cdnPath src "70"}}" src="" alt="" class="category-image lazy">
+          </a>
+        </li>
+      {{/if}}
+    {{/each}}
+  {{/each}}
+</ul>

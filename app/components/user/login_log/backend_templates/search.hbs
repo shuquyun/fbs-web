@@ -1,0 +1,30 @@
+<div class="block">
+  <form id="form-search" class="form js-standard-filter-form">
+    <fieldset>
+      <span class="span3 time-section">
+        <label>时间范围</label>
+        <input type="text" name="startAt" class="input-small datepicker js-common-start-at" placeholder="输入开始时间" value="{{startAt}}">
+        <span class="spacing">-</span>
+        <input type="text" name="endAt" class="input-small datepicker js-common-end-at" placeholder="输入截止时间" value="{{endAt}}">
+      </span>
+      <span class="span3">
+        <label>真实姓名</label>
+        <input type="text" name="realName" placeholder="请输入真实姓名进行模糊搜索" value="{{realName}}">
+      </span>
+      <span class="span3">
+        <label>{{#equals title 'login'}}登录结果{{else}}执行结果{{/equals}}</label>
+        <select name="result">
+          <option value="">全部</option>
+          <option value="1" {{#equals result '1'}}selected{{/equals}}>成功</option>
+          <option value="-1" {{#equals result '-1'}}selected{{/equals}}>失败</option>
+        </select>
+      </span>
+      <span class="pull-right">
+        <label for="remember">
+          <input class="btn btn-primary" type="submit" value="搜索">
+          <a href="/user/log{{#equals title 'login'}}{{else}}-operate{{/equals}}" class="btn btn-info">重置</a>
+        </label>
+      </span>
+    </fieldset>
+  </form>
+</div>

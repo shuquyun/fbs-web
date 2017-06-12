@@ -1,0 +1,46 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>提交招标文件</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <div class="modal-body file-body">
+    <div>
+      <h4>你将提交的招标文件如下，请确认</h4>
+    </div>
+    <div class="clearfix margin-bottom-20">
+      <div class="pull-left">
+        招标附件：
+      </div>
+      <div class="pull-left">
+        {{#each accessoryList}}
+          <div>{{filename}}</div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="clearfix margin-bottom-20">
+      <div class="pull-left">
+        招标清单：
+      </div>
+      <div class="pull-left">
+        {{#if inventoryList}}
+          {{#each inventoryList}}
+            <div>
+              <span>{{filename}}</span>
+              {{#if effectiveStatus}}
+                <span class="effective-item">已生效</span>
+              {{else}}
+                <span class="ineffective-item">未生效</span>
+              {{/if}}
+            </div>
+          {{/each}}
+        {{else}}
+          <div>暂无清单！</div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success btn-primary btn-medium js-file-submit" data-bid-id="{{bidId}}">确认</button>
+    <button class="btn btn-info btn-medium close">取消</button>
+  </div>
+</div>

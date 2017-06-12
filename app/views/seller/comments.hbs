@@ -1,0 +1,20 @@
+{{#partial "realTitle"}}评价管理{{/partial}}
+{{#partial "realBody"}}
+  {{#inject "common/breadcrumb"}}
+  {
+    "_DATA_": {
+      "breadcrumb":
+      [{
+        "crumb": "订单管理",
+        "url": "#"
+      },
+      {
+        "crumb": "评价管理",
+        "url": "#"
+      }]
+    }
+  }
+  {{/inject}}
+  {{inject "trade/seller/comments_manage" true}}
+{{/partial}}
+{{> seller/layout}}

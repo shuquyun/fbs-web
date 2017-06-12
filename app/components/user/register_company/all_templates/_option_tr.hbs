@@ -1,0 +1,132 @@
+{{#equals type 'output'}}
+  {{#each output}}
+  <tr class='js-output-info' data-info='{{json this}}'>
+    <td>{{annual}}</td>
+    <td>{{realOutputValue}}</td>
+    <td>{{agreementValue}}</td>
+    <td class="td-operation">
+      <a href="javascript:;" class="btn btn-small btn-info js-add-edit-item" data-data="{{json this}}" data-type="output" type="button">编辑</a>
+      <a href="javascript:;" class="btn btn-small btn-info js-delete-item" type="button">删除</a>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'partner'}}
+  {{#each partner}}
+  <tr class='js-partner-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>{{province}} {{city}} {{region}}</td>
+    <td>{{context}}</td>
+    <td class="td-operation">
+      <a href="javascript:;" class="btn btn-small btn-info js-add-edit-item" data-data="{{json this}}" data-type="partner" type="button">编辑</a>
+      <a href="javascript:;" class="btn btn-small btn-info js-delete-item" type="button">删除</a>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'achievement'}}
+  {{#each achievement}}
+  <tr class='js-achievement-info' data-info='{{json this}}'>
+    <td>{{projectName}}</td>
+    <td>{{projectAddress}}</td>
+    <td>{{partyUnit}}</td>
+    <td>
+      {{#equals type '1'}}住宅{{/equals}}
+      {{#equals type '2'}}商业{{/equals}}
+      {{#equals type '3'}}旅行{{/equals}}
+      {{#equals type '4'}}综合体{{/equals}}
+    </td>
+    <td>{{scale}}</td>
+    <td>{{content}}</td>
+    <td>{{#if ../timeFlag}}{{joinAt}}{{else}}{{formatDate joinAt "day"}}{{/if}}</td>
+    <td>{{manager}}</td>
+    <td><img src="{{indexUrl}}" style="width: 40px; height: 40px"></td>
+    <td><img src="{{signUrl}}" style="width: 40px; height: 40px"></td>
+    <td>{{remarks}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-add-edit-item" data-data="{{json this}}" data-type="achievement" type="button">编辑</button>
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'contact'}}
+  {{#each contact}}
+  <tr class='js-contact-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>{{position}}</td>
+    <td>{{phone}}</td>
+    <td>{{mobile}}</td>
+    <td>{{email}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-add-edit-item" data-data="{{json this}}" data-type="contact" type="button">编辑</button>
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'cooperate'}}
+  {{#each cooperate}}
+  <tr class='js-cooperate-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>{{brand}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'machines'}}
+  {{#each machines}}
+  <tr class='js-machines-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>{{usage}}</td>
+    <td>{{num}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'brand'}}
+  {{#each brand}}
+  <tr class='js-brand-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td><img src="{{logo}}" style="width: 40px; height: 40px"></td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'manager'}}
+  {{#each manager}}
+  <tr class='js-manager-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>{{seniority}}</td>
+    <td>{{experience}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}
+{{#equals type 'product'}}
+  {{#each product}}
+  <tr class='js-product-info' data-info='{{json this}}'>
+    <td>{{name}}</td>
+    <td>
+      {{#each images}}
+        {{#if this}}
+          <img src="{{this}}" style="width: 70px; height: 70px"/>
+        {{/if}}
+      {{/each}}
+    </td>
+    <td>{{desc}}</td>
+    <td class="td-operation">
+      <button class="btn btn-small btn-info js-add-edit-item" data-data="{{json this}}" data-type="product" type="button">编辑</button>
+      <button class="btn btn-small btn-info js-delete-item" type="button">删除</button>
+    </td>
+  </tr>
+  {{/each}}
+{{/equals}}

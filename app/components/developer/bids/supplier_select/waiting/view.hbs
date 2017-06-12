@@ -1,0 +1,16 @@
+{{#component "supplier-select-waiting"}}
+  <div class="bids-group">
+    <div class="bids-title">
+      <label>待入围列表</label>
+      {{#of bidData.bidStatus "2,4,8"}}
+        {{#equals _USER_.id bidData.tenderFinalistsOperatorId}}
+          <a href="javascript:;" class="margin-left-20 js-supplier-invite" data-major="{{json _MAJORS_}}">邀请库内供应商</a>
+        {{/equals}}
+        <a href="/developer/search-supplier" target="_blank" class="margin-left-20">去寻源</a>
+      {{/of}}
+    </div>
+    <div class="bids-content">
+      {{> component:developer/bids/supplier_select/waiting/all_templates/table userId=_USER_.id }}
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <!-- Powered by Terminus.io -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {{!-- {{#block "meta"}} --}}
+    <title>{{#if seo.title}}{{seo.title}}{{else}}{{#block "title"}}{{/block}}{{/if}}</title>
+    <meta name="keywords" content="{{seo.keywords}}">
+    <meta name="description" content="{{seo.description}}">
+    {{!-- {{/block}} --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/images/other-images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <meta name="baidu-site-verification" content="P7Xr6eyWnw" />
+    <!-- pokeball iconfont ,修改请找端点王凯凯 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1468400228_1677577.css" />
+    <!-- feebas 前台的iconfont，请修改这个链接 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1472796601_898042.css" />
+    <!-- hsh 前台的iconfont，请修改这个链接 -->
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_2ya4i95joia1nhfr.css">
+    <link rel="stylesheet" href="/assets/styles/eevee-layout.css">
+    <link rel="stylesheet" href="/assets/styles/vendor.css">
+    <link rel="stylesheet" href="/assets/styles/app-back.css">
+    <script>
+      !function(e,t,n,s,a,c,i){e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)},c=t.createElement(n),i=t.getElementsByTagName(n)[0],c.async=1,c.src=s,i.parentNode.insertBefore(c,i)}(window,document,"script","//static.terminus.io/ta.js","$ta");
+      $ta('start',{ udata: { uid: {{#if _USER_}}{{_USER_.id}}{{else}}0{{/if}} }{{#if _TERMINUS_KEY_}}, ak: '{{_TERMINUS_KEY_}}'{{/if}} })
+    </script>
+  </head>
+  <body data-base="{{_HREF_.base}}" data-user-type="{{_USER_.type}}" class="{{block "bodyClass"}}">
+    {{#block "designable"}}{{/block}}
+    <!--[if lt IE 7]>
+        <p class="browsehappy">您正使用<strong>过时</strong>的浏览器，因此您可能体验不到最好的效果,请点击<a href="http://browsehappy.com/">这里</a> 去升级您的浏览器</p>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <script src="http://cdn.staticfile.org/json2/20121008/json2.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.staticfile.org/html5shiv/3.7.2/html5shiv.js"></script>
+    <![endif]-->
+    {{> tool}}
+    {{#block "body"}}
+    {{/block}}
+    <script src="/assets/scripts/vendor.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://cdn.staticfile.org/jquery-placeholder/2.0.8/jquery.placeholder.js"></script>
+    <![endif]-->
+    {{#block "tool"}}{{/block}}
+    <script src="/assets/scripts/templates-back.js"></script>
+    <script src="/assets/scripts/app-back.js"></script>
+    <script>
+      {{i18nEnv}}
+      i18nIniter({
+        cache: { enable: false },
+        resourceFormat: 'json',
+        callback: function () {
+          require("app")();
+        }
+      });
+    </script>
+  </body>
+  <!-- Powered by Terminus.io -->
+</html>

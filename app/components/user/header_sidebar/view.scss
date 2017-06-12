@@ -1,0 +1,276 @@
+@import "pokeball/theme";
+@import "compass/css3/border-radius";
+
+.header-sidebar {
+  position: relative;
+  width: 100%;
+  background: $color-sidebar-bg;
+
+  .header-content {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+  }
+
+  .header-logo {
+    float: left;
+
+    .logo-wraper {
+      height: 60px;
+      width: 180px;
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      padding: 5px 0px;
+    }
+  }
+
+  .top-navs {
+    height: 60px;
+    margin-left: 200px;
+    font-size: 16px;
+    color: $color-sidebar-text;
+    line-height: 60px;
+
+    .nav-li {
+      float: left;
+
+      a {
+        color: $color-sidebar-text;
+        padding: 20px 10px;
+        font-size: 14px;
+      }
+
+      &.nav-li:hover {
+        background-color: $tab-body-color;
+        cursor: point;
+      }
+    }
+
+    .nav-open {
+      background-color: $tab-body-color;
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  .height-60 {
+    height: 60px;
+  }
+
+  .navs-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: $white;
+    height: 60px;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgba(39,41,56,0.2);
+    border-bottom: 1px solid #d3d4d3\0\9;
+
+    .menu-content {
+      margin: 0 auto;
+      width: 1200px;
+      text-align: left;
+      padding-left: 210px;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    .subnav-li {
+      line-height: 29px;
+      @include inline-block(middle);
+
+      &:hover .subnav-span a {
+        color: $color-primary;
+      }
+
+      &.active .subnav-span {
+        display: inline-block;
+        background: #03A9F4;
+        border-radius: 2px;
+        a {
+          color: $white;
+        }
+      }
+
+      .subnav-span a {
+        color: #333;
+      }
+    }
+  }
+
+  .top-right-wrap {
+    font-size: 14px;
+    color: $color-text-assist;
+    text-align:left;
+    height: 60px;
+    float: right;
+    line-height: 60px;
+    color: $color-sidebar-text;
+
+    .navs-ul li {
+      &:first-child {
+        position: relative;
+        height: 60px;
+        padding: 0px 25px;
+      }
+
+      float: left;
+      padding: 0px 16px;
+      border-right: 1px solid $color-border-right-wrap-nav;
+
+      .label-danger {
+        position: relative;
+        background-color: $color-danger;
+        bottom: 52px;
+        left: 8px;
+        border-radius: 100%;
+        height: 17px;
+        width: 17px;
+        line-height: 17px;
+        text-align: center;
+        text-align: -webkit-center;
+
+        span {
+          font-size: 10px;
+          font-family: sans-serif;
+          color: $white;
+        }
+      }
+
+      &:last-child {
+        border-width: 0px;
+        padding: 0px 9px;
+        position: relative;
+      }
+
+      a {
+        color: $color-sidebar-text;
+        i {
+          vertical-align: top;
+        }
+      }
+
+      a:hover {
+        color: $white;
+      }
+      transition:         color 0.2s;
+      -moz-transition:    color 0.2s;
+      -webkit-transition: color 0.2s;
+      -o-transition:      color 0.2s;
+
+      .company-name {
+        color: #03A9F4;
+      }
+    }
+
+    .dropdown-menu {
+      z-index: 1000;
+      display: none;
+      border: 1px solid #d8d8d8;
+      background-color: $color-background;
+      line-height: 24px;
+      padding: 0 10px;
+      position: absolute;
+      top: 60px;
+      right: 0px;
+      width: 50px;
+
+      &.dropdown-menu:hover a {
+        color: $color-primary;
+      }
+    }
+
+    .user-info-nav-item {
+      margin-right: 0 !important;
+
+      .info-left {
+        @include inline-block(middle);
+        cursor: pointer;
+
+        &.info-left:hover .dropdown-menu {
+          display: block;
+        }
+
+        i {
+          height: 17px;
+          line-height: 17px;
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+        }
+      }
+
+      .person-img {
+        @include inline-block(middle);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .select-company-box {
+    background-color: $color-sidebar-bg;
+    border: 1px solid $color-border;
+    border-top-width: 0px;
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    z-index: 100;
+
+    .each-company {
+      padding: 0px 8px;
+      height: 32px;
+      line-height: 32px;
+      color: #C0CCDA;
+      font-size: 13px;
+      white-space: nowrap;
+
+      &:hover {
+        cursor: pointer;
+        color: $white;
+      }
+    }
+
+    .selected-each {
+      padding: 0px 8px;
+      height: 32px;
+      line-height: 32px;
+      font-size: 13px;
+      color: $white;
+      white-space: nowrap;
+      background-color: #24344E;
+
+      &:hover {
+        cursor: auto;
+      }
+    }
+  }
+
+  .js-exchange-company {
+    .js-select-company-icon {
+      color: #03A9F4;
+      position: relative;
+      bottom: 2px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

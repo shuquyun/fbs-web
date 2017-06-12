@@ -1,0 +1,92 @@
+@import "pokeball/theme";
+@import "compass/css3";
+
+div.shop-navbar {
+  opacity: 1;
+  background-color: $navy;
+  .navbar-collapse ul li {
+    &.active {
+      background: darken($navy, 10%);
+    }
+
+
+
+    .navbar-item a {
+      color: white !important;
+      padding: 13px 20px;
+    }
+
+    .home-channel {
+      display: none;
+      border: 0px;
+      width: 120px;
+      background-color: transparent;
+      .categorys {
+        .category-li {
+          opacity: 0.9;
+          height: 30px;
+          width: 120px;
+          color: white;
+          background-color: $navy;
+          border-width: 0;
+          a {
+            color: white;
+            display: block;
+          }
+          .parent-category {
+            padding: 8px 10px 8px 20px;
+          }
+
+          .expand-panel {
+            display: none;
+            .expand-category {
+              left: 120px;
+              width: 120px;
+              min-height: 0;
+              border: 0;
+
+              .category-info {
+
+                .second-category {
+                  padding: 8px 10px 8px 20px;
+                  width: 120px;
+                  font-size: 14px;
+                  line-height: 14px;
+                  background-color: darken($navy, 10%);
+                  opacity: 0.9;
+                  height: 30px;
+                  margin: 0;
+                  .parent-name {
+                    text-align: left;
+                  }
+
+                  &:hover {
+                    opacity: 1;
+                    a {
+                      text-decoration: none;
+                    }
+                  }
+                }
+              }
+            }
+
+
+          }
+          &:hover {
+            opacity: 1;
+            box-shadow: 0 0 0 0;
+            .expand-panel {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      background: darken($navy, 10%);
+      .home-channel {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+
+.component-channel-nav {
+  min-height: 40px;
+  min-width: 30px;
+
+  .nav-title {
+    float: left;
+    width: 140px;
+    text-align: center;
+  }
+
+  .title {
+    padding: 11px 0;
+    font-size: 16px;
+    color: $color-text-assist;
+    letter-spacing: 0px;
+    @include inline-block(middle);
+
+    &.active {
+      color: $color-primary;
+    }
+  }
+}

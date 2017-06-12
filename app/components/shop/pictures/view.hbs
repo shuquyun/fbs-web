@@ -1,0 +1,27 @@
+{{#component "manage-picture js-comp operation-platform"}}
+  <p class="components-title"><strong>图片管理</strong></p>
+  <span>当前路径: <span class="now-path"  data-folder-id="0"></span></span>
+  <br>
+  <div class="operate-buttons">
+    <button class="btn js-add-folder">新建文件夹</button>
+    <div class="btn btn-upload">
+      <input type="file" name="file">
+      上传新图片
+    </div>
+  </div>
+  <div>
+    <table class="table file-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="batch-select"></th>
+          <th width="70%">文件名</th>
+          <th width="30%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination pagination-middle"></div>
+{{/component}}

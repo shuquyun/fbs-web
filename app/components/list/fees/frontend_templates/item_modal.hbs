@@ -1,0 +1,79 @@
+<div class="modal modal-template-fee-manage" data-item="{{json data}}">
+  <div class="modal-header">
+    <h2>条目配置</h2>
+  </div>
+  <div class="tmpl-item">
+    <div class="modal-body clearfix">
+      <form id="tmpl-item-form" class="form form-aligned">
+        <input type="hidden" name ="id" value="{{data.id}}">
+        <input type="hidden" name="tmplId" value="{{data.tmplId}}">
+        <input type="hidden" name="cateId" value="{{data.cateId}}">
+
+        <fieldset style="float:left">
+            <div class="control-group">
+            <label for="add-type">添加方式：</label>
+            <input name="add-type" type="radio" value="new" {{#unless data.baseFeeId}}checked{{/unless}} />
+            <span style="margin-right: 5px;">新建</span>
+            <input name="add-type" type="radio" value="cofig" {{#if data.baseFeeId}}checked{{/if}}/>
+            <span>选择已有项目</span>
+          </div>
+
+          <div class="control-group js-new-config {{#unless data.baseFeeId}}hide{{/unless}}">
+            <label for="id">选择已有项目</label>
+            <select class="select tmpl-item-select" name="baseFeeId">
+              <option value="">请选择</option>
+              {{#each baseFeeList}}
+                <option value="{{id}}" {{#equals ../data.baseFeeId id}}selected{{/equals}} data-base-fee="{{json this}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="name">项目名称:</label>
+            <input id="name" type="text" name="name" value="{{data.name}}" required>
+          </div>
+          <div class="control-group">
+            <label for="feeRate">费率:<span class="note">(%)</span></label>
+            <input id="feeRate" name="feeRate" type="number" value="{{data.feeRate}}" required>
+          </div>
+          {{#if data.id}}
+            <div class="control-group">
+              <label for="fee">费用:</label>
+              <input id="fee" name="fee" type="number" value="{{data.fee}}" required>
+            </div>
+          {{/if}}
+          <div class="control-group">
+            <label for="unit">单位:</label>
+            <select name="unit">
+              <option value="项" selected>项</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset style="float:left">
+          <div class="control-group">
+            <label for="cardinal">计价基础:</label>
+            <div class="fees-valuation-base" id="valuation-basic-checkbox">
+
+
+            </div>
+          </div>
+          {{#if data.id}}
+            <div class="control-group">
+              <label for="valuationBase">计价基数:</label>
+              <input id="valuationBase" name="valuationBase" type="number" value="{{data.valuationBase}}" required>
+            </div>
+          {{/if}}
+          <div class="control-group">
+            <label for="remark">备注:</label>
+            <input id="remark" name="remark" type="text" value="{{data.remark}}" required>
+          </div>
+        </fieldset>
+
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-medium js-submit-tmpl-item-button" type="button" data-least-id="{{leastId}}">提交</button>
+      <button class="btn btn-medium btn-info close js-close-modal-div" type="button">关闭</button>
+    </div>
+  </div>
+</div>

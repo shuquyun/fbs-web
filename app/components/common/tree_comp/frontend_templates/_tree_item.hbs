@@ -1,0 +1,31 @@
+<li class="tree-node js-tree-node {{#if selected}}selected{{/if}} {{#if expanded}}expand{{/if}} {{#if searched}}searched{{/if}} {{#if @first}}{{#if level}}hint--bottom{{else}}hint--top{{/if}}{{else}}hint--top{{/if}}" aria-label="{{name}}">
+  <div data-id="{{id}}" data-node="{{json this}}" class="tree-item js-tree-item {{#unless children}}no-children{{/unless}}">
+    {{#if level}}
+      <span class="placeholder-indent-{{level}}"></span>
+    {{else}}
+      <span class="placeholder-indent-1"></span>
+    {{/if}}
+    {{#if (size children)}}
+      <i class="icon-hsh icon-rightarrow pack-status js-expand-node"></i>
+      <i class="icon-hsh icon-xiangxiazhedie expand-status js-pack-node"></i>
+    {{/if}}
+
+    {{#if nodeLink}}
+      <a class="item-name {{#if level}}level-{{level}}{{else}}level-1{{/if}}" href="{{nodeLink}}" {{#if isBlank}}target="_blank"{{/if}}>{{name}}</a>
+    {{else}}
+      <span class="item-name {{#if level}}level-{{level}}{{else}}level-1{{/if}}">{{name}}</span>
+    {{/if}}
+
+    {{#if (default operation @root.operation)}}
+      <span class="pull-right node-operation js-operation-detail" data-id="{{id}}">
+        <i class="icon-hsh icon-detail"></i>
+      </span>
+    {{/if}}
+    {{#if menu}}
+      {{> common/tree_comp/frontend_templates/_operation_menu}}
+    {{/if}}
+  </div>
+  {{#if id}}
+    {{> common/tree_comp/frontend_templates/_tree_list}}
+  {{/if}}
+</li>

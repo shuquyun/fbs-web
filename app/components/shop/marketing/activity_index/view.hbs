@@ -1,0 +1,36 @@
+{{#component "component-standard-container activity-create js-comp"}}
+  <div class="component-body">
+    <h3>商品营销活动</h3>
+    {{#each _DATA_}}
+      {{#equals level 1}}
+      <a class="activitya" href="/seller/marketing/activity-management?type={{promotionDef.type}}&promotionDefId={{promotionDef.id}}">
+        <div class="activity">
+          <img class="bg-image" src="/assets/images/other-images/promotion-index-bg.png">
+          <div class="info {{#of promotionDef.type "0,1,2"}}coupon{{else}}discount{{/of}}">
+            <img class="bg-image" src="/assets/images/other-images/{{#of promotionDef.type "0,1,2"}}promotion-index-tip2.png{{else}}promotion-index-tip1.png{{/of}}">
+            <span class="title">{{promotionDef.name}}<span>&nbsp;({{#if inProcessCount}}{{inProcessCount}}{{else}}0{{/if}}个活动)</span></span><br>
+            <span class="desc">创建只适用于部分商品的{{#equals promotionDef.type 1}}优惠券{{/equals}}{{#equals promotionDef.type 3}}折扣活动{{/equals}}</span>
+          </div>
+        </div>
+      </a>
+      {{/equals}}
+    {{/each}}
+    <hr>
+    <h3>店铺营销活动</h3>
+    {{#each _DATA_}}
+      {{#equals level 2}}
+      <a class="activitya" href="/seller/marketing/activity-management?type={{promotionDef.type}}&promotionDefId={{promotionDef.id}}">
+        <div class="activity">
+          <img class="bg-image" src="/assets/images/other-images/promotion-index-bg.png">
+          <div class="info {{#of promotionDef.type "0,1,2"}}coupon{{else}}discount{{/of}}">
+            <img class="bg-image" src="/assets/images/other-images/{{#of promotionDef.type "0,1,2"}}promotion-index-tip2.png{{else}}promotion-index-tip1.png{{/of}}">
+            <span class="title">{{promotionDef.name}}<span>&nbsp;({{#if inProcessCount}}{{inProcessCount}}{{else}}0{{/if}}个活动)</span></span><br>
+            <span class="desc">创建适用于全店所有商品的优惠券</span>
+          </div>
+        </div>
+      </a>
+      {{/equals}}
+    {{/each}}
+  </div>
+  <div class="component-footer"></div>
+{{/component}}

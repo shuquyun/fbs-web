@@ -1,0 +1,12 @@
+<div class="table-container" id="js-bill-sku-container" name="{{json this}}">
+  {{#if item.weightAttr}}
+    <p>
+      <label>{{item.weightAttr}}:</label>
+      <select class="js-select-weight" data-weight="{{item.weightAttr}}">
+        <option value="1">综合</option>
+        <option value="-1" selected>非综合</option>
+      </select>
+    </p>
+  {{/if}}
+  {{> list/measurement/frontend_templates/_select_sku}}
+</div>

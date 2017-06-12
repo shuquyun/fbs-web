@@ -1,0 +1,69 @@
+<div class="tab supplier-tab" data-data="{{json _DATA_}}">
+  <div class="tab-contents">
+    <table class="table">
+      <thead>
+        <th width="5%">供应商ID</th>
+        <th width="9%">供应商名称</th>
+        <th width="8%">服务区域</th>
+        <th width="8%">专业</th>
+        <th width="10%">注册资金(万)</th>
+        <th width="8%">联系人</th>
+        <th width="11%">联系电话</th>
+        <th width="5%">入围项目数量</th>
+        <th width="5%">入围招标数量</th>
+        <th width="7%">来源</th>
+        <th width="6%">状态</th>
+        <th width="8%">操作</th>
+        <th width="8%">入库记录</th>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr data-data="{{json this}}">
+            <td>{{supplierId}}</td>
+            <td><a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a></td>
+            <td>{{#each (parse serviceArea)}}{{name}}<br/>{{/each}}</td>
+            <td>{{#each special}}{{name}}<br/>{{/each}}</td>
+            <td>{{#if registCapital}}{{registCapital}}{{else}}-{{/if}}</td>
+            <td>{{contactName}}</td>
+            <td>{{contactPhone}}</td>
+            <td>{{#if itemNum}}{{itemNum}}{{else}}-{{/if}}</td>
+            <td>{{#if biddingNum}}{{biddingNum}}{{else}}-{{/if}}</td>
+            <td>
+              {{#equals source 1}}报名{{/equals}}
+              {{#equals source 2}}手工添加{{/equals}}
+            </td>
+            <td>
+              {{#mapping state}}
+              {
+                "0": "合格",
+                "1": "良好",
+                "2": "优秀",
+                "-1": "不合格",
+                "-2": "黑名单",
+                "null": "-"                     
+              }
+              {{/mapping}}
+            </td>
+            <td data-supplier="{{supplierId}}" class="table-state">
+              <select class="js-change-state">
+                <option value="">编辑状态</option>
+                <option value="0">合格</option>
+                <option value="1">良好</option>
+                <option value="2">优秀</option>
+                <option value="-1">不合格</option>
+                <option value="-2">黑名单</option>
+              </select>
+            </td>
+            <td><a class="js-import-detail" data-supplier="{{supplierId}}" href="javascript:;">入库详情</a></td>
+          </tr>
+        {{/each}}
+        {{#if _DATA_.empty}}
+          <tr>
+            <td class="empty-data-title" colspan="14">暂无库内供应商！</td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+    {{inject "common/pagination" total=_DATA_.total}}
+  </div>
+</div>

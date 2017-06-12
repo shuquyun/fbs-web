@@ -1,0 +1,8 @@
+{{#component "company-detail-component js-comp"}}
+  <div class="left-company-info" data-data="{{json _DATA_}}">
+    {{> component:developer/supplier_manage/supplier_detail/backend_templates/left_company_info data=_DATA_.company profile=_DATA_.developerProfile companyHonour=(parse _DATA_.developerProfile.companyHonour)}}
+  </div>
+  <div class="right-company-info">
+    {{> component:developer/supplier_manage/supplier_detail/backend_templates/right_company_info data=_DATA_.company profile=_DATA_.developerProfile}}
+  </div>
+{{/component}}

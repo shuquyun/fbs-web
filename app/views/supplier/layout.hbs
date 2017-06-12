@@ -1,0 +1,16 @@
+{{#partial "title"}}{{{block "realTitle"}}}{{/partial}}
+{{#partial "bodyClass"}}body{{/partial}}
+{{#partial "body"}}
+  <div class="main-top">
+    {{inject "supplier/sidebar"}}
+  </div>
+  <div class="main-body">
+      {{{block "realBreadcrumb"}}}
+    <div class="body-container {{{block "containerClass"}}}">
+      {{{block "realBody"}}}
+    </div>
+  </div>
+  {{inject "common/enlarge_picture"}}
+  <div class="notify-container"></div>
+{{/partial}}
+{{> layout}}

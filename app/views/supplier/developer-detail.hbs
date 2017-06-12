@@ -1,0 +1,23 @@
+{{#partial "realTitle"}}开发商详情{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}
+    {
+      "_DATA_": {
+        "breadcrumb": [{
+          "url": "#",
+          "crumb": "综合查询"
+        }, {
+          "url": "/supplier/search-developer",
+          "crumb": "搜索开发商"
+        }, {
+          "url": "#",
+          "crumb": "开发商详情"
+        }
+      ]}
+    }
+  {{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "supplier/developer_detail" companyType='developer'}}
+{{/partial}}
+{{> supplier/layout_detail}}

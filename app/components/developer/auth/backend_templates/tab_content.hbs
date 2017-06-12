@@ -1,0 +1,44 @@
+<table class="table center-text" data-data="{{json _DATA_}}">
+  <thead>
+    <th width="15%">角色名称</th>
+    <th width="25%">描述</th>
+    <th width="20%">创建时间</th>
+    <th width="10%">状态</th>
+    <th width="10%" class="td-operation">操作</th>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{#if desc}}{{desc}}{{else}}-{{/if}}</td>
+        <td>{{formatDate createdAt "withT"}}</td>
+        <td>
+          {{#mapping status}}
+          {
+            "0":"未生效(冻结)",
+            "1":"正常",
+            "-1":"删除"
+          }
+          {{/mapping}}
+        </td>
+        <td class="td-operation">
+          <a href="/{{../companyType}}/company-user-role-create?id={{id}}">编辑</a><br>
+          <a href="javascript:;"
+            data-id="{{id}}"
+            data-toggle="confirm"
+            data-title="删除操作"
+            data-content="您确定删除该角色吗？"
+            data-event="confirm:delete">删除
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="9">
+        {{inject "common/pagination" total=_DATA_.total}}
+      </td>
+    </tr>
+  </tfoot>
+</table>

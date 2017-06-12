@@ -1,0 +1,13 @@
+{{#component "component-standard-container js-comp"}}
+  <div class="component-body">
+    {{> component:supplier/bids/bids_manage/backend_templates/block}}
+    {{#with _DATA_}}
+      {{> component:supplier/bids/bids_manage/backend_templates/table}}
+    {{/with}}
+  </div>
+  {{#with _DATA_}}
+    <div class="component-footer">
+      {{inject "common/pagination" total=total}}
+    </div>
+  {{/with}}
+{{/component}}

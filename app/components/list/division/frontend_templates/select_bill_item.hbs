@@ -1,0 +1,39 @@
+<div class="modal standard-template-edit-modal">
+  <div class="modal-header">
+    <h2>选择清单项目</h2>
+  </div>
+  <div class="modal-body division-modal">
+    <div id="js-cate-container" class="category-container">
+
+    </div>
+    <div class="model-list">
+      <div class="model-search">
+        <form class="form" id="js-select-model-form">
+          <fieldset>
+            <label>名称：</label>
+            <input type="text" placeholder="请输入名称" name="searchName" data-role="searchName">
+            <button class="btn btn-primary js-search-standard">确定</button>
+            <button class="btn btn-info" type="reset">清除</button>
+          </fieldset>
+        </form>
+      </div>
+      <table class="table table-grid">
+        <thead>
+          <tr>
+            <th>清单项目名称</th>
+            <th>项目特征描述</th>
+            <th>单位</th>
+          </tr>
+        </thead>
+        <tbody id="js-standard-template-list">
+          {{> list/division/frontend_templates/_standard_table_list}}
+        </tbody>
+      </table>
+      <div class="pagination js-standard-pagination"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-medium btn-success" id="js-submit-model" type="button">确定</button>
+    <button class="btn btn-medium btn-info close" type="button">取消</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="bids-group">
+  <div class="bids-title">
+    <label>回标供应商列表</label>
+    {{#equals _BIDS_DETAILS_.bidStatus 18}}
+      <a href="javascript:;" class="btn btn-primary margin-left-20">商务标评比分析</a>
+    {{/equals}}
+    {{#equals _BIDS_DETAILS_.bidStatus 16}}
+      {{#equals _BIDS_DETAILS_.issueOperatorId _USER_.id}}
+        <a href="javascript:;" class="btn btn-info margin-left-20 js-bids-inventory-confirm">确认中标清单</a>
+        <a href="javascript:;" class="btn btn-info margin-left-20 js-bids-confirm-start">发起定标</a>
+      {{/equals}}
+    {{/equals}}
+  </div>
+  <div class="bids-content no-border">
+    {{#equals _BIDS_DETAILS_.bidStatus 18}}
+      {{> component:developer/bids/bids_confirm/supplier_list/backend_templates/table_success}}
+    {{else}}
+      {{> component:developer/bids/bids_confirm/supplier_list/backend_templates/table_confirm userId=_USER_.id costOperatorIds=_BIDS_DETAILS_.costOperatorIds}}
+    {{/equals}}
+  </div>
+</div>

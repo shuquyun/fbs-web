@@ -1,0 +1,13 @@
+<div name="{{pp this}}"></div>
+{{#each DATA}}
+  <div class="item {{#if @last}}last{{/if}}">
+    <div class="item-img">
+      <a href="{{#equals isDefaultItem 1}}/api/searchBySpuId?spuId={{spuId}}{{else}}{{../href}}/items/{{id}}{{/equals}}" target="_blank"><img src="{{cdnPath mainImage "210"}}" alt="{{name}}" width="210" height="210"></a>
+    </div>
+    <div class="item-content">
+      <a href="{{#equals isDefaultItem 1}}/api/searchBySpuId?spuId={{spuId}}{{else}}{{../href}}/items/{{id}}{{/equals}}" class="item-desc" title="{{name}}" target="_blank">{{name}}</a>
+      <br>
+      <span class="item-price currency">{{_CURRENCY_}}{{formatPrice price}}</span>
+    </div>
+  </div>
+{{/each}}

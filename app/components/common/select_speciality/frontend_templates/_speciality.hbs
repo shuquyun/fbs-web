@@ -1,0 +1,12 @@
+<div class="category-container js-category-container" data-level="{{data.0.level}}">
+  <div class="category-body">
+    <ul data-parent-id="{{parent.id}}" data-parent-name="{{parent.name}}">
+      {{#each data}}
+        <li class="category-item js-category-item {{#of id ../ids}}selected checked{{/of}}" data-category="{{json this}}">
+          <span class="item-name">{{name}}</span>
+          <i class="icon-hsh icon-hsh-duigou pull-right {{#of id ../ids}}{{else}}hide{{/of}} js-selected-icon"></i>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

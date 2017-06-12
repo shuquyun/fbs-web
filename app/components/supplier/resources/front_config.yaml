@@ -1,0 +1,130 @@
+# "supplier/supplier_list":
+#   category: "admin"
+#   name: "导入供应商列表"
+#   service: "getImportSupplier"
+
+# "supplier/supplier_library":
+#   category: "admin"
+#   name: "供应商库"
+#   service: "pagingSupplierList"
+
+# "supplier/supplier_import":
+#   category: "admin"
+#   name: "入库详情"
+#   service: "getSupplierDetail"
+
+# "supplier/supplier_collect":
+#   category: "admin"
+#   name: "待考察供应商列表"
+#   service: "getSupplierCollect"
+
+"supplier/company/company_info":
+  category: "admin"
+  name: "供应商公司信息"
+  service: "getCompanyInfo"
+  services:
+    _APPLY_: "getCompanyApply"
+
+"supplier/company/company_info_tax":
+  category: "admin"
+  name: "供应商税务信息"
+  service: "getCompanyInfo"
+  services:
+    _APPLY_: "getCompanyApply"
+
+"supplier/company/company_info_service":
+  category: "admin"
+  name: "供应商服务信息"
+  service: "getCompanyInfo"
+  services:
+    _APPLY_: "getCompanyApply"
+
+"supplier/company/company_detail":
+  category: "admin"
+  name: "供应商公司信息"
+  service: "getCompanyInfo"
+
+"supplier/company/company_detail_product":
+  category: "admin"
+  name: "供应商公司信息"
+  service: "getCompanyInfo"
+
+"supplier/company/company_detail_describe":
+  category: "admin"
+  name: "供应商描述信息"
+  service: "getCompanyInfo"
+
+"supplier/bids/bids_manage":
+  category: "admin"
+  name: "供应商投标列表"
+  service: pagingSupplierBids
+
+"supplier/bids/bids_file":
+  category: "ADMIN"
+  name: "招标文件"
+  service: getBidsFiles
+
+"supplier/bids/bids_supply":
+  category: "ADMIN"
+  name: "补充文件"
+  service: getSupplierBidsSupplyFiles
+
+"supplier/bids/bids_answer/bids_questions":
+  category: "ADMIN"
+  name: "供应商问题汇总"
+  service: pagingSupplierAnswerQuestions
+
+"supplier/bids/bids_answer/common":
+  category: "admin"
+  name: "供应商答疑文件"
+  service: getSupplierBidsQuestionsDetails
+
+"supplier/bids/bids_reply/attachment":
+  category: "ADMIN"
+  name: "获取回标附件"
+  service: getFilesByBidIdAndStatus
+
+"supplier/bids/bids_reply/inventory":
+  category: "ADMIN"
+  name: "获取回标清单"
+  service: getBIdsFilesByTypes
+
+"supplier/bids/bids_reply/common":
+  category: "ADMIN"
+  name: "获取标下供应商详情"
+  service: getBidSupplierDetailsById
+
+"supplier/bids/bids_clarify/common":
+  category: "ADMIN"
+  name: "获取澄清清单详情"
+  service: getSupplierClarifyReply
+
+"supplier/bids/bids_confirm":
+  category: "ADMIN"
+  name: "获取最终确认附件和清单"
+  service: getFinalConfirmFileList
+
+"supplier/bids/bids_notice":
+  category: "ADMIN"
+  name: "招标公告"
+  service: getBidsDetails
+
+"supplier/bids/bids_answer/question_edit":
+  category: "ADMIN"
+  name: "问题编辑"
+  service: getSupplierQuestionById
+
+"supplier/index/count":
+  category: "ADMIN"
+  name: "供应商统计"
+  service: getSupplierCounts
+
+"supplier/developer_detail":
+  category: "ADMIN"
+  name: "开发商详情"
+  service: getDeveloperDetail
+  services:
+    _EXTRA_: getDeveloperLibrarySupplier
+
+
+

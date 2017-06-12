@@ -1,0 +1,41 @@
+<div class="control-group">
+  <label for="house">户型：</label>
+  <input data-house="name" id="house" type="text" placeholder="请输入户型名称" />
+  <input data-house="style" type="text" placeholder="请输入装修风格" />
+  <select class="select" >
+    {{#each products}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+  <a class="btn js-add-house" href="javascript:;">添加</a>
+</div>
+<div class="control-group" data-house="true">
+  <label></label>
+  <div class="config-list">
+  {{#each houseInfo}}
+    {{#if renderStatus}}
+    <div class="build-item" data-key="{{name}}">
+      <div class="build-item-header">
+        <div class="build-text">
+          <span>{{name}}</span>
+          <span>{{style}}</span>
+          <span>{{product}}</span>
+          <a class="pull-right" data-delete="house" href="javascript:;" data-key="{{name}}" >删除</a>
+          <a class="pull-right" data-edit="true" href="javascript:;" data-key="{{name}}" >编辑</a>
+        </div>
+        <div class="build-edit">
+          <input type="text" value="{{name}}" data-house="name" />
+          <input type="text" value="{{style}}" data-house="style" />
+          <select class="select" >
+            {{#each ../products}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+          <a class="pull-right" data-submit="edit" href="javascript:;" data-key="{{name}}">确定</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  {{/each}}
+  </div>
+</div>

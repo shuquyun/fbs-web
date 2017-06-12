@@ -1,0 +1,46 @@
+@import "pokeball/theme";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+
+.articles-list-common {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  margin-top: 35px;
+  margin-bottom: 50px;
+  .category-box {
+    width: 200px;
+    display: inline-block;
+  }
+  .articles-list-common-list {
+    display: inline-block;
+    width: 980px;
+    min-height: 600px;
+    margin-bottom: 50px;
+    float: right;
+    .users-pagination {
+      margin-top: 20px;
+      text-align: right;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        border-bottom: 1px dashed $color-border;
+        a {
+          line-height: 50px;
+          color: $color-text-assist;
+          font-size: 14px;
+          &:hover {
+            color: $color-link;
+          }
+        }
+        .articles-date {
+          float: right;
+          line-height: 50px;
+          color: $color-text-disabled;
+        }
+      }
+    }
+  }
+}

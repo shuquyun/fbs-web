@@ -1,0 +1,16 @@
+<div class="library-supplier-count">
+  <span>库内供应商</span>
+  <div class="total" data-info="{{json _EXTRA_}}">
+    该开发商已入库<span>&nbsp;{{_EXTRA_.total}}&nbsp;</span>家供应商
+  </div>
+  {{#unless _EXTRA_.empty}}
+    <div class="library-company-list">
+      {{#each _EXTRA_.data}}
+        <div class="company-brief">
+          <img src="{{#if supplierLogo}}{{supplierLogo}}{{else}}/assets/images/other-images/image_not_found.png{{/if}}" alt="">
+          <div>{{supplierName}}</div>
+        </div>
+      {{/each}}
+    </div>
+  {{/unless}}
+</div>

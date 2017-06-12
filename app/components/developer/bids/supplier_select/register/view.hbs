@@ -1,0 +1,72 @@
+{{#component "supplier-select-register"}}
+  <div class="bids-group">
+    <div class="bids-title">
+      <label>报名列表</label>
+    </div>
+    <div class="bids-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="5%">序号</th>
+            <th width="15%">供应商公司名称</th>
+            <th width="15%">专业</th>
+            <th width="10%">联系人</th>
+            <th width="10%">联系电话</th>
+            <th width="15%">状态</th>
+            <th width="15%">保证金状态</th>
+            <th width="15%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if _DATA_.data}}
+            {{#each _DATA_.data}}
+              <tr>
+                <td>{{supplierId}}</td>
+                <td>
+                  <a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a>
+                  {{#if reportStatus}}
+                    <i class="icon-hsh icon-hsh-fujian"></i>
+                  {{/if}}
+                </td>
+                <td>{{speciality}}</td>
+                <td>{{contacts}}</td>
+                <td>{{phone}}</td>
+                <td>
+                  {{#equals supplierStatus -1}}未入库{{/equals}}
+                  {{#equals supplierStatus 1}}库内未合作{{/equals}}
+                  {{#equals supplierStatus 2}}库内已合作{{/equals}}
+                </td>
+                <td>
+                  {{#equals cautionMoneyStatus 0}}<span class="status-danger">保证金不足</span>{{/equals}}
+                  {{#equals cautionMoneyStatus 1}}<span class="status-danger">未缴纳</span>{{/equals}}
+                  {{#equals cautionMoneyStatus 2}}<span class="status-success">已缴纳</span>{{/equals}}
+                </td>
+                <td>
+                  {{#equals ../userId ../bidData.tenderFinalistsOperatorId}}
+                    {{#of ../bidData.bidStatus "2,4,8"}}
+                      {{#equals supplierStatus -1}}
+                        <a href="/developer/supplier-import?supplierId={{supplierId}}" target="_blank">去入库</a>
+                      {{/equals}}
+                      {{#equals cautionMoneyStatus 2}}
+                        <a href="javascript:;" class="js-supplier-enter" data-id="{{id}}">入围</a>
+                      {{else}}
+                        <a href="javascirpt:;" data-id="{{id}}" data-toggle="confirm" data-event="confirm:enter" data-title="保证金不足提醒" data-content="该供应商未向平台缴纳保证金或保证金不足，是否确认将其加入入围名单">入围</a>
+                      {{/equals}}
+                    {{/of}}
+                  {{/equals}}
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td class="center-text" colspan="8">暂无报名供应商！</td>
+            </tr>
+          {{/if}}
+        </tbody>
+      </table>
+      {{#if _DATA_.total}}
+        <div>{{inject "common/pagination" total=_DATA_.total}}</div>
+      {{/if}}
+    </div>
+  </div>
+{{/component}}

@@ -1,0 +1,39 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>提交补充文件</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <div class="modal-body file-body">
+    <div>
+      <h4>你将提交的补充文件如下，请确认</h4>
+    </div>
+    <div class="clearfix margin-bottom-20">
+      <div class="pull-left">
+        补充附件：
+      </div>
+      <div class="pull-left">
+        {{#if supplementFiles}}
+          {{#each supplementFiles}}
+            <div>{{filename}}</div>
+          {{/each}}
+        {{else}}
+          <div>暂无补充附件！</div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="clearfix margin-bottom-20">
+      <div class="pull-left">
+        补充清单：
+      </div>
+      <div class="pull-left">
+        {{#each supplementLists}}
+          <div>{{filename}}</div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success btn-primary btn-medium js-supply-file-submit" data-bid-id="{{bidId}}" data-issued-bid-id="{{id}}">确认</button>
+    <button class="btn btn-info btn-medium close">取消</button>
+  </div>
+</div>

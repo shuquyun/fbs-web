@@ -1,0 +1,8 @@
+{{#partial "realTitle"}}招投标管理{{/partial}}
+{{#partial "realBreadcrumb"}}
+  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "招标管理"},{"url": "#", "crumb": "招投标管理"}]}}{{/inject}}
+{{/partial}}
+{{#partial "realBody"}}
+  {{inject "developer/bids/bids_manage/bids_list"}}
+{{/partial}}
+{{> developer/layout}}

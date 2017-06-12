@@ -1,0 +1,41 @@
+<table class="supplementary-manage-table table table-horizontal center-text {{#if showMore}}max-table{{else}}min-table{{/if}}">
+  <thead>
+    <tr>
+      <th class="id">项目编号</th>
+      <th class="name">项目名称</th>
+      <th class="attrs">属性</th>
+      <th class="project-feature">项目特征描述</th>
+      <th class="work-desc">工作内容</th>
+      <th class="unit">单位</th>
+      <th class="quantities">工程量</th>
+      {{#if showMore}}
+        <th class="item-price-1">人工</th>
+        <th class="item-price-2">主材</th>
+        <th class="item-price-3">辅材</th>
+        <th class="item-price-4">机械费</th>
+        <th class="profit">管理费</th>
+        <th class="manage-fee">利润</th>
+      {{/if}}
+      <th class="unit-price">
+        {{#if showMore}}
+          <i class="icon-pokeball icon-pokeball-right js-combine-column" data-combine="false"></i>综合单价
+        {{else}}
+          综合单价
+          <i class="icon-pokeball icon-pokeball-left js-combine-column" data-combine="true"></i>
+        {{/if}}
+
+      </th>
+      <th class="total">总价</th>
+      <th class="is-supply">主材供应方式</th>
+      <th class="supply-list">甲供材料</th>
+      <th class="td-operation">操作</th>
+    </tr>
+  </thead>
+  <tbody class="js-fee-item-tbody">
+    {{#each data}}
+      {{> list/supplementary/frontend_templates/_tr data=this showMore=../showMore}}
+    {{/each}}
+
+  </tbody>
+
+</table>

@@ -1,0 +1,52 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th width="5%">序号</th>
+      <th width="15%">供应商公司名称</th>
+      <th width="10%">联系人</th>
+      <th width="10%">联系方式</th>
+      <th width="10%">回标状态</th>
+      <th width="15%">最后回标时间</th>
+      <th width="10%">回标IP地址</th>
+      <th width="5%">澄清次数</th>
+      <th width="20%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if _DATA_}}
+      {{#each _DATA_}}
+        <tr>
+          <td>{{add @index 1}}</td>
+          <td><a href="/developer/supplier-detail?companyId={{supplierId}}" target="_blank">{{supplierName}}</a></td>
+          <td>{{contacts}}</td>
+          <td>{{phone}}</td>
+          <td>
+            {{#equals stauts 7}}已回标{{/equals}}
+            {{#equals stauts 8}}待澄清{{/equals}}
+            {{#equals stauts 9}}澄清完成{{/equals}}
+            {{#equals stauts 10}}已回标，中标待确认{{/equals}}
+            {{#equals stauts 11}}澄清完成，中标待确认{{/equals}}
+            {{#equals stauts 12}}中标{{/equals}}
+            {{#equals stauts 13}}中标{{/equals}}
+            {{#equals stauts 14}}未中标{{/equals}}
+            {{#equals stauts 15}}未中标{{/equals}}
+          </td>
+          <td>{{formatDate lastBackBidDate}}</td>
+          <td>{{#if ip}}{{ip}}{{else}}-{{/if}}</td>
+          <td>{{#if clarifyTimes}}{{clarifyTimes}}{{else}}0{{/if}}</td>
+          <td>
+            <a href="javascript:;" class="js-list-control" data-list="{{json replyInventories}}" data-type="view">查看投标清单</a><br>
+            <a href="javascript:;" class="js-attachment-download" data-id="{{id}}" data-bid-id="{{bidId}}">下载回标附件</a>
+            {{#of status "9,11,12,13,14,15"}}
+              <a href="/developer/bids-details/clarify-details?bidSupplierId={{id}}&bidId={{bidId}}">澄清记录</a>
+            {{/of}}
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="center-text" colspan="9">暂无回标供应商！</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

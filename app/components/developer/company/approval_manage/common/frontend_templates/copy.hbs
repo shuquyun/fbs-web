@@ -1,0 +1,18 @@
+<div class="modal modal-bids-manage">
+  <div class="modal-header">
+    <h2>选择引用节点</h2>
+    <i class="icon-feebas icon-feebas-cha right-close close"></i>
+  </div>
+  <div class="modal-body manager-body">
+    <label>引用节点</label>
+    <select class="selectric js-flow-copy-select">
+      {{#each approvals}}
+        <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success btn-primary btn-medium" data-toggle="confirm" data-event="confirm:copy" data-title="引用节点提醒" data-content="引用节点会覆盖已有配置，请确定是否需要覆盖">确认</button>
+    <button class="btn btn-info btn-medium close js-approval-close">取消</button>
+  </div>
+</div>

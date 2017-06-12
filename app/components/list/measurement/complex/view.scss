@@ -1,0 +1,263 @@
+@import "pokeball/theme";
+
+.component-measurement-complex {
+  .operation-container {
+    padding: 10px;
+    border-width: 0 1px 1px 1px;
+    border-color: $color-border;
+    border-style: solid;
+  }
+
+  .model-attr {
+    border-top: 1px dashed $color-border;
+    color: $green;
+
+    &:first-child {
+      border: 0;
+    }
+  }
+
+  .no-cate {
+    border: 1px solid $color-border;
+    padding: 17px;
+  }
+
+  .selectric {
+    width: 70px;
+  }
+
+  .model-icon {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 7px 0;
+  }
+
+  tr.selected {
+    background-color: #E6F8FF;
+  }
+
+  .detail-bar {
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    width: calc(100% - 330px);
+    text-align: center;
+    background-color: $color-background;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+
+  .bill-container {
+    width: calc(100% - 20px);
+  }
+}
+
+.model-item {
+  &:not(:first-child){
+    border-top: 1px dashed #dfdfdf;
+    padding-top: 16px;
+  }
+}
+
+.bill-detail-modal {
+  background-color: #fff;
+  padding: 0 20px;
+  position: fixed;
+  height: 80% !important;
+  width: 100% !important;
+  top: 20% !important;
+  bottom: 0;
+  left: 0 !important;
+
+  .close {
+    margin-top: 10px;
+  }
+
+  .tab {
+    height: 100%;
+  }
+
+  .tab-contents {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+  }
+
+  .tab-content {
+    height: 100%;
+  }
+
+  @for $i from 0 through 10 {
+    .table-row-level-#{$i} {
+      background-color: level-color($i);
+    }
+  }
+
+  .operation-container {
+    padding: 10px;
+    border-width: 0 1px 1px 1px;
+    border-color: $color-border;
+    border-style: solid;
+  }
+}
+
+.bill-sku-select-modal {
+  font-size: 0px;
+
+  p {
+    font-size: 12px;
+  }
+
+  .table-container {
+    font-size: 12px;
+    width: 350px;
+    padding: 0 10px;
+    margin-left: 10px;
+    max-height: 400px;
+    overflow: auto;
+    @include inline-block(top);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    .selectric-wrapper,
+    .selectric,
+    select {
+      width: 100%;
+    }
+  }
+}
+
+
+
+.standard-template-edit-modal {
+
+  .category-container {
+    font-size: 12px;
+    width: 250px;
+    @include inline-block(top);
+  }
+
+  .model-list {
+    margin-left: 16px;
+    width: 500px;
+    @include inline-block(top);
+  }
+
+  fieldset {
+    padding: 10px 0;
+  }
+
+  tr {
+    &.selected {
+      background-color: $color-primary-light;
+
+      &:hover {
+        background-color: $color-primary-light;
+      }
+    }
+  }
+
+  .component-tree-container {
+    height: 452px;
+
+    .tree-view {
+      height: 400px;
+      overflow: auto;
+    }
+  }
+}
+
+.standard-template-attr-form {
+  width: 800px;
+
+  .control-group {
+    label {
+      width: 12em;
+    }
+  }
+}
+
+.bill-item-select-modal {
+
+  tr.selected {
+    background-color: $color-primary-light;
+  }
+
+  .table-container {
+    @include inline-block(top);
+    width: 400px;
+    max-height: 500px;
+    overflow: auto;
+    margin-left: 10px;
+
+    &.first {
+      margin-left: 0;
+    }
+
+    p {
+      margin: 5px 0;
+      line-height: 32px;
+    }
+  }
+
+  .weight-attr-form {
+    label {
+      margin-right: 15px;
+
+      .input-checkbox {
+        margin-right: 5px;
+      }
+    }
+
+    .attr-value {
+      @include inline-block(top);
+      line-height: 14px;
+    }
+
+    .btn {
+      margin-top: 20px;
+    }
+  }
+}
+
+.standard-template-detail-modal {
+  background-color: #fff;
+  padding: 0 20px;
+  position: fixed;
+  height: 80% !important;
+  width: 100% !important;
+  top: 20% !important;
+  bottom: 0;
+  left: 0 !important;
+
+  .close {
+    margin-top: 10px;
+  }
+
+  .tab {
+    height: 100%;
+  }
+
+  .tab-contents {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+  }
+
+  .tab-content {
+    height: 100%;
+  }
+
+  @for $i from 0 through 10 {
+    .table-row-level-#{$i} {
+      background-color: level-color($i);
+    }
+  }
+}
+
+.division-modal{
+  max-height: 400px;
+  overflow: auto;
+}

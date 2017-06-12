@@ -1,0 +1,52 @@
+<div class="message-group">
+  <div class="message-title">
+    <span class="js-title-tab title-tab{{#equals statusStr "0,1"}} active{{/equals}}" data-status="0,1" data-type="{{qfType}}" data-tab="1">未完成（{{unfinishedNum}}）</span>
+    <span class="js-title-tab title-tab{{#equals statusStr "-1,2"}} active{{/equals}}" data-status="-1,2" data-type="{{qfType}}">已完成（{{finishedNum}}）</span>
+    <span class="js-title-tab title-tab{{#unless statusStr}} active{{/unless}}">全部</span>
+  </div>
+  {{#with flowSnapshotPaging}}
+    <div class="message-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="5%">序号</th>
+            <th width="15%">项目名称</th>
+            <th width="25%">审批主题</th>
+            <th width="15%">接收时间</th>
+            <th width="10%">发起人</th>
+            <th width="10%">我的完成状态</th>
+            <th width="10%">上一步处理人</th>
+            <th width="10%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if data}}
+            {{#each data}}
+              <tr>
+                <td>{{add @index 1}}</td>
+                <td>{{projectName}}</td>
+                <td>{{approveTheme}}</td>
+                <td>{{formatDate lastApproveDate}}</td>
+                <td>{{ownerName}}</td>
+                <td {{#of status "-1,2"}}{{else}}class="td-active"{{/of}}>{{#of status "-1,2"}}完成{{else}}未完成{{/of}}</td>
+                <td>{{#if lastApproverName}}{{lastApproverName}}{{else}}-{{/if}}</td>
+                <td>
+                  <a href="javascript:;" class="js-approval-show" data-ref-id="{{refId}}" data-type="{{type}}">查看详情</a>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td colspan="7" class="center-text">暂无审批！</td>
+            </tr>
+          {{/if}}
+        </tbody>
+      </table>
+      <div>
+        {{#if total}}
+          {{inject "common/pagination" total=total}}
+        {{/if}}
+      </div>
+    </div>
+  {{/with}}
+</div>
