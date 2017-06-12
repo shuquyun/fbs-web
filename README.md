@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Galaxy Web前端工程
 
 ## setup
@@ -178,3 +179,6 @@ resources,styles,views为模块内资源，后续可能会有调整。
 
 
 
+=======
+测试
+>>>>>>> 7c03b6929b92c14ed8d6ed6937c2a61b3578119d
