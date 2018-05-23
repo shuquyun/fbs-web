@@ -1,9 +1,0 @@
-{{#component "js-comp approval-common component-standard-container"}}
-  {{#if flow}}
-    {{#with flow}}
-      {{> component:developer/company/approval_manage/common/backend_templates/form users=../_DATA_ projects=../_PROJECTS_ approvals=../_APPROVALS_}}
-    {{/with}}
-  {{else}}
-    {{> component:developer/company/approval_manage/common/backend_templates/form users=_DATA_ projects=_PROJECTS_ approvals=_APPROVALS_}}
-  {{/if}}
-{{/component}}

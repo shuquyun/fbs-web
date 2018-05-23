@@ -1,6 +1,0 @@
-{{#partial "realTitle"}}店铺分类管理{{/partial}}
-{{#partial "realBody"}}
-  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "商品管理"},{"url": "#", "crumb": "类目管理"}]}}{{/inject}}
-  {{inject "items/seller/shop_category" shopId=_USER_.shopId}}
-{{/partial}}
-{{> seller/layout}}

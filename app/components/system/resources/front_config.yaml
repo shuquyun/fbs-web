@@ -1,8 +1,0 @@
-"system/templates":
-  category: "ADMIN"
-  name: "店铺模版管理"
-  service: "listTemplates"
-"system/site_manage":
-  category: "ADMIN"
-  name: "站点管理"
-  service: "listSitesWithLayouts"

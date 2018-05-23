@@ -1,8 +1,0 @@
-{{#partial "realTitle"}}{{#if promotionId}}{{#equals method "detail"}}查看{{else}}编辑{{/equals}}{{else}}新建{{/if}}创建商品折扣{{/partial}}
-{{#partial "realBody"}}
-  {{#inject "common/breadcrumb"}}
-    {"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "营销管理"},{"url": "/seller/marketing/activity-index", "crumb": "营销活动管理"},{"url": "/seller/marketing/activity-management?type={{type}}&promotionDefId={{promotionDefId}}", "crumb": "商品折扣管理"},{"url": "#", "crumb": "{{#if promotionId}}编辑{{else}}新建{{/if}}商品折扣"}]}}
-  {{/inject}}
-  {{inject "shop/marketing/discount_create" true}}
-{{/partial}}
-{{> seller/layout}}

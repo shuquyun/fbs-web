@@ -1,9 +1,0 @@
-{{#partial "realTitle"}}发布商品{{/partial}}
-{{#partial "realBody"}}
-  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "创建商品"},{"url": "#", "crumb": "选择类目"}]}}{{/inject}}
-  {{#inject "items/seller/release_items_category" true}}
-  {
-    "type": -1
-  }{{/inject}}
-{{/partial}}
-{{> seller/layout}}

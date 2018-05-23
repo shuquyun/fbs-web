@@ -1,9 +1,0 @@
-{{#if _SITE_}}
-  {{#designPart "header" scope="site" rule="1" key=_SITE_.id}}
-    {{inject "common/ceiling"}}
-  {{/designPart}}
-{{else}}
-  {{#designPart "header" scope="site" rule="-1" key=_SITE_.id}}
-    {{inject "common/ceiling"}}
-  {{/designPart}}
-{{/if}}

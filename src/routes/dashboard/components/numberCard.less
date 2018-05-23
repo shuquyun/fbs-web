@@ -1,0 +1,48 @@
+@import "../../../themes/vars.less";
+
+.numberCard {
+  padding: 32px;
+  margin-bottom: 24px;
+  cursor: pointer;
+
+  .iconWarp {
+    font-size: 54px;
+    float: left;
+  }
+
+  .content {
+    width: 100%;
+    padding-left: 78px;
+
+    .title {
+      line-height: 24px;
+      font-size: 16px;
+      margin-bottom: 8px;
+      height: 24px;
+      .text-overflow();
+    }
+
+    .number {
+      line-height: 32px;
+      font-size: 24px;
+      height: 32px;
+      .text-overflow();
+    }
+    .day {
+      font-size: 8px;
+      padding: 0 5px;
+      display: inline-block;
+      font-weight: normal;
+      line-height: 24px;
+      //text-align: center;
+      white-space: nowrap;
+      //vertical-align: middle;
+      //-ms-touch-action: manipulation;
+      //touch-action: manipulation;
+      //border: 1px solid transparent;
+      border-radius: 4px;
+      color: #FFFFFF;
+      float: right;
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{{#partial "realTitle"}}导入供应商{{/partial}}
-{{#partial "realBreadcrumb"}}
-  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "供应商管理"},{"url": "#", "crumb": "供应商去入库"}]}}{{/inject}}
-{{/partial}}
-{{#partial "realBody"}}
-  {{inject "developer/supplier_manage/supplier_import" true}}
-{{/partial}}
-{{> developer/layout_index}}

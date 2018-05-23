@@ -1,9 +1,0 @@
-{{#partial "realTitle"}}公司信息管理{{/partial}}
-{{#partial "realBreadcrumb"}}
-  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "公司管理"}, {"url": "#", "crumb": "公司信息管理"}]}}{{/inject}}
-  {{inject "supplier/company/info_tab" selectTab='3'}}
-{{/partial}}
-{{#partial "realBody"}}
-  {{inject "supplier/company/company_info_service"}}
-{{/partial}}
-{{> supplier/layout}}

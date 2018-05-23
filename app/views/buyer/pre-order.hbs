@@ -1,8 +1,0 @@
-{{#partial "realTitle"}}订单确定{{/partial}}
-{{#partial "progress"}}
-{{#inject "common/header_title_progress"}}{"title":"确认订单","progress":[{"name":"My Cart","past":"true"},{"name":"Checking the Order","active":"true"},{"name":"Submit Order Success"},{"name":"Pay Success"}]}{{/inject}}
-{{/partial}}
-{{#partial "realBody"}}
-  {{inject "trade/buyer/pre_order"}}
-{{/partial}}
-{{> buyer/layout}}

@@ -1,9 +1,0 @@
-{{#component "hsh-register js-comp"}}
-  {{> component:user/register/all_templates/header_progress step=2}}
-  {{!-- js-form-content 控制内容切换  js-register-form 绑定提交表单 --}}
-  <form class="form form-aligned register-company js-register-form js-form-content" data-user="{{json _USER_}}">
-    <div class="register-company-info">
-      {{> component:user/register_company/backend_templates/create_company}}
-    </div>
-  </form>
-{{/component}}

@@ -1,8 +1,0 @@
-{{#partial "realTitle"}}收银台{{/partial}}
-{{#partial "progress"}}
-{{#inject "common/header_title_progress"}}{"title":"收银台","progress":[{"name":"My Cart","past":"true"},{"name":"Checking the Order","past":"true"},{"name":"Submit Order Success","active":"true"},{"name":"Pay Success"}]}{{/inject}}
-{{/partial}}
-{{#partial "realBody"}}
-  {{inject "pay/pre_pay" true}}
-{{/partial}}
-{{> buyer/layout}}

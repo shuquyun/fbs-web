@@ -1,3 +1,0 @@
-hrefs: # 可选，所有出现在这个 hash 里的值都会以 _HREF_ 为 key 注入渲染上下文
-  consoleHref: "http://www.parana.com"
-  mainHref: "http://www.parana.com"

@@ -1,8 +1,0 @@
-{{#partial "realTitle"}}待考察供应商{{/partial}}
-{{#partial "realBreadcrumb"}}
-  {{#inject "common/breadcrumb"}}{"_DATA_": {"breadcrumb": [{"url": "#", "crumb": "供应商管理"},{"url": "#", "crumb": "待考察供应商列表"}]}}{{/inject}}  
-{{/partial}}
-{{#partial "realBody"}}
-  {{inject "developer/supplier_manage/supplier_collect" supplierState='1' fromdb=(default fromdb true)}}
-{{/partial}}
-{{> developer/layout}}
