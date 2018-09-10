@@ -1,77 +1,76 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, Icon, Popover, Avatar, Dropdown, Tag, message, Spin, Badge } from 'antd'
+import { Menu, Icon, Popover, Layout } from 'antd'
+import classnames from 'classnames'
 import styles from './Header.less'
 import Menus from './Menu'
-import { config } from '../../utils'
-import { Link } from 'dva/router'
 
-const SubMenu = Menu.SubMenu
+const { SubMenu } = Menu
 
-const Header = ({ user, logout,update, switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu }) => {
-  let handleClickMenu = (e) =>{
-    e.key === 'logout' && logout()
-    e.key === 'update' && update()
-  }
-  const menusProps = {
-    menu,
-    siderFold: false,
-    darkTheme: false,
-    isNavbar,
-    handleClickNavMenu: switchMenuPopover,
-    location,
-    navOpenKeys,
-    changeOpenKeys,
-  }
-  const menuUser = (
-    <Menu className={styles.menu} selectedKeys={[]} onClick={handleClickMenu} >
-      <Menu.Item key="update"><Icon type="user" />修改密码</Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
-    </Menu>
-  );
-  return (
-    <div className={styles.header}>
-      <Icon
-        className={styles.trigger}
-        type={siderFold ? 'menu-unfold' : 'menu-fold'}
-        onClick={switchSider}
-      />
-      <div className={styles.right}>
-        <a href="/base/message">
-          <Badge count={0}>
-            <Icon type="mail" style={{width: 25, fontSize: 20}} />
-          </Badge>
-        </a>
-
-        {user.name ? (
-
-          <Dropdown overlay={menuUser}>
-                  <span className={`${styles.action} ${styles.account}`}>
-                    <Avatar size="small" className={styles.avatar} src={config.logo} />
-                    {user.name}
-                  </span>
-          </Dropdown>
-        ) : <Spin size="small" style={{ marginLeft: 8 }} />}
-      </div>
-
-    </div>
-  )
+const Header = ({
+    user, logout, switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu,
+}) => {
+    let handleClickMenu = e => e.key === 'logout' && logout()
+    const menusProps = {
+        menu,
+        siderFold: false,
+        darkTheme: false,
+        isNavbar,
+        handleClickNavMenu: switchMenuPopover,
+        location,
+        navOpenKeys,
+        changeOpenKeys,
+    }
+    return (
+        <Layout.Header className={styles.header}>
+            {isNavbar
+                ? <Popover placement="bottomLeft" onVisibleChange={switchMenuPopover} visible={menuPopoverVisible} overlayClassName={styles.popovermenu} trigger="click" content={<Menus {...menusProps} />}>
+                    <div className={styles.button}>
+                        <Icon type="bars" />
+                    </div>
+                </Popover>
+                : <div
+                    className={styles.button}
+                    onClick={switchSider}
+                >
+                    <Icon type={classnames({ 'menu-unfold': siderFold, 'menu-fold': !siderFold })} />
+                </div>}
+            <div className={styles.rightWarpper}>
+                <div className={styles.button}>
+                    <Icon type="mail" />
+                </div>
+                <Menu mode="horizontal" onClick={handleClickMenu}>
+                    <SubMenu
+                        style={{
+                            float: 'right',
+                        }}
+                        title={<span>
+                            <Icon type="user" />
+                            {user.username}
+                        </span>}
+                    >
+                        <Menu.Item key="logout">
+                            Sign out
+            </Menu.Item>
+                    </SubMenu>
+                </Menu>
+            </div>
+        </Layout.Header>
+    )
 }
 
 Header.propTypes = {
-  menu: PropTypes.array,
-  user: PropTypes.object,
-  logout: PropTypes.func,
-  update: PropTypes.func,
-  switchSider: PropTypes.func,
-  siderFold: PropTypes.bool,
-  isNavbar: PropTypes.bool,
-  menuPopoverVisible: PropTypes.bool,
-  location: PropTypes.object,
-  switchMenuPopover: PropTypes.func,
-  navOpenKeys: PropTypes.array,
-  changeOpenKeys: PropTypes.func,
+    menu: PropTypes.array,
+    user: PropTypes.object,
+    logout: PropTypes.func,
+    switchSider: PropTypes.func,
+    siderFold: PropTypes.bool,
+    isNavbar: PropTypes.bool,
+    menuPopoverVisible: PropTypes.bool,
+    location: PropTypes.object,
+    switchMenuPopover: PropTypes.func,
+    navOpenKeys: PropTypes.array,
+    changeOpenKeys: PropTypes.func,
 }
 
 export default Header

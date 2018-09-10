@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
-import styles from './Search.less'
 import { Input, Select, Button, Icon } from 'antd'
+import styles from './Search.less'
 
 class Search extends React.Component {
   state = {
@@ -38,7 +38,9 @@ class Search extends React.Component {
     this.handleSearch()
   }
   render () {
-    const { size, select, selectOptions, selectProps, style, keyword } = this.props
+    const {
+      size, select, selectOptions, selectProps, style, keyword,
+    } = this.props
     const { clearVisible } = this.state
     return (
       <Input.Group compact size={size} className={styles.search} style={style}>

@@ -2,18 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'antd'
 import { request } from 'utils'
-import lodash from 'lodash'
+import cloneDeep from 'lodash.clonedeep'
+import isEqual from 'lodash.isequal'
 import './DataTable.less'
 
 class DataTable extends React.Component {
   constructor (props) {
     super(props)
-    const { dataSource, pagination = {
-      showSizeChanger: true,
-      showQuickJumper: true,
-      showTotal: total => `共 ${total} 条`,
-      current: 1,
-      total: 100 },
+    const {
+      dataSource, pagination = {
+        showSizeChanger: true,
+        showQuickJumper: true,
+        showTotal: total => `共 ${total} 条`,
+        current: 1,
+        total: 100,
+      },
     } = props
     this.state = {
       loading: false,
@@ -29,12 +32,12 @@ class DataTable extends React.Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    const staticNextProps = lodash.cloneDeep(nextProps)
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    const staticNextProps = cloneDeep(nextProps)
     delete staticNextProps.columns
     const { columns, ...otherProps } = this.props
 
-    if (!lodash.isEqual(staticNextProps, otherProps)) {
+    if (!isEqual(staticNextProps, otherProps)) {
       this.props = nextProps
       this.fetch()
     }
@@ -47,7 +50,7 @@ class DataTable extends React.Component {
       pagination: pager,
       fetchData: {
         results: pagination.pageSize,
-        pageNo: pagination.current,
+        page: pagination.current,
         sortField: sorter.field,
         sortOrder: sorter.order,
         ...filters,
@@ -97,13 +100,12 @@ class DataTable extends React.Component {
   }
 }
 
-
 DataTable.propTypes = {
   fetch: PropTypes.object,
   rowKey: PropTypes.string,
-  pagination: React.PropTypes.oneOfType([
-    React.PropTypes.bool,
-    React.PropTypes.object,
+  pagination: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
   ]),
   columns: PropTypes.array,
   dataSource: PropTypes.array,

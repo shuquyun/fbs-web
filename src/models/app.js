@@ -1,14 +1,17 @@
-import { query, logout,updatePassword } from '../services/app'
-import * as basePermission from '../services/base/permission'
+/* global window */
+/* global document */
+/* global location */
+/* eslint no-restricted-globals: ["error", "event"] */
+
 import { routerRedux } from 'dva/router'
 import { parse } from 'qs'
 import config from 'config'
 import { EnumRoleType } from 'enums'
-import {message} from 'antd'
-import pathToRegexp from 'path-to-regexp'
+import { query, logout } from 'services/app'
+import * as menusService from 'services/menus'
+import queryString from 'query-string'
 
-
-const { prefix,openPages } = config
+const { prefix } = config
 
 export default {
   namespace: 'app',
@@ -19,35 +22,43 @@ export default {
     },
     menu: [
       {
-        id: 0,
+        id: 1,
         icon: 'laptop',
-        name: '管理中心',
+        name: 'Dashboard',
         router: '/dashboard',
       },
     ],
     menuPopoverVisible: false,
-    modalVisible: false,
-    siderFold: localStorage.getItem(`${prefix}siderFold`) === 'true',
-    darkTheme: true,
+    siderFold: window.localStorage.getItem(`${prefix}siderFold`) === 'true',
+    darkTheme: window.localStorage.getItem(`${prefix}darkTheme`) === 'true',
     isNavbar: document.body.clientWidth < 769,
-    navOpenKeys: [],
-    navSelectedKeys:[],
+    navOpenKeys: JSON.parse(window.localStorage.getItem(`${prefix}navOpenKeys`)) || [],
+    locationPathname: '',
+    locationQuery: {},
   },
   subscriptions: {
 
-    setup ({ dispatch }) {
-      if (!(openPages && openPages.includes(location.pathname))) {
+    setupHistory ({ dispatch, history }) {
+      history.listen((location) => {
         dispatch({
-          type: 'query'
+          type: 'updateState',
+          payload: {
+            locationPathname: location.pathname,
+            locationQuery: location.query,
+          },
         })
+      })
+    },
+
+    setup ({ dispatch }) {
+      dispatch({ type: 'query' })
+      let tid
+      window.onresize = () => {
+        clearTimeout(tid)
+        tid = setTimeout(() => {
+          dispatch({ type: 'changeNavbar' })
+        }, 300)
       }
-      // let tid
-      // window.onresize = () => {
-      //   clearTimeout(tid)
-      //   tid = setTimeout(() => {
-      //     dispatch({ type: 'changeNavbar' })
-      //   }, 300)
-      // }
     },
 
   },
@@ -55,52 +66,45 @@ export default {
 
     * query ({
       payload,
-    }, { call, put }) {
-      const data = yield call(query, payload)
-      if (data) {
-        const menu = yield call(basePermission.list)
-        if(menu){
-          let currentMenu = {}
-          let defaultSelectedKeys
-          let openKeys = []
-
-          for (let item of menu) {
-            if (item.url && pathToRegexp(item.url).exec(location.pathname)) {
-              currentMenu = item
-              break
-            }
-          }
-
-          if (currentMenu) {
-            defaultSelectedKeys = [currentMenu.id+""]
-            const buildOpenKeys = (id)=>{
-              for (let item of menu) {
-                if (item.id ===id) {
-                  openKeys.push(id+"")
-                  buildOpenKeys(item.pid)
-                }
-              }
-            }
-            if(currentMenu.pid){
-              buildOpenKeys(currentMenu.pid)
-            }
-          }
-
-
-          yield put({
-            type: 'updateState',
-            payload: {
-              menu,
-              navSelectedKeys: defaultSelectedKeys,
-              navOpenKeys: openKeys,
-              user: data,
-            },
+    }, { call, put, select }) {
+      const { success, user } = yield call(query, payload)
+      const { locationPathname } = yield select(_ => _.app)
+      if (success && user) {
+        const { list } = yield call(menusService.query)
+        const { permissions } = user
+        let menu = list
+        if (permissions.role === EnumRoleType.ADMIN || permissions.role === EnumRoleType.DEVELOPER) {
+          permissions.visit = list.map(item => item.id)
+        } else {
+          menu = list.filter((item) => {
+            const cases = [
+              permissions.visit.includes(item.id),
+              item.mpid ? permissions.visit.includes(item.mpid) || item.mpid === '-1' : true,
+              item.bpid ? permissions.visit.includes(item.bpid) : true,
+            ]
+            return cases.every(_ => _)
           })
         }
-
+        yield put({
+          type: 'updateState',
+          payload: {
+            user,
+            permissions,
+            menu,
+          },
+        })
         if (location.pathname === '/login') {
-          yield put(routerRedux.push('/'))
+          yield put(routerRedux.push({
+            pathname: '/dashboard',
+          }))
         }
+      } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
+        yield put(routerRedux.push({
+          pathname: '/login',
+          search: queryString.stringify({
+            from: locationPathname,
+          }),
+        }))
       }
     },
 
@@ -108,25 +112,24 @@ export default {
       payload,
     }, { call, put }) {
       const data = yield call(logout, parse(payload))
-      if (data) {
+      if (data.success) {
+        yield put({ type: 'updateState', payload: {
+          user: {},
+          permissions: { visit: [] },
+          menu: [{
+              id: 1,
+              icon: 'laptop',
+              name: 'Dashboard',
+              router: '/dashboard',
+            }],
+        }})
         yield put({ type: 'query' })
       } else {
         throw (data)
       }
     },
-    * update({payload}, {put, call}) {
-      const data = yield call(updatePassword, payload)
-      if (data) {
-        yield put({type: 'hideModal'})
-        message.success("密码修改成功")
-        yield put(routerRedux.push('/login'))
-      } else {
-        throw data
-      }
-    },
-    * changeNavbar ({
-      payload,
-    }, { put, select }) {
+
+    * changeNavbar (action, { put, select }) {
       const { app } = yield (select(_ => _))
       const isNavbar = document.body.clientWidth < 769
       if (isNavbar !== app.isNavbar) {
@@ -144,7 +147,7 @@ export default {
     },
 
     switchSider (state) {
-      localStorage.setItem(`${prefix}siderFold`, !state.siderFold)
+      window.localStorage.setItem(`${prefix}siderFold`, !state.siderFold)
       return {
         ...state,
         siderFold: !state.siderFold,
@@ -152,7 +155,7 @@ export default {
     },
 
     switchTheme (state) {
-      localStorage.setItem(`${prefix}darkTheme`, !state.darkTheme)
+      window.localStorage.setItem(`${prefix}darkTheme`, !state.darkTheme)
       return {
         ...state,
         darkTheme: !state.darkTheme,
@@ -179,21 +182,5 @@ export default {
         ...navOpenKeys,
       }
     },
-
-    handleClickNavMenu (state, { payload }) {
-      return {
-        ...state,
-        ...payload,
-      }
-    },
-
-    showModal(state, {payload}) {
-      return {...state, ...payload, modalVisible: true}
-    },
-
-    hideModal(state) {
-      return {...state, modalVisible: false}
-    },
-
   },
 }

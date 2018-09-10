@@ -1,28 +1,11 @@
+/* global window */
 import axios from 'axios'
 import qs from 'qs'
-import { CORS } from './config'
 import jsonp from 'jsonp'
-import lodash from 'lodash'
+import cloneDeep from 'lodash.clonedeep'
 import pathToRegexp from 'path-to-regexp'
 import { message } from 'antd'
-
-// 添加一个请求拦截器
-axios.interceptors.request.use(function (config) {
-  // console.log("axios request config:",config)
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
-});
-
-// 添加一个响应拦截器
-axios.interceptors.response.use(function (response) {
-  // console.log("axios response response:",response)
-  return response;
-}, function (error) {
-  // Do something with response error
-  return Promise.reject(error);
-});
+import { YQL, CORS } from './config'
 
 const fetch = (options) => {
   let {
@@ -32,13 +15,13 @@ const fetch = (options) => {
     url,
   } = options
 
-  const cloneData = lodash.cloneDeep(data)
+  const cloneData = cloneDeep(data)
 
   try {
-    let domin = ''
+    let domain = ''
     if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
-      domin = url.match(/[a-zA-z]+:\/\/[^/]*/)[0]
-      url = url.slice(domin.length)
+      [domain] = url.match(/[a-zA-z]+:\/\/[^/]*/)
+      url = url.slice(domain.length)
     }
     const match = pathToRegexp.parse(url)
     url = pathToRegexp.compile(url)(data)
@@ -47,7 +30,7 @@ const fetch = (options) => {
         delete cloneData[item.name]
       }
     }
-    url = domin + url
+    url = domain + url
   } catch (e) {
     message.error(e.message)
   }
@@ -65,6 +48,9 @@ const fetch = (options) => {
         resolve({ statusText: 'OK', status: 200, data: result })
       })
     })
+  } else if (fetchType === 'YQL') {
+    url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
+    data = null
   }
 
   switch (method.toLowerCase()) {
@@ -77,7 +63,7 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, cloneData,{})
+      return axios.post(url, cloneData)
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':
@@ -93,6 +79,8 @@ export default function request (options) {
     if (window.location.origin !== origin) {
       if (CORS && CORS.indexOf(origin) > -1) {
         options.fetchType = 'CORS'
+      } else if (YQL && YQL.indexOf(origin) > -1) {
+        options.fetchType = 'YQL'
       } else {
         options.fetchType = 'JSONP'
       }
@@ -101,8 +89,18 @@ export default function request (options) {
 
   return fetch(options).then((response) => {
     const { statusText, status } = response
-    let data = response.data
-    return data
+    let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data
+    if (data instanceof Array) {
+      data = {
+        list: data,
+      }
+    }
+    return Promise.resolve({
+      success: true,
+      message: statusText,
+      statusCode: status,
+      ...data,
+    })
   }).catch((error) => {
     const { response } = error
     let msg
@@ -110,19 +108,13 @@ export default function request (options) {
     if (response && response instanceof Object) {
       const { data, statusText } = response
       statusCode = response.status
-      if(statusCode === 401){
-        window.location.href = "/login"
-      }else if(statusCode===403){
-        msg =  data.message ||'无权限'
-      }else{
-        msg = data.message || statusText
-      }
-
+      msg = data.message || statusText
     } else {
       statusCode = 600
       msg = error.message || 'Network Error'
     }
 
-    throw { success: false, statusCode, message: msg }
+    /* eslint-disable */
+    return Promise.reject({ success: false, statusCode, message: msg })
   })
 }

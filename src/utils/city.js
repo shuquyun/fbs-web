@@ -23,7 +23,7 @@
     ```
 */
 let DICT = {
-  110000: '北京市',
+  110000: '北京',
   110100: '北京市',
   110101: '东城区',
   110102: '西城区',
@@ -42,7 +42,7 @@ let DICT = {
   110228: '密云县',
   110229: '延庆县',
   110230: '其它区',
-  120000: '天津市',
+  120000: '天津',
   120100: '天津市',
   120101: '和平区',
   120102: '河东区',
@@ -893,7 +893,7 @@ let DICT = {
   232723: '漠河县',
   232724: '加格达奇区',
   232725: '其它区',
-  310000: '上海市',
+  310000: '上海',
   310100: '上海市',
   310101: '黄浦区',
   310104: '徐汇区',
@@ -2501,7 +2501,7 @@ let DICT = {
   469035: '保亭黎族苗族自治县',
   469036: '琼中黎族苗族自治县',
   471005: '其它区',
-  500000: '重庆市',
+  500000: '重庆',
   500100: '重庆市',
   500101: '万州区',
   500102: '涪陵区',
@@ -4025,18 +4025,18 @@ let DICT = {
 const tree = (list) => {
   let mapped = {}
   let item
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i += 1) {
     item = list[i]
     if (!item || !item.id) continue
     mapped[item.id] = item
   }
 
   let result = []
-  for (let ii = 0; ii < list.length; ii++) {
+  for (let ii = 0; ii < list.length; ii += 1) {
     item = list[ii]
 
     if (!item) continue
-            /* jshint -W041 */
+    /* jshint -W041 */
     if (item.pid === undefined && item.parentId === undefined) {
       result.push(item)
       continue
@@ -4049,46 +4049,25 @@ const tree = (list) => {
   return result
 }
 
-let city = function (type) {
+let DICT_FIXED = (function () {
   let fixed = []
   for (let id in DICT) {
     if ({}.hasOwnProperty.call(DICT, id)) {
       let pid
       if (id.slice(2, 6) !== '0000') {
         pid = id.slice(4, 6) === '00' ? (`${id.slice(0, 2)}0000`) :
-        `${id.slice(0, 4)}00`
+          `${id.slice(0, 4)}00`
       }
-      if(type===1 &&(id.slice(2, 6) === '0000')){
-        fixed.push({
-          id,
-          pid,
-          name: DICT[id],
-          value: id,
-          label: DICT[id],
-        })
-      }else if(type===2 &&(id.slice(4, 6) === '00')){
-        fixed.push({
-          id,
-          pid,
-          name: DICT[id],
-          value: id,
-          label: DICT[id],
-        })
-      }else if(!type||type===3){
-        fixed.push({
-          id,
-          pid,
-          name: DICT[id],
-          value: id,
-          label: DICT[id],
-        })
-      }
-
+      fixed.push({
+        id,
+        pid,
+        name: DICT[id],
+        value: DICT[id],
+        label: DICT[id],
+      })
     }
   }
   return tree(fixed)
-}
+}())
 
-module.exports = {
-  city,
-}
+module.exports = DICT_FIXED
