@@ -7,18 +7,20 @@ import FilterItem from './FilterItem'
 import Loader from './Loader'
 import * as MyLayout from './Layout/index.js'
 import Page from './Page'
+import ImageModal from './ImageModal'
 
 import layer from './layer'
 
 export {
-  MyLayout,
-  DataTable,
-  DropOption,
-  Iconfont,
-  Search,
-  Editor,
-  FilterItem,
-  Loader,
-  layer,
-  Page,
+    MyLayout,
+    DataTable,
+    DropOption,
+    Iconfont,
+    Search,
+    Editor,
+    FilterItem,
+    Loader,
+    layer,
+    Page,
+    ImageModal
 }

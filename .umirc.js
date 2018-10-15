@@ -5,9 +5,11 @@ export default {
     es5ImcompatibleVersions: true,
     plugins: [
         [
-            'umi-plugin-react', //是一个umi插件集,下面是吧所有插件的配置统一到了这里
+            'umi-plugin-react',
             {
-                dva: true,
+                dva: {
+                    immer: true,
+                },
                 antd: true,
                 routes: {
                     exclude: [
@@ -26,6 +28,11 @@ export default {
                         /chart\/Recharts\/Container\.js$/,
                     ],
                 },
+                // dynamicImport: {
+                //     webpackChunkName: true,
+                // },
+                // dynamicImport: true,
+                hmr: true,
                 dll: {
                     exclude: [],
                     include: ["dva", "dva/router", "dva/saga", "dva/fetch", "antd/es"],
@@ -45,8 +52,13 @@ export default {
         // "/api/v2": {
         //   "target": "http://192.168.0.110",
         //   "changeOrigin": true,
-        //   "pathRewrite": { "^/api/v2" : "/api/v2" }
+        //   "pathRewrite": { "^/api/v2" : "/api/v2"u i }
         // }
+        "/api/v1": {
+            "target": "http://192.168.31.66:8801",
+            "changeOrigin": true,
+            "pathRewrite": { "^/api/v1": "/api" }
+        },
     },
     alias: {
         themes: resolve(__dirname, './src/themes'),
