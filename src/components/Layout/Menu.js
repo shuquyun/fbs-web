@@ -50,14 +50,10 @@ const Menus = ({
                 );
             }
             return (
-                <Menu.Item
-                    key={item.id}
-                    style={siderFoldN ? { width: 10 } : {}}
-                >
-                    <Link to={item.url || "/"}>
+                <Menu.Item key={item.id}>
+                    <Link to={item.url || '#'} style={siderFoldN ? { width: 10 } : {}}>
                         {item.icon && <Icon type={item.icon} />}
-                        {(!siderFoldN || !menuTree.includes(item)) &&
-                            item.title}
+                        {item.title}
                     </Link>
                 </Menu.Item>
             );

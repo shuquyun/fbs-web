@@ -2,7 +2,7 @@ const APIV1 = "/api/v1";
 const APIV2 = "/api/v2";
 
 module.exports = {
-    name: "X-Plan",
+    name: "数趣云",
     prefix: "antdAdmin",
     footerText: "XXXXXX总管理后台  © 2018 杭州数趣云有限科技",
     logo: "/public/logo.svg",

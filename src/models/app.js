@@ -24,7 +24,7 @@ export default {
         menuPopoverVisible: false,
         modalVisible: false,
         siderFold: localStorage.getItem(`${prefix}siderFold`) === "true",
-        darkTheme: false,
+        darkTheme: window.localStorage.getItem(`${prefix}darkTheme`) === 'true',
         isNavbar: document.body.clientWidth < 769,
         navOpenKeys: [],
         navSelectedKeys: []

@@ -10,8 +10,10 @@ const Sider = ({
     darkTheme,
     location,
     navOpenKeys,
+    navSelectedKeys,
     changeOpenKeys,
     menu,
+    changeTheme,
     changeSelectedMenu
 }) => {
     const menusProps = {
@@ -21,6 +23,7 @@ const Sider = ({
         location,
         navOpenKeys,
         changeOpenKeys,
+        navSelectedKeys,
         changeSelectedMenu
     };
     return (
@@ -30,6 +33,10 @@ const Sider = ({
                 {siderFold ? "" : <span>{config.name}</span>}
             </div>
             <Menus {...menusProps} />
+            {!siderFold ? <div className={styles.switchtheme}>
+                <span><Icon type="bulb" />Switch Theme</span>
+                <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
+            </div> : ''}
         </div>
     );
 };

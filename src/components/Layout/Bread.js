@@ -11,7 +11,8 @@ const Bread = ({ menu, location }) => {
     let pathArray = []
     let current
     for (let index in menu) {
-        if (menu[index].url && pathToRegexp(menu[index].url).exec(location.pathname)) {
+        // !效验规则更改
+        if (menu[index].url && pathToRegexp(`${menu[index].url}/:bar*`).exec(location.pathname)) {
             current = menu[index]
             break
         }
@@ -73,6 +74,25 @@ const Bread = ({ menu, location }) => {
             <Breadcrumb>
                 {breads}
             </Breadcrumb>
+
+            {/* 三级菜单无法正确显示面包屑解决 */}
+            {/* !手动配置面包屑 */}
+            {/* {
+                (location.pathname !== '/marketing/college/article/releaseArticle'
+                    && location.pathname !== '/marketing/college/article/releaseArticle'
+                ) &&
+                <Breadcrumb>
+                    {breads}
+                </Breadcrumb>
+            }
+            {
+                location.pathname == '/marketing/college/article/releaseArticle' &&
+                <Breadcrumb>
+                    <Breadcrumb.Item><Icon type="home" />营销管理</Breadcrumb.Item>
+                    <Breadcrumb.Item><Icon type="experiment" />库克大学</Breadcrumb.Item>
+                    <Breadcrumb.Item><Icon type="experiment" />发布文章</Breadcrumb.Item>
+                </Breadcrumb>
+            } */}
         </div>
     )
 }

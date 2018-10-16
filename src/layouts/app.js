@@ -28,6 +28,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
         isNavbar,
         menuPopoverVisible,
         navOpenKeys,
+        navSelectedKeys,
         menu,
         permissions
     } = app;
@@ -81,6 +82,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
         siderFold,
         darkTheme,
         navOpenKeys,
+        navSelectedKeys,
         changeTheme() {
             dispatch({ type: "app/switchTheme" });
         },
