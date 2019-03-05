@@ -54,11 +54,11 @@ export default {
         //   "changeOrigin": true,
         //   "pathRewrite": { "^/api/v2" : "/api/v2"u i }
         // }
-        "/api/v1": {
-            "target": "http://192.168.31.66:8801",
-            "changeOrigin": true,
-            "pathRewrite": { "^/api/v1": "/api" }
-        },
+        // "/api/v1": {
+        //     "target": "http://192.168.31.66:8801",
+        //     "changeOrigin": true,
+        //     "pathRewrite": { "^/api/v1": "/api" }
+        // },
     },
     alias: {
         themes: resolve(__dirname, './src/themes'),
