@@ -1,16 +1,12 @@
-import { request, config } from "utils";
-import qs from "qs";
-const { api } = config;
-const { userLogin } = api;
+import { request, config } from 'utils'
 
-export async function login(data) {
-    try {
-        return request({
-            url: userLogin,
-            method: "post",
-            data: qs.stringify(data)
-        });
-    } catch (e) {
-        throw e;
-    }
+const { api } = config
+const { userLogin } = api
+
+export function login (data) {
+  return request({
+    url: userLogin,
+    method: 'post',
+    data,
+  })
 }

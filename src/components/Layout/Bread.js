@@ -11,8 +11,7 @@ const Bread = ({ menu, location }) => {
     let pathArray = []
     let current
     for (let index in menu) {
-        // !效验规则更改
-        if (menu[index].url && pathToRegexp(`${menu[index].url}/:bar*`).exec(location.pathname)) {
+        if (menu[index].route && pathToRegexp(menu[index].route).exec(location.pathname)) {
             current = menu[index]
             break
         }
@@ -20,8 +19,8 @@ const Bread = ({ menu, location }) => {
 
     const getPathArray = (item) => {
         pathArray.unshift(item)
-        if (item.pid) {
-            getPathArray(queryArray(menu, item.pid, 'id'))
+        if (item.bpid) {
+            getPathArray(queryArray(menu, item.bpid, 'id'))
         }
     }
 
@@ -30,23 +29,23 @@ const Bread = ({ menu, location }) => {
         pathArray.push(menu[0] || {
             id: 1,
             icon: 'laptop',
-            title: 'Dashboard',
+            name: 'Dashboard',
         })
         pathArray.push({
             id: 404,
-            title: 'Not Found',
+            name: 'Not Found',
         })
     } else {
         getPathArray(current)
 
         let keys = []
-        let values = pathToRegexp(current.url, keys).exec(location.pathname.replace('#', ''))
+        let values = pathToRegexp(current.route, keys).exec(location.pathname.replace('#', ''))
         if (keys.length) {
             keys.forEach((currentValue, index) => {
-                if (typeof currentValue.title !== 'string') {
+                if (typeof currentValue.name !== 'string') {
                     return
                 }
-                paramMap[currentValue.title] = values[index + 1]
+                paramMap[currentValue.name] = values[index + 1]
             })
         }
     }
@@ -56,12 +55,12 @@ const Bread = ({ menu, location }) => {
         const content = (
             <span>{item.icon
                 ? <Icon type={item.icon} style={{ marginRight: 4 }} />
-                : ''}{item.title}</span>
+                : ''}{item.name}</span>
         )
         return (
             <Breadcrumb.Item key={key}>
                 {((pathArray.length - 1) !== key)
-                    ? <Link to={pathToRegexp.compile(item.url || '')(paramMap) || '#'}>
+                    ? <Link to={pathToRegexp.compile(item.route || '')(paramMap) || '#'}>
                         {content}
                     </Link>
                     : content}
