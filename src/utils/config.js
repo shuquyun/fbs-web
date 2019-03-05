@@ -34,7 +34,7 @@ module.exports = {
         adminRole: `${APIV1}/ucenter/adminRole`,
         adminRolePermission: `${APIV1}/ucenter/adminRolePermission`,
         //基础设置————————用户管理
-        getUser: `${APIV1}/ucenter/adminInfo`, //获取管理员列表
+        getUser: `${APIV1}/users`, //获取管理员列表
         //基础设置————————消息管理
         userMessage: `${APIV1}/ucenter/userMessage`,
         //基础设置————————公告管理
